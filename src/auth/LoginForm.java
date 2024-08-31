@@ -164,15 +164,20 @@ public class LoginForm extends javax.swing.JFrame {
                         break;
                     case "HR Officer":
                         ui.dashboard.HRDashboard hrdashboard = new ui.dashboard.HRDashboard();
+                        hrdashboard.setVisible(true);
                         break;
                     case "Department Manager":
                         ui.dashboard.ManagerDashboard managerdashboard = new ui.dashboard.ManagerDashboard();
+                        managerdashboard.setVisible(true);
                         break;
                     case "Payroll Officer":
                         ui.dashboard.PayrollDashboard payrolldashboard = new ui.dashboard.PayrollDashboard();
+                        payrolldashboard.setVisible(true);
                         break;
                     case "Employee":
                         ui.dashboard.EmployeeDashboard employeedashboard = new ui.dashboard.EmployeeDashboard();
+                        employeedashboard.setVisible(true);
+                        break;
                     default:
                         JOptionPane.showMessageDialog(null,"Unknown role:" + role);
                         break;
