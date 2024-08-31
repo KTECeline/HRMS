@@ -1,0 +1,13 @@
+id,fullname,username,password,role,gender,phone,dobdate,marry,nationality,department,position,employement,joined,experience,responsibilities,leaving,contact
+1,Fullname,username1,123,Admin
+2,Celine khaw,Celine,123,Admin
+3,dd,HH,dd,Admin
+4,hn,hn,hn,Admin
+5,s,s,s,Admin
+
+6,admin,admin,admin,Admin
+
+7,d,d,d,Admin
+8,123,JH,123,Admin
+9,fdf,ddd,123,Admin,Male,0123,Sat Aug 31 13:46:30 MYT 2024,Married,fdf,Sales,ddd,Full time,Sat Aug 31 13:46:30 MYT 2024,ddd,ddd,ddd,012394
+10,dfsdf,sdfdsf,sfdf,Admin,Male,sdfsdf,Sat Aug 31 13:47:47 MYT 2024,Married,dfsdf,Sales,sdfdsf,Full time,Sat Aug 31 13:47:47 MYT 2024,sdfsd,sfdsf,sdfsd,sdfsd
