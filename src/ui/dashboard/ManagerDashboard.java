@@ -72,8 +72,8 @@ public class ManagerDashboard extends javax.swing.JFrame {
         sidePanel.add(empName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jLabel2.setText("Role");
-        sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+        jLabel2.setText("Manager");
+        sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         jButton1.setText("Leave");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -234,6 +234,14 @@ public class ManagerDashboard extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ManagerDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
