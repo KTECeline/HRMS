@@ -87,8 +87,8 @@ public class RegistrationForm extends javax.swing.JFrame {
         txtWorkExperience = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtResponsibilities = new javax.swing.JTextArea();
-        txtUsername1 = new javax.swing.JTextField();
-        txtFullName3 = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
+        txtFullName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -288,14 +288,14 @@ public class RegistrationForm extends javax.swing.JFrame {
         jScrollPane3.setViewportView(txtResponsibilities);
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, -1, -1));
-        jPanel2.add(txtUsername1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 180, -1));
+        jPanel2.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 180, -1));
 
-        txtFullName3.addActionListener(new java.awt.event.ActionListener() {
+        txtFullName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFullName3ActionPerformed(evt);
+                txtFullNameActionPerformed(evt);
             }
         });
-        jPanel2.add(txtFullName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 180, -1));
+        jPanel2.add(txtFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -315,8 +315,8 @@ public class RegistrationForm extends javax.swing.JFrame {
     private void RegisterBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterBTNActionPerformed
         
          String id = txtUserId.getText();
-        String name = txtNationality.getText();
-        String uname = txtPosition.getText().trim();
+        String name = txtFullName.getText();
+        String uname = txtUsername.getText().trim();
         String pword = txtPassword.getText();
          String role = comboRole.getSelectedItem().toString();
          String gender = txtGender.getSelectedItem().toString();
@@ -345,7 +345,7 @@ public class RegistrationForm extends javax.swing.JFrame {
          }
         try {
             FileWriter writer = new FileWriter(UserIdManager.USER_FILE, true);
-            writer.write(id + "," + name + "," + uname + "," + pword+","+role + ","+gender+"," + phone+ "," 
+            writer.write(id + "," + name + "," + uname + "," + pword+"," + role + ","+gender+"," + phone+ "," 
                     +dobDATE+ "," +marry + "," +nationality+ "," +department+ "," + position+ "," +employement+ 
                     "," +joined+ "," +experience+ "," +responsibilities+ "," +leaving+ "," +contact+ "\n");
             writer.close();
@@ -390,9 +390,9 @@ public class RegistrationForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPositionActionPerformed
 
-    private void txtFullName3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullName3ActionPerformed
+    private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFullName3ActionPerformed
+    }//GEN-LAST:event_txtFullNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -460,7 +460,7 @@ public class RegistrationForm extends javax.swing.JFrame {
     private javax.swing.JSpinner txtDateJoined;
     private javax.swing.JComboBox<String> txtDepartment;
     private javax.swing.JComboBox<String> txtEmployement;
-    private javax.swing.JTextField txtFullName3;
+    private javax.swing.JTextField txtFullName;
     private javax.swing.JComboBox<String> txtGender;
     private javax.swing.JLabel txtJoinDate;
     private javax.swing.JTextArea txtLeaving;
@@ -471,7 +471,7 @@ public class RegistrationForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtPosition;
     private javax.swing.JTextArea txtResponsibilities;
     private javax.swing.JTextField txtUserId;
-    private javax.swing.JTextField txtUsername1;
+    private javax.swing.JTextField txtUsername;
     private javax.swing.JTextArea txtWorkExperience;
     // End of variables declaration//GEN-END:variables
 }

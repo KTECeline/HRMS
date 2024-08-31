@@ -1,7 +1,8 @@
 id,fullname,username,password,role,gender,phone,dobdate,marry,nationality,department,position,employement,joined,experience,responsibilities,leaving,contact
 9,fdf,ddd,123,Admin,Male,0123,Sat Aug 31 13:46:30 MYT 2024,Married,fdf,Sales,ddd,Full time,Sat Aug 31 13:46:30 MYT 2024,ddd,ddd,ddd,012394
 10,dfsdf,sdfdsf,sfdf,Admin,Male,sdfsdf,Sat Aug 31 13:47:47 MYT 2024,Married,dfsdf,Sales,sdfdsf,Full time,Sat Aug 31 13:47:47 MYT 2024,sdfsd,sfdsf,sdfsd,sdfsd
-11,gfdfgd,asdfghjkl;,hr,HR Officer,Male,12345,Sat Aug 31 17:23:06 MYT 2024,Married,gfdfgd,Sales,asdfghjkl;,Full time,Sat Aug 31 17:23:06 MYT 2024,sfdghjh,k,dfhgj,hknm,dfghjnm,,123456789
-12,213456786,esrdtfhgkjh,py,Payroll Officer,Male,123456789,Sat Aug 31 17:24:01 MYT 2024,Married,213456786,Sales,esrdtfhgkjh,Full time,Sat Aug 31 17:24:01 MYT 2024,shdgkjhkjl,sdfgh,srdtfgh,354687979
-13,dhgjkl,srdfgj,dm,Department Manager,Male,12345678,Sat Aug 31 17:24:27 MYT 2024,Married,dhgjkl,Sales,srdfgj,Full time,Sat Aug 31 17:24:28 MYT 2024,fdghjhk,sdhfgj,esrdtfgj,rdtfgukhj
-14,fdghj,ghdjkk,em,Employee,Male,123456,Sat Aug 31 17:24:57 MYT 2024,Married,fdghj,Sales,ghdjkk,Full time,Sat Aug 31 17:24:57 MYT 2024,terhgj,gfdhgjhk,dfjghkj,14567ui8o
+11,Malaysian,admin,123,Admin,Male,012-34565839,Sat Aug 31 17:29:44 MYT 2024,Married,Malaysian,Sales,CEO,Full time,Sat Aug 31 17:29:44 MYT 2024,good,good,good,012-49847322
+12,hr,hr,hr,HR Officer,Male,123,Sat Aug 31 17:32:01 MYT 2024,Married,gd,Sales,d,Full time,Sat Aug 31 17:32:01 MYT 2024,dg,d,d,gsd
+13,dm,dm,dm,Department Manager,Male,123,Sat Aug 31 17:32:01 MYT 2024,Married,gd,Sales,d,Full time,Sat Aug 31 17:32:01 MYT 2024,dg,d,d,gsd
+14,em,em,em,Employee,Male,123,Sat Aug 31 17:32:01 MYT 2024,Married,gd,Sales,d,Full time,Sat Aug 31 17:32:01 MYT 2024,dg,d,d,gsd
+15,pr,pr,pr,Payroll Officer,Male,123,Sat Aug 31 17:32:01 MYT 2024,Married,gd,Sales,d,Full time,Sat Aug 31 17:32:01 MYT 2024,dg,d,d,gsd
