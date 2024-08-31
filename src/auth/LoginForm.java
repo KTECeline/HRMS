@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import ui.dashboard.*;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
@@ -20,7 +22,9 @@ import ui.dashboard.*;
  * @author Yeong Huey Yee
  */
 public class LoginForm extends javax.swing.JFrame {
-
+private static final int MAX_ATTEMPTS = 3;
+    private Map<String, Integer> loginAttempts = new HashMap<>();
+    private Map<String, Boolean> lockedAccounts = new HashMap<>();
     /**
      * Creates new form LoginForm
      */
@@ -128,9 +132,15 @@ public class LoginForm extends javax.swing.JFrame {
         
         String username = txtUsername.getText();
         String password = txtPassword.getText();
+        
+        if (isAccountLocked(username)) {
+            JOptionPane.showMessageDialog(null, "This account is locked. Please contact an admin to unlock it.");
+            return;
+        }
+        
         boolean isAuthenticated = false;
         String role ="";
-        
+       
         try {
             FileReader fr = new FileReader("usertxt.txt");
             Scanner reader = new Scanner(fr);
@@ -151,8 +161,10 @@ public class LoginForm extends javax.swing.JFrame {
                 }
             }
             reader.close();
-
+            
+             
             if (isAuthenticated) {
+                loginAttempts.remove(username);
                 switch(role){
                     case"Admin":
                         ui.dashboard.AdminDashboard admindashboard = new ui.dashboard.AdminDashboard();
@@ -179,8 +191,15 @@ public class LoginForm extends javax.swing.JFrame {
                         break;
                 }this.dispose();
             }else {
-                JOptionPane.showMessageDialog(null,"Invalid Login Details");
-            }
+                 int attempts = loginAttempts.getOrDefault(username, 0) + 1;
+                loginAttempts.put(username, attempts);
+                
+                if(attempts >= MAX_ATTEMPTS) {
+                    lockedAccounts.put(username, true);
+                    JOptionPane.showMessageDialog(null, "Account locked due to too many failed attempts.Please contact an admin.");
+                }else {
+                JOptionPane.showMessageDialog(null,"Invalid Login Details. Attempts remaining: " + (MAX_ATTEMPTS - attempts));
+            }}
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -189,11 +208,12 @@ public class LoginForm extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
-
-            
-        
+ 
+           
     }//GEN-LAST:event_btnLogin1ActionPerformed
-
+private boolean isAccountLocked(String username) {
+        return lockedAccounts.getOrDefault(username, false);
+    }
     /**
      * @param args the command line arguments
      */
