@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import ui.dashboard.AdminDashboard;
+import ui.dashboard.EmployeeDashboard;
+import ui.dashboard.HRDashboard;
+import ui.dashboard.ManagerDashboard;
+import ui.dashboard.PayrollDashboard;
 
 
 
@@ -121,9 +125,7 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ResetpasswordForm lg = new ResetpasswordForm();
-        lg.setVisible(true);
-        this.dispose();
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
@@ -163,6 +165,14 @@ public class LoginForm extends javax.swing.JFrame {
                     case "HR Officer":
                         ui.dashboard.HRDashboard hrdashboard = new ui.dashboard.HRDashboard();
                         break;
+                    case "Department Manager":
+                        ui.dashboard.ManagerDashboard managerdashboard = new ui.dashboard.ManagerDashboard();
+                        break;
+                    case "Payroll Officer":
+                        ui.dashboard.PayrollDashboard payrolldashboard = new ui.dashboard.PayrollDashboard();
+                        break;
+                    case "Employee":
+                        ui.dashboard.EmployeeDashboard employeedashboard = new ui.dashboard.EmployeeDashboard();
                     default:
                         JOptionPane.showMessageDialog(null,"Unknown role:" + role);
                         break;
