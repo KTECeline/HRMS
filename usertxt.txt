@@ -1,8 +1,6 @@
-id,fullname,username,password,role,gender,phone,dobdate,marry,nationality,department,position,employement,joined,experience,responsibilities,leaving,contact
-9,fdf,ddd,123,Admin,Male,0123,Sat Aug 31 13:46:30 MYT 2024,Married,fdf,Sales,ddd,Full time,Sat Aug 31 13:46:30 MYT 2024,ddd,ddd,ddd,012394
-10,dfsdf,sdfdsf,sfdf,Admin,Male,sdfsdf,Sat Aug 31 13:47:47 MYT 2024,Married,dfsdf,Sales,sdfdsf,Full time,Sat Aug 31 13:47:47 MYT 2024,sdfsd,sfdsf,sdfsd,sdfsd
-11,Malaysian,admin,123,Admin,Male,012-34565839,Sat Aug 31 17:29:44 MYT 2024,Married,Malaysian,Sales,CEO,Full time,Sat Aug 31 17:29:44 MYT 2024,good,good,good,012-49847322
-12,hr,hr,hr,HR Officer,Male,123,Sat Aug 31 17:32:01 MYT 2024,Married,gd,Sales,d,Full time,Sat Aug 31 17:32:01 MYT 2024,dg,d,d,gsd
-13,dm,dm,dm,Department Manager,Male,123,Sat Aug 31 17:32:01 MYT 2024,Married,gd,Sales,d,Full time,Sat Aug 31 17:32:01 MYT 2024,dg,d,d,gsd
-14,em,em,em,Employee,Male,123,Sat Aug 31 17:32:01 MYT 2024,Married,gd,Sales,d,Full time,Sat Aug 31 17:32:01 MYT 2024,dg,d,d,gsd
-15,pr,pr,pr,Payroll Officer,Male,123,Sat Aug 31 17:32:01 MYT 2024,Married,gd,Sales,d,Full time,Sat Aug 31 17:32:01 MYT 2024,dg,d,d,gsd
+id,fullname,username,password,role,gender,phone,dobdate,marry,nationality,department,position,employement,joined,email,responsibilities,contactname,contact
+1,admin,admin,123,Admin,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
+2,hr,hr,123,Admin,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
+3,em,em,123,Admin,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
+4,pr,pr,123,Admin,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
+5,dm,dm,123,Admin,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact

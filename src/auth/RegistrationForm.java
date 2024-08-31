@@ -56,7 +56,6 @@ public class RegistrationForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         RegisterBTN = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -74,21 +73,20 @@ public class RegistrationForm extends javax.swing.JFrame {
         txtNationality = new javax.swing.JTextField();
         comboRole = new javax.swing.JComboBox<>();
         txtGender = new javax.swing.JComboBox<>();
-        txtContact = new javax.swing.JTextField();
+        txtEname = new javax.swing.JTextField();
         txtPhone = new javax.swing.JTextField();
         txtDOB = new javax.swing.JSpinner();
         txtMarry = new javax.swing.JComboBox<>();
         txtDepartment = new javax.swing.JComboBox<>();
         txtEmployement = new javax.swing.JComboBox<>();
         txtDateJoined = new javax.swing.JSpinner();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtLeaving = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtWorkExperience = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtResponsibilities = new javax.swing.JTextArea();
         txtUsername = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         txtFullName = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        txtContact = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,7 +130,7 @@ public class RegistrationForm extends javax.swing.JFrame {
 
         txtJoinDate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtJoinDate.setText("Date of Joining :");
-        jPanel2.add(txtJoinDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 140, -1));
+        jPanel2.add(txtJoinDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 140, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Full Name :");
@@ -158,10 +156,6 @@ public class RegistrationForm extends javax.swing.JFrame {
         jLabel9.setText("Phone Number :");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 124, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("Reason of Leaving :");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, 173, -1));
-
         RegisterBTN.setText("Register");
         RegisterBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,27 +166,27 @@ public class RegistrationForm extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Position :");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, 99, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 99, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setText("Employement Type:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 190, 20));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 190, 20));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Department :");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 99, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setText("Emergency Contact:");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 173, -1));
+        jLabel15.setText("Emergency Name:");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 173, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel16.setText("Working Experience");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 173, -1));
+        jLabel16.setText("Email:");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 173, -1));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel19.setText("Responsibilities:");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 173, -1));
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, 173, -1));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel20.setText("Username :");
@@ -212,7 +206,7 @@ public class RegistrationForm extends javax.swing.JFrame {
                 txtPositionActionPerformed(evt);
             }
         });
-        jPanel2.add(txtPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 130, 180, -1));
+        jPanel2.add(txtPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 180, -1));
         jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 180, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -242,12 +236,12 @@ public class RegistrationForm extends javax.swing.JFrame {
         });
         jPanel2.add(txtGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
 
-        txtContact.addActionListener(new java.awt.event.ActionListener() {
+        txtEname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContactActionPerformed(evt);
+                txtEnameActionPerformed(evt);
             }
         });
-        jPanel2.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 180, -1));
+        jPanel2.add(txtEname, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 180, -1));
 
         txtPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,29 +260,24 @@ public class RegistrationForm extends javax.swing.JFrame {
         jPanel2.add(txtDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, -1, -1));
 
         txtEmployement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full time", "Part Time", "Internship" }));
-        jPanel2.add(txtEmployement, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, -1, -1));
+        jPanel2.add(txtEmployement, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, -1, -1));
 
         txtDateJoined.setModel(new javax.swing.SpinnerDateModel());
-        jPanel2.add(txtDateJoined, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 210, -1, -1));
-
-        txtLeaving.setColumns(20);
-        txtLeaving.setRows(5);
-        jScrollPane1.setViewportView(txtLeaving);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, 240, 90));
-
-        txtWorkExperience.setColumns(20);
-        txtWorkExperience.setRows(5);
-        jScrollPane2.setViewportView(txtWorkExperience);
-
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 240, -1, -1));
+        jPanel2.add(txtDateJoined, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, -1, -1));
 
         txtResponsibilities.setColumns(20);
         txtResponsibilities.setRows(5);
         jScrollPane3.setViewportView(txtResponsibilities);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, -1, -1));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, -1, -1));
         jPanel2.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 180, -1));
+
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 180, -1));
 
         txtFullName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,6 +285,17 @@ public class RegistrationForm extends javax.swing.JFrame {
             }
         });
         jPanel2.add(txtFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 180, -1));
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel17.setText("Emergency Contact:");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 173, -1));
+
+        txtContact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContactActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -328,10 +328,10 @@ public class RegistrationForm extends javax.swing.JFrame {
          String position = txtPosition.getText();
          String employement = txtEmployement.getSelectedItem().toString();
          Date joined = (Date) txtDateJoined.getValue();
-         String experience = txtWorkExperience.getText();
+         String email = txtEmail.getText();
          String responsibilities = txtResponsibilities.getText();
-         String leaving = txtLeaving.getText();
          String contact= txtContact.getText();
+         String ENAME= txtEname.getText();
          
          
          
@@ -347,7 +347,7 @@ public class RegistrationForm extends javax.swing.JFrame {
             FileWriter writer = new FileWriter(UserIdManager.USER_FILE, true);
             writer.write(id + "," + name + "," + uname + "," + pword+"," + role + ","+gender+"," + phone+ "," 
                     +dobDATE+ "," +marry + "," +nationality+ "," +department+ "," + position+ "," +employement+ 
-                    "," +joined+ "," +experience+ "," +responsibilities+ "," +leaving+ "," +contact+ "\n");
+                    "," +joined+ "," +email+ "," +responsibilities+ "," +ENAME+ "," +contact+ "\n");
             writer.close();
             JOptionPane.showMessageDialog(null, "Success");
             
@@ -378,9 +378,9 @@ public class RegistrationForm extends javax.swing.JFrame {
        JComboBox<String> txtGender = new JComboBox<>(genders);
     }//GEN-LAST:event_txtGenderActionPerformed
 
-    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
+    private void txtEnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtContactActionPerformed
+    }//GEN-LAST:event_txtEnameActionPerformed
 
     private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
         // TODO add your handling code here:
@@ -390,9 +390,17 @@ public class RegistrationForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPositionActionPerformed
 
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
     private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFullNameActionPerformed
+
+    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContactActionPerformed
 
     /**
      * @param args the command line arguments
@@ -432,13 +440,13 @@ public class RegistrationForm extends javax.swing.JFrame {
     private javax.swing.JButton RegisterBTN;
     private javax.swing.JComboBox<String> comboRole;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -452,18 +460,17 @@ public class RegistrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField txtContact;
     private javax.swing.JSpinner txtDOB;
     private javax.swing.JSpinner txtDateJoined;
     private javax.swing.JComboBox<String> txtDepartment;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JComboBox<String> txtEmployement;
+    private javax.swing.JTextField txtEname;
     private javax.swing.JTextField txtFullName;
     private javax.swing.JComboBox<String> txtGender;
     private javax.swing.JLabel txtJoinDate;
-    private javax.swing.JTextArea txtLeaving;
     private javax.swing.JComboBox<String> txtMarry;
     private javax.swing.JTextField txtNationality;
     private javax.swing.JTextField txtPassword;
@@ -472,6 +479,5 @@ public class RegistrationForm extends javax.swing.JFrame {
     private javax.swing.JTextArea txtResponsibilities;
     private javax.swing.JTextField txtUserId;
     private javax.swing.JTextField txtUsername;
-    private javax.swing.JTextArea txtWorkExperience;
     // End of variables declaration//GEN-END:variables
 }
