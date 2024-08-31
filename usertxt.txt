@@ -1,13 +1,7 @@
 id,fullname,username,password,role,gender,phone,dobdate,marry,nationality,department,position,employement,joined,experience,responsibilities,leaving,contact
-1,Fullname,username1,123,Admin
-2,Celine khaw,Celine,123,Admin
-3,dd,HH,dd,Admin
-4,hn,hn,hn,Admin
-5,s,s,s,Admin
-
-6,admin,admin,admin,Admin
-
-7,d,d,d,Admin
-8,123,JH,123,Admin
 9,fdf,ddd,123,Admin,Male,0123,Sat Aug 31 13:46:30 MYT 2024,Married,fdf,Sales,ddd,Full time,Sat Aug 31 13:46:30 MYT 2024,ddd,ddd,ddd,012394
 10,dfsdf,sdfdsf,sfdf,Admin,Male,sdfsdf,Sat Aug 31 13:47:47 MYT 2024,Married,dfsdf,Sales,sdfdsf,Full time,Sat Aug 31 13:47:47 MYT 2024,sdfsd,sfdsf,sdfsd,sdfsd
+11,gfdfgd,asdfghjkl;,hr,HR Officer,Male,12345,Sat Aug 31 17:23:06 MYT 2024,Married,gfdfgd,Sales,asdfghjkl;,Full time,Sat Aug 31 17:23:06 MYT 2024,sfdghjh,k,dfhgj,hknm,dfghjnm,,123456789
+12,213456786,esrdtfhgkjh,py,Payroll Officer,Male,123456789,Sat Aug 31 17:24:01 MYT 2024,Married,213456786,Sales,esrdtfhgkjh,Full time,Sat Aug 31 17:24:01 MYT 2024,shdgkjhkjl,sdfgh,srdtfgh,354687979
+13,dhgjkl,srdfgj,dm,Department Manager,Male,12345678,Sat Aug 31 17:24:27 MYT 2024,Married,dhgjkl,Sales,srdfgj,Full time,Sat Aug 31 17:24:28 MYT 2024,fdghjhk,sdhfgj,esrdtfgj,rdtfgukhj
+14,fdghj,ghdjkk,em,Employee,Male,123456,Sat Aug 31 17:24:57 MYT 2024,Married,fdghj,Sales,ghdjkk,Full time,Sat Aug 31 17:24:57 MYT 2024,terhgj,gfdhgjhk,dfjghkj,14567ui8o
