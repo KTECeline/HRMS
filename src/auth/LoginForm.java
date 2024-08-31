@@ -39,15 +39,12 @@ public class LoginForm extends javax.swing.JFrame {
 
         mainPanel = new javax.swing.JPanel();
         Header = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         hrUsername = new javax.swing.JLabel();
         hrPassword = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnLogin1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,10 +53,6 @@ public class LoginForm extends javax.swing.JFrame {
 
         Header.setBackground(new java.awt.Color(119, 136, 153));
         Header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("X");
-        Header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setText("Login Here!");
@@ -107,16 +100,6 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
         mainPanel.add(btnLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 230, 40));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
-        jLabel3.setText("REGISTER NOW");
-        mainPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 100, 20));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Don't have an account?");
-        mainPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
         mainPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 300, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,6 +159,9 @@ public class LoginForm extends javax.swing.JFrame {
                     case"Admin":
                         ui.dashboard.AdminDashboard admindashboard = new ui.dashboard.AdminDashboard();
                         admindashboard.setVisible(true);
+                        break;
+                    case "HR Officer":
+                        ui.dashboard.HRDashboard hrdashboard = new ui.dashboard.HRDashboard();
                         break;
                     default:
                         JOptionPane.showMessageDialog(null,"Unknown role:" + role);
@@ -238,10 +224,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel hrPassword;
     private javax.swing.JLabel hrUsername;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUsername;
