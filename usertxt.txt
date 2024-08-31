@@ -1,6 +1,6 @@
 id,fullname,username,password,role,gender,phone,dobdate,marry,nationality,department,position,employement,joined,email,responsibilities,contactname,contact
 1,admin,admin,123,Admin,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
-2,hr,hr,123,Admin,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
-3,em,em,123,Admin,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
-4,pr,pr,123,Admin,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
-5,dm,dm,123,Admin,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
+2,hr,hr,123,HR Officer,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
+3,em,em,123,Employee,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
+4,pr,pr,123,Payroll Officer,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
+5,dm,dm,123,Department Manager,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact

@@ -6,11 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import ui.dashboard.AdminDashboard;
-import ui.dashboard.EmployeeDashboard;
-import ui.dashboard.HRDashboard;
-import ui.dashboard.ManagerDashboard;
-import ui.dashboard.PayrollDashboard;
+import ui.dashboard.*;
 
 
 
