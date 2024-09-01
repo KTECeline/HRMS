@@ -9,7 +9,7 @@ import java.util.Scanner;
 import ui.dashboard.*;
 import java.util.HashMap;
 import java.util.Map;
-import 
+
 
 
 
@@ -127,7 +127,7 @@ private static final int MAX_ATTEMPTS = 3;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        new auth.ResetpasswordForm().setVisible(true);
+        new ResetpasswordForm().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
