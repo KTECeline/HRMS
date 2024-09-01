@@ -1,10 +1,12 @@
 package auth;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.*;
+import auth.LoginForm;
 import auth.LoginForm;
 import javax.swing.JFrame;
 /*
