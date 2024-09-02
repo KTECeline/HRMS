@@ -9,6 +9,7 @@ import java.util.Scanner;
 import ui.dashboard.*;
 import java.util.HashMap;
 import java.util.Map;
+import auth.Session;
 
 
 
@@ -126,14 +127,14 @@ private static final int MAX_ATTEMPTS = 3;
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        new ResetpasswordForm().setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
         
         String username = txtUsername.getText();
         String password = txtPassword.getText();
+        String userid= String.valueOf(UserIdManager.getNextUserId());
         
         if (isAccountLocked(username)) {
             JOptionPane.showMessageDialog(null, "This account is locked. Please contact an admin to unlock it.");
@@ -164,29 +165,36 @@ private static final int MAX_ATTEMPTS = 3;
             }
             reader.close();
             
-             
+            
             if (isAuthenticated) {
                 loginAttempts.remove(username);
+                Session.readUserIdFromFile();
+                Session.createSession(Session.getUserId(), Session.getRole(), Session.getUsername());
                 switch(role){
                     case"Admin":
                         ui.dashboard.AdminDashboard admindashboard = new ui.dashboard.AdminDashboard();
                         admindashboard.setVisible(true);
+                        Session.createSession(username, role, userid);
                         break;
                     case "HR Officer":
                         ui.dashboard.HRDashboard hrdashboard = new ui.dashboard.HRDashboard();
                         hrdashboard.setVisible(true);
+                        Session.createSession(username, role, userid);
                         break;
                     case "Department Manager":
                         ui.dashboard.ManagerDashboard managerdashboard = new ui.dashboard.ManagerDashboard();
                         managerdashboard.setVisible(true);
+                        Session.createSession(username, role, userid);
                         break;
                     case "Payroll Officer":
                         ui.dashboard.PayrollDashboard payrolldashboard = new ui.dashboard.PayrollDashboard();
                         payrolldashboard.setVisible(true);
+                        Session.createSession(username, role, userid);
                         break;
                     case "Employee":
                         ui.dashboard.EmployeeDashboard employeedashboard = new ui.dashboard.EmployeeDashboard();
                         employeedashboard.setVisible(true);
+                        Session.createSession(username, role, userid);
                         break;
                     default:
                         JOptionPane.showMessageDialog(null,"Unknown role:" + role);
@@ -241,6 +249,8 @@ private boolean isAccountLocked(String username) {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
