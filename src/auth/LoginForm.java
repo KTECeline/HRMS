@@ -132,93 +132,105 @@ private static final int MAX_ATTEMPTS = 3;
 
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
         
-        String username = txtUsername.getText();
-        String password = txtPassword.getText();
-        String userid= String.valueOf(UserIdManager.getNextUserId());
-        
-        if (isAccountLocked(username)) {
-            JOptionPane.showMessageDialog(null, "This account is locked. Please contact an admin to unlock it.");
-            return;
-        }
-        
-        boolean isAuthenticated = false;
-        String role ="";
-       
-        try {
-            FileReader fr = new FileReader("usertxt.txt");
-            Scanner reader = new Scanner(fr);
+        String username = txtUsername.getText().trim();
+    String password = txtPassword.getText().trim();
+    
+    if (isAccountLocked(username)) {
+        JOptionPane.showMessageDialog(null, "This account is locked. Please contact an admin to unlock it.");
+        return;
+    }
+    
+    boolean isAuthenticated = false;
+    String role = "";
+    String userId = "";
 
-            while (reader.hasNextLine()) {
-                String line = reader.nextLine();
-                String[] parts = line.split(",");
+    try {
+        FileReader fr = new FileReader("usertxt.txt");
+        Scanner reader = new Scanner(fr);
 
-                if (parts.length >=5) { 
-                    String un = parts[2].trim();
-                    String pw = parts[3].trim();
+        while (reader.hasNextLine()) {
+            String line = reader.nextLine();
+            String[] parts = line.split(",");
 
-                    if (username.equals(un) && password.equals(pw)) {
-                        isAuthenticated = true;
-                        role=parts[4].trim();
-                        break;
-                    }
+            if (parts.length >= 5) { 
+                String un = parts[2].trim();
+                String pw = parts[3].trim();
+                String id = parts[0].trim();  // User ID
+                String currentRole = parts[4].trim(); // Role
+
+                // Log information for debugging
+                System.out.println("Checking line: " + line);
+                System.out.println("Read Username: " + un);
+                System.out.println("Read Password: " + pw);
+                System.out.println("Read ID: " + id);
+
+                if (username.equals(un) && password.equals(pw)) {
+                    isAuthenticated = true;
+                    userId = id;  // Correctly get the user ID
+                    role = currentRole; // Correctly get the role
+                    break;  // Break loop after finding the correct user
                 }
             }
-            reader.close();
-            
-            
-            if (isAuthenticated) {
-                loginAttempts.remove(username);
-                Session.readUserIdFromFile();
-                Session.createSession(Session.getUserId(), Session.getRole(), Session.getUsername());
-                switch(role){
-                    case"Admin":
-                        ui.dashboard.AdminDashboard admindashboard = new ui.dashboard.AdminDashboard();
-                        admindashboard.setVisible(true);
-                        Session.createSession(username, role, userid);
-                        break;
-                    case "HR Officer":
-                        ui.dashboard.HRDashboard hrdashboard = new ui.dashboard.HRDashboard();
-                        hrdashboard.setVisible(true);
-                        Session.createSession(username, role, userid);
-                        break;
-                    case "Department Manager":
-                        ui.dashboard.ManagerDashboard managerdashboard = new ui.dashboard.ManagerDashboard();
-                        managerdashboard.setVisible(true);
-                        Session.createSession(username, role, userid);
-                        break;
-                    case "Payroll Officer":
-                        ui.dashboard.PayrollDashboard payrolldashboard = new ui.dashboard.PayrollDashboard();
-                        payrolldashboard.setVisible(true);
-                        Session.createSession(username, role, userid);
-                        break;
-                    case "Employee":
-                        ui.dashboard.EmployeeDashboard employeedashboard = new ui.dashboard.EmployeeDashboard();
-                        employeedashboard.setVisible(true);
-                        Session.createSession(username, role, userid);
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(null,"Unknown role:" + role);
-                        break;
-                }this.dispose();
-            }else {
-                 int attempts = loginAttempts.getOrDefault(username, 0) + 1;
-                loginAttempts.put(username, attempts);
-                
-                if(attempts >= MAX_ATTEMPTS) {
-                    lockedAccounts.put(username, true);
-                    JOptionPane.showMessageDialog(null, "Account locked due to too many failed attempts.Please contact an admin.");
-                }else {
-                JOptionPane.showMessageDialog(null,"Invalid Login Details. Attempts remaining: " + (MAX_ATTEMPTS - attempts));
-            }}
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error: File not found");
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
- 
+        reader.close();
+        
+        if (isAuthenticated) {
+            loginAttempts.remove(username);
+            
+            // Create the session with the correct userId, role, and username
+            Session.createSession(userId, role, username);  
+            
+            // Print session data for debugging
+            System.out.println("Session User ID: " + Session.getUserId());
+            System.out.println("Session Role: " + Session.getRole());
+            System.out.println("Session Username: " + Session.getUsername());
+            
+            // Open the appropriate dashboard based on role
+            switch(role){
+                case "Admin":
+                    ui.dashboard.AdminDashboard admindashboard = new ui.dashboard.AdminDashboard();
+                    admindashboard.setVisible(true);
+                    break;
+                case "HR Officer":
+                    ui.dashboard.HRDashboard hrdashboard = new ui.dashboard.HRDashboard();
+                    hrdashboard.setVisible(true);
+                    break;
+                case "Department Manager":
+                    ui.dashboard.ManagerDashboard managerdashboard = new ui.dashboard.ManagerDashboard();
+                    managerdashboard.setVisible(true);
+                    break;
+                case "Payroll Officer":
+                    ui.dashboard.PayrollDashboard payrolldashboard = new ui.dashboard.PayrollDashboard();
+                    payrolldashboard.setVisible(true);
+                    break;
+                case "Employee":
+                    ui.dashboard.EmployeeDashboard employeedashboard = new ui.dashboard.EmployeeDashboard();
+                    employeedashboard.setVisible(true);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Unknown role: " + role);
+                    break;
+            }
+            this.dispose();
+        } else {
+            int attempts = loginAttempts.getOrDefault(username, 0) + 1;
+            loginAttempts.put(username, attempts);
+            
+            if (attempts >= MAX_ATTEMPTS) {
+                lockedAccounts.put(username, true);
+                JOptionPane.showMessageDialog(null, "Account locked due to too many failed attempts. Please contact an admin.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Login Details. Attempts remaining: " + (MAX_ATTEMPTS - attempts));
+            }
+        }
+
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error: File not found");
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    }
            
     }//GEN-LAST:event_btnLogin1ActionPerformed
 private boolean isAccountLocked(String username) {
