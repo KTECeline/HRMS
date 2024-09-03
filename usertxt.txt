@@ -1,7 +1,2 @@
-id,fullname,username,password,role,gender,phone,dobdate,marry,nationality,department,position,employement,joined,email,responsibilities,contactname,contact
-1,admin,admin,123,Admin,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
-2,hr,hr,123,HR Officer,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
-3,em,em,123,Employee,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
-4,pr,pr,123,Payroll Officer,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
-5,dm,dm,123,Department Manager,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
-6,un,pw,fn,Male,06-09-24,1234,Married,MALAYSIAN,email,home,Admin,IT SUPPORT GROUP,Sales,07-09-24,Full time,job,res,contact,phonea,HONG LEONG BANK,acc
+Id,Username,Password,FullName,Gender,Date of Birth,Phone Number, Marital Status,Nationality,Email Address,Home Address,Role,Position,Department,Date of Joining,Employement Type,WK EXP Job Title,WK EXP Responsiblilities,EM Contact Number,EM Phone Number,Bank Name,Account Number1,admin,admin,123,Admin,Male,phone,Sat Aug 31 22:57:17 MYT 2024,Married,nationality,Sales,position,Full time,Sat Aug 31 22:57:17 MYT 2024,email,responsibilities,eName,econtact
+1,un,pw,fn,Male,06-09-24,1234,Married,MALAYSIAN,email,home,Admin,IT SUPPORT GROUP,Sales,07-09-24,Full time,job,res,contact,phonea,HONG LEONG BANK,acc
