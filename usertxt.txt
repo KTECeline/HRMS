@@ -1,2 +1,6 @@
 Id,Username,Password,Full Name,Gender,Date of Birth,Phone Number, Marital Status,Nationality,Email Address,Home Address,Role,Position,Department,Date of Joining,Employment Type,WK EXP Job Title,WK EXP Responsibilities,EM Contact Number,EM Phone Number,Bank Name,Account Number
 1,un,pw,fn,Male,06-09-24,1234,Married,MALAYSIAN,email,home,Admin,IT SUPPORT GROUP,Sales,07-09-24,Full time,job,res,contact,phonea,HONG LEONG BANK,acc
+2,em,123,fn,Male,06-09-24,1234,Married,MALAYSIAN,email,home,Employee,IT SUPPORT GROUP,Sales,07-09-24,Full time,job,res,contact,phonea,HONG LEONG BANK,acc
+3,pr,123,fn,Male,06-09-24,1234,Married,MALAYSIAN,email,home,Payroll Officer,IT SUPPORT GROUP,Sales,07-09-24,Full time,job,res,contact,phonea,HONG LEONG BANK,acc
+4,hr,123,fn,Male,06-09-24,1234,Married,MALAYSIAN,email,home,Hr Officer,IT SUPPORT GROUP,Sales,07-09-24,Full time,job,res,contact,phonea,HONG LEONG BANK,acc
+5,dm,123,fn,Male,06-09-24,1234,Married,MALAYSIAN,email,home,Department Manager,IT SUPPORT GROUP,Sales,07-09-24,Full time,job,res,contact,phonea,HONG LEONG BANK,acc
