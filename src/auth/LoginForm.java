@@ -12,8 +12,6 @@ import java.util.Map;
 import auth.Session;
 
 
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -153,17 +151,13 @@ private static final int MAX_ATTEMPTS = 3;
             String[] parts = line.split(",");
 
             if (parts.length >= 5) { 
-                String un = parts[2].trim();
-                String pw = parts[3].trim();
+                String un = parts[1].trim();
+                String pw = parts[2].trim();
                 String id = parts[0].trim();  // User ID
-                String currentRole = parts[4].trim(); // Role
+                String currentRole = parts[11].trim(); // Role
 
                 // Log information for debugging
-                System.out.println("Checking line: " + line);
-                System.out.println("Read Username: " + un);
-                System.out.println("Read Password: " + pw);
-                System.out.println("Read ID: " + id);
-
+           
                 if (username.equals(un) && password.equals(pw)) {
                     isAuthenticated = true;
                     userId = id;  // Correctly get the user ID
