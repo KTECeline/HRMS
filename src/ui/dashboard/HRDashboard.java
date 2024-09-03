@@ -125,7 +125,7 @@ public class HRDashboard extends javax.swing.JFrame {
         sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 100, -1));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EmployeeProfileMangement/image/Untitled_design__3_-removebg-preview.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/hr.png"))); // NOI18N
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         sidePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 10, 150, 120));
 

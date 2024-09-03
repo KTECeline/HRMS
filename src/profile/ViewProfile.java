@@ -183,7 +183,7 @@ public class ViewProfile extends javax.swing.JFrame {
                 .addGap(9, 9, 9))
         );
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EmployeeProfileMangement/image/Untitled design (3).png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/hr1.png"))); // NOI18N
         jLabel3.setText("jLabel3");
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(51, 51, 51), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
