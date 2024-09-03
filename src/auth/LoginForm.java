@@ -10,6 +10,8 @@ import ui.dashboard.*;
 import java.util.HashMap;
 import java.util.Map;
 import auth.Session;
+import java.io.FileWriter;
+import java.util.stream.Collectors;
 
 
 /*
@@ -24,14 +26,42 @@ import auth.Session;
 public class LoginForm extends javax.swing.JFrame {
 private static final int MAX_ATTEMPTS = 3;
     private Map<String, Integer> loginAttempts = new HashMap<>();
-    private Map<String, Boolean> lockedAccounts = new HashMap<>();
+    public Map<String, Boolean> lockedAccounts = new HashMap<>();
+     private static final String DATA_FILE = "data.txt";
     /**
      * Creates new form LoginForm
      */
     public LoginForm() {
         initComponents();
+        loadAccountData();
+    }private void saveAccountData() {
+        try (FileWriter writer = new FileWriter(DATA_FILE)) {
+            for (Map.Entry<String, Boolean> entry : lockedAccounts.entrySet()) {
+                if (entry.getValue()) { // Only save locked accounts
+                    writer.write(entry.getKey() + "," + entry.getValue() + "\n");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error saving account data: " + e.getMessage());
+        }
     }
 
+    private void loadAccountData() {
+        try (Scanner scanner = new Scanner(new FileReader(DATA_FILE))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine().trim();
+                String[] parts = line.split(",");
+                if (parts.length == 2) {
+                    String username = parts[0].trim();
+                    boolean isLocked = Boolean.parseBoolean(parts[1].trim());
+                    lockedAccounts.put(username, isLocked);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -212,6 +242,7 @@ private static final int MAX_ATTEMPTS = 3;
             
             if (attempts >= MAX_ATTEMPTS) {
                 lockedAccounts.put(username, true);
+                saveAccountData();
                 JOptionPane.showMessageDialog(null, "Account locked due to too many failed attempts. Please contact an admin.");
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Login Details. Attempts remaining: " + (MAX_ATTEMPTS - attempts));
@@ -227,9 +258,29 @@ private static final int MAX_ATTEMPTS = 3;
     }
            
     }//GEN-LAST:event_btnLogin1ActionPerformed
-private boolean isAccountLocked(String username) {
-        return lockedAccounts.getOrDefault(username, false);
+public boolean isAccountLocked(String username) {
+    try {
+        FileReader fr = new FileReader("data.txt");
+        Scanner scanner = new Scanner(fr);
+        
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            String[] parts = line.split(",");
+            if (parts.length >= 2) {
+                String fileUsername = parts[0].trim();
+                boolean isLocked = Boolean.parseBoolean(parts[1].trim());
+                if (fileUsername.equals(username)) {
+                    scanner.close();
+                    return isLocked;
+                }
+            }
+        }
+        scanner.close();
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+    return false; // Default to unlocked if account not found
+}
     /**
      * @param args the command line arguments
      */
