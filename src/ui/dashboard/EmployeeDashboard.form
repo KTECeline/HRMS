@@ -86,12 +86,11 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="empName1">
+            <Component class="javax.swing.JLabel" name="empName">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Sitka Text" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="EmpName"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Constraints>
@@ -157,7 +156,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Sitka Text" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="EmpName"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Constraints>

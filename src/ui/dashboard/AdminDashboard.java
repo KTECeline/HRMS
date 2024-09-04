@@ -6,7 +6,9 @@ import auth.Session;
 import java.io.IOException;
 import java.util.List;
 import adminManagement.DisplayA.Annoucement;
+import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -27,8 +29,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         String role = Session.getRole();
         
         empName.setText(username);
-        roleLabel.setText(role);
-        
+        empName.setVisible(true);
+        empName.setForeground(Color.WHITE);
+        empName.setVerticalAlignment(SwingConstants.TOP);
         
         if (Session.isLoggedIn()) {
             String userId = Session.getUserId();

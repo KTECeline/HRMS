@@ -1,5 +1,7 @@
 package ui.dashboard;
 
+import auth.Session;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -16,6 +18,11 @@ public class EmployeeDashboard extends javax.swing.JFrame {
      */
     public EmployeeDashboard() {
         initComponents();
+        String username = Session.getUsername();
+        String role = Session.getRole();
+        
+        empName.setText(username);
+       
     }
 
     /**
@@ -31,7 +38,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnProfile = new javax.swing.JButton();
-        empName1 = new javax.swing.JLabel();
+        empName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -66,10 +73,9 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         });
         sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
 
-        empName1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName1.setText("EmpName");
-        empName1.setToolTipText("");
-        sidePanel.add(empName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName.setToolTipText("");
+        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jLabel2.setText("Employee");
@@ -100,7 +106,6 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 130, 50));
 
         empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName2.setText("EmpName");
         empName2.setToolTipText("");
         sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
@@ -263,7 +268,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btn3;
     private javax.swing.JButton btn4;
     private javax.swing.JButton btnProfile;
-    private javax.swing.JLabel empName1;
+    private javax.swing.JLabel empName;
     private javax.swing.JLabel empName2;
     private javax.swing.JLabel header;
     private javax.swing.JButton jButton1;
