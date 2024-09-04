@@ -456,8 +456,8 @@ private void loadTableData() {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         mainPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 280, 440));
@@ -525,39 +525,39 @@ private void loadTableData() {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jLabel13)))
+                            .addGap(4, 4, 4)))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDepartment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDateJoined, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtEmployement, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtRole, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel13)))
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDepartment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtDateJoined, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtEmployement, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtRole, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)))
+                        .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(28, 28, 28))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(txtRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -577,7 +577,7 @@ private void loadTableData() {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(txtEmployement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         mainPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 360, 210));
@@ -588,11 +588,11 @@ private void loadTableData() {
         jLabel15.setForeground(new java.awt.Color(0, 0, 204));
         jLabel15.setText("Emergency Contact");
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel23.setText("Contact Name :");
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel24.setText("Phone Number :");
 
@@ -605,19 +605,19 @@ private void loadTableData() {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel24)
                     .addComponent(jLabel23)
-                    .addComponent(txtEname)
-                    .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(jLabel15)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel15))
+                    .addComponent(txtEname, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(txtContact))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtEname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -625,10 +625,10 @@ private void loadTableData() {
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 210, 170));
+        mainPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 220, 170));
 
         btnClear.setBackground(new java.awt.Color(153, 204, 255));
         btnClear.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
@@ -638,7 +638,7 @@ private void loadTableData() {
                 btnClearActionPerformed(evt);
             }
         });
-        mainPanel.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 610, -1, -1));
+        mainPanel.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 610, -1, -1));
 
         bthRefresh.setBackground(new java.awt.Color(153, 204, 255));
         bthRefresh.setFont(new java.awt.Font("Sitka Text", 1, 12)); // NOI18N
@@ -656,11 +656,11 @@ private void loadTableData() {
         jLabel16.setForeground(new java.awt.Color(0, 0, 204));
         jLabel16.setText("Working Experience");
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("Job Title :");
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel19.setText("Responsibilities:");
 
@@ -669,25 +669,25 @@ private void loadTableData() {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtWkTitle)
-                            .addComponent(txtResponsibilities, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtResponsibilities, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -700,7 +700,7 @@ private void loadTableData() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 360, 120));
+        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 360, 130));
 
         btnUpdate.setBackground(new java.awt.Color(255, 153, 153));
         btnUpdate.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
@@ -710,7 +710,7 @@ private void loadTableData() {
                 btnUpdateActionPerformed(evt);
             }
         });
-        mainPanel.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 610, 180, -1));
+        mainPanel.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, 180, -1));
 
         jLabel1.setFont(new java.awt.Font("Sitka Text", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 102));
@@ -724,11 +724,11 @@ private void loadTableData() {
         jLabel27.setForeground(new java.awt.Color(0, 0, 204));
         jLabel27.setText("Bank Account Detail");
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel28.setText("Bank Name :");
 
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel29.setText("Account Number :");
 
@@ -743,12 +743,12 @@ private void loadTableData() {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel29)
                     .addComponent(jLabel28)
-                    .addComponent(txtBankNo)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(jLabel27))
-                    .addComponent(txtBankNM, 0, 164, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtBankNM, 0, 173, Short.MAX_VALUE)
+                    .addComponent(txtBankNo))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -766,7 +766,7 @@ private void loadTableData() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 210, 170));
+        mainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 220, 170));
 
         btnDelete.setBackground(new java.awt.Color(255, 51, 51));
         btnDelete.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
@@ -777,7 +777,7 @@ private void loadTableData() {
                 btnDeleteActionPerformed(evt);
             }
         });
-        mainPanel.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 610, -1, -1));
+        mainPanel.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 610, -1, -1));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Search.png"))); // NOI18N
@@ -892,172 +892,164 @@ private void loadTableData() {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
                                        
-    // Retrieve the input data
-    String userID = txtUserId.getText().trim();
-    String username = txtUsername.getText().trim();
-    String password = txtPassword.getText().trim();
-    String fullName = txtFullName.getText().trim();
-    String gender = txtGender.getSelectedItem() != null ? txtGender.getSelectedItem().toString().trim() : "";
-    String phoneNumber = txtPhone.getText().trim();
-    String maritalStatus = txtMS.getSelectedItem() != null ? txtMS.getSelectedItem().toString().trim() : "";
-    String nationality = txtNationality.getSelectedItem() != null ? txtNationality.getSelectedItem().toString().trim() : "";
-    String email = txtEmail.getText().trim();
-    String address = txtAddress.getText().trim();
-    String role = txtRole.getSelectedItem() != null ? txtRole.getSelectedItem().toString().trim() : "";
-    String position = txtPosition.getSelectedItem() != null ? txtPosition.getSelectedItem().toString().trim() : "";
-    String department = txtDepartment.getSelectedItem() != null ? txtDepartment.getSelectedItem().toString().trim() : "";
-    String employmentType = txtEmployement.getSelectedItem() != null ? txtEmployement.getSelectedItem().toString().trim() : "";
-    String workTitle = txtWkTitle.getText().trim();
-    String workResponsibilities = txtResponsibilities.getText().trim();
-    String emergencyName = txtEname.getText().trim();
-    String emergencyPhoneNo = txtContact.getText().trim();
-    String bankName = txtBankNM.getSelectedItem() != null ? txtBankNM.getSelectedItem().toString().trim() : "";
-    String accountNumber = txtBankNo.getText().trim();
-    
-    // Handle date conversion
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-    String birthDateString = "";
-    String dateString = "";
-    if (txtBOD.getDate() != null) {
-        birthDateString = dateFormat.format(txtBOD.getDate());
-    }
-    if (txtDateJoined.getDate() != null) {
-        dateString = dateFormat.format(txtDateJoined.getDate());
-    }
+String userID = txtUserId.getText().trim();
+        String username = txtUsername.getText().trim();
+        String password = txtPassword.getText().trim();
+        String fullName = txtFullName.getText().trim();
+        String gender = txtGender.getSelectedItem() != null ? txtGender.getSelectedItem().toString().trim() : "";
+        String phoneNumber = txtPhone.getText().trim();
+        String maritalStatus = txtMS.getSelectedItem() != null ? txtMS.getSelectedItem().toString().trim() : "";
+        String nationality = txtNationality.getSelectedItem() != null ? txtNationality.getSelectedItem().toString().trim() : "";
+        String email = txtEmail.getText().trim();
+        String address = txtAddress.getText().trim();
+        String role = txtRole.getSelectedItem() != null ? txtRole.getSelectedItem().toString().trim() : "";
+        String position = txtPosition.getSelectedItem() != null ? txtPosition.getSelectedItem().toString().trim() : "";
+        String department = txtDepartment.getSelectedItem() != null ? txtDepartment.getSelectedItem().toString().trim() : "";
+        String employmentType = txtEmployement.getSelectedItem() != null ? txtEmployement.getSelectedItem().toString().trim() : "";
+        String workTitle = txtWkTitle.getText().trim();
+        String workResponsibilities = txtResponsibilities.getText().trim();
+        String emergencyName = txtEname.getText().trim();
+        String emergencyPhoneNo = txtContact.getText().trim();
+        String bankName = txtBankNM.getSelectedItem() != null ? txtBankNM.getSelectedItem().toString().trim() : "";
+        String accountNumber = txtBankNo.getText().trim();
 
-    // Validation: Check if any required field is empty
-    if (userID.isEmpty() || username.isEmpty() || password.isEmpty() || fullName.isEmpty() || gender.isEmpty() || 
-        phoneNumber.isEmpty() || maritalStatus.isEmpty() || nationality.isEmpty() || email.isEmpty() || 
-        address.isEmpty() || role.isEmpty() || position.isEmpty() || department.isEmpty() || 
-        employmentType.isEmpty() || workTitle.isEmpty() || workResponsibilities.isEmpty() || 
-        emergencyName.isEmpty() || emergencyPhoneNo.isEmpty() || birthDateString.isEmpty() || dateString.isEmpty() || 
-        bankName.isEmpty() || accountNumber.isEmpty()) {
-
-        JOptionPane.showMessageDialog(null, "Error: All fields must be filled in before saving.");
-        return; // Stop execution if any field is empty
-    }
-
-    // Get the logged-in user ID
-    String updatedBy = Session.getUserId(); // Retrieve the user ID of the logged-in user
-
-    // Read existing data and check for the record to update
-    File file = new File("usertxt.txt");
-    StringBuilder fileContent = new StringBuilder();
-    boolean recordUpdated = false;
-    String previousRole = "";  // Define previousRole
-    String previousPosition = "";  // Define previousPosition
-    String previousDepartment = "";  // Define previousDepartment
-
-    try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-        String line;
-
-        while ((line = br.readLine()) != null) {
-            String[] data = line.split(",");
-            if (data.length > 1 && data[0].equals(userID)) {
-                // Store previous role, position, and department
-                previousRole = data[11];  // Assuming the role is at index 11
-                previousPosition = data[12];  // Assuming the position is at index 12
-                previousDepartment = data[13];  // Assuming the department is at index 13
-                
-                // Compare existing data with the current input
-                String currentRecord = userID + "," + username + "," + password + "," + fullName + "," + gender + "," +
-                     birthDateString + "," + phoneNumber + "," + maritalStatus + "," + nationality + "," +
-                     email + "," + address + "," + role + "," + position + "," + department + "," +
-                     dateString + "," + employmentType + "," + workTitle + "," + workResponsibilities + "," +
-                     emergencyName + "," + emergencyPhoneNo + "," + bankName + "," + accountNumber;
-                
-                String existingRecord = String.join(",", data);
-
-                if (!existingRecord.equals(currentRecord)) {
-                    fileContent.append(currentRecord).append(System.getProperty("line.separator"));
-                    recordUpdated = true;
-                } else {
-                    JOptionPane.showMessageDialog(null, "No changes detected. Update not necessary.");
-                    return;
-                }
-            } else {
-                fileContent.append(line).append(System.getProperty("line.separator"));
-            }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String birthDateString = "";
+        String dateString = "";
+        if (txtBOD.getDate() != null) {
+            birthDateString = dateFormat.format(txtBOD.getDate());
+        }
+        if (txtDateJoined.getDate() != null) {
+            dateString = dateFormat.format(txtDateJoined.getDate());
         }
 
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(null, "Error reading data: " + e.getMessage());
-    }
+        if (userID.isEmpty() || username.isEmpty() || password.isEmpty() || fullName.isEmpty() || gender.isEmpty() || 
+            phoneNumber.isEmpty() || maritalStatus.isEmpty() || nationality.isEmpty() || email.isEmpty() || 
+            address.isEmpty() || role.isEmpty() || position.isEmpty() || department.isEmpty() || 
+            employmentType.isEmpty() || workTitle.isEmpty() || workResponsibilities.isEmpty() || 
+            emergencyName.isEmpty() || emergencyPhoneNo.isEmpty() || birthDateString.isEmpty() || dateString.isEmpty() || 
+            bankName.isEmpty() || accountNumber.isEmpty()) {
 
-    // If a record was updated, and role, position, or department changed, ask for the reason and store the history
-    if (recordUpdated) {
-        // Check if the role, position, or department has changed
-        if (!previousRole.equals(role) || !previousPosition.equals(position) || !previousDepartment.equals(department)) {
-            // Prompt the user to enter the reason for updating
-        String[] reasons = {"SKILL ALIGNMENT", "PROJECT NEEDS", "CAREER DEVELOPMENT", "PERFORMANCE IMPROVEMENT", "TEAM DYNAMICS"};
+            JOptionPane.showMessageDialog(null, "Error: All fields must be filled in before saving.");
+            return; 
+        }
 
-               // Prompt the user to select the reason for updating the role/position/department
-               String reason = (String) JOptionPane.showInputDialog(
-                       null,
-                       "Please select a reason for updating the role/position/department:",
-                       "Update Reason",
-                       JOptionPane.QUESTION_MESSAGE,
-                       null,
-                       reasons, // Array of options
-                       reasons[0]); // Default option
-            
-               if (reason != null && !reason.trim().isEmpty()) {
-                // Generate the next history ID
-                File historyFile = new File("history.txt");
-                String historyId = "H001"; // Default starting ID
+        String updatedBy = Session.getUserId(); 
 
-                if (historyFile.exists() && historyFile.length() > 0) {
-                    try (BufferedReader br = new BufferedReader(new FileReader(historyFile))) {
-                        String lastLine = null;
-                        String line;
+        File file = new File("usertxt.txt");
+        StringBuilder fileContent = new StringBuilder();
+        boolean recordUpdated = false;
+        String previousRole = "";  
+        String previousPosition = ""; 
+        String previousDepartment = "";  
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
 
-                        while ((line = br.readLine()) != null) {
-                            lastLine = line;
-                        }
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length > 1 && data[0].equals(userID)) {
+                    previousRole = data[11]; 
+                    previousPosition = data[12];  
+                    previousDepartment = data[13];  
 
-                        if (lastLine != null) {
-                            String[] data = lastLine.split(",");
-                            if (data.length > 0) {
-                                try {
-                                    
-                                    String lastHistoryId = data[0]; 
-                                    String numericPart = lastHistoryId.substring(1);  
-                                    int nextId = Integer.parseInt(numericPart) + 1; 
-                                    
-                                    historyId = String.format("H%03d", nextId);
-                                } catch (NumberFormatException e) {
-                                    // Log error and provide a default ID
-                                    JOptionPane.showMessageDialog(null, "Error parsing history ID, starting from 1.");
-                                    historyId = "H001"; 
-                                }
-                            }
-                        }
+                    String currentRecord = userID + "," + username + "," + password + "," + fullName + "," + gender + "," +
+                         birthDateString + "," + phoneNumber + "," + maritalStatus + "," + nationality + "," +
+                         email + "," + address + "," + role + "," + position + "," + department + "," +
+                         dateString + "," + employmentType + "," + workTitle + "," + workResponsibilities + "," +
+                         emergencyName + "," + emergencyPhoneNo + "," + bankName + "," + accountNumber;
 
-                    } catch (IOException e) {
-                        JOptionPane.showMessageDialog(null, "Error reading history file: " + e.getMessage());
+                    String existingRecord = String.join(",", data);
+
+                    if (!existingRecord.equals(currentRecord)) {
+                        fileContent.append(currentRecord).append(System.getProperty("line.separator"));
+                        recordUpdated = true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No changes detected. Update not necessary.");
+                        return;
                     }
                 } else {
-                    // If the history file doesn't exist, start with historyId 1
-                    historyId = "H001";
+                    fileContent.append(line).append(System.getProperty("line.separator"));
                 }
+            }
 
-                // Construct the role and position/department change description
-                String rolePositionDepartment = "" + role + " : " + position + " (" + department + ")";
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error reading data: " + e.getMessage());
+        }
 
-                // Log history to history.txt
-                String timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
+        if (recordUpdated) {
+            if (!previousRole.equals(role) || !previousPosition.equals(position) || !previousDepartment.equals(department)) {
+            String[] reasons = {"SKILL ALIGNMENT", "PROJECT NEEDS", "CAREER DEVELOPMENT", "PERFORMANCE IMPROVEMENT", "TEAM DYNAMICS"};
 
-                String historyRecord = historyId + "," + updatedBy + "," + userID + 
-                        ","+previousRole+ ":" +previousPosition + " (" + previousDepartment + ")," +
-                        rolePositionDepartment + "," + reason + "," + timeStamp;
+                   String reason = (String) JOptionPane.showInputDialog(
+                           null,
+                           "Please select a reason for updating the role/position/department:",
+                           "Update Reason",
+                           JOptionPane.QUESTION_MESSAGE,
+                           null,
+                           reasons, 
+                           reasons[0]); 
 
-                try (FileWriter historyWriter = new FileWriter(historyFile, true)) {
-                    historyWriter.append(historyRecord).append(System.getProperty("line.separator"));
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "Error saving history: " + e.getMessage());
+                   if (reason != null && !reason.trim().isEmpty()) {
+                    File historyFile = new File("history.txt");
+                    String historyId = "H001";
+
+                    if (historyFile.exists() && historyFile.length() > 0) {
+                        try (BufferedReader br = new BufferedReader(new FileReader(historyFile))) {
+                            String lastLine = null;
+                            String line;
+
+                            while ((line = br.readLine()) != null) {
+                                lastLine = line;
+                            }
+
+                            if (lastLine != null) {
+                                String[] data = lastLine.split(",");
+                                if (data.length > 0) {
+                                    try {
+
+                                        String lastHistoryId = data[0]; 
+                                        String numericPart = lastHistoryId.substring(1);  
+                                        int nextId = Integer.parseInt(numericPart) + 1; 
+
+                                        historyId = String.format("H%03d", nextId);
+                                    } catch (NumberFormatException e) {
+                                        JOptionPane.showMessageDialog(null, "Error parsing history ID, starting from 1.");
+                                        historyId = "H001"; 
+                                    }
+                                }
+                            }
+
+                        } catch (IOException e) {
+                            JOptionPane.showMessageDialog(null, "Error reading history file: " + e.getMessage());
+                        }
+                    } else {
+                        historyId = "H001";
+                    }
+                    String rolePositionDepartment = "" + role + " : " + position + " (" + department + ")";
+                    
+                    String timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
+
+                    String historyRecord = historyId + "," + updatedBy + "," + userID + 
+                            ","+previousRole+ ":" +previousPosition + " (" + previousDepartment + ")," +
+                            rolePositionDepartment + "," + reason + "," + timeStamp;
+
+                    try (FileWriter historyWriter = new FileWriter(historyFile, true)) {
+                        historyWriter.append(historyRecord).append(System.getProperty("line.separator"));
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(null, "Error saving history: " + e.getMessage());
+                    }
+
+                    try (FileWriter writer = new FileWriter(file, false)) {
+                        writer.write(fileContent.toString());
+                        JOptionPane.showMessageDialog(null, "Update successful!");
+
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Update canceled. Reason is required for updating the Role/Position/Department.");
                 }
-
-                // Write the updated content back to the file
+            } else {
                 try (FileWriter writer = new FileWriter(file, false)) {
                     writer.write(fileContent.toString());
                     JOptionPane.showMessageDialog(null, "Update successful!");
@@ -1065,22 +1057,10 @@ private void loadTableData() {
                 } catch (IOException e) {
                     JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Update canceled. Reason is required for updating the Role/Position/Department.");
-            }
-        } else {
-            // Write the updated content back to the file (no role/position/department change)
-            try (FileWriter writer = new FileWriter(file, false)) {
-                writer.write(fileContent.toString());
-                JOptionPane.showMessageDialog(null, "Update successful!");
-
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
             }
         }
-    }
 
-    loadTableData();
+        loadTableData();
 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
