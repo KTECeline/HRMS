@@ -4,7 +4,7 @@
  */
 package employeeManagement;
 
-import ui.dashboard.HRDashboard;
+
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,7 +15,6 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.SwingUtilities;
 import javax.swing.table.TableModel;
 
 
@@ -119,14 +118,15 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
 
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        bthback = new javax.swing.JButton();
+        searchbar = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton15 = new javax.swing.JButton();
+        bthRefresh = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,13 +137,13 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         header.setText("HUMAN RESOURCE MANAGEMENT SYSTEM");
         header.setToolTipText("");
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bthback.setBackground(new java.awt.Color(102, 102, 102));
+        bthback.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
+        bthback.setForeground(new java.awt.Color(255, 255, 255));
+        bthback.setText("Back");
+        bthback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bthbackActionPerformed(evt);
             }
         });
 
@@ -153,7 +153,7 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jButton1)
+                .addComponent(bthback)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(178, 178, 178))
@@ -164,36 +164,36 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
                 .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(header)
-                    .addComponent(jButton1))
+                    .addComponent(bthback))
                 .addContainerGap())
         );
 
-        jTextField1.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
-        jTextField1.setText("Search Account");
-        jTextField1.setToolTipText("");
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        searchbar.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
+        searchbar.setText("Search Account");
+        searchbar.setToolTipText("");
+        searchbar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
+                searchbarFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+                searchbarFocusLost(evt);
             }
         });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        searchbar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                searchbarActionPerformed(evt);
             }
         });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Search.png"))); // NOI18N
 
-        jButton15.setBackground(new java.awt.Color(153, 204, 255));
-        jButton15.setFont(new java.awt.Font("Sitka Text", 1, 12)); // NOI18N
-        jButton15.setText("Refresh Table ");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        bthRefresh.setBackground(new java.awt.Color(153, 204, 255));
+        bthRefresh.setFont(new java.awt.Font("Sitka Text", 1, 12)); // NOI18N
+        bthRefresh.setText("Refresh Table ");
+        bthRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                bthRefreshActionPerformed(evt);
             }
         });
 
@@ -215,33 +215,43 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable2MouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable2MousePressed(evt);
+            }
         });
         jScrollPane1.setViewportView(jTable2);
 
         jScrollPane2.setViewportView(jScrollPane1);
 
+        jLabel3.setFont(new java.awt.Font("Sitka Text", 3, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("TABLE OF EMPLOYEE INFORMATION :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(227, 227, 227))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(272, 272, 272)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton15))
+                        .addComponent(bthRefresh))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(30, 36, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(227, 227, 227))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,9 +265,11 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton15))))
-                .addGap(38, 38, 38)
+                            .addComponent(searchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bthRefresh))))
+                .addGap(9, 9, 9)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -265,23 +277,23 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        if (jTextField1.getText().equals("Search Account")) {
-            jTextField1.setText("");
-            jTextField1.setForeground(Color.BLACK); // Set the text color back to black
+    private void searchbarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchbarFocusGained
+        if (searchbar.getText().equals("Search Account")) {
+            searchbar.setText("");
+            searchbar.setForeground(Color.BLACK); // Set the text color back to black
         }
-    }//GEN-LAST:event_jTextField1FocusGained
+    }//GEN-LAST:event_searchbarFocusGained
 
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if (jTextField1.getText().isEmpty()) {
-            jTextField1.setForeground(Color.GRAY); // Set text color to gray
-            jTextField1.setText("Search Account");
+    private void searchbarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchbarFocusLost
+        if (searchbar.getText().isEmpty()) {
+            searchbar.setForeground(Color.GRAY); // Set text color to gray
+            searchbar.setText("Search Account");
         }
-    }//GEN-LAST:event_jTextField1FocusLost
+    }//GEN-LAST:event_searchbarFocusLost
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void searchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbarActionPerformed
 
-        String searchText = jTextField1.getText().trim().toLowerCase(); // Get the text entered in the search field and convert to lowercase for case-insensitive search
+        String searchText = searchbar.getText().trim().toLowerCase(); // Get the text entered in the search field and convert to lowercase for case-insensitive search
     String filePath = "usertxt.txt";
     File file = new File(filePath);
 
@@ -320,15 +332,24 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         Logger.getLogger(CreateEmployee.class.getName()).log(Level.SEVERE, null, ex);
     }
 
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_searchbarActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+    private void bthRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bthRefreshActionPerformed
         loadTableData();
-    }//GEN-LAST:event_jButton15ActionPerformed
+    }//GEN-LAST:event_bthRefreshActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-                                    
-    if (evt.getClickCount() == 1) {
+                                   
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void bthbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bthbackActionPerformed
+        ui.dashboard.BackButton backButton = new ui.dashboard.BackButton ();
+        backButton.navigateBasedOnRole();
+        this.dispose();
+    }//GEN-LAST:event_bthbackActionPerformed
+
+    private void jTable2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MousePressed
+        if (evt.getClickCount() == 1) {
         int selectedRow = jTable2.getSelectedRow();  // Get the selected row index
         TableModel model = jTable2.getModel();  // Get the table model
 
@@ -357,24 +378,15 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         String accountNumber = model.getValueAt(selectedRow, 21).toString();
         
         // Dispose of the current frame before opening the new one
-        this.dispose();
+        this.setVisible(false);  // Use setVisible(false) instead of dispose()
         
         // Create an instance of UpdateEmployee and pass the data
         UpdateEmployee1 updateForm = new UpdateEmployee1();
         updateForm.setEmployeeDetails(userID, username, password, fullName, gender, birthDate, phoneNumber, maritalStatus, nationality, email, address, role, position, department, dateOfJoining, employmentType, jobTitle, responsibilities, emergencyName, emergencyPhoneNo, bankName, accountNumber);
         updateForm.setVisible(true);
     }
-
-
-
-
-    }//GEN-LAST:event_jTable2MouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        HRDashboard createEmployee = new HRDashboard();
-        createEmployee.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jTable2MousePressed
 
     /**
      * @param args the command line arguments
@@ -414,15 +426,16 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bthRefresh;
+    private javax.swing.JButton bthback;
     private javax.swing.JLabel header;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton15;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField searchbar;
     // End of variables declaration//GEN-END:variables
 }
