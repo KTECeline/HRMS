@@ -50,10 +50,14 @@ public class List extends javax.swing.JFrame {
 private void loadUserData() {
         String filePath = "usertxt.txt";
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        boolean skipHeader = true;
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                // Assuming the file is comma-separated
+                if(skipHeader){
+                    skipHeader=false;
+                    continue;
+                }
                 String[] rowData = line.split(",");
                 model.addRow(rowData);
             }
