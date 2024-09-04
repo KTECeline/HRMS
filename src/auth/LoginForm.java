@@ -217,7 +217,7 @@ private static final int MAX_ATTEMPTS = 3;
                     ui.dashboard.AdminDashboard admindashboard = new ui.dashboard.AdminDashboard();
                     admindashboard.setVisible(true);
                     break;
-                case "Hr Officer":
+                case "HR Officer":
                     ui.dashboard.HRDashboard hrdashboard = new ui.dashboard.HRDashboard();
                     hrdashboard.setVisible(true);
                     break;
