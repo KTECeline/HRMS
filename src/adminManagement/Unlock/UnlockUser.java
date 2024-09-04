@@ -69,6 +69,7 @@ private void loadLockedAccounts() {
             lockedAccounts.put(username, false); // Set locked status to false
             saveLockedAccounts(); // Save the updated status to file
             updateTable(); // Update the table to reflect changes
+             removeLineFromFile(username);
             JOptionPane.showMessageDialog(null, "Account unlocked successfully.");
         } else {
             JOptionPane.showMessageDialog(null, "Account not found.");
@@ -92,6 +93,29 @@ private void loadLockedAccounts() {
         tableModel.setRowCount(0); // Clear existing rows
         populateTable(); // Re-populate table with updated data
     }
+    
+    private void removeLineFromFile(String username) {
+    try {
+        File file = new File("data.txt");
+        File tempFile = new File("temp.txt");
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] parts = line.split(",");
+            if (!parts[0].trim().equals(username)) {
+                writer.write(line + "\n");
+            }
+        }
+        reader.close();
+        writer.close();
+        file.delete();
+        tempFile.renameTo(file);
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error removing line from file.");
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -461,6 +485,7 @@ java.awt.EventQueue.invokeLater(new Runnable() {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(UnlockUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
