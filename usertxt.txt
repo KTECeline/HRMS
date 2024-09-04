@@ -1,5 +1,5 @@
 Id,Username,Password,Full Name,Gender,Date of Birth,Phone Number, Marital Status,Nationality,Email Address,Home Address,Role,Position,Department,Date of Joining,Employment Type,WK EXP Job Title,WK EXP Responsibilities,EM Contact Number,EM Phone Number,Bank Name,Account Number
-1,un,pw,fn,Male,24-09-06,0123456789,Married,MALAYSIAN,un@mail.com,Jalan ABC, Puchong,Selangor,Malaysia,Admin,NONE,None,24-09-07,Full time,System Admin,Maintain System,Celine,0123456789,PUBLIC BANK,0123456789
+1,un,pw,fn,Male,24-09-06,0123456789,Married,MALAYSIAN,un@mail.com,Jalan ABC,Admin,NONE,None,10-06-23,Full time,None,24-09-07,Full time,System Admin,HONG LEONG BANK,Celine
 2,hr,123,Yeong Huey Yee,Female,12-09-24,0123456789,Single,MALAYSIAN,@mail.com,ssdsdsd,HR Officer,NONE,None,12-09-24,Part time,Officer,dsdsd,dsd,0123456789,HONG LEONG BANK,123456789
 3,pr,123,Thong Hui Nan,Female,04-05-26,0112018615,Single,MALAYSIAN,huianan@mail.com,Vista Koma,Payroll Officer,NONE,None,24-09-07,Full time,Full time,Accountant,Accounting,Nan Gua,PUBLIC BANK,CIMB BANK
 4,dm,123,Wong Jin Yi,Female,20-03-04,0123456789,Married,MALAYSIAN,jinyi@mail.com,Puchong, Selangor,  Malaysia,Department Manager,NONE,None,18-01-19,Full time,Customer Servicer,Texting to customer,Eric,0123456789,HONG LEONG BANK,0123456789
