@@ -1,4 +1,4 @@
-package auth;
+package adminManagement.List;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import adminManagement.List.List;
 
 
 public class RegistrationForm extends javax.swing.JFrame {
@@ -42,6 +43,7 @@ public RegistrationForm() {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
         RegisterBTN = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
@@ -97,7 +99,7 @@ public RegistrationForm() {
         jLabel29 = new javax.swing.JLabel();
         txtBankNo = new javax.swing.JTextField();
         txtBankNM = new javax.swing.JComboBox<>();
-        jButton12 = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,12 +114,22 @@ public RegistrationForm() {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Register ");
 
+        jButton12.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jButton12.setText("Back");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(342, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(jButton12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(208, 208, 208))
         );
@@ -125,7 +137,9 @@ public RegistrationForm() {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton12))
                 .addContainerGap())
         );
 
@@ -140,7 +154,7 @@ public RegistrationForm() {
                 RegisterBTNActionPerformed(evt);
             }
         });
-        jPanel2.add(RegisterBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 510, 90, 30));
+        jPanel2.add(RegisterBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 510, 90, 30));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
@@ -312,10 +326,10 @@ public RegistrationForm() {
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 270, 460));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 270, 430));
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
         jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
@@ -345,7 +359,7 @@ public RegistrationForm() {
 
         txtEmployement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full time", "Part time", "Internship" }));
 
-        txtRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "HR Officer", "Department Manager", "Employee", "Payroll Officer" }));
+        txtRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Hr Officer", "Department Manager", "Employee", "Payroll Officer" }));
         txtRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRoleActionPerformed(evt);
@@ -565,15 +579,14 @@ public RegistrationForm() {
 
         jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 210, 170));
 
-        jButton12.setBackground(new java.awt.Color(153, 204, 255));
-        jButton12.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
-        jButton12.setText("Clear");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        Back.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        Back.setText("Back");
+        Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                BackActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 510, -1, -1));
+        jPanel2.add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -621,7 +634,7 @@ public RegistrationForm() {
 }
 
     } catch (IOException ex) {
-        Logger.getLogger(CreateEmployee.class.getName()).log(Level.SEVERE, null, ex);
+       System.err.println("Error reading file: " + ex.getMessage());
     }
 
     // If no User IDs were found, start with 1
@@ -741,7 +754,7 @@ public RegistrationForm() {
 
     }//GEN-LAST:event_txtRoleActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         // Clear text fields
         txtUsername.setText("");
         txtPassword.setText("");
@@ -768,6 +781,13 @@ public RegistrationForm() {
         // Clear date pickers
         txtBOD.setDate(null);  // Sets the date picker to no date
         txtDateJoined.setDate(null);
+    }//GEN-LAST:event_BackActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(() -> {
+            new adminManagement.List.List().setVisible(true);
+        });
     }//GEN-LAST:event_jButton12ActionPerformed
 
     /**
@@ -859,6 +879,70 @@ public RegistrationForm() {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
@@ -867,6 +951,7 @@ public RegistrationForm() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Back;
     private javax.swing.JButton RegisterBTN;
     private javax.swing.JButton jButton12;
     private javax.swing.JLabel jLabel1;

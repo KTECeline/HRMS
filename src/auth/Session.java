@@ -28,4 +28,14 @@ public class Session {
     public static boolean isLoggedIn() {
         return isLoggedIn;
     }
+    
+    public static void logout() {
+        userId = null;
+        role = null;
+        username = null;
+        isLoggedIn = false;
+    }
+    
+    
+
 }

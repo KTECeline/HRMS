@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.util.stream.Collectors;
 
 
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -144,9 +145,7 @@ private static final int MAX_ATTEMPTS = 3;
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -217,7 +216,7 @@ private static final int MAX_ATTEMPTS = 3;
                     ui.dashboard.AdminDashboard admindashboard = new ui.dashboard.AdminDashboard();
                     admindashboard.setVisible(true);
                     break;
-                case "HR Officer":
+                case "Hr Officer":
                     ui.dashboard.HRDashboard hrdashboard = new ui.dashboard.HRDashboard();
                     hrdashboard.setVisible(true);
                     break;
