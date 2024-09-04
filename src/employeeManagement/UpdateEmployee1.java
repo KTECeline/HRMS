@@ -9,6 +9,7 @@ package employeeManagement;
  * @author Yeong Huey Yee
  */
 
+import auth.Session;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.text.ParseException;
+import java.util.Date;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -160,7 +162,7 @@ private void loadTableData() {
         mainPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -185,7 +187,6 @@ private void loadTableData() {
         jLabel26 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         txtUserId = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -204,14 +205,14 @@ private void loadTableData() {
         jLabel24 = new javax.swing.JLabel();
         txtEname = new javax.swing.JTextField();
         txtContact = new javax.swing.JTextField();
-        jButton15 = new javax.swing.JButton();
+        bthRefresh = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         txtWkTitle = new javax.swing.JTextField();
         txtResponsibilities = new javax.swing.JTextField();
-        jButton16 = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
@@ -220,7 +221,6 @@ private void loadTableData() {
         txtBankNo = new javax.swing.JTextField();
         txtBankNM = new javax.swing.JComboBox<>();
         jButton14 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -235,13 +235,13 @@ private void loadTableData() {
         header.setText("HUMAN RESOURCE MANAGEMENT SYSTEM");
         header.setToolTipText("");
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setBackground(new java.awt.Color(102, 102, 102));
+        btnBack.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -251,7 +251,7 @@ private void loadTableData() {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jButton1)
+                .addComponent(btnBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(189, 189, 189))
@@ -261,7 +261,7 @@ private void loadTableData() {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(btnBack)
                     .addComponent(header))
                 .addContainerGap())
         );
@@ -319,6 +319,7 @@ private void loadTableData() {
         });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 204));
         jLabel12.setText("Employee Personal Information");
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -442,24 +443,6 @@ private void loadTableData() {
 
         mainPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 270, 440));
 
-        jTextField1.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
-        jTextField1.setText("Search Account");
-        jTextField1.setToolTipText("");
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
-            }
-        });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        mainPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 230, 30));
-
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -483,11 +466,12 @@ private void loadTableData() {
         jLabel10.setText("Position :");
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 204));
         jLabel18.setText("Professional & Company Information");
 
         txtEmployement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full time", "Part time", "Internship" }));
 
-        txtRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Hr Officer", "Department Manager", "Employee", "Payroll Officer" }));
+        txtRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "HR Officer", "Department Manager", "Employee", "Payroll Officer" }));
         txtRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRoleActionPerformed(evt);
@@ -496,7 +480,7 @@ private void loadTableData() {
 
         txtDepartment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sales", "IT", "Marketing", "None" }));
 
-        txtPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT SUPPORT GROUP", "SALES OPERATION GROUP", "MARKETING OPERATION GROUP", "NONE" }));
+        txtPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NONE", "SALES OPERATION GROUP", "SALES STRATEGY GROUP", "SALES ACQUISITION GROUP", "IT NETWORK GROUP", "IT MAINTENANCE GROUP", "IT SUPPORT GROUP", "MARKETING OPERATION GROUP", "MARKETING STARTEGY GROUP", "MARKETING ANALYTICS GROUP" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -522,11 +506,14 @@ private void loadTableData() {
                             .addComponent(txtDateJoined, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtEmployement, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtPosition, 0, 1, Short.MAX_VALUE)
-                            .addComponent(txtRole, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(txtRole, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 46, Short.MAX_VALUE)
-                        .addComponent(jLabel18)))
-                .addGap(46, 46, 46))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel18)
+                        .addGap(12, 12, 12)))
+                .addGap(34, 34, 34))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -561,6 +548,7 @@ private void loadTableData() {
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 204));
         jLabel15.setText("Emergency Contact");
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -580,12 +568,12 @@ private void loadTableData() {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel24)
                     .addComponent(jLabel23)
-                    .addComponent(txtEname)
-                    .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(jLabel15)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel15))
+                    .addComponent(txtEname, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(txtContact))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -603,21 +591,22 @@ private void loadTableData() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 210, 170));
+        mainPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 220, 170));
 
-        jButton15.setBackground(new java.awt.Color(153, 204, 255));
-        jButton15.setFont(new java.awt.Font("Sitka Text", 1, 12)); // NOI18N
-        jButton15.setText("Refresh Table ");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        bthRefresh.setBackground(new java.awt.Color(153, 204, 255));
+        bthRefresh.setFont(new java.awt.Font("Sitka Text", 1, 12)); // NOI18N
+        bthRefresh.setText("Refresh Table ");
+        bthRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                bthRefreshActionPerformed(evt);
             }
         });
-        mainPanel.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, -1, -1));
+        mainPanel.add(bthRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 204));
         jLabel16.setText("Working Experience");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -633,48 +622,49 @@ private void loadTableData() {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtWkTitle)
-                            .addComponent(txtResponsibilities, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtWkTitle)
+                    .addComponent(txtResponsibilities, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtWkTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtResponsibilities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel19))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(txtWkTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtResponsibilities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 360, 120));
+        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 360, 130));
 
-        jButton16.setBackground(new java.awt.Color(255, 153, 153));
-        jButton16.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
-        jButton16.setText("Update Account");
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setBackground(new java.awt.Color(255, 153, 153));
+        btnUpdate.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
+        btnUpdate.setText("Update Account");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
-        mainPanel.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 610, 180, -1));
+        mainPanel.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 610, 180, -1));
 
         jLabel1.setFont(new java.awt.Font("Sitka Text", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 102));
@@ -685,6 +675,7 @@ private void loadTableData() {
         jPanel6.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(0, 0, 204));
         jLabel27.setText("Bank Account Detail");
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -706,12 +697,12 @@ private void loadTableData() {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel29)
                     .addComponent(jLabel28)
-                    .addComponent(txtBankNo)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(jLabel27))
-                    .addComponent(txtBankNM, 0, 164, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtBankNM, 0, 175, Short.MAX_VALUE)
+                    .addComponent(txtBankNo))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -729,7 +720,7 @@ private void loadTableData() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 210, 170));
+        mainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 220, 170));
 
         jButton14.setBackground(new java.awt.Color(255, 51, 51));
         jButton14.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
@@ -740,11 +731,7 @@ private void loadTableData() {
                 jButton14ActionPerformed(evt);
             }
         });
-        mainPanel.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 610, -1, -1));
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Search.png"))); // NOI18N
-        mainPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 50, 50));
+        mainPanel.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 610, -1, -1));
 
         jTable1.setBorder(new javax.swing.border.MatteBorder(null));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -782,186 +769,198 @@ private void loadTableData() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+    private void bthRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bthRefreshActionPerformed
         loadTableData();
-    }//GEN-LAST:event_jButton15ActionPerformed
+    }//GEN-LAST:event_bthRefreshActionPerformed
 
     private void txtRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRoleActionPerformed
 
     }//GEN-LAST:event_txtRoleActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-                
-    String searchText = jTextField1.getText().trim().toLowerCase(); // Get the text entered in the search field and convert to lowercase for case-insensitive search
-    String filePath = "usertxt.txt";
-    File file = new File(filePath);
-
-    try {
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        String firstLine = br.readLine().trim();
-        String[] columnsName = firstLine.split(",");
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setColumnIdentifiers(columnsName);
-
-        // Clear existing rows
-        model.setRowCount(0);
-
-        // Search for matching ID, Username, Full Name, Role, or Employment Type
-        String line;
-        while ((line = br.readLine()) != null) {
-            String[] dataRow = line.split(",");
-            if (dataRow.length > 0) {
-                String id = dataRow[0].toLowerCase();
-                String username = dataRow[1].toLowerCase();
-                String fullName = dataRow[3].toLowerCase();
-                String role = dataRow[11].toLowerCase(); // Assuming the 'Role' column is at index 11
-                String employmentType = dataRow[15].toLowerCase(); // Assuming the 'Employment Type' column is at index 15
-
-                // Check if the search text matches the ID, Username, Full Name, Role, or Employment Type
-                if (id.contains(searchText) || username.contains(searchText) || fullName.contains(searchText) || role.contains(searchText) || employmentType.contains(searchText)) {
-                    model.addRow(dataRow); // Add the matching row to the table
-                }
-            }
-        }
-
-        // Set column widths after populating the table
-        setColumnWidths();
-
-    } catch (IOException ex) {
-        Logger.getLogger(CreateEmployee.class.getName()).log(Level.SEVERE, null, ex);
-    }
-
-
-
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if (jTextField1.getText().isEmpty()) {
-            jTextField1.setForeground(Color.GRAY); // Set text color to gray
-            jTextField1.setText("Search Account");
-        }
-    }//GEN-LAST:event_jTextField1FocusLost
-
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        if (jTextField1.getText().equals("Search Account")) {
-            jTextField1.setText("");
-            jTextField1.setForeground(Color.BLACK); // Set the text color back to black
-        }
-    }//GEN-LAST:event_jTextField1FocusGained
-
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressActionPerformed
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-                                        
-                                        
-    // Retrieve the input data
-    String userID = txtUserId.getText().trim();
-    String username = txtUsername.getText().trim();
-    String password = txtPassword.getText().trim();
-    String fullName = txtFullName.getText().trim();
-    String gender = txtGender.getSelectedItem() != null ? txtGender.getSelectedItem().toString().trim() : "";
-    String phoneNumber = txtPhone.getText().trim();
-    String maritalStatus = txtMS.getSelectedItem() != null ? txtMS.getSelectedItem().toString().trim() : "";
-    String nationality = txtNationality.getSelectedItem() != null ? txtNationality.getSelectedItem().toString().trim() : "";
-    String email = txtEmail.getText().trim();
-    String address = txtAddress.getText().trim();
-    String role = txtRole.getSelectedItem() != null ? txtRole.getSelectedItem().toString().trim() : "";
-    String position = txtPosition.getSelectedItem() != null ? txtPosition.getSelectedItem().toString().trim() : "";
-    String department = txtDepartment.getSelectedItem() != null ? txtDepartment.getSelectedItem().toString().trim() : "";
-    String employmentType = txtEmployement.getSelectedItem() != null ? txtEmployement.getSelectedItem().toString().trim() : "";
-    String workTitle = txtWkTitle.getText().trim();
-    String workResponsibilities = txtResponsibilities.getText().trim();
-    String emergencyName = txtEname.getText().trim();
-    String emergencyPhoneNo = txtContact.getText().trim();
-    String bankName = txtBankNM.getSelectedItem() != null ? txtBankNM.getSelectedItem().toString().trim() : "";
-    String accountNumber = txtBankNo.getText().trim();
-    
-    // Handle date conversion
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
-    String birthDateString = "";
-    String dateString = "";
-    if (txtBOD.getDate() != null) {
-        birthDateString = dateFormat.format(txtBOD.getDate());
-    }
-    if (txtDateJoined.getDate() != null) {
-        dateString = dateFormat.format(txtDateJoined.getDate());
-    }
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
 
-    // Validation: Check if any required field is empty
-    if (userID.isEmpty() || username.isEmpty() || password.isEmpty() || fullName.isEmpty() || gender.isEmpty() || 
-        phoneNumber.isEmpty() || maritalStatus.isEmpty() || nationality.isEmpty() || email.isEmpty() || 
-        address.isEmpty() || role.isEmpty() || position.isEmpty() || department.isEmpty() || 
-        employmentType.isEmpty() || workTitle.isEmpty() || workResponsibilities.isEmpty() || 
-        emergencyName.isEmpty() || emergencyPhoneNo.isEmpty() || birthDateString.isEmpty() || dateString.isEmpty() || 
-        bankName.isEmpty() || accountNumber.isEmpty()) {
+        String userID = txtUserId.getText().trim();
+        String username = txtUsername.getText().trim();
+        String password = txtPassword.getText().trim();
+        String fullName = txtFullName.getText().trim();
+        String gender = txtGender.getSelectedItem() != null ? txtGender.getSelectedItem().toString().trim() : "";
+        String phoneNumber = txtPhone.getText().trim();
+        String maritalStatus = txtMS.getSelectedItem() != null ? txtMS.getSelectedItem().toString().trim() : "";
+        String nationality = txtNationality.getSelectedItem() != null ? txtNationality.getSelectedItem().toString().trim() : "";
+        String email = txtEmail.getText().trim();
+        String address = txtAddress.getText().trim();
+        String role = txtRole.getSelectedItem() != null ? txtRole.getSelectedItem().toString().trim() : "";
+        String position = txtPosition.getSelectedItem() != null ? txtPosition.getSelectedItem().toString().trim() : "";
+        String department = txtDepartment.getSelectedItem() != null ? txtDepartment.getSelectedItem().toString().trim() : "";
+        String employmentType = txtEmployement.getSelectedItem() != null ? txtEmployement.getSelectedItem().toString().trim() : "";
+        String workTitle = txtWkTitle.getText().trim();
+        String workResponsibilities = txtResponsibilities.getText().trim();
+        String emergencyName = txtEname.getText().trim();
+        String emergencyPhoneNo = txtContact.getText().trim();
+        String bankName = txtBankNM.getSelectedItem() != null ? txtBankNM.getSelectedItem().toString().trim() : "";
+        String accountNumber = txtBankNo.getText().trim();
 
-        JOptionPane.showMessageDialog(null, "Error: All fields must be filled in before saving.");
-        return; // Stop execution if any field is empty
-    }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String birthDateString = "";
+        String dateString = "";
+        if (txtBOD.getDate() != null) {
+            birthDateString = dateFormat.format(txtBOD.getDate());
+        }
+        if (txtDateJoined.getDate() != null) {
+            dateString = dateFormat.format(txtDateJoined.getDate());
+        }
 
-    // Read existing data and check for the record to update
-    File file = new File("usertxt.txt");
-    StringBuilder fileContent = new StringBuilder();
-    boolean recordUpdated = false;
+        if (userID.isEmpty() || username.isEmpty() || password.isEmpty() || fullName.isEmpty() || gender.isEmpty() || 
+            phoneNumber.isEmpty() || maritalStatus.isEmpty() || nationality.isEmpty() || email.isEmpty() || 
+            address.isEmpty() || role.isEmpty() || position.isEmpty() || department.isEmpty() || 
+            employmentType.isEmpty() || workTitle.isEmpty() || workResponsibilities.isEmpty() || 
+            emergencyName.isEmpty() || emergencyPhoneNo.isEmpty() || birthDateString.isEmpty() || dateString.isEmpty() || 
+            bankName.isEmpty() || accountNumber.isEmpty()) {
 
-    try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-        String line;
+            JOptionPane.showMessageDialog(null, "Error: All fields must be filled in before saving.");
+            return; 
+        }
 
-        while ((line = br.readLine()) != null) {
-            String[] data = line.split(",");
-            if (data.length > 1 && data[0].equals(userID)) {
-                // Compare existing data with the current input
-                String currentRecord = userID + "," + username + "," + password + "," + fullName + "," + gender + "," +
-                     birthDateString + "," + phoneNumber + "," + maritalStatus + "," + nationality + "," +
-                     email + "," + address + "," + role + "," + position + "," + department + "," +
-                     dateString + "," + employmentType + "," + workTitle + "," + workResponsibilities + "," +
-                     emergencyName + "," + emergencyPhoneNo + "," + bankName + "," + accountNumber;
-                
-                String existingRecord = String.join(",", data);
+        String updatedBy = Session.getUserId(); 
 
-                if (!existingRecord.equals(currentRecord)) {
-                    fileContent.append(currentRecord).append(System.getProperty("line.separator"));
-                    recordUpdated = true;
+        File file = new File("usertxt.txt");
+        StringBuilder fileContent = new StringBuilder();
+        boolean recordUpdated = false;
+        String previousRole = "";  
+        String previousPosition = ""; 
+        String previousDepartment = "";  
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length > 1 && data[0].equals(userID)) {
+                    previousRole = data[11]; 
+                    previousPosition = data[12];  
+                    previousDepartment = data[13];  
+
+                    String currentRecord = userID + "," + username + "," + password + "," + fullName + "," + gender + "," +
+                         birthDateString + "," + phoneNumber + "," + maritalStatus + "," + nationality + "," +
+                         email + "," + address + "," + role + "," + position + "," + department + "," +
+                         dateString + "," + employmentType + "," + workTitle + "," + workResponsibilities + "," +
+                         emergencyName + "," + emergencyPhoneNo + "," + bankName + "," + accountNumber;
+
+                    String existingRecord = String.join(",", data);
+
+                    if (!existingRecord.equals(currentRecord)) {
+                        fileContent.append(currentRecord).append(System.getProperty("line.separator"));
+                        recordUpdated = true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No changes detected. Update not necessary.");
+                        return;
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "No changes detected. Update not necessary.");
-                    return;
+                    fileContent.append(line).append(System.getProperty("line.separator"));
+                }
+            }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error reading data: " + e.getMessage());
+        }
+
+        if (recordUpdated) {
+            if (!previousRole.equals(role) || !previousPosition.equals(position) || !previousDepartment.equals(department)) {
+            String[] reasons = {"SKILL ALIGNMENT", "PROJECT NEEDS", "CAREER DEVELOPMENT", "PERFORMANCE IMPROVEMENT", "TEAM DYNAMICS"};
+
+                   String reason = (String) JOptionPane.showInputDialog(
+                           null,
+                           "Please select a reason for updating the role/position/department:",
+                           "Update Reason",
+                           JOptionPane.QUESTION_MESSAGE,
+                           null,
+                           reasons, 
+                           reasons[0]); 
+
+                   if (reason != null && !reason.trim().isEmpty()) {
+                    File historyFile = new File("history.txt");
+                    String historyId = "H001";
+
+                    if (historyFile.exists() && historyFile.length() > 0) {
+                        try (BufferedReader br = new BufferedReader(new FileReader(historyFile))) {
+                            String lastLine = null;
+                            String line;
+
+                            while ((line = br.readLine()) != null) {
+                                lastLine = line;
+                            }
+
+                            if (lastLine != null) {
+                                String[] data = lastLine.split(",");
+                                if (data.length > 0) {
+                                    try {
+
+                                        String lastHistoryId = data[0]; 
+                                        String numericPart = lastHistoryId.substring(1);  
+                                        int nextId = Integer.parseInt(numericPart) + 1; 
+
+                                        historyId = String.format("H%03d", nextId);
+                                    } catch (NumberFormatException e) {
+                                        JOptionPane.showMessageDialog(null, "Error parsing history ID, starting from 1.");
+                                        historyId = "H001"; 
+                                    }
+                                }
+                            }
+
+                        } catch (IOException e) {
+                            JOptionPane.showMessageDialog(null, "Error reading history file: " + e.getMessage());
+                        }
+                    } else {
+                        historyId = "H001";
+                    }
+                    String rolePositionDepartment = "" + role + " : " + position + " (" + department + ")";
+                    
+                    String timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
+
+                    String historyRecord = historyId + "," + updatedBy + "," + userID + 
+                            ","+previousRole+ ":" +previousPosition + " (" + previousDepartment + ")," +
+                            rolePositionDepartment + "," + reason + "," + timeStamp;
+
+                    try (FileWriter historyWriter = new FileWriter(historyFile, true)) {
+                        historyWriter.append(historyRecord).append(System.getProperty("line.separator"));
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(null, "Error saving history: " + e.getMessage());
+                    }
+
+                    try (FileWriter writer = new FileWriter(file, false)) {
+                        writer.write(fileContent.toString());
+                        JOptionPane.showMessageDialog(null, "Update successful!");
+
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Update canceled. Reason is required for updating the Role/Position/Department.");
                 }
             } else {
-                fileContent.append(line).append(System.getProperty("line.separator"));
+                try (FileWriter writer = new FileWriter(file, false)) {
+                    writer.write(fileContent.toString());
+                    JOptionPane.showMessageDialog(null, "Update successful!");
+
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
+                }
             }
         }
 
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(null, "Error reading data: " + e.getMessage());
-    }
+        loadTableData();
 
-    // If a record was updated, write the updated content back to the file
-    if (recordUpdated) {
-            try (FileWriter writer = new FileWriter(file, false)) {
-                writer.write(fileContent.toString());
-                JOptionPane.showMessageDialog(null, "Update successful!");
-                
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Error: User ID not found.");
-        }
-                    
-    loadTableData();
-
-
-    }//GEN-LAST:event_jButton16ActionPerformed
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
    
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-                                  
-                                         
+                                    
     String userID = txtUserId.getText().trim();
     String fullName = txtFullName.getText().trim();
 
@@ -1018,12 +1017,12 @@ private void loadTableData() {
 
     }//GEN-LAST:event_jButton14ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        SearchEmployee createEmployee = new SearchEmployee();
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
+        SearchEmployee createEmployee = new SearchEmployee();
         createEmployee.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
         // TODO add your handling code here:
@@ -1075,11 +1074,11 @@ private void loadTableData() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bthRefresh;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel header;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1091,7 +1090,6 @@ private void loadTableData() {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1118,7 +1116,6 @@ private void loadTableData() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextField txtAddress;
     private com.toedter.calendar.JDateChooser txtBOD;
