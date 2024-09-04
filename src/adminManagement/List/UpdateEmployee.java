@@ -9,6 +9,7 @@ package adminManagement.List;
  * @author Yeong Huey Yee
  */
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -35,7 +36,7 @@ public class UpdateEmployee extends javax.swing.JFrame {
     public UpdateEmployee() {
     initComponents();
     loadTableData(); // Load data when the form initializes
-int selectedRow = jTable1.getSelectedRow();
+    int selectedRow = jTable1.getSelectedRow();
 }
     
 public void setEmployeeDetails(String userID, String username, String password, String fullName, String gender, String birthDate, String phoneNumber, String maritalStatus, String nationality, String email, String address, String role, String position, String department, String dateOfJoining, String employmentType, String jobTitle, String responsibilities, String emergencyName, String emergencyPhoneNo, String bankName, String accountNumber) {
@@ -175,6 +176,8 @@ private void loadTableData() {
         setColumnWidths();
         
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        jTable1.setFocusable(true);
+        jTable1.setSelectionBackground(Color.PINK);
         
     } catch (Exception ex) {
         Logger.getLogger(UpdateEmployee.class.getName()).log(Level.SEVERE, null, ex);
