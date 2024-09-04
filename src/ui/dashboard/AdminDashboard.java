@@ -6,6 +6,7 @@ import auth.Session;
 import java.io.IOException;
 import java.util.List;
 import adminManagement.DisplayA.Annoucement;
+import adminManagement.GetPanel.DataRowCounter;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -29,9 +30,12 @@ public class AdminDashboard extends javax.swing.JFrame {
         String role = Session.getRole();
         
         empName.setText(username);
-        empName.setVisible(true);
-        empName.setForeground(Color.WHITE);
-        empName.setVerticalAlignment(SwingConstants.TOP);
+        int totalEmployee=DataRowCounter.countEmployees("usertxt.txt");
+        TotalEmployee.setText(String.valueOf(totalEmployee));
+        
+        int totalRows = DataRowCounter.countRowsInFile("data.txt");
+        UnlockAcc.setText(String.valueOf(totalRows));
+
         
         if (Session.isLoggedIn()) {
             String userId = Session.getUserId();
@@ -76,9 +80,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        UnlockAcc = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        TotalEmployee = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -271,25 +275,25 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(255, 204, 204)));
 
-        jLabel8.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utils/media/3.png"))); // NOI18N
-        jLabel8.setText("10");
+        UnlockAcc.setBackground(new java.awt.Color(102, 102, 102));
+        UnlockAcc.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
+        UnlockAcc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utils/media/3.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(UnlockAcc)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 9, Short.MAX_VALUE)
-                .addComponent(jLabel8))
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(UnlockAcc)
+                .addContainerGap())
         );
 
         mainPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 130, 90));
@@ -297,25 +301,24 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(255, 204, 204)));
 
-        jLabel9.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utils/media/4.png"))); // NOI18N
-        jLabel9.setText("10");
+        TotalEmployee.setBackground(new java.awt.Color(102, 102, 102));
+        TotalEmployee.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
+        TotalEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utils/media/4.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(TotalEmployee)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(0, 9, Short.MAX_VALUE)
-                .addComponent(jLabel9))
+                .addComponent(TotalEmployee))
         );
 
         mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 130, -1));
@@ -477,6 +480,8 @@ java.awt.EventQueue.invokeLater(new Runnable() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SQBTN;
+    private javax.swing.JLabel TotalEmployee;
+    private javax.swing.JLabel UnlockAcc;
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
     private javax.swing.JButton btn3;
@@ -498,8 +503,6 @@ java.awt.EventQueue.invokeLater(new Runnable() {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
