@@ -131,7 +131,6 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         empName.setForeground(new java.awt.Color(242, 242, 242));
-        empName.setText("EmpName");
         empName.setToolTipText("");
         sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
