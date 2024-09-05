@@ -28,7 +28,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         int totalRows = DataRowCounter.countRowsInFile("data.txt");
         UnlockAcc.setText(String.valueOf(totalRows));
         
-        int totalLeave = DataRowCounter.countLeaveonDay("leave.txt");
+        int totalLeave = DataRowCounter.countLeaveonDay();
         txtLeave.setText(String.valueOf(totalLeave));
         
        
