@@ -177,7 +177,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
@@ -205,7 +204,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         txtEmail = new javax.swing.JTextField();
         txtUserId = new javax.swing.JLabel();
         txtBOD = new com.toedter.calendar.JDateChooser();
-        searchbar = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -225,7 +223,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         txtEname = new javax.swing.JTextField();
         txtContact = new javax.swing.JTextField();
         btnClear = new javax.swing.JButton();
-        bthRefresh = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -247,10 +244,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Search.png"))); // NOI18N
-        mainPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 50, 50));
 
         jPanel1.setBackground(new java.awt.Color(128, 128, 128));
 
@@ -466,24 +459,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
 
         mainPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 290, 440));
 
-        searchbar.setFont(new java.awt.Font("Sitka Text", 1, 12)); // NOI18N
-        searchbar.setText("Search Account");
-        searchbar.setToolTipText("");
-        searchbar.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                searchbarFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                searchbarFocusLost(evt);
-            }
-        });
-        searchbar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchbarActionPerformed(evt);
-            }
-        });
-        mainPanel.add(searchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 230, 30));
-
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -642,16 +617,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         });
         mainPanel.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 620, -1, -1));
 
-        bthRefresh.setBackground(new java.awt.Color(153, 204, 255));
-        bthRefresh.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        bthRefresh.setText("Refresh Table ");
-        bthRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bthRefreshActionPerformed(evt);
-            }
-        });
-        mainPanel.add(bthRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 140, -1));
-
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
@@ -807,74 +772,9 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bthRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bthRefreshActionPerformed
-        loadTableData();
-    }//GEN-LAST:event_bthRefreshActionPerformed
-
     private void txtRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRoleActionPerformed
 
     }//GEN-LAST:event_txtRoleActionPerformed
-
-    private void searchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbarActionPerformed
-                                  
-
-    String searchText = searchbar.getText().trim().toLowerCase(); // Get the text entered in the search field and convert to lowercase for case-insensitive search
-    String filePath = "usertxt.txt";
-    File file = new File(filePath);
-
-    try {
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        String firstLine = br.readLine().trim();
-        String[] columnsName = firstLine.split(",");
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setColumnIdentifiers(columnsName);
-
-        // Clear existing rows
-        model.setRowCount(0);
-
-        // Search for matching ID, Username, Full Name, Role, or Employment Type
-        String line;
-        while ((line = br.readLine()) != null) {
-            String[] dataRow = line.split(",");
-            if (dataRow.length > 0) {
-                String id = dataRow[0].toLowerCase();
-                String username = dataRow[1].toLowerCase();
-                String fullName = dataRow[3].toLowerCase();
-                String role = dataRow[11].toLowerCase(); // Assuming the 'Role' column is at index 11
-                String employmentType = dataRow[15].toLowerCase(); // Assuming the 'Employment Type' column is at index 15
-
-                // Check if the search text matches the ID, Username, Full Name, Role, or Employment Type
-                if (id.contains(searchText) || username.contains(searchText) || fullName.contains(searchText) || role.contains(searchText) || employmentType.contains(searchText)) {
-                    model.addRow(dataRow); // Add the matching row to the table
-                }
-            }
-        }
-
-        // Set column widths after populating the table
-        setColumnWidths();
-
-    } catch (IOException ex) {
-        Logger.getLogger(CreateEmployee.class.getName()).log(Level.SEVERE, null, ex);
-    }
-
-
-
-
-    }//GEN-LAST:event_searchbarActionPerformed
-
-    private void searchbarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchbarFocusLost
-        if (searchbar.getText().isEmpty()) {
-            searchbar.setForeground(Color.GRAY); // Set text color to gray
-            searchbar.setText("Search Account");
-        }
-    }//GEN-LAST:event_searchbarFocusLost
-
-    private void searchbarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchbarFocusGained
-        if (searchbar.getText().equals("Search Account")) {
-            searchbar.setText("");
-            searchbar.setForeground(Color.BLACK); // Set the text color back to black
-        }
-    }//GEN-LAST:event_searchbarFocusGained
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
@@ -1060,7 +960,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bthRefresh;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnClear;
@@ -1076,7 +975,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1104,7 +1002,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JTextField searchbar;
     private javax.swing.JTextField txtAddress;
     private com.toedter.calendar.JDateChooser txtBOD;
     private javax.swing.JComboBox<String> txtBankNM;

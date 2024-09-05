@@ -221,13 +221,13 @@ private void loadTableData() {
         txtContact = new javax.swing.JTextField();
         btnClear = new javax.swing.JButton();
         bthRefresh = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         txtWkTitle = new javax.swing.JTextField();
         txtResponsibilities = new javax.swing.JTextField();
-        btnUpdate = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
@@ -650,6 +650,16 @@ private void loadTableData() {
         });
         mainPanel.add(bthRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, -1, -1));
 
+        btnUpdate.setBackground(new java.awt.Color(255, 153, 153));
+        btnUpdate.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
+        btnUpdate.setText("Update Account");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        mainPanel.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, 180, -1));
+
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
@@ -701,16 +711,6 @@ private void loadTableData() {
         );
 
         mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 360, 130));
-
-        btnUpdate.setBackground(new java.awt.Color(255, 153, 153));
-        btnUpdate.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
-        btnUpdate.setText("Update Account");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        mainPanel.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, 180, -1));
 
         jLabel1.setFont(new java.awt.Font("Sitka Text", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 102));
@@ -818,10 +818,6 @@ private void loadTableData() {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bthRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bthRefreshActionPerformed
-        loadTableData();
-    }//GEN-LAST:event_bthRefreshActionPerformed
 
     private void txtRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRoleActionPerformed
 
@@ -1030,7 +1026,7 @@ String userID = txtUserId.getText().trim();
                     String timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
 
                     String historyRecord = historyId + "," + updatedBy + "," + userID + 
-                            ","+previousRole+ ":" +previousPosition + " (" + previousDepartment + ")," +
+                            ","+previousRole+ " : " +previousPosition + " (" + previousDepartment + ")," +
                             rolePositionDepartment + "," + reason + "," + timeStamp;
 
                     try (FileWriter historyWriter = new FileWriter(historyFile, true)) {
@@ -1235,6 +1231,10 @@ String userID = txtUserId.getText().trim();
     private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFullNameActionPerformed
+
+    private void bthRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bthRefreshActionPerformed
+        loadTableData();
+    }//GEN-LAST:event_bthRefreshActionPerformed
 
     
 

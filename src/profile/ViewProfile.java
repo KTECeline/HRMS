@@ -84,7 +84,10 @@ public class ViewProfile extends javax.swing.JFrame {
 
     
     public void setLabelValues(
-            String userID, String username, String password, String fullName, String gender, String dateOfBirth, String phoneNumber, String maritalStatus, String nationality, String email, String address, String role, String position, String department, String datejoined, String employmentType, String workTitle, String workResponsibilities, String emergencyName, String emergencyPhoneNo, String bankName, String accountNumber){
+        String userID, String username, String password, String fullName, String gender, String dateOfBirth, String phoneNumber, 
+            String maritalStatus, String nationality, String email, String address, String role, String position, String department, 
+            String datejoined, String employmentType, String workTitle, String workResponsibilities, String emergencyName, String emergencyPhoneNo, 
+            String bankName, String accountNumber){
         
         txtUserId.setText(userID);
         txtUsername.setText(username);
@@ -119,7 +122,6 @@ public class ViewProfile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         header1 = new javax.swing.JLabel();
@@ -209,19 +211,12 @@ public class ViewProfile extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         header = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnLeave = new javax.swing.JButton();
+        btnSecurity = new javax.swing.JButton();
+        btnTask = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jButton4.setBackground(new java.awt.Color(153, 204, 255));
-        jButton4.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton4.setText("Create Security Question");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(128, 128, 128));
 
@@ -1173,12 +1168,30 @@ public class ViewProfile extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/emp (250 x 250 px).png"))); // NOI18N
 
-        jButton2.setBackground(new java.awt.Color(153, 204, 255));
-        jButton2.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton2.setText("Leave Entitlement");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnLeave.setBackground(new java.awt.Color(153, 204, 255));
+        btnLeave.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnLeave.setText("Leave Entitlement");
+        btnLeave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnLeaveActionPerformed(evt);
+            }
+        });
+
+        btnSecurity.setBackground(new java.awt.Color(153, 204, 255));
+        btnSecurity.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnSecurity.setText("Create Security Question");
+        btnSecurity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSecurityActionPerformed(evt);
+            }
+        });
+
+        btnTask.setBackground(new java.awt.Color(153, 204, 255));
+        btnTask.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnTask.setText("Task");
+        btnTask.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaskActionPerformed(evt);
             }
         });
 
@@ -1190,21 +1203,25 @@ public class ViewProfile extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jButton4)
-                .addGap(144, 144, 144)
+                .addGap(45, 45, 45)
+                .addComponent(btnSecurity)
+                .addGap(162, 162, 162)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(124, 124, 124))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLeave)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnTask)
+                        .addGap(43, 43, 43)))
+                .addGap(55, 55, 55))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(194, 194, 194)
+                        .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(23, 23, 23)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -1213,20 +1230,24 @@ public class ViewProfile extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(btnTask)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(61, 61, 61)
-                                .addComponent(jButton4)))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(29, 29, 29)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnSecurity)
+                                .addGap(32, 32, 32))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnLeave)
+                                .addGap(31, 31, 31))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -1300,7 +1321,7 @@ public class ViewProfile extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnGenerateActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
         String filePath = "usertxt.txt";
         File file = new File(filePath);
 
@@ -1349,13 +1370,17 @@ public class ViewProfile extends javax.swing.JFrame {
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(profile.ViewProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnLeaveActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.dispose();
+    private void btnSecurityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSecurityActionPerformed
+       this.dispose();
         auth.Create create = new auth.Create();
         create.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnSecurityActionPerformed
+
+    private void btnTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaskActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTaskActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1394,12 +1419,13 @@ public class ViewProfile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanel1;
     private javax.swing.JButton btnGenerate;
+    private javax.swing.JButton btnLeave;
     private javax.swing.JComboBox<String> btnMonth;
+    private javax.swing.JButton btnSecurity;
+    private javax.swing.JButton btnTask;
     private javax.swing.JLabel header;
     private javax.swing.JLabel header1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

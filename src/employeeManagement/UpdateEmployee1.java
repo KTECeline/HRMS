@@ -25,6 +25,7 @@ import java.text.ParseException;
 import java.util.Date;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.TableModel;
 
 
 
@@ -160,6 +161,8 @@ private void loadTableData() {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        btnUpdate = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
@@ -205,14 +208,12 @@ private void loadTableData() {
         jLabel24 = new javax.swing.JLabel();
         txtEname = new javax.swing.JTextField();
         txtContact = new javax.swing.JTextField();
-        bthRefresh = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         txtWkTitle = new javax.swing.JTextField();
         txtResponsibilities = new javax.swing.JTextField();
-        btnUpdate = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
@@ -220,7 +221,9 @@ private void loadTableData() {
         jLabel29 = new javax.swing.JLabel();
         txtBankNo = new javax.swing.JTextField();
         txtBankNM = new javax.swing.JComboBox<>();
-        jButton14 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -228,6 +231,27 @@ private void loadTableData() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnUpdate.setBackground(new java.awt.Color(255, 153, 153));
+        btnUpdate.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
+        btnUpdate.setText("Update Account");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        mainPanel.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 610, 180, -1));
+
+        jButton14.setBackground(new java.awt.Color(255, 51, 51));
+        jButton14.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
+        jButton14.setText("Delete Account");
+        jButton14.setToolTipText("");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        mainPanel.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 610, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(128, 128, 128));
 
@@ -593,16 +617,6 @@ private void loadTableData() {
 
         mainPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 220, 170));
 
-        bthRefresh.setBackground(new java.awt.Color(153, 204, 255));
-        bthRefresh.setFont(new java.awt.Font("Sitka Text", 1, 12)); // NOI18N
-        bthRefresh.setText("Refresh Table ");
-        bthRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bthRefreshActionPerformed(evt);
-            }
-        });
-        mainPanel.add(bthRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, -1, -1));
-
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
@@ -655,16 +669,6 @@ private void loadTableData() {
         );
 
         mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 360, 130));
-
-        btnUpdate.setBackground(new java.awt.Color(255, 153, 153));
-        btnUpdate.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
-        btnUpdate.setText("Update Account");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        mainPanel.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 610, 180, -1));
 
         jLabel1.setFont(new java.awt.Font("Sitka Text", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 102));
@@ -722,16 +726,18 @@ private void loadTableData() {
 
         mainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 220, 170));
 
-        jButton14.setBackground(new java.awt.Color(255, 51, 51));
-        jButton14.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
-        jButton14.setText("Delete Account");
-        jButton14.setToolTipText("");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+        jTable2.setBorder(new javax.swing.border.MatteBorder(null));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
             }
-        });
-        mainPanel.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 610, -1, -1));
+        ));
+        jScrollPane4.setViewportView(jTable2);
+
+        jScrollPane3.setViewportView(jScrollPane4);
 
         jTable1.setBorder(new javax.swing.border.MatteBorder(null));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -742,16 +748,13 @@ private void loadTableData() {
 
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(jTable1);
 
         jScrollPane2.setViewportView(jScrollPane1);
 
-        mainPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 890, 130));
+        jScrollPane3.setViewportView(jScrollPane2);
+
+        mainPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 890, 130));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -762,16 +765,12 @@ private void loadTableData() {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bthRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bthRefreshActionPerformed
-        loadTableData();
-    }//GEN-LAST:event_bthRefreshActionPerformed
 
     private void txtRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRoleActionPerformed
 
@@ -780,6 +779,17 @@ private void loadTableData() {
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+
+        SearchEmployee createEmployee = new SearchEmployee();
+        createEmployee.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFullNameActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
 
@@ -814,40 +824,40 @@ private void loadTableData() {
             dateString = dateFormat.format(txtDateJoined.getDate());
         }
 
-        if (userID.isEmpty() || username.isEmpty() || password.isEmpty() || fullName.isEmpty() || gender.isEmpty() || 
-            phoneNumber.isEmpty() || maritalStatus.isEmpty() || nationality.isEmpty() || email.isEmpty() || 
-            address.isEmpty() || role.isEmpty() || position.isEmpty() || department.isEmpty() || 
-            employmentType.isEmpty() || workTitle.isEmpty() || workResponsibilities.isEmpty() || 
-            emergencyName.isEmpty() || emergencyPhoneNo.isEmpty() || birthDateString.isEmpty() || dateString.isEmpty() || 
+        if (userID.isEmpty() || username.isEmpty() || password.isEmpty() || fullName.isEmpty() || gender.isEmpty() ||
+            phoneNumber.isEmpty() || maritalStatus.isEmpty() || nationality.isEmpty() || email.isEmpty() ||
+            address.isEmpty() || role.isEmpty() || position.isEmpty() || department.isEmpty() ||
+            employmentType.isEmpty() || workTitle.isEmpty() || workResponsibilities.isEmpty() ||
+            emergencyName.isEmpty() || emergencyPhoneNo.isEmpty() || birthDateString.isEmpty() || dateString.isEmpty() ||
             bankName.isEmpty() || accountNumber.isEmpty()) {
 
             JOptionPane.showMessageDialog(null, "Error: All fields must be filled in before saving.");
-            return; 
+            return;
         }
 
-        String updatedBy = Session.getUserId(); 
+        String updatedBy = Session.getUserId();
 
         File file = new File("usertxt.txt");
         StringBuilder fileContent = new StringBuilder();
         boolean recordUpdated = false;
-        String previousRole = "";  
-        String previousPosition = ""; 
-        String previousDepartment = "";  
+        String previousRole = "";
+        String previousPosition = "";
+        String previousDepartment = "";
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
 
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data.length > 1 && data[0].equals(userID)) {
-                    previousRole = data[11]; 
-                    previousPosition = data[12];  
-                    previousDepartment = data[13];  
+                    previousRole = data[11];
+                    previousPosition = data[12];
+                    previousDepartment = data[13];
 
                     String currentRecord = userID + "," + username + "," + password + "," + fullName + "," + gender + "," +
-                         birthDateString + "," + phoneNumber + "," + maritalStatus + "," + nationality + "," +
-                         email + "," + address + "," + role + "," + position + "," + department + "," +
-                         dateString + "," + employmentType + "," + workTitle + "," + workResponsibilities + "," +
-                         emergencyName + "," + emergencyPhoneNo + "," + bankName + "," + accountNumber;
+                    birthDateString + "," + phoneNumber + "," + maritalStatus + "," + nationality + "," +
+                    email + "," + address + "," + role + "," + position + "," + department + "," +
+                    dateString + "," + employmentType + "," + workTitle + "," + workResponsibilities + "," +
+                    emergencyName + "," + emergencyPhoneNo + "," + bankName + "," + accountNumber;
 
                     String existingRecord = String.join(",", data);
 
@@ -869,18 +879,18 @@ private void loadTableData() {
 
         if (recordUpdated) {
             if (!previousRole.equals(role) || !previousPosition.equals(position) || !previousDepartment.equals(department)) {
-            String[] reasons = {"SKILL ALIGNMENT", "PROJECT NEEDS", "CAREER DEVELOPMENT", "PERFORMANCE IMPROVEMENT", "TEAM DYNAMICS"};
+                String[] reasons = {"SKILL ALIGNMENT", "PROJECT NEEDS", "CAREER DEVELOPMENT", "PERFORMANCE IMPROVEMENT", "TEAM DYNAMICS"};
 
-                   String reason = (String) JOptionPane.showInputDialog(
-                           null,
-                           "Please select a reason for updating the role/position/department:",
-                           "Update Reason",
-                           JOptionPane.QUESTION_MESSAGE,
-                           null,
-                           reasons, 
-                           reasons[0]); 
+                String reason = (String) JOptionPane.showInputDialog(
+                    null,
+                    "Please select a reason for updating the role/position/department:",
+                    "Update Reason",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    reasons,
+                    reasons[0]);
 
-                   if (reason != null && !reason.trim().isEmpty()) {
+                if (reason != null && !reason.trim().isEmpty()) {
                     File historyFile = new File("history.txt");
                     String historyId = "H001";
 
@@ -898,14 +908,14 @@ private void loadTableData() {
                                 if (data.length > 0) {
                                     try {
 
-                                        String lastHistoryId = data[0]; 
-                                        String numericPart = lastHistoryId.substring(1);  
-                                        int nextId = Integer.parseInt(numericPart) + 1; 
+                                        String lastHistoryId = data[0];
+                                        String numericPart = lastHistoryId.substring(1);
+                                        int nextId = Integer.parseInt(numericPart) + 1;
 
                                         historyId = String.format("H%03d", nextId);
                                     } catch (NumberFormatException e) {
                                         JOptionPane.showMessageDialog(null, "Error parsing history ID, starting from 1.");
-                                        historyId = "H001"; 
+                                        historyId = "H001";
                                     }
                                 }
                             }
@@ -917,12 +927,12 @@ private void loadTableData() {
                         historyId = "H001";
                     }
                     String rolePositionDepartment = "" + role + " : " + position + " (" + department + ")";
-                    
+
                     String timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
 
-                    String historyRecord = historyId + "," + updatedBy + "," + userID + 
-                            ","+previousRole+ ":" +previousPosition + " (" + previousDepartment + ")," +
-                            rolePositionDepartment + "," + reason + "," + timeStamp;
+                    String historyRecord = historyId + "," + updatedBy + "," + userID +
+                    ","+previousRole+ ":" +previousPosition + " (" + previousDepartment + ")," +
+                    rolePositionDepartment + "," + reason + "," + timeStamp;
 
                     try (FileWriter historyWriter = new FileWriter(historyFile, true)) {
                         historyWriter.append(historyRecord).append(System.getProperty("line.separator"));
@@ -952,81 +962,64 @@ private void loadTableData() {
         }
 
         loadTableData();
-
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-   
-    }//GEN-LAST:event_jTable1MouseClicked
-
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-                                    
-    String userID = txtUserId.getText().trim();
-    String fullName = txtFullName.getText().trim();
 
-    if (userID.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Error: User ID must be provided.");
-        return;
-    }
+        String userID = txtUserId.getText().trim();
+        String fullName = txtFullName.getText().trim();
 
-    // Confirm deletion with the user
-    int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the record for " + fullName + "?", 
-                                                 "Confirm Deletion", JOptionPane.YES_NO_OPTION);
-    if (response != JOptionPane.YES_OPTION) {
-        // User chose not to delete
-        return;
-    }
+        if (userID.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error: User ID must be provided.");
+            return;
+        }
 
-    // Read existing data and check for the record to delete
-    File file = new File("usertxt.txt");
-    StringBuilder fileContent = new StringBuilder();
-    boolean recordDeleted = false;
+        // Confirm deletion with the user
+        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the record for " + fullName + "?",
+            "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+        if (response != JOptionPane.YES_OPTION) {
+            // User chose not to delete
+            return;
+        }
 
-    try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-        String line;
+        // Read existing data and check for the record to delete
+        File file = new File("usertxt.txt");
+        StringBuilder fileContent = new StringBuilder();
+        boolean recordDeleted = false;
 
-        while ((line = br.readLine()) != null) {
-            String[] data = line.split(",");
-            if (data.length > 1 && data[0].equals(userID)) {
-                // Skip appending the line to delete it
-                recordDeleted = true;
-                continue; // Skip to the next line
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length > 1 && data[0].equals(userID)) {
+                    // Skip appending the line to delete it
+                    recordDeleted = true;
+                    continue; // Skip to the next line
+                }
+                fileContent.append(line).append(System.getProperty("line.separator"));
             }
-            fileContent.append(line).append(System.getProperty("line.separator"));
-        }
 
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(null, "Error reading data: " + e.getMessage());
-        return;
-    }
-
-    // If a record was deleted, write the updated content back to the file
-    if (recordDeleted) {
-        try (FileWriter writer = new FileWriter(file, false)) {
-            writer.write(fileContent.toString());
-            JOptionPane.showMessageDialog(null, "Record deleted successfully!");
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error reading data: " + e.getMessage());
+            return;
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "Error: User ID not found.");
-    }
 
-    loadTableData();
-                                      
+        // If a record was deleted, write the updated content back to the file
+        if (recordDeleted) {
+            try (FileWriter writer = new FileWriter(file, false)) {
+                writer.write(fileContent.toString());
+                JOptionPane.showMessageDialog(null, "Record deleted successfully!");
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: User ID not found.");
+        }
+
+        loadTableData();
 
     }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
-        SearchEmployee createEmployee = new SearchEmployee();
-        createEmployee.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnBackActionPerformed
-
-    private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFullNameActionPerformed
 
     
 
@@ -1065,14 +1058,6 @@ private void loadTableData() {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
@@ -1082,7 +1067,6 @@ private void loadTableData() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bthRefresh;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel header;
@@ -1123,7 +1107,10 @@ private void loadTableData() {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextField txtAddress;
     private com.toedter.calendar.JDateChooser txtBOD;
