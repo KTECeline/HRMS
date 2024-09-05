@@ -195,6 +195,9 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
     private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
         // TODO add your handling code here:
+        leaveManagement.ApplyLeave leave = new leaveManagement.ApplyLeave();
+leave.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_btnLeaveActionPerformed
 
     /**
