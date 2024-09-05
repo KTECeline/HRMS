@@ -174,6 +174,8 @@ auth.Reset reset= new  auth.Reset();
     boolean isAuthenticated = false;
     String role = "";
     String userId = "";
+    String Dept = "";
+    String gender = "";
 
     try {
         FileReader fr = new FileReader("usertxt.txt");
@@ -188,6 +190,8 @@ auth.Reset reset= new  auth.Reset();
                 String pw = parts[2].trim();
                 String id = parts[0].trim();  // User ID
                 String currentRole = parts[11].trim(); // Role
+                String department = parts[13].trim();
+                String gd = parts [4].trim();
 
                 // Log information for debugging
            
@@ -195,6 +199,8 @@ auth.Reset reset= new  auth.Reset();
                     isAuthenticated = true;
                     userId = id;  // Correctly get the user ID
                     role = currentRole; // Correctly get the role
+                    Dept = department;
+                    gender = gd;
                     break;  // Break loop after finding the correct user
                 }
             }
@@ -205,12 +211,14 @@ auth.Reset reset= new  auth.Reset();
             loginAttempts.remove(username);
             
             // Create the session with the correct userId, role, and username
-            Session.createSession(userId, role, username);  
+            Session.createSession(userId, role, username, gender, Dept);  
             
             // Print session data for debugging
             System.out.println("Session User ID: " + Session.getUserId());
             System.out.println("Session Role: " + Session.getRole());
             System.out.println("Session Username: " + Session.getUsername());
+            System.out.println("Session Gender: " + Session.getGender());
+            System.out.println("Session Department: " + Session.getDept());
             
             // Open the appropriate dashboard based on role
             switch(role){

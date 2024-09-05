@@ -21,8 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import TaskManagement.Session;
-
+import auth.Session;
 /**
  *
  * @author jinyi
@@ -56,7 +55,7 @@ public class CancelTask extends javax.swing.JFrame {
         String[] columnsName = firstLine.split(",");
 
         List<Integer> columnsToDisplay = new ArrayList<>();
-        int[] selectedColumns = { 1,2, 3, 4, 5, 6, 7};
+        int[] selectedColumns = { 1,2, 3, 4, 5, 6};
         for (int index : selectedColumns) {
                 columnsToDisplay.add(index);
         }

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import TaskManagement.Session;
+import auth.Session;
 
 /**
  *
@@ -48,9 +48,8 @@ public class ViewTask extends javax.swing.JFrame {
     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
         String firstLine = br.readLine().trim();
         String[] columnsName = firstLine.split(",");
-        int roleColumnIndex = 1;
         List<Integer> columnsToDisplay = new ArrayList<>();
-        int[] selectedColumns = {1, 2, 3, 4, 5, 6, 7}; // Specify column indices to display
+        int[] selectedColumns = {1, 2, 3, 4, 5, 6}; // Specify column indices to display
         for (int index : selectedColumns) {
             columnsToDisplay.add(index);
         }
@@ -79,9 +78,12 @@ public class ViewTask extends javax.swing.JFrame {
             try {
                 String dept = Session.Dept.trim();
                 System.out.println(dept);
-                String roleColumn = dataRow[roleColumnIndex].trim();
-                if (roleColumn.equalsIgnoreCase(dept)) {
+                String roleColumn = dataRow[1].trim();
+                System.out.println("Dept from session: " + dept);
+                System.out.println("Dept from file: " + roleColumn);
+                if (roleColumn.equals(dept)) {
                     // Create a new array for the filtered data
+                    System.out.println("roleColumn" + roleColumn);
                     String[] filteredDataRow = new String[columnsToDisplay.size()];
                     for (int i = 0; i < columnsToDisplay.size(); i++) {
                         filteredDataRow[i] = dataRow[columnsToDisplay.get(i)];

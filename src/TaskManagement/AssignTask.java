@@ -4,27 +4,12 @@
  */
 package TaskManagement;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.FileWriter;
 import javax.swing.JOptionPane;
 import java.util.Date;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import javax.imageio.ImageIO;
-import TaskManagement.Session;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
+import auth.Session;
 
 /**
  *
@@ -164,7 +149,7 @@ public class AssignTask extends javax.swing.JFrame {
         jLabel6.setText("Department    :");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 178, -1));
 
-        department.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sales ", "IT ", "Marketing " }));
+        department.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sales", "IT", "Marketing" }));
         getContentPane().add(department, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 390, -1));
 
         pack();
@@ -173,7 +158,6 @@ public class AssignTask extends javax.swing.JFrame {
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
      String id= Session.userId;
      String Department =department.getSelectedItem().toString();
-     String username = Session.username;
      String Task = task.getText()  ;
      String Details= txtdetails.getText()  ;
      Date Start= (Date) startDate.getDate();
@@ -204,7 +188,7 @@ public class AssignTask extends javax.swing.JFrame {
     
         try {
             FileWriter writer = new FileWriter("task.txt",true);
-            writer.write(id + "," + username + "," + Department + "," + Task + "," + startFormatted + "," + endFormatted + ","  + Details +"," + assign + "\n");
+            writer.write(id + "," + Department + "," + Task + "," + startFormatted + "," + endFormatted + ","  + Details +"," + assign + "\n");
             writer.close();
             JOptionPane.showMessageDialog(this, "Task has been assigned");
             txtdetails.setText("");
