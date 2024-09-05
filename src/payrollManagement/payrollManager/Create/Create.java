@@ -893,7 +893,7 @@ public class Create extends javax.swing.JFrame {
     private boolean recordExistsForMonthAndYear(String month, String year) throws IOException {
         Set<String> existingRecords = new HashSet<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("../HRMS_2/src/payrollManagement/payroll.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("payroll.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");

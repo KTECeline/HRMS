@@ -72,7 +72,7 @@ public class Update extends javax.swing.JFrame {
     }
     
     private void loadTableData() {
-        String filePath = "../HRMS_2/Src/payrollManagement/payroll.txt";
+        String filePath = "payroll.txt";
         File file = new File(filePath);
 
         try {
@@ -697,7 +697,7 @@ public class Update extends javax.swing.JFrame {
             return;
         }
 
-        File file = new File("../HRMS_2/Src/payrollManagement/payroll.txt");
+        File file = new File("payroll.txt");
         StringBuilder fileContent = new StringBuilder();
         boolean recordUpdated = false;
 
@@ -878,7 +878,7 @@ public class Update extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         String searchText = btnSearch.getText().trim().toLowerCase(); 
-        String filePath = "../HRMS_2/Src/payrollManagement/payroll.txt";
+        String filePath = "payroll.txt";
         File file = new File(filePath);
 
         try {
@@ -916,7 +916,7 @@ public class Update extends javax.swing.JFrame {
     
         String payrollID = table.getValueAt(selectedRow, 0).toString(); 
 
-        String filePath = "../HRMS_2/Src/payrollManagement/payroll.txt";
+        String filePath = "payroll.txt";
         File file = new File(filePath);
 
         try {

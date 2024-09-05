@@ -95,7 +95,7 @@ public class PayrollDashboard extends javax.swing.JFrame {
 
         title.setFont(new java.awt.Font("Sitka Text", 2, 36)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title.setText("Payroll Management System");
+        title.setText("Payroll Management");
         mainPanel.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 740, 50));
 
         updateText.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
