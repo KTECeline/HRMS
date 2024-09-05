@@ -429,12 +429,9 @@ private void loadTableData() {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtUserId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(txtUserId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtAddress))))
                 .addGap(216, 216, 216))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(207, 207, 207))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -482,13 +479,13 @@ private void loadTableData() {
                     .addComponent(jLabel26)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel25)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 270, 400));
+        mainPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 270, 380));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -586,7 +583,7 @@ private void loadTableData() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 360, 210));
+        mainPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 360, 210));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -633,7 +630,7 @@ private void loadTableData() {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, 210, 170));
+        mainPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, 210, 170));
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -684,7 +681,7 @@ private void loadTableData() {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 530, 360, 140));
+        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 360, 140));
 
         jButton16.setBackground(new java.awt.Color(255, 153, 153));
         jButton16.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
@@ -694,7 +691,7 @@ private void loadTableData() {
                 jButton16ActionPerformed(evt);
             }
         });
-        mainPanel.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 180, -1));
+        mainPanel.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 180, -1));
 
         jPanel6.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -743,7 +740,7 @@ private void loadTableData() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, 210, 170));
+        mainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 210, 170));
 
         jTable1.setBorder(new javax.swing.border.MatteBorder(null));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -766,11 +763,11 @@ private void loadTableData() {
 
         jScrollPane2.setViewportView(jScrollPane1);
 
-        mainPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 910, 170));
+        mainPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 910, 150));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         jLabel1.setText("Press Update Account to initialize the updating and deleting process");
-        mainPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
+        mainPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
 
         DltBTN.setBackground(new java.awt.Color(255, 51, 51));
         DltBTN.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
@@ -781,7 +778,7 @@ private void loadTableData() {
                 DltBTNActionPerformed(evt);
             }
         });
-        mainPanel.add(DltBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 250, -1, -1));
+        mainPanel.add(DltBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 230, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -792,8 +789,8 @@ private void loadTableData() {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
