@@ -9,55 +9,51 @@ import auth.Session;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 import javax.swing.table.TableColumn;
 
 /**
  *
  * @author leopa
  */
-public class Logs extends javax.swing.JFrame {
+public class AttendanceLog extends javax.swing.JFrame {
     
     private DefaultTableModel tableModel;
 
     /**
      * Creates new form UnlockUser
      */
-    public Logs() {
+    public AttendanceLog() {
         initComponents();
         String username = Session.getUsername();
         String role = Session.getRole();
         
-        empName6.setText(username);
+        empName.setText(username);
         roleLabel.setText(role);
         LoadData();
     }
     
     public void LoadData(){
-    DefaultTableModel logTableModel = (DefaultTableModel) LogTable.getModel();
+    DefaultTableModel logTableModel = (DefaultTableModel) AttendanceTable.getModel();
     logTableModel.setRowCount(0); // Clear the table model
 
-    try (BufferedReader br = new BufferedReader(new FileReader("history.txt"))) {
+    try (BufferedReader br = new BufferedReader(new FileReader("attendance.txt"))) {
         String line;
-        br.readLine();
+        
         while ((line = br.readLine()) != null) {
             String[] parts = line.split(",");
             logTableModel.addRow(parts);
         }
         
-        TableColumn column0 = LogTable.getColumnModel().getColumn(0);
+        TableColumn column0 = AttendanceTable.getColumnModel().getColumn(0);
         column0.setPreferredWidth(30);
-        TableColumn column1 = LogTable.getColumnModel().getColumn(1);
+        TableColumn column1 = AttendanceTable.getColumnModel().getColumn(1);
         column1.setPreferredWidth(15);
-        TableColumn column2 = LogTable.getColumnModel().getColumn(2);
+        TableColumn column2 = AttendanceTable.getColumnModel().getColumn(2);
         column2.setPreferredWidth(15);
-        TableColumn column3 = LogTable.getColumnModel().getColumn(3);
+        TableColumn column3 = AttendanceTable.getColumnModel().getColumn(3);
         column3.setPreferredWidth(50);
-        TableColumn column4 = LogTable.getColumnModel().getColumn(4);
+        TableColumn column4 = AttendanceTable.getColumnModel().getColumn(4);
         column4.setPreferredWidth(50);
     } catch (IOException e) {
         System.err.println("Error reading history.txt: " + e.getMessage());
@@ -65,33 +61,56 @@ public class Logs extends javax.swing.JFrame {
 }
     
     public void filterData(String filterOption){
-        DefaultTableModel logTableModel = (DefaultTableModel) LogTable.getModel();
-        logTableModel.setRowCount(0);
+        DefaultTableModel atTableModel = (DefaultTableModel) AttendanceTable.getModel();
+        atTableModel.setRowCount(0);
+        HashMap<String,String> userRoles = new HashMap<>();
         
-        try(BufferedReader br = new BufferedReader( new FileReader("history.txt"))){
-            br.readLine();
+        
+        try(BufferedReader br = new BufferedReader( new FileReader("usertxt.txt") )){
             String line;
-            
+            br.readLine();
             while ((line =br.readLine()) !=null){
-                String[]parts=line.split(",");
-                String firstColumnData=parts[0];
+                String[]userParts=line.split(",");
                 
-            
+                if (userParts.length >=12){
+                    String userID = userParts[0];
+                    String userRole = userParts[11];
+                    userRoles.put(userID, userRole);
+                } else {
+                    System.err.println("Invalid user data:" + line);
+                }
+            }
+            } catch (IOException e){
+                System.err.println("Error reading usertxt.txt:" + e.getMessage());
+                return;
+            }
+           
+            try(BufferedReader br = new BufferedReader( new FileReader("attendance.txt") )){
+            String line;
+            while ((line =br.readLine()) !=null){
+                String[] atParts=line.split(",");
+                
+                if (atParts.length <2){
+                    continue;
+                }
+                String attendanceUserID = atParts[1];
+                String userRole=userRoles.get(attendanceUserID);
+                if(userRole ==null){
+                    continue;
+                }
             switch(filterOption){
                 case "All":
-                    logTableModel.addRow(parts);
+                    atTableModel.addRow(atParts);
                     break;
-                case "History":
-                    if(firstColumnData.startsWith("H")){
-                        logTableModel.addRow(parts);
+                case "Admin":
+               case "HR Officer":
+                 case "Payroll Officer":
+                case "Department Manager":
+              case "Employee":
+                    if(userRole.equals(filterOption)){
+                        atTableModel.addRow(atParts);
                     }
                     break;
-               case "Payroll":
-                    if(firstColumnData.startsWith("P")){
-                        logTableModel.addRow(parts);
-                    }
-                    break;
-              
                 default:
                     break;
             }
@@ -120,25 +139,23 @@ public class Logs extends javax.swing.JFrame {
         empName3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
-        empName4 = new javax.swing.JLabel();
-        empName5 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        header1 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        LogTable = new javax.swing.JTable();
-        FilterBox = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         btnProfile = new javax.swing.JButton();
+        empName = new javax.swing.JLabel();
         roleLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        empName2 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        empName6 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        header1 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        AttendanceTable = new javax.swing.JTable();
+        FilterBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         sidePanel1.setBackground(new java.awt.Color(0, 0, 0));
         sidePanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -220,81 +237,9 @@ public class Logs extends javax.swing.JFrame {
 
         sidePanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 860, 50));
 
-        empName4.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        empName4.setText("EmpName");
-        empName4.setToolTipText("");
-
-        empName5.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        empName5.setText("EmpName");
-        empName5.setToolTipText("");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(128, 128, 128));
-
-        header1.setBackground(new java.awt.Color(255, 242, 242));
-        header1.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
-        header1.setForeground(new java.awt.Color(255, 255, 255));
-        header1.setText("Admin Panel");
-        header1.setToolTipText("");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(348, 348, 348)
-                .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(356, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(header1)
-                .addContainerGap())
-        );
-
-        LogTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "History ID", "Changed by", "User ID", "Old", "New", "Reason", "Date"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(LogTable);
-
-        jScrollPane3.setViewportView(jScrollPane2);
-
-        FilterBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Payroll", "History" }));
-        FilterBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FilterBoxActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jLabel1.setText("History Logs of every Changes");
-
-        sidePanel.setBackground(new java.awt.Color(128, 128, 128));
+        sidePanel.setBackground(new java.awt.Color(0, 0, 0));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnProfile.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
@@ -306,6 +251,11 @@ public class Logs extends javax.swing.JFrame {
             }
         });
         sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
+
+        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName.setForeground(new java.awt.Color(242, 242, 242));
+        empName.setToolTipText("");
+        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         roleLabel.setForeground(new java.awt.Color(242, 242, 242));
@@ -336,6 +286,11 @@ public class Logs extends javax.swing.JFrame {
         });
         sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 130, 50));
 
+        empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName2.setText("EmpName");
+        empName2.setToolTipText("");
+        sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+
         jButton7.setText("Annoucement");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -352,19 +307,70 @@ public class Logs extends javax.swing.JFrame {
         });
         sidePanel.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, 50));
 
-        empName6.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName6.setForeground(new java.awt.Color(255, 255, 255));
-        empName6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        empName6.setText("EmpName");
-        empName6.setToolTipText("");
-        sidePanel.add(empName6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
-        jButton9.setText("Attendances Log");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+        header1.setBackground(new java.awt.Color(255, 242, 242));
+        header1.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
+        header1.setForeground(new java.awt.Color(255, 255, 255));
+        header1.setText("Admin Panel");
+        header1.setToolTipText("");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(348, 348, 348)
+                .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(356, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(header1)
+                .addContainerGap())
+        );
+
+        AttendanceTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Attendance ID", "User ID", "Clock In", "Clock Out", "Date", "Overtime", "Undertime", "Total Time"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jScrollPane2.setViewportView(AttendanceTable);
+        if (AttendanceTable.getColumnModel().getColumnCount() > 0) {
+            AttendanceTable.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jScrollPane3.setViewportView(jScrollPane2);
+
+        FilterBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Admin", "HR Officer", "Payroll Officer", "Department Manager", "Employee" }));
+        FilterBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FilterBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel1.setText("Attendance Log");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -374,15 +380,14 @@ public class Logs extends javax.swing.JFrame {
                 .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(102, 102, 102)
-                                .addComponent(FilterBox, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(172, 172, 172)
+                            .addComponent(FilterBox, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(72, 72, 72)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         layout.setVerticalGroup(
@@ -395,12 +400,11 @@ public class Logs extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton9)
-                            .addComponent(FilterBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FilterBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(36, 36, 36)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37))))
         );
@@ -431,11 +435,6 @@ public class Logs extends javax.swing.JFrame {
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
-        profile.ProfileButton profileLoader = new profile.ProfileButton();
-       profile.ViewProfile viewprofile = new profile.ViewProfile();
-         
-        profileLoader.onViewProfileButtonClick(viewprofile); 
-        this.dispose();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -480,13 +479,6 @@ this.dispose();
         
     }//GEN-LAST:event_FilterBoxActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-        adminManagement.Logs.AttendanceLog ATLog = new adminManagement.Logs.AttendanceLog();
-ATLog.setVisible(true);
-this.dispose();
-    }//GEN-LAST:event_jButton9ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -504,14 +496,38 @@ this.dispose();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Logs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AttendanceLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Logs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AttendanceLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Logs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AttendanceLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Logs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AttendanceLog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -524,21 +540,20 @@ this.dispose();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Logs().setVisible(true);
+                new AttendanceLog().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable AttendanceTable;
     private javax.swing.JComboBox<String> FilterBox;
-    private javax.swing.JTable LogTable;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnProfile1;
+    private javax.swing.JLabel empName;
     private javax.swing.JLabel empName1;
+    private javax.swing.JLabel empName2;
     private javax.swing.JLabel empName3;
-    private javax.swing.JLabel empName4;
-    private javax.swing.JLabel empName5;
-    private javax.swing.JLabel empName6;
     private javax.swing.JLabel header;
     private javax.swing.JLabel header1;
     private javax.swing.JButton jButton1;
@@ -549,7 +564,6 @@ this.dispose();
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
