@@ -1,20 +1,32 @@
 package auth;
 
 public class Session {
-    private static String userId;
-    private static String role;
-    private static String username;
+    public static String userId;
+    public static String role;
+    public static String username;
+    public static String gender;
+    public static String Dept;
     private static boolean isLoggedIn;
 
-    public static void createSession(String userId, String role, String username) {
+    public static void createSession(String userId, String role, String username, String gender, String Dept) {
         Session.userId = userId;
         Session.role = role;
         Session.username = username;
+        Session.gender = gender;
+        Session.Dept = Dept;
         Session.isLoggedIn = true;
     }
 
     public static String getUserId() {
         return userId;
+    }
+    
+    public static String getDept(){
+        return Dept;
+    }
+    
+    public static String getGender(){
+        return gender;
     }
 
     public static String getRole() {

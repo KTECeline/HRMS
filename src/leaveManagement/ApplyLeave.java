@@ -4,23 +4,14 @@
  */
 package leaveManagement;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.FileWriter;
 import javax.swing.JOptionPane;
 import java.util.Date;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import javax.imageio.ImageIO;
-import leaveManagement.Session;
+import auth.Session;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
