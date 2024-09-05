@@ -78,11 +78,11 @@ public class HRDashboard extends javax.swing.JFrame {
         btnProfile = new javax.swing.JButton();
         roleLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAnnoucement = new javax.swing.JButton();
         btnlogout = new javax.swing.JButton();
         empName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btnAttendance = new javax.swing.JButton();
         btnHistory = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
@@ -94,7 +94,6 @@ public class HRDashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btn2 = new javax.swing.JButton();
         btn3 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         TotalEmployee = new javax.swing.JLabel();
@@ -129,13 +128,13 @@ public class HRDashboard extends javax.swing.JFrame {
         });
         sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 50));
 
-        jButton2.setText("Accouncements");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAnnoucement.setText("Accouncements");
+        btnAnnoucement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAnnoucementActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 130, 50));
+        sidePanel.add(btnAnnoucement, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 130, 50));
 
         btnlogout.setText("Log Out");
         btnlogout.addActionListener(new java.awt.event.ActionListener() {
@@ -156,13 +155,13 @@ public class HRDashboard extends javax.swing.JFrame {
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         sidePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 10, 150, 120));
 
-        jButton4.setText("Attendance");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnAttendance.setText("Attendance");
+        btnAttendance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnAttendanceActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
+        sidePanel.add(btnAttendance, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
 
         btnHistory.setText("History ");
         btnHistory.addActionListener(new java.awt.event.ActionListener() {
@@ -244,10 +243,6 @@ public class HRDashboard extends javax.swing.JFrame {
         });
         mainPanel.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 200, 200));
 
-        jLabel8.setFont(new java.awt.Font("Sitka Text", 3, 24)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        mainPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 520, 190, -1));
-
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(153, 153, 153)));
 
@@ -308,9 +303,11 @@ public class HRDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnAnnoucementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnoucementActionPerformed
+        adminManagement.DisplayA.DisplayAnnoucement diplayAnnoucement = new adminManagement.DisplayA.DisplayAnnoucement();
+        diplayAnnoucement.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAnnoucementActionPerformed
 
     private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
     auth.Session.logout();
@@ -337,9 +334,11 @@ public class HRDashboard extends javax.swing.JFrame {
         searchEmployee.setVisible(true);
     }//GEN-LAST:event_btn3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttendanceActionPerformed
+        attendanceManagement.Attendance attendance = new attendanceManagement.Attendance();
+        attendance.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAttendanceActionPerformed
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
 
@@ -394,21 +393,20 @@ public class HRDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
     private javax.swing.JButton btn3;
+    private javax.swing.JButton btnAnnoucement;
+    private javax.swing.JButton btnAttendance;
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnlogout;
     private javax.swing.JLabel empName;
     private javax.swing.JLabel header;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
