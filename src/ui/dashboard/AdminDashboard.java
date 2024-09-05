@@ -19,7 +19,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     public AdminDashboard() {
         initComponents();
         String username = Session.getUsername();
-        empName.setText(username);
+        empName1.setText(username);
         
         
         int totalEmployee=DataRowCounter.countEmployees("usertxt.txt");
@@ -55,14 +55,13 @@ public class AdminDashboard extends javax.swing.JFrame {
         txtLeave = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         btnProfile = new javax.swing.JButton();
-        empName = new javax.swing.JLabel();
         roleLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        empName2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        empName1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -126,11 +125,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
 
-        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName.setForeground(new java.awt.Color(242, 242, 242));
-        empName.setToolTipText("");
-        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
         roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         roleLabel.setForeground(new java.awt.Color(242, 242, 242));
         roleLabel.setText("Admin");
@@ -160,10 +154,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 130, 50));
 
-        empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName2.setToolTipText("");
-        sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
         jButton4.setText("Announcements");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,6 +169,13 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         sidePanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 50));
+
+        empName1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName1.setForeground(new java.awt.Color(255, 255, 255));
+        empName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        empName1.setText("EmpName");
+        empName1.setToolTipText("");
+        sidePanel.add(empName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 
@@ -482,8 +479,7 @@ this.dispose();
     private javax.swing.JButton btn3;
     private javax.swing.JButton btn4;
     private javax.swing.JButton btnProfile;
-    private javax.swing.JLabel empName;
-    private javax.swing.JLabel empName2;
+    private javax.swing.JLabel empName1;
     private javax.swing.JLabel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
