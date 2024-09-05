@@ -217,6 +217,11 @@ public class ViewProfile extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(153, 204, 255));
         jButton4.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jButton4.setText("Create Security Question");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(128, 128, 128));
 
@@ -1345,6 +1350,12 @@ public class ViewProfile extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(profile.ViewProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+        auth.Create create = new auth.Create();
+        create.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
