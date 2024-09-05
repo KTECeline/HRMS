@@ -15,6 +15,7 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -22,7 +23,7 @@ import java.util.Date;
         
 
 public class DataRowCounter {
-
+private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd"); 
     public static int countRowsInFile(String filename) {
         int rows = 0;
         try {
@@ -61,21 +62,29 @@ public class DataRowCounter {
     
     public static int countLeaveonDay (){     
      int rowCount = 0;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String today = dateFormat.format(new Date());
+        
+        String today = DATE_FORMAT.format(new Date());
         
         try (BufferedReader reader = new BufferedReader(new FileReader("leave.txt"))) {
             String line;
+            boolean isFirstLine = true;
             while ((line = reader.readLine()) != null) {
-                // Assuming each line is a CSV and date is in the 5th column (start date)
+                
+
+                if (isFirstLine) {
+                    isFirstLine = false; // Skip the first line if it is a header
+                    continue;
+                }
                 String[] columns = line.split(",");
                 if (columns.length > 5) {
-                    String startDate = columns[4];
-                    String endDate = columns[5];
+                    String startDateStr = columns[4].trim();
+                    String endDateStr = columns[5].trim();
                     
                     // Check if today is within the start and end dates
-                    if (isDateInRange(today, startDate, endDate)) {
-                        rowCount++;
+                    if (!startDateStr.equals("Start Date") && !endDateStr.equals("End Date")) {
+                        if (isDateInRange(today, startDateStr, endDateStr)) {
+                            rowCount++;
+                        }
                     }
                 }
             }
@@ -87,19 +96,18 @@ public class DataRowCounter {
     }
     private static boolean isDateInRange(String date, String startDate, String endDate) {
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date dateToCheck = dateFormat.parse(date);
-            Date start = dateFormat.parse(startDate);
-            Date end = dateFormat.parse(endDate);
+            Date dateToCheck = DATE_FORMAT.parse(date);
+            Date start = DATE_FORMAT.parse(startDate);
+            Date end = DATE_FORMAT.parse(endDate);
             return !dateToCheck.before(start) && !dateToCheck.after(end);
-        } catch (Exception e) {
-            e.printStackTrace(); // Handle date parsing errors
-            return false;
+        } catch (ParseException e) {
+            System.err.println("Date parsing error: " + e.getMessage());
+            return false; // Return false if there's a parsing error
         }
     }
     
     public static void main(String[] args) {
-        int count = countLeaveonDay();
+        int count = countLeaveonDay ();
         System.out.println("Number of people on leave today: " + count);
     }
 }
