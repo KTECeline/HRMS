@@ -415,7 +415,7 @@ this.dispose();
      
         auth.Create CreateSecurityQ = new auth.Create();
 CreateSecurityQ.setVisible(true);
-this.dispose();
+
     }//GEN-LAST:event_SQBTNActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
