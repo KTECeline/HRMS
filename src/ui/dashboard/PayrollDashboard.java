@@ -284,12 +284,9 @@ public class PayrollDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLeaveActionPerformed
 
     private void btnAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttendanceActionPerformed
-        java.awt.EventQueue.invokeLater(new Runnable() {
-           public void run() {
-               new attendanceManagement.Attendance().setVisible(true);
-               dispose();
-           }
-       });
+        attendanceManagement.Attendance attendance = new attendanceManagement.Attendance();
+        attendance.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAttendanceActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
@@ -361,12 +358,9 @@ public class PayrollDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProfile2ActionPerformed
 
     private void btnAnnouncementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnouncementsActionPerformed
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new adminManagement.DisplayA.DisplayAnnoucement().setVisible(true);
-                dispose();    
-            }
-        });
+        adminManagement.DisplayA.DisplayAnnoucement diplayAnnoucement = new adminManagement.DisplayA.DisplayAnnoucement();
+        diplayAnnoucement.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAnnouncementsActionPerformed
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
@@ -401,6 +395,18 @@ public class PayrollDashboard extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PayrollDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

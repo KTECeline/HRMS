@@ -9,8 +9,11 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -630,9 +633,54 @@ public class Payslip extends javax.swing.JFrame {
     }
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        payrollManagement.payrollManager.Payslip.SearchPayslip search= new payrollManagement.payrollManager.Payslip.SearchPayslip();
-        search.setVisible(true);
-        dispose();
+        String filePath = "usertxt.txt";
+        File file = new File(filePath);
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            String userId = auth.Session.getUserId(); 
+
+            while ((line = br.readLine()) != null) {
+                String[] dataRow = line.split(",");
+
+                if (dataRow[0].equals(userId)) {
+                    String userID = dataRow[0];
+                    String username = dataRow[1];
+                    String password = dataRow[2];
+                    String fullName = dataRow[3];
+                    String gender = dataRow[4];
+                    String dateOfBirth = dataRow[5];
+                    String phoneNumber = dataRow[6];
+                    String maritalStatus = dataRow[7];
+                    String nationality = dataRow[8];
+                    String email = dataRow[9];
+                    String address = dataRow[10];
+                    String role = dataRow[11];
+                    String position = dataRow[12];
+                    String department = dataRow[13];
+                    String datejoined = dataRow[14];
+                    String employmentType = dataRow[15];
+                    String workTitle = dataRow[16];
+                    String workResponsibilities = dataRow[17];
+                    String emergencyName = dataRow[18];
+                    String emergencyPhoneNo = dataRow[19];
+                    String bankName = dataRow[20];
+                    String accountNumber = dataRow[21];
+                    
+                    
+                    profile.ViewProfile viewprofile = new profile.ViewProfile();              
+                    viewprofile.setLabelValues(userID, username, password,fullName, gender, dateOfBirth,
+                           phoneNumber, maritalStatus, nationality, email, address,
+                           role, position, department, datejoined, employmentType,
+                           workTitle, workResponsibilities, emergencyName, emergencyPhoneNo,
+                           bankName, accountNumber);
+                    viewprofile.setVisible(true);
+                    this.dispose();
+                }
+            }
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(profile.ViewProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadActionPerformed
@@ -674,11 +722,11 @@ public class Payslip extends javax.swing.JFrame {
             g2d.dispose();
 
             String timestamp = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss").format(new Date());
-            String imagePath = "HRMS_2\\src\\payrollManagement\\payrollEmployee\\PayslipFiles\\pdf\\payslip_" + timestamp + ".png";
+            String imagePath = "C:\\Users\\Yeong Huey Yee\\OneDrive\\Documents\\NetBeansProjects\\assignment\\src\\payrollManagement\\payrollEmployee\\PayslipFiles\\png\\2024\\payslip_" + timestamp + ".png";
             ImageIO.write(bi, "png", new File(imagePath));
 
             Document document = new Document(PageSize.A4.rotate());
-            String pdfPath = "HRMS_2\\src\\payrollManagement\\payrollEmployee\\PayslipFiles\\png\\payslip_" + timestamp + ".pdf";
+            String pdfPath = "C:\\Users\\Yeong Huey Yee\\OneDrive\\Documents\\NetBeansProjects\\assignment\\src\\payrollManagement\\payrollEmployee\\PayslipFiles\\pdf\\2024\\payslip_" + timestamp + ".pdf";
             PdfWriter.getInstance(document, new FileOutputStream(pdfPath));
             document.open();
 

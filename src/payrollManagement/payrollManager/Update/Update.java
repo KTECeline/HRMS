@@ -42,7 +42,7 @@ public class Update extends javax.swing.JFrame {
         });
     }
     
-     public void setButtonValues(String PayrollID, String EmpID, String EmpName, String Year, String Month, String BSalary, String Allowance, 
+    public void setButtonValues(String PayrollID, String EmpID, String EmpName, String Year, String Month, String BSalary, String Allowance, 
                                  String OT, String LatePen, String GSalary, String YeeEPF, String YeeSosco, String YeeEIS, String YeePCB, 
                                  String YeeTDeduction, String YeeNetSalary, String YerEPF, String YerSosco, String YerEIS, String YerCon, 
                                  String BankName, String BankAccount) {
@@ -167,6 +167,8 @@ public class Update extends javax.swing.JFrame {
         btnBankName = new javax.swing.JTextField();
         btnEmpName = new javax.swing.JTextField();
         btnYear = new javax.swing.JTextField();
+        UnpaidLeave = new javax.swing.JLabel();
+        btnUnpaidLeave = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -644,6 +646,17 @@ public class Update extends javax.swing.JFrame {
         });
         mainPanel.add(btnYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 142, -1));
 
+        UnpaidLeave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        UnpaidLeave.setText("Total unpaid leave      :");
+        mainPanel.add(UnpaidLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, -1, -1));
+
+        btnUnpaidLeave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUnpaidLeaveActionPerformed(evt);
+            }
+        });
+        mainPanel.add(btnUnpaidLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 220, 170, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1100,6 +1113,10 @@ public class Update extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnYearActionPerformed
 
+    private void btnUnpaidLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnpaidLeaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUnpaidLeaveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1129,6 +1146,10 @@ public class Update extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1143,6 +1164,7 @@ public class Update extends javax.swing.JFrame {
     private javax.swing.JTabbedPane EmpTab;
     private javax.swing.JLabel GSalary;
     private javax.swing.JLabel OT;
+    private javax.swing.JLabel UnpaidLeave;
     private javax.swing.JLabel YeeAmount;
     private javax.swing.JLabel YeeAmount1;
     private javax.swing.JLabel YerAmount;
@@ -1162,6 +1184,7 @@ public class Update extends javax.swing.JFrame {
     private javax.swing.JTextField btnOT;
     private javax.swing.JTextField btnPayrollID;
     private javax.swing.JTextField btnSearch;
+    private javax.swing.JTextField btnUnpaidLeave;
     private javax.swing.JButton btnUpEmp;
     private javax.swing.JTextField btnYear;
     private javax.swing.JTextField btnYeeEIS;
