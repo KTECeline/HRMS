@@ -35,6 +35,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         empName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnLogOut = new javax.swing.JButton();
+        btnLogOut1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -74,14 +75,22 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 btnLogOutActionPerformed(evt);
             }
         });
-        sidePanel.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 130, 50));
+        sidePanel.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 130, 50));
+
+        btnLogOut1.setText("Task");
+        btnLogOut1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogOut1ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(btnLogOut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 130, 50));
 
         mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 
         jPanel1.setBackground(new java.awt.Color(128, 128, 128));
 
         header.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
-        header.setText("HUMAN RESOURCE MANAGEMENT SYSTEM");
+        header.setText("EMPLOYEE MANAGEMENT SYSTEM");
         header.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -196,11 +205,22 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnnoucementActionPerformed
 
     private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
-        // TODO add your handling code here:
-        leaveManagement.ApplyLeave leave = new leaveManagement.ApplyLeave();
-leave.setVisible(true);
-this.dispose();
+    java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new leaveManagement.ApplyLeave().setVisible(true);
+            }
+        });  
+    this.dispose();     // TODO add your handling code here:
     }//GEN-LAST:event_btnLeaveActionPerformed
+
+    private void btnLogOut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOut1ActionPerformed
+     java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TaskManagement.ViewTask().setVisible(true);
+            }
+        });  
+    this.dispose();    // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogOut1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,6 +277,7 @@ this.dispose();
     private javax.swing.JButton btnAttendance;
     private javax.swing.JButton btnLeave;
     private javax.swing.JButton btnLogOut;
+    private javax.swing.JButton btnLogOut1;
     private javax.swing.JButton btnProfile;
     private javax.swing.JLabel btnViewProfile;
     private javax.swing.JLabel btnViewProfile1;

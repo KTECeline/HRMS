@@ -280,7 +280,12 @@ public class PayrollDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_searchActionPerformed
 
     private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
-        // TODO add your handling code here:
+    java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new leaveManagement.ApplyLeave().setVisible(true);
+            }
+        });  
+    this.dispose();     // TODO add your handling code here:
     }//GEN-LAST:event_btnLeaveActionPerformed
 
     private void btnAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttendanceActionPerformed
