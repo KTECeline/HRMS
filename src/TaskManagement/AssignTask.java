@@ -288,47 +288,5 @@ public class AssignTask extends javax.swing.JFrame {
     private javax.swing.JTextArea txtdetails;
     // End of variables declaration//GEN-END:variables
 
-   private int[] countUsernameOccurrences(String username) {
-    int count = 0; // Initialize count
-    int totalDays = 0; // Initialize total days
-    int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-
-    try {
-        // Read all lines from the file
-        java.util.List<String> lines = Files.readAllLines(Paths.get("leave.txt"));
-
-        // Iterate over each line to count the username with "annual leave" and sum up the days
-        for (String line : lines) {
-            // Split the line by commas
-            String[] parts = line.split(",");
-
-            // Check if parts have enough elements and if both username and leave type match
-            if (parts.length > 4 && parts[1].equals(username) && parts[3].equalsIgnoreCase("annual leave ") && parts[8].equalsIgnoreCase("approved")) {
-                // Parse the start date from the file
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date startDate = dateFormat.parse(parts[4]);
-
-                // Check if the start date falls within the current year
-                if (startDate.getYear() + 1900 == currentYear) {
-                    count++; // Increment count if both conditions are met
-                    
-                    // Parse the days from the file and add to totalDays
-                    try {
-                        totalDays += Integer.parseInt(parts[6]);
-                    } catch (NumberFormatException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error reading file: " + e.getMessage());
-    }
-
-    // Calculate the remaining annual leave days
-    int remainingAnnualDays = 12 - totalDays;
-
-    return new int[] {count, remainingAnnualDays}; // Return the count and remaining annual days
-}
+  
 }

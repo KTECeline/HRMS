@@ -62,6 +62,13 @@ public class Session {
     public static boolean isLoggedIn() {
         return Session.isLoggedIn;
     }
+    
+    public static void logout() {
+        userId = null;
+        role = null;
+        username = null;
+        isLoggedIn = false;
+    }
 }
         
 

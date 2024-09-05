@@ -46,7 +46,7 @@ public class CancelTask extends javax.swing.JFrame {
     });
     }
     private void loadTableData() {
-    String filePath = "C:\\Users\\jinyi\\Documents\\NetBeansProjects\\java_grp20\\try\\task.txt";
+    String filePath = "task.txt";
     File file = new File(filePath);
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Define date format
