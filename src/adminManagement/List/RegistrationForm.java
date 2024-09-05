@@ -154,7 +154,7 @@ public RegistrationForm() {
                 RegisterBTNActionPerformed(evt);
             }
         });
-        jPanel2.add(RegisterBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 490, 90, 30));
+        jPanel2.add(RegisterBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 470, 90, 30));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
@@ -359,7 +359,7 @@ public RegistrationForm() {
 
         txtEmployement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full time", "Part time", "Internship" }));
 
-        txtRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Hr Officer", "Department Manager", "Employee", "Payroll Officer" }));
+        txtRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "HR Officer", "Department Manager", "Employee", "Payroll Officer" }));
         txtRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRoleActionPerformed(evt);
@@ -586,7 +586,7 @@ public RegistrationForm() {
                 BackActionPerformed(evt);
             }
         });
-        jPanel2.add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, -1, -1));
+        jPanel2.add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
