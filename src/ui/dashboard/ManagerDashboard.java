@@ -1,5 +1,6 @@
 package ui.dashboard;
 
+import auth.Session;
 import javax.swing.JOptionPane;
 
 /*
@@ -18,6 +19,8 @@ public class ManagerDashboard extends javax.swing.JFrame {
      */
     public ManagerDashboard() {
         initComponents();
+        String username = Session.getUsername();
+        empName1.setText(username);
     }
 
     /**

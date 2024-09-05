@@ -1,7 +1,7 @@
 package ui.dashboard;
 
 import javax.swing.JOptionPane;
-
+import auth.Session;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -16,6 +16,8 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
     public EmployeeDashboard() {
         initComponents();
+        String username = Session.getUsername();
+        empName.setText(username);
     }
 
     /**
