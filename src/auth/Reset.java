@@ -277,10 +277,6 @@ try (BufferedReader br = new BufferedReader(new FileReader("security.txt"))) {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
         public void run() {

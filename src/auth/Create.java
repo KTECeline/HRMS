@@ -1,6 +1,7 @@
 package auth;
 
 
+import java.io.BufferedReader;
 import javax.swing.JOptionPane;
 import java.io.FileReader;
 import java.io.IOException;
@@ -112,46 +113,63 @@ public class Create extends javax.swing.JFrame {
 
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
         
-        String SQ = (String) SQbox.getSelectedItem();
-        String answer = txtAnswer.getText().trim();
-        String username = Session.getUsername();
-        String userId = Session.getUserId();
-        String email="";
-        String phone = "";
-  
-    
+      String SQ = (String) SQbox.getSelectedItem();
+String answer = txtAnswer.getText().trim();
+String username = Session.getUsername();
+String userId = Session.getUserId();
+String email = "";
+String phone = "";
 
-    try (FileReader fr = new FileReader("usertxt.txt");
-     Scanner reader = new Scanner(fr)) {
-    while (reader.hasNextLine()) {
-        String line = reader.nextLine();
+boolean userIdExists = false;
+
+try (BufferedReader br = new BufferedReader(new FileReader("security.txt"))) {
+    String line;
+    while ((line = br.readLine()) != null) {
         String[] parts = line.split(",");
-
-        if (parts.length >= 15&& parts[0].trim().equals(userId)) { 
-            phone = parts[6].trim();
-            email = parts[10].trim();
+        if (parts[0].trim().equals(userId)) {
+            userIdExists = true;
             break;
-            // Log information for debugging
         }
     }
-} catch (FileNotFoundException ex) {
-    // Create the file if it does not exist
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter("security.txt", true))) {
-        // Initialize the file with some default content, if needed
-    } catch (IOException e) {
-        System.err.println("Error creating security.txt: " + e.getMessage());
-    }
-} catch (IOException ex) {
-    System.err.println("Error reading security.txt: " + ex.getMessage());
-    Logger.getLogger(Create.class.getName()).log(Level.SEVERE, null, ex);
+} catch (IOException e) {
+    System.err.println("Error reading security.txt: " + e.getMessage());
 }
 
-try (BufferedWriter bw = new BufferedWriter(new FileWriter("security.txt", true))) {
-    bw.write(userId + "," + username + "," + phone + "," + email + "," + SQ + "," + answer + "\n");
-    JOptionPane.showMessageDialog(null, "Security question answered successfully! Your information has been recorded.");
-} catch (IOException e) {
-    System.err.println("Error writing to security.txt: " + e.getMessage());
-}  
+if (userIdExists) {
+    JOptionPane.showMessageDialog(null, "User ID already exists. Please contact system administrator to change security question.");
+} else {
+    try (FileReader fr = new FileReader("usertxt.txt");
+         Scanner reader = new Scanner(fr)) {
+        while (reader.hasNextLine()) {
+            String line = reader.nextLine();
+            String[] parts = line.split(",");
+
+            if (parts.length >= 15 && parts[0].trim().equals(userId)) {
+                phone = parts[6].trim();
+                email = parts[10].trim();
+                break;
+                // Log information for debugging
+            }
+        }
+    } catch (FileNotFoundException ex) {
+        // Create the file if it does not exist
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("security.txt", true))) {
+            // Initialize the file with some default content, if needed
+        } catch (IOException e) {
+            System.err.println("Error creating security.txt: " + e.getMessage());
+        }
+    } catch (IOException ex) {
+        System.err.println("Error reading security.txt: " + ex.getMessage());
+        Logger.getLogger(Create.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter("security.txt", true))) {
+        bw.write(userId + "," + username + "," + phone + "," + email + "," + SQ + "," + answer + "\n");
+        JOptionPane.showMessageDialog(null, "Security question answered successfully! Your information has been recorded.");
+    } catch (IOException e) {
+        System.err.println("Error writing to security.txt: " + e.getMessage());
+    }
+}
     }//GEN-LAST:event_btnLogin1ActionPerformed
 
     private void BackBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBTNActionPerformed
@@ -185,10 +203,6 @@ try (BufferedWriter bw = new BufferedWriter(new FileWriter("security.txt", true)
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Create.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
