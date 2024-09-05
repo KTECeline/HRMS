@@ -8,3 +8,4 @@ User Id , Username , Department , Type , Start Date , End Date , Days , Reason ,
 6,dm,Department Manager,Emergency Leave,2024-09-21,2024-09-22,2, ,Approved,12,Thu Sep 05 02:01:27 MYT 2024,none
 6,dm,Department Manager,Emergency Leave,2024-09-21,2024-09-22,2, ,Approved,12,Thu Sep 05 02:01:27 MYT 2024,none
 7,dm,Employee,Maternity Leave,2024-09-10,2024-09-29,20, ,Pending,12,Thu Sep 06 22:45:36 MYT 2024,none
+5,em,Employee,Maternity Leave,2024-09-14,2024-09-21,8,t,Pending,12,Fri Sep 06 01:59:09 MYT 2024,none

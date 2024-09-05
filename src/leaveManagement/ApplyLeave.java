@@ -200,7 +200,7 @@ public class ApplyLeave extends javax.swing.JFrame {
      int days = 0 ;
      String comment = "none";
     
-    if (gender.equalsIgnoreCase("Male") && typeL.equalsIgnoreCase(" Maternity Leave") ){
+    if (gender.equalsIgnoreCase("Male") && typeL.equalsIgnoreCase("Maternity Leave") ){
              JOptionPane.showMessageDialog(this, "Only female workers could apply for Maternity Leave.");
              return;
     }
