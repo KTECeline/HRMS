@@ -528,6 +528,8 @@ public class Attendance extends javax.swing.JFrame {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
+        ui.dashboard.BackButton backbutton= new ui.dashboard.BackButton();
+        backbutton.navigateBasedOnRole();
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
