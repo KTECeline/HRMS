@@ -103,14 +103,13 @@ public class EditSecurity extends javax.swing.JFrame {
         header = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         btnProfile = new javax.swing.JButton();
-        empName = new javax.swing.JLabel();
         roleLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        empName2 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        empName = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         header1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -220,11 +219,6 @@ public class EditSecurity extends javax.swing.JFrame {
         });
         sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
 
-        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName.setForeground(new java.awt.Color(242, 242, 242));
-        empName.setToolTipText("");
-        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
         roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         roleLabel.setForeground(new java.awt.Color(242, 242, 242));
         roleLabel.setText("Admin");
@@ -254,10 +248,6 @@ public class EditSecurity extends javax.swing.JFrame {
         });
         sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 130, 50));
 
-        empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName2.setToolTipText("");
-        sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
         jButton7.setText("Annoucement");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,6 +263,13 @@ public class EditSecurity extends javax.swing.JFrame {
             }
         });
         sidePanel.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, 50));
+
+        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName.setForeground(new java.awt.Color(255, 255, 255));
+        empName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        empName.setText("EmpName");
+        empName.setToolTipText("");
+        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         jPanel2.setBackground(new java.awt.Color(128, 128, 128));
 
@@ -552,7 +549,6 @@ this.dispose();
     private javax.swing.JButton btnProfile1;
     private javax.swing.JLabel empName;
     private javax.swing.JLabel empName1;
-    private javax.swing.JLabel empName2;
     private javax.swing.JLabel empName3;
     private javax.swing.JLabel header;
     private javax.swing.JLabel header1;

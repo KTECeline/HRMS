@@ -69,14 +69,13 @@ private void loadUserData() {
         mainPanel = new javax.swing.JPanel();
         sidePanel = new javax.swing.JPanel();
         btnProfile = new javax.swing.JButton();
-        empName = new javax.swing.JLabel();
         roleLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        empName2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        empName = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -105,12 +104,6 @@ private void loadUserData() {
             }
         });
         sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
-
-        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName.setForeground(new java.awt.Color(242, 242, 242));
-        empName.setText("EmpName");
-        empName.setToolTipText("");
-        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         roleLabel.setForeground(new java.awt.Color(242, 242, 242));
@@ -141,11 +134,6 @@ private void loadUserData() {
         });
         sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 130, 50));
 
-        empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName2.setText("EmpName");
-        empName2.setToolTipText("");
-        sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
         jButton4.setText("Annoucement");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +149,12 @@ private void loadUserData() {
             }
         });
         sidePanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
+
+        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        empName.setText("EmpName");
+        empName.setToolTipText("");
+        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 
@@ -485,7 +479,6 @@ this.dispose();
     private javax.swing.JLabel TimeIn;
     private javax.swing.JButton btnProfile;
     private javax.swing.JLabel empName;
-    private javax.swing.JLabel empName2;
     private javax.swing.JLabel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
