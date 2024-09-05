@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,6 +32,10 @@ public class HRDashboard extends javax.swing.JFrame {
         empName.setText(username);
         roleLabel.setText(role);
         
+        empName.setText(username);
+        int totalEmployee=DataRowCounter.countEmployees("usertxt.txt");
+        TotalEmployee.setText(String.valueOf(totalEmployee));
+        
         
         if (Session.isLoggedIn()) {
             String userId = Session.getUserId();
@@ -42,6 +47,22 @@ public class HRDashboard extends javax.swing.JFrame {
 
         
     }
+    
+    public class DataRowCounter {
+        public static int countEmployees(String filePath) {
+            int totalRows = 0;
+
+            try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+                while (br.readLine() != null) {
+                    totalRows++;
+                }
+            } catch (IOException e) {
+            }
+
+            return totalRows;
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,9 +79,11 @@ public class HRDashboard extends javax.swing.JFrame {
         roleLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnlogout = new javax.swing.JButton();
         empName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        btnHistory = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -71,6 +94,10 @@ public class HRDashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btn2 = new javax.swing.JButton();
         btn3 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        TotalEmployee = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,21 +129,21 @@ public class HRDashboard extends javax.swing.JFrame {
         });
         sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 50));
 
-        jButton2.setText("Attendance");
+        jButton2.setText("Accouncements");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 130, 50));
+        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 130, 50));
 
-        jButton3.setText("Log Out");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnlogout.setText("Log Out");
+        btnlogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnlogoutActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 130, 50));
+        sidePanel.add(btnlogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 130, 50));
 
         empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         empName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -128,6 +155,22 @@ public class HRDashboard extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/hr.png"))); // NOI18N
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         sidePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 10, 150, 120));
+
+        jButton4.setText("Attendance");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
+
+        btnHistory.setText("History ");
+        btnHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoryActionPerformed(evt);
+            }
+        });
+        sidePanel.add(btnHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 130, 50));
 
         mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 610));
 
@@ -157,17 +200,17 @@ public class HRDashboard extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Sitka Text", 2, 36)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Employee Mangement ");
-        mainPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 530, 50));
+        mainPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 530, 50));
 
         jLabel9.setFont(new java.awt.Font("Sitka Text", 3, 24)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Search ");
-        mainPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 110, -1));
+        mainPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, 110, -1));
 
         jLabel4.setFont(new java.awt.Font("Sitka Text", 3, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Create Account");
-        mainPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, 190, -1));
+        mainPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, 180, -1));
 
         btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Create.png"))); // NOI18N
         btn1.addActionListener(new java.awt.event.ActionListener() {
@@ -175,23 +218,23 @@ public class HRDashboard extends javax.swing.JFrame {
                 btn1ActionPerformed(evt);
             }
         });
-        mainPanel.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 220, 200));
+        mainPanel.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 200, 200));
 
         jLabel7.setFont(new java.awt.Font("Sitka Text", 3, 24)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Update Account");
-        mainPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 190, -1));
+        mainPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, 190, -1));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Update.png"))); // NOI18N
-        mainPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, -1, 160));
+        mainPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, 150, 160));
 
         btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn2ActionPerformed(evt);
             }
         });
-        mainPanel.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 220, 200));
+        mainPanel.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 210, 200));
 
         btn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Record.png"))); // NOI18N
         btn3.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +242,46 @@ public class HRDashboard extends javax.swing.JFrame {
                 btn3ActionPerformed(evt);
             }
         });
-        mainPanel.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 220, 200));
+        mainPanel.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 200, 200));
+
+        jLabel8.setFont(new java.awt.Font("Sitka Text", 3, 24)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mainPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 520, 190, -1));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(153, 153, 153)));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/emp1.png"))); // NOI18N
+
+        TotalEmployee.setBackground(new java.awt.Color(102, 102, 102));
+        TotalEmployee.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
+        TotalEmployee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TotalEmployee.setText("9");
+        TotalEmployee.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TotalEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(TotalEmployee)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 110, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,54 +298,10 @@ public class HRDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
-        String filePath = "usertxt.txt";
-        File file = new File(filePath);
-
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            String userId = auth.Session.getUserId(); 
-
-            while ((line = br.readLine()) != null) {
-                String[] dataRow = line.split(",");
-
-                if (dataRow[0].equals(userId)) {
-                    String userID = dataRow[0];
-                    String username = dataRow[1];
-                    String password = dataRow[2];
-                    String fullName = dataRow[3];
-                    String gender = dataRow[4];
-                    String dateOfBirth = dataRow[5];
-                    String phoneNumber = dataRow[6];
-                    String maritalStatus = dataRow[7];
-                    String nationality = dataRow[8];
-                    String email = dataRow[9];
-                    String address = dataRow[10];
-                    String role = dataRow[11];
-                    String position = dataRow[12];
-                    String department = dataRow[13];
-                    String datejoined = dataRow[14];
-                    String employmentType = dataRow[15];
-                    String workTitle = dataRow[16];
-                    String workResponsibilities = dataRow[17];
-                    String emergencyName = dataRow[18];
-                    String emergencyPhoneNo = dataRow[19];
-                    String bankName = dataRow[20];
-                    String accountNumber = dataRow[21];
-                    
-                    
-                    profile.ViewProfile viewprofile = new profile.ViewProfile();              
-                    viewprofile.setLabelValues(userID, username, password,fullName, gender, dateOfBirth,
-                           phoneNumber, maritalStatus, nationality, email, address,
-                           role, position, department, datejoined, employmentType,
-                           workTitle, workResponsibilities, emergencyName, emergencyPhoneNo,
-                           bankName, accountNumber);
-                    viewprofile.setVisible(true);
-                    this.dispose();
-                }
-            }
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(profile.ViewProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        profile.ProfileButton profileLoader = new profile.ProfileButton();
+    profile.ViewProfile viewprofile = new profile.ViewProfile();
+    profileLoader.onViewProfileButtonClick(viewprofile); 
+        dispose();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -274,9 +312,12 @@ public class HRDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
+    auth.Session.logout();
+    JOptionPane.showMessageDialog(this, "You have been logged out.");
+    this.dispose();
+    System.exit(0);
+    }//GEN-LAST:event_btnlogoutActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         this.dispose();
@@ -295,6 +336,18 @@ public class HRDashboard extends javax.swing.JFrame {
         SearchEmployee searchEmployee = new SearchEmployee();
         searchEmployee.setVisible(true);
     }//GEN-LAST:event_btn3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
+
+    employeeManagement.ViewHistory viewHistoryWindow = new employeeManagement.ViewHistory();
+    viewHistoryWindow.setVisible(true);
+    this.dispose();
+       
+    }//GEN-LAST:event_btnHistoryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,22 +390,28 @@ public class HRDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel TotalEmployee;
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
     private javax.swing.JButton btn3;
+    private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnProfile;
+    private javax.swing.JButton btnlogout;
     private javax.swing.JLabel empName;
     private javax.swing.JLabel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JLabel roleLabel;
     private javax.swing.JPanel sidePanel;
