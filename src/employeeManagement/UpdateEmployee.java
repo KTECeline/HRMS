@@ -506,7 +506,7 @@ private void loadTableData() {
         jLabel18.setForeground(new java.awt.Color(0, 0, 204));
         jLabel18.setText("Professional & Company Information");
 
-        txtEmployement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full time", "Part time", "Internship" }));
+        txtEmployement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full time", "Intern" }));
 
         txtRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "HR Officer", "Department Manager", "Employee", "Payroll Officer" }));
         txtRole.addActionListener(new java.awt.event.ActionListener() {
@@ -577,10 +577,10 @@ private void loadTableData() {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(txtEmployement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 360, 210));
+        mainPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 360, 220));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -638,7 +638,7 @@ private void loadTableData() {
                 btnClearActionPerformed(evt);
             }
         });
-        mainPanel.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 610, -1, -1));
+        mainPanel.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 630, -1, -1));
 
         bthRefresh.setBackground(new java.awt.Color(153, 204, 255));
         bthRefresh.setFont(new java.awt.Font("Sitka Text", 1, 12)); // NOI18N
@@ -658,7 +658,7 @@ private void loadTableData() {
                 btnUpdateActionPerformed(evt);
             }
         });
-        mainPanel.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, 180, -1));
+        mainPanel.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 630, 180, -1));
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -710,7 +710,7 @@ private void loadTableData() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 360, 130));
+        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, 360, 130));
 
         jLabel1.setFont(new java.awt.Font("Sitka Text", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 102));
@@ -757,16 +757,16 @@ private void loadTableData() {
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel28)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtBankNM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtBankNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 220, 170));
+        mainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 220, 180));
 
         btnDelete.setBackground(new java.awt.Color(255, 51, 51));
         btnDelete.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
@@ -777,7 +777,7 @@ private void loadTableData() {
                 btnDeleteActionPerformed(evt);
             }
         });
-        mainPanel.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 610, -1, -1));
+        mainPanel.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 630, -1, -1));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Search.png"))); // NOI18N

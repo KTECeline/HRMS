@@ -227,7 +227,7 @@ public class HRDashboard extends javax.swing.JFrame {
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Update.png"))); // NOI18N
-        mainPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, 150, 160));
+        mainPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 250, 150, 160));
 
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
