@@ -280,17 +280,15 @@ public class ApplyLeave extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new pkgtry.LeaveHistory().setVisible(true);
-            }
-        });     // TODO add your handling code here:
+    ui.dashboard.BackButton backButton = new ui.dashboard.BackButton();
+        backButton.navigateBasedOnRole();
+        this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new pkgtry.LeaveStatus().setVisible(true);
+                new leaveManagement.LeaveStatus().setVisible(true);
             }
         });         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed

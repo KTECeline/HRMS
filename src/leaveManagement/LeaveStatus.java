@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pkgtry;
+package leaveManagement;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -194,7 +194,7 @@ public class LeaveStatus extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new pkgtry.ApplyLeave().setVisible(true);
+                new leaveManagement.ApplyLeave().setVisible(true);
             }
         });    // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
