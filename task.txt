@@ -1,9 +1,21 @@
 id,Department,Task,Start,End,Details,Assign Date
-4,IT ,Meeting,2024-09-07,2024-09-08,please prepare ,Thu Sep 05 17:59:04 MYT 2024
-4,IT ,Meeting,2024-09-07,2024-09-08,please prepare ,Thu Sep 06 17:59:04 MYT 2024
-4,Sales ,Meeting,2024-09-07,2024-09-08,please prepare ,Thu Sep 04 17:59:04 MYT 2024
-4,Sales ,Meeting,2024-09-07,2024-09-08,please prepare ,Thu Sep 03 17:59:04 MYT 2024
-4,Marketing ,Meeting,2024-09-07,2024-09-08,please prepare ,Thu Sep 02 17:59:04 MYT 2024
-4,Marketing ,Meeting,2024-09-07,2024-09-08,please prepare ,Thu Sep 01 17:59:04 MYT 2024
-
-null,IT ,Conclude,2024-09-12,2024-09-12, ,Fri Sep 06 00:42:05 MYT 2024
+1,IT ,System Maintenance,2024-09-10,2024-09-10,Schedule downtime,Thu Sep 07 09:00:00 MYT 2024
+2,Sales ,Client Follow-up,2024-09-08,2024-09-08,Follow up with key clients,Fri Sep 06 14:30:00 MYT 2024
+3,Marketing ,Social Media Campaign,2024-09-09,2024-09-09,Launch Instagram campaign,Mon Sep 07 11:00:00 MYT 2024
+4,IT ,Software Update,2024-09-12,2024-09-12,Install security patch,Tue Sep 08 09:30:00 MYT 2024
+5,Sales ,Product Pitch,2024-09-11,2024-09-11,Pitch new product to clients,Wed Sep 06 16:00:00 MYT 2024
+6,Marketing ,Email Marketing,2024-09-13,2024-09-13,Send promotional emails,Thu Sep 09 10:00:00 MYT 2024
+7,IT ,Database Backup,2024-09-14,2024-09-14,Complete full backup,Fri Sep 07 12:45:00 MYT 2024
+8,Sales ,Sales Meeting,2024-09-15,2024-09-15,Discuss quarterly goals,Mon Sep 08 13:30:00 MYT 2024
+9,Marketing ,Brand Awareness,2024-09-16,2024-09-16,Run a brand awareness campaign,Tue Sep 09 15:00:00 MYT 2024
+10,IT ,Network Audit,2024-09-17,2024-09-17,Review network logs,Wed Sep 10 11:15:00 MYT 2024
+11,Sales ,Lead Generation,2024-09-18,2024-09-18,Generate new sales leads,Thu Sep 11 14:45:00 MYT 2024
+12,Marketing ,SEO Optimization,2024-09-19,2024-09-19,Optimize website SEO,Fri Sep 12 16:00:00 MYT 2024
+13,IT ,Hardware Upgrade,2024-09-20,2024-09-20,Upgrade server hardware,Mon Sep 13 10:30:00 MYT 2024
+14,Sales ,Product Launch,2024-09-21,2024-09-21,Launch new product line,Tue Sep 14 14:00:00 MYT 2024
+15,Marketing ,Content Creation,2024-09-22,2024-09-22,Develop new blog posts,Wed Sep 15 15:30:00 MYT 2024
+16,IT ,Website Maintenance,2024-09-23,2024-09-23,Fix website bugs,Thu Sep 16 09:00:00 MYT 2024
+17,Sales ,Sales Forecasting,2024-09-24,2024-09-24,Forecast next quarter sales,Fri Sep 17 10:30:00 MYT 2024
+18,Marketing ,Creative Design,2024-09-25,2024-09-25,Design ad creatives,Mon Sep 18 11:45:00 MYT 2024
+19,IT ,Data Migration,2024-09-26,2024-09-26,Migrate data to cloud,Thu Sep 19 14:15:00 MYT 2024
+20,Sales ,Client Review,2024-09-27,2024-09-27,Review client contracts,Fri Sep 20 09:30:00 MYT 2024
