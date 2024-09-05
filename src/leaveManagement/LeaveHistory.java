@@ -347,7 +347,7 @@ public class LeaveHistory extends javax.swing.JFrame {
             
             model.removeRow(selectedRowIndex);
             
-            String filePath = "C:\\Users\\jinyi\\Documents\\NetBeansProjects\\java_grp20\\try\\leave.txt";
+            String filePath = "leave.txt";
             File file = new File(filePath);
             
             try {

@@ -52,7 +52,7 @@ public class Approve extends javax.swing.JFrame {
     });
     }
     private void loadTableData() {
-    String filePath = "C:\\Users\\jinyi\\Documents\\NetBeansProjects\\java_grp20\\try\\leave.txt";
+    String filePath = "leave.txt";
     File file = new File(filePath);
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Define date format
@@ -385,7 +385,7 @@ public class Approve extends javax.swing.JFrame {
       int selectedRowIndex = jTable1.getSelectedRow();
     if (selectedRowIndex != -1) {
         String comment = C.getText(); // Assuming C is a JTextField for comments
-        String filePath = "C:\\Users\\jinyi\\Documents\\NetBeansProjects\\java_grp20\\try\\leave.txt";
+        String filePath = "leave.txt";
         
         try {
             // Read all lines from the file
@@ -440,7 +440,7 @@ public class Approve extends javax.swing.JFrame {
     int selectedRowIndex = jTable1.getSelectedRow();
     if (selectedRowIndex != -1) {
         String comment = C.getText(); // Assuming C is a JTextField for comments
-        String filePath = "C:\\Users\\jinyi\\Documents\\NetBeansProjects\\java_grp20\\try\\leave.txt";
+        String filePath = "leave.txt";
         
         try {
             // Read all lines from the file

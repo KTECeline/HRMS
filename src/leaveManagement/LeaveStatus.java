@@ -33,7 +33,7 @@ public class LeaveStatus extends javax.swing.JFrame {
         loadTableData();
     }
     private void loadTableData() {
-    String filePath = "C:\\Users\\jinyi\\Documents\\NetBeansProjects\\java_grp20\\try\\leave.txt";
+    String filePath = "leave.txt";
     File file = new File(filePath);
     
     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
