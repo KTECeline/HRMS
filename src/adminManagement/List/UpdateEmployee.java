@@ -9,6 +9,7 @@ package adminManagement.List;
  * @author Yeong Huey Yee
  */
 
+import auth.Session;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,6 +25,10 @@ import java.text.ParseException;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 
@@ -36,7 +41,7 @@ public class UpdateEmployee extends javax.swing.JFrame {
     public UpdateEmployee() {
     initComponents();
     loadTableData(); // Load data when the form initializes
-    int selectedRow = jTable1.getSelectedRow();
+int selectedRow = jTable1.getSelectedRow();
 }
     
 public void setEmployeeDetails(String userID, String username, String password, String fullName, String gender, String birthDate, String phoneNumber, String maritalStatus, String nationality, String email, String address, String role, String position, String department, String dateOfJoining, String employmentType, String jobTitle, String responsibilities, String emergencyName, String emergencyPhoneNo, String bankName, String accountNumber) {
@@ -105,7 +110,13 @@ private void setColumnWidths() {
     jTable1.getColumnModel().getColumn(20).setPreferredWidth(130);   // Bank Name column
     jTable1.getColumnModel().getColumn(21).setPreferredWidth(100);  // Account Number column
 
-    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  // Disable auto-resize
+    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); 
+    jTable1.setRowSelectionAllowed(true);
+    jTable1.setCellSelectionEnabled(false);
+    jTable1.setFocusable(true);
+    jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    jTable1.setSelectionBackground(Color.decode("#87CEEB")); // light sky blue
+    jTable1.setSelectionForeground(Color.BLACK); 
 
 // Set horizontal scroll policy for jScrollPane2
 jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -141,7 +152,10 @@ private void addTableSelectionListener() {
                 String accountNumber = jTable1.getValueAt(selectedRow, 21).toString();
 
                 // Set the data into the corresponding fields
-                setEmployeeDetails(userID, username, password, fullName, gender, birthDate, phoneNumber, maritalStatus, nationality, email, address, role, position, department, dateOfJoining, employmentType, jobTitle, responsibilities, emergencyName, emergencyPhoneNo, bankName, accountNumber);
+                setEmployeeDetails(userID, username, password, fullName, gender, birthDate, 
+                        phoneNumber, maritalStatus, nationality, email, address, role, position,
+                        department, dateOfJoining, employmentType, jobTitle, responsibilities,
+                        emergencyName, emergencyPhoneNo, bankName, accountNumber);
             }
         }
     });
@@ -177,12 +191,12 @@ private void loadTableData() {
         
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         jTable1.setFocusable(true);
-        jTable1.setSelectionBackground(Color.PINK);
+        jTable1.setSelectionBackground(Color.BLUE);
         
     } catch (Exception ex) {
         Logger.getLogger(UpdateEmployee.class.getName()).log(Level.SEVERE, null, ex);
         JOptionPane.showMessageDialog(this, "Error loading data from file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
+    } 
 }
    
     /**
@@ -253,10 +267,11 @@ private void loadTableData() {
         jLabel29 = new javax.swing.JLabel();
         txtBankNo = new javax.swing.JTextField();
         txtBankNM = new javax.swing.JComboBox<>();
-        DltBTN = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        DltBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -469,11 +484,11 @@ private void loadTableData() {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 270, 440));
+        mainPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 270, 400));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -539,9 +554,9 @@ private void loadTableData() {
                             .addComponent(txtPosition, 0, 1, Short.MAX_VALUE)
                             .addComponent(txtRole, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 46, Short.MAX_VALUE)
+                        .addGap(0, 73, Short.MAX_VALUE)
                         .addComponent(jLabel18)))
-                .addGap(46, 46, 46))
+                .addGap(19, 19, 19))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -571,7 +586,7 @@ private void loadTableData() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 360, 210));
+        mainPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 360, 210));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -600,7 +615,7 @@ private void loadTableData() {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(jLabel15)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -615,10 +630,10 @@ private void loadTableData() {
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 210, 170));
+        mainPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, 210, 170));
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -664,12 +679,12 @@ private void loadTableData() {
                     .addComponent(jLabel17))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtResponsibilities, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtResponsibilities, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 360, 220));
+        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 530, 360, 140));
 
         jButton16.setBackground(new java.awt.Color(255, 153, 153));
         jButton16.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
@@ -679,7 +694,7 @@ private void loadTableData() {
                 jButton16ActionPerformed(evt);
             }
         });
-        mainPanel.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 610, 180, -1));
+        mainPanel.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 180, -1));
 
         jPanel6.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -728,18 +743,7 @@ private void loadTableData() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 210, 170));
-
-        DltBTN.setBackground(new java.awt.Color(255, 51, 51));
-        DltBTN.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
-        DltBTN.setText("Delete Account");
-        DltBTN.setToolTipText("");
-        DltBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DltBTNActionPerformed(evt);
-            }
-        });
-        mainPanel.add(DltBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 650, -1, -1));
+        mainPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, 210, 170));
 
         jTable1.setBorder(new javax.swing.border.MatteBorder(null));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -750,16 +754,34 @@ private void loadTableData() {
 
             }
         ));
+        jTable1.setColumnSelectionAllowed(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         jScrollPane2.setViewportView(jScrollPane1);
 
-        mainPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 890, 170));
+        mainPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 910, 170));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        jLabel1.setText("Press Update Account to initialize the updating and deleting process");
+        mainPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
+
+        DltBTN.setBackground(new java.awt.Color(255, 51, 51));
+        DltBTN.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
+        DltBTN.setText("Delete Account");
+        DltBTN.setToolTipText("");
+        DltBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DltBTNActionPerformed(evt);
+            }
+        });
+        mainPanel.add(DltBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 250, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -833,53 +855,131 @@ private void loadTableData() {
         return; // Stop execution if any field is empty
     }
 
-    // Read existing data and check for the record to update
-    File file = new File("usertxt.txt");
-    StringBuilder fileContent = new StringBuilder();
-    boolean recordUpdated = false;
+    
+        String updatedBy = Session.getUserId(); 
 
-    try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-        String line;
+        File file = new File("usertxt.txt");
+        StringBuilder fileContent = new StringBuilder();
+        boolean recordUpdated = false;
+        String previousRole = "";  
+        String previousPosition = ""; 
+        String previousDepartment = "";  
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
 
-        while ((line = br.readLine()) != null) {
-            String[] data = line.split(",");
-            if (data.length > 1 && data[0].equals(userID)) {
-                // Compare existing data with the current input
-                String currentRecord = userID + "," + username + "," + password + "," + fullName + "," + gender + "," +
-                     birthDateString + "," + phoneNumber + "," + maritalStatus + "," + nationality + "," +
-                     email + "," + address + "," + role + "," + position + "," + department + "," +
-                     dateString + "," + employmentType + "," + workTitle + "," + workResponsibilities + "," +
-                     emergencyName + "," + emergencyPhoneNo + "," + bankName + "," + accountNumber;
-                
-                String existingRecord = String.join(",", data);
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length > 1 && data[0].equals(userID)) {
+                    previousRole = data[11]; 
+                    previousPosition = data[12];  
+                    previousDepartment = data[13];  
 
-                if (!existingRecord.equals(currentRecord)) {
-                    fileContent.append(currentRecord).append(System.getProperty("line.separator"));
-                    recordUpdated = true;
+                    String currentRecord = userID + "," + username + "," + password + "," + fullName + "," + gender + "," +
+                         birthDateString + "," + phoneNumber + "," + maritalStatus + "," + nationality + "," +
+                         email + "," + address + "," + role + "," + position + "," + department + "," +
+                         dateString + "," + employmentType + "," + workTitle + "," + workResponsibilities + "," +
+                         emergencyName + "," + emergencyPhoneNo + "," + bankName + "," + accountNumber;
+
+                    String existingRecord = String.join(",", data);
+
+                    if (!existingRecord.equals(currentRecord)) {
+                        fileContent.append(currentRecord).append(System.getProperty("line.separator"));
+                        recordUpdated = true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No changes detected. Update not necessary.");
+                        return;
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "No changes detected. Update not necessary.");
-                    return;
+                    fileContent.append(line).append(System.getProperty("line.separator"));
                 }
-            } else {
-                fileContent.append(line).append(System.getProperty("line.separator"));
             }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error reading data: " + e.getMessage());
         }
 
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(null, "Error reading data: " + e.getMessage());
-    }
+        if (recordUpdated) {
+            if (!previousRole.equals(role) || !previousPosition.equals(position) || !previousDepartment.equals(department)) {
+            String[] reasons = {"SKILL ALIGNMENT", "PROJECT NEEDS", "CAREER DEVELOPMENT", "PERFORMANCE IMPROVEMENT", "TEAM DYNAMICS"};
 
-    // If a record was updated, write the updated content back to the file
-    if (recordUpdated) {
-            try (FileWriter writer = new FileWriter(file, false)) {
-                writer.write(fileContent.toString());
-                JOptionPane.showMessageDialog(null, "Update successful!");
-                
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
+                   String reason = (String) JOptionPane.showInputDialog(
+                           null,
+                           "Please select a reason for updating the role/position/department:",
+                           "Update Reason",
+                           JOptionPane.QUESTION_MESSAGE,
+                           null,
+                           reasons, 
+                           reasons[0]); 
+
+                   if (reason != null && !reason.trim().isEmpty()) {
+                    File historyFile = new File("history.txt");
+                    String historyId = "H001";
+
+                    if (historyFile.exists() && historyFile.length() > 0) {
+                        try (BufferedReader br = new BufferedReader(new FileReader(historyFile))) {
+                            String lastLine = null;
+                            String line;
+
+                            while ((line = br.readLine()) != null) {
+                                lastLine = line;
+                            }
+
+                            if (lastLine != null) {
+                                String[] data = lastLine.split(",");
+                                if (data.length > 0) {
+                                    try {
+
+                                        String lastHistoryId = data[0]; 
+                                        String numericPart = lastHistoryId.substring(1);  
+                                        int nextId = Integer.parseInt(numericPart) + 1; 
+
+                                        historyId = String.format("H%03d", nextId);
+                                    } catch (NumberFormatException e) {
+                                        JOptionPane.showMessageDialog(null, "Error parsing history ID, starting from 1.");
+                                        historyId = "H001"; 
+                                    }
+                                }
+                            }
+
+                        } catch (IOException e) {
+                            JOptionPane.showMessageDialog(null, "Error reading history file: " + e.getMessage());
+                        }
+                    } else {
+                        historyId = "H001";
+                    }
+                    String rolePositionDepartment = "" + role + " : " + position + " (" + department + ")";
+                    
+                    String timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
+
+                    String historyRecord = historyId + "," + updatedBy + "," + userID + 
+                            ","+previousRole+ ":" +previousPosition + " (" + previousDepartment + ")," +
+                            rolePositionDepartment + "," + reason + "," + timeStamp;
+
+                    try (FileWriter historyWriter = new FileWriter(historyFile, true)) {
+                        historyWriter.append(historyRecord).append(System.getProperty("line.separator"));
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(null, "Error saving history: " + e.getMessage());
+                    }
+
+                    try (FileWriter writer = new FileWriter(file, false)) {
+                        writer.write(fileContent.toString());
+                        JOptionPane.showMessageDialog(null, "Update successful!");
+
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Update canceled. Reason is required for updating the Role/Position/Department.");
+                }
+            } else {
+                try (FileWriter writer = new FileWriter(file, false)) {
+                    writer.write(fileContent.toString());
+                    JOptionPane.showMessageDialog(null, "Update successful!");
+
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
+                }
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Error: User ID not found.");
         }
                     
     loadTableData();
@@ -898,7 +998,7 @@ private void loadTableData() {
     String fullName = txtFullName.getText().trim();
 
     if (userID.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Error: User ID must be provided.");
+        JOptionPane.showMessageDialog(null, "Error: User ID must be provided. Rows must be filled. Use Update Function to fill the data.");
         return;
     }
 
@@ -912,7 +1012,7 @@ private void loadTableData() {
 
     // Read existing data and check for the record to delete
     File file = new File("usertxt.txt");
-    StringBuilder fileContent = new StringBuilder();
+    List<String> fileContent = new ArrayList<>();
     boolean recordDeleted = false;
 
     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -924,10 +1024,10 @@ private void loadTableData() {
                 // Skip appending the line to delete it
                 recordDeleted = true;
                 continue; // Skip to the next line
-            }
-            fileContent.append(line).append(System.getProperty("line.separator"));
+            }else{
+            fileContent.add(line);
         }
-
+        }
     } catch (IOException e) {
         JOptionPane.showMessageDialog(null, "Error reading data: " + e.getMessage());
         return;
@@ -936,7 +1036,9 @@ private void loadTableData() {
     // If a record was deleted, write the updated content back to the file
     if (recordDeleted) {
         try (FileWriter writer = new FileWriter(file, false)) {
-            writer.write(fileContent.toString());
+            for(String line : fileContent){
+                writer.write(line+ System.getProperty("line.separator"));
+            }
             JOptionPane.showMessageDialog(null, "Record deleted successfully!");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
@@ -951,12 +1053,9 @@ private void loadTableData() {
     }//GEN-LAST:event_DltBTNActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new adminManagement.List.List().setVisible(true);
-                
-            }
-        });         
+ adminManagement.List.List list = new adminManagement.List.List();
+list.setVisible(true);
+this.dispose();   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
@@ -1021,6 +1120,7 @@ java.awt.EventQueue.invokeLater(new Runnable() {
     private javax.swing.JLabel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton16;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

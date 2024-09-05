@@ -97,6 +97,7 @@ for (Announcement announcement : filteredAnnouncements) {
         empName2 = new javax.swing.JLabel();
         SQBTN = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -137,7 +138,7 @@ for (Announcement announcement : filteredAnnouncements) {
                 jButton1ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 50));
+        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 130, 50));
 
         jButton2.setText("Attendance");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +146,7 @@ for (Announcement announcement : filteredAnnouncements) {
                 jButton2ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
+        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 130, 50));
 
         jButton3.setText("Log Out");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +175,15 @@ for (Announcement announcement : filteredAnnouncements) {
                 jButton4ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 130, 50));
+        sidePanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 130, 50));
+
+        jButton5.setText("Dashboard");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, 50));
 
         mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 
@@ -249,12 +258,9 @@ for (Announcement announcement : filteredAnnouncements) {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new attendanceManagement.Attendance().setVisible(true);
-                
-            }
-        });        // TODO add your handling code here:
+                  attendanceManagement.Attendance Attendance= new attendanceManagement.Attendance();
+                    Attendance.setVisible(true);
+                    this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -272,7 +278,17 @@ for (Announcement announcement : filteredAnnouncements) {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        adminManagement.DisplayA.DisplayAnnoucement diplayAnnoucement = new adminManagement.DisplayA.DisplayAnnoucement();
+diplayAnnoucement.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        ui.dashboard.BackButton backbutton= new ui.dashboard.BackButton();
+        backbutton.navigateBasedOnRole();
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,6 +366,7 @@ for (Announcement announcement : filteredAnnouncements) {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;

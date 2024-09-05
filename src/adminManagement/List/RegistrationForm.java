@@ -154,7 +154,7 @@ public RegistrationForm() {
                 RegisterBTNActionPerformed(evt);
             }
         });
-        jPanel2.add(RegisterBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 510, 90, 30));
+        jPanel2.add(RegisterBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 490, 90, 30));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
@@ -580,13 +580,13 @@ public RegistrationForm() {
         jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 210, 170));
 
         Back.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
-        Back.setText("Back");
+        Back.setText("Clear Text");
         Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackActionPerformed(evt);
             }
         });
-        jPanel2.add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, -1, -1));
+        jPanel2.add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -785,9 +785,10 @@ public RegistrationForm() {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(() -> {
-            new adminManagement.List.List().setVisible(true);
-        });
+
+       adminManagement.List.List list = new adminManagement.List.List();
+list.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_jButton12ActionPerformed
 
     /**

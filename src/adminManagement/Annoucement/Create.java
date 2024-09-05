@@ -63,6 +63,7 @@ public class Create extends javax.swing.JFrame {
         empName2 = new javax.swing.JLabel();
         SQBTN = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -111,7 +112,7 @@ public class Create extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 130, 50));
+        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 130, 50));
 
         jButton2.setText("Attendance");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +120,7 @@ public class Create extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 130, 50));
+        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 130, 50));
 
         jButton3.setText("Log Out");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +128,7 @@ public class Create extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 130, 50));
+        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 130, 50));
 
         empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         empName2.setText("EmpName");
@@ -148,7 +149,15 @@ public class Create extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 130, 50));
+        sidePanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 130, 50));
+
+        jButton6.setText("Dashboard");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, 50));
 
         mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 
@@ -313,12 +322,9 @@ public class Create extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new attendanceManagement.Attendance().setVisible(true);
-                
-            }
-        });        // TODO add your handling code here:
+           attendanceManagement.Attendance attendance = new attendanceManagement.Attendance();
+attendance.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -366,22 +372,28 @@ public class Create extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
     
-java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new adminManagement.DisplayA.DisplayAnnoucement().setVisible(true);
-            }
-        });
+adminManagement.DisplayA.DisplayAnnoucement diplayAnnoucement = new adminManagement.DisplayA.DisplayAnnoucement();
+diplayAnnoucement.setVisible(true);
+this.dispose();
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void BackBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBTNActionPerformed
         // TODO add your handling code here:
         
-java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new adminManagement.Annoucement.AnnoucementDada().setVisible(true);
-            }
-        });
+
+adminManagement.Annoucement.AnnoucementDada Annoucementdata = new adminManagement.Annoucement.AnnoucementDada();
+Annoucementdata.setVisible(true);
+this.dispose();
+
     }//GEN-LAST:event_BackBTNActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        ui.dashboard.BackButton backbutton= new ui.dashboard.BackButton();
+        backbutton.navigateBasedOnRole();
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -462,6 +474,7 @@ java.awt.EventQueue.invokeLater(new Runnable() {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

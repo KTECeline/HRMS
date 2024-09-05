@@ -16,103 +16,70 @@ import java.util.Scanner;
  *
  * @author leopa
  */
-public class UnlockUser extends javax.swing.JFrame {
+public class EditSecurity extends javax.swing.JFrame {
     private Map<String, Boolean> lockedAccounts = new HashMap<>();
     private DefaultTableModel tableModel;
 
     /**
      * Creates new form UnlockUser
      */
-    public UnlockUser() {
+    public EditSecurity() {
         initComponents();
         String username = Session.getUsername();
         String role = Session.getRole();
         
         empName.setText(username);
         roleLabel.setText(role);
-        
-        tableModel = new DefaultTableModel(new Object[]{"Username", "Action"}, 0);
-        table.setModel(tableModel);
-        loadLockedAccounts();
-        populateTable();
+        LoadData();
     }
-private void loadLockedAccounts() {
-        try {
-            FileReader fr = new FileReader("data.txt");
-            Scanner scanner = new Scanner(fr);
+    public void LoadData(){
+    DefaultTableModel securityTableModel = (DefaultTableModel) SecurityQuestion.getModel();
+    securityTableModel.setRowCount(0); // Clear the table model
 
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] parts = line.split(",");
-                if (parts.length >= 2) {
-                    String username = parts[0].trim();
-                    boolean isLocked = Boolean.parseBoolean(parts[1].trim());
-                    lockedAccounts.put(username, isLocked);
-                }
-            }
-            scanner.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error loading locked accounts.");
-        }
-    }
-
-    private void populateTable() {
-        for (Map.Entry<String, Boolean> entry : lockedAccounts.entrySet()) {
-            if (entry.getValue()) { // Only add locked accounts
-                tableModel.addRow(new Object[]{entry.getKey(), "Unlock"});
-            }
-        }
-    }
-    private void unlockAccount(String username) {
-        if (lockedAccounts.containsKey(username)) {
-            lockedAccounts.put(username, false); // Set locked status to false
-            saveLockedAccounts(); // Save the updated status to file
-            updateTable(); // Update the table to reflect changes
-             removeLineFromFile(username);
-            JOptionPane.showMessageDialog(null, "Account unlocked successfully.");
-        } else {
-            JOptionPane.showMessageDialog(null, "Account not found.");
-        }
-    }
-
-    private void saveLockedAccounts() {
-        try {
-            FileWriter fw = new FileWriter("data.txt");
-            for (Map.Entry<String, Boolean> entry : lockedAccounts.entrySet()) {
-                fw.write(entry.getKey() + "," + entry.getValue() + "\n");
-            }
-            fw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error saving locked accounts.");
-        }
-    }
-
-    private void updateTable() {
-        tableModel.setRowCount(0); // Clear existing rows
-        populateTable(); // Re-populate table with updated data
-    }
-    private void removeLineFromFile(String username) {
-    try {
-        File file = new File("data.txt");
-        File tempFile = new File("temp.txt");
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+    try (BufferedReader br = new BufferedReader(new FileReader("security.txt"))) {
         String line;
-        while ((line = reader.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             String[] parts = line.split(",");
-            if (!parts[0].trim().equals(username)) {
-                writer.write(line + "\n");
-            }
+            securityTableModel.addRow(parts);
         }
-        reader.close();
-        writer.close();
-        file.delete();
-        tempFile.renameTo(file);
     } catch (IOException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error removing line from file.");
+        System.err.println("Error reading security.txt: " + e.getMessage());
+    }
+}
+    
+    public void updateSecurityQuestion() {
+    String userId = UserId.getText();
+    String securityQuestion = (String) SQBox.getSelectedItem();
+    String answer = Answer.getText();
+
+    try (BufferedReader br = new BufferedReader(new FileReader("security.txt"))) {
+        String line;
+        StringBuilder updatedContent = new StringBuilder();
+        boolean found = false;
+
+        while ((line = br.readLine()) != null) {
+            String[] parts = line.split(",");
+            if (parts[0].equals(userId)) {
+                parts[4] = securityQuestion;
+                parts[5] = answer;
+                found = true;
+            }
+            updatedContent.append(String.join(",", parts)).append("\n");
+        }
+
+        if (!found) {
+            JOptionPane.showMessageDialog(this, "User ID not found.");
+            return;
+        }
+
+        FileWriter fw = new FileWriter("security.txt");
+        fw.write(updatedContent.toString());
+        fw.close();
+
+        JOptionPane.showMessageDialog(this, "Security question and answer updated successfully.");
+        LoadData();
+    } catch (IOException e) {
+        System.err.println("Error updating security.txt: " + e.getMessage());
     }
 }
     /**
@@ -146,11 +113,17 @@ private void loadLockedAccounts() {
         jButton8 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         header1 = new javax.swing.JLabel();
-        unlockButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        SecurityQuestion = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        UserId = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        EditSQBTN = new javax.swing.JButton();
+        SQBox = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        Answer = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        EditBTN = new javax.swing.JButton();
 
         sidePanel1.setBackground(new java.awt.Color(0, 0, 0));
         sidePanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -250,7 +223,7 @@ private void loadLockedAccounts() {
         empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         empName.setForeground(new java.awt.Color(242, 242, 242));
         empName.setToolTipText("");
-        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 90, 30));
+        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         roleLabel.setForeground(new java.awt.Color(242, 242, 242));
@@ -263,7 +236,7 @@ private void loadLockedAccounts() {
                 jButton1ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 130, 50));
+        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 130, 50));
 
         jButton2.setText("Attendance");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -271,7 +244,7 @@ private void loadLockedAccounts() {
                 jButton2ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 130, 50));
+        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 130, 50));
 
         jButton3.setText("Log Out");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -279,7 +252,7 @@ private void loadLockedAccounts() {
                 jButton3ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 130, 50));
+        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 130, 50));
 
         empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         empName2.setText("EmpName");
@@ -292,7 +265,7 @@ private void loadLockedAccounts() {
                 jButton7ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 130, 50));
+        sidePanel.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 130, 50));
 
         jButton8.setText("Dashboard");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -300,7 +273,7 @@ private void loadLockedAccounts() {
                 jButton8ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 130, 50));
+        sidePanel.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, 50));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -327,84 +300,134 @@ private void loadLockedAccounts() {
                 .addContainerGap())
         );
 
-        unlockButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        unlockButton.setText("Unlock");
-        unlockButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unlockButtonActionPerformed(evt);
-            }
-        });
-
-        table.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        SecurityQuestion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Username", "UnlockStatus"
+                "User ID", "Username", "Phone", "Email", "Security Question", "Answer"
             }
-        ));
-        table.setRowHeight(30);
-        jScrollPane1.setViewportView(table);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Please select the row you intend to unlock");
-
-        EditSQBTN.setText("Edit Security Question");
-        EditSQBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditSQBTNActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jScrollPane2.setViewportView(SecurityQuestion);
+
+        jScrollPane3.setViewportView(jScrollPane2);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        UserId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserIdActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("UserID:");
+
+        SQBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What city were you born in?", "Where is your hometown?", "What is your favorite hobby", "What is the name of your first pet?", "What is your mother's name?", "What is your father's name?" }));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Security Question:");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setText("Answer:");
+
+        EditBTN.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        EditBTN.setText("Update");
+        EditBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditBTNActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(UserId, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Answer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SQBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(174, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(EditBTN)
+                .addGap(322, 322, 322))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(UserId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SQBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Answer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(28, 28, 28)
+                .addComponent(EditBTN)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(249, Short.MAX_VALUE)
+                .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(171, 171, 171))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(unlockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(343, 343, 343))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(EditSQBTN)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(67, 67, 67))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 69, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
-                .addComponent(EditSQBTN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(unlockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -440,9 +463,10 @@ private void loadLockedAccounts() {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-          attendanceManagement.Attendance at = new attendanceManagement.Attendance();
+       
+  attendanceManagement.Attendance at = new  attendanceManagement.Attendance();
 at.setVisible(true);
-this.dispose(); // TODO add your handling code here:
+this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -455,32 +479,21 @@ this.dispose(); // TODO add your handling code here:
     System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void unlockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unlockButtonActionPerformed
-        // TODO add your handling code here:
-      int selectedRow = table.getSelectedRow();
-            if (selectedRow >= 0) {
-                String username = (String) tableModel.getValueAt(selectedRow, 0);
-                unlockAccount(username);
-            } else {
-                JOptionPane.showMessageDialog(null, "Please select an account to unlock.");
-            }
-    }//GEN-LAST:event_unlockButtonActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        
 adminManagement.DisplayA.DisplayAnnoucement diplayAnnoucement = new adminManagement.DisplayA.DisplayAnnoucement();
 diplayAnnoucement.setVisible(true);
 this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void EditSQBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditSQBTNActionPerformed
+    private void UserIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserIdActionPerformed
         // TODO add your handling code here:
-     
-        EditSecurity editsq = new EditSecurity();
-editsq.setVisible(true);
-this.dispose();
-    }//GEN-LAST:event_EditSQBTNActionPerformed
+    }//GEN-LAST:event_UserIdActionPerformed
+
+    private void EditBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditBTNActionPerformed
+        // TODO add your handling code here:
+        updateSecurityQuestion();
+    }//GEN-LAST:event_EditBTNActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -489,10 +502,48 @@ this.dispose();
         this.dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
- 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(EditSecurity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(EditSecurity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(EditSecurity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(EditSecurity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new EditSecurity().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton EditSQBTN;
+    private javax.swing.JTextField Answer;
+    private javax.swing.JButton EditBTN;
+    private javax.swing.JComboBox<String> SQBox;
+    private javax.swing.JTable SecurityQuestion;
+    private javax.swing.JTextField UserId;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnProfile1;
     private javax.swing.JLabel empName;
@@ -510,14 +561,16 @@ this.dispose();
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel roleLabel;
     private javax.swing.JLabel roleLabel1;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JPanel sidePanel1;
-    private javax.swing.JTable table;
-    private javax.swing.JButton unlockButton;
     // End of variables declaration//GEN-END:variables
 }
