@@ -78,12 +78,12 @@ public class ViewTask extends javax.swing.JFrame {
             try {
                 String dept = Session.Dept.trim();
                 System.out.println(dept);
-                String roleColumn = dataRow[1].trim();
+                String DepartmentColumn = dataRow[1].trim();
                 System.out.println("Dept from session: " + dept);
-                System.out.println("Dept from file: " + roleColumn);
-                if (roleColumn.equals(dept)) {
+                System.out.println("Dept from file: " + DepartmentColumn);
+                if (DepartmentColumn.equals(dept)) {
                     // Create a new array for the filtered data
-                    System.out.println("roleColumn" + roleColumn);
+                    System.out.println("roleColumn" + DepartmentColumn);
                     String[] filteredDataRow = new String[columnsToDisplay.size()];
                     for (int i = 0; i < columnsToDisplay.size(); i++) {
                         filteredDataRow[i] = dataRow[columnsToDisplay.get(i)];
@@ -117,12 +117,11 @@ public class ViewTask extends javax.swing.JFrame {
     TableModel model = jTable1.getModel();  // Get the table model
 
     // Set text fields and other components with the values from the selected row
-    UN.setText(model.getValueAt(selectedRow, 0).toString());
-    TL.setText(model.getValueAt(selectedRow, 1).toString());
-    SD.setText(model.getValueAt(selectedRow, 2).toString());
-    ED.setText(model.getValueAt(selectedRow, 3).toString());
-    D.setText(model.getValueAt(selectedRow, 4).toString());
-    details.setText(model.getValueAt(selectedRow, 5).toString());
+    TL.setText(model.getValueAt(selectedRow, 0).toString());
+    SD.setText(model.getValueAt(selectedRow, 1).toString());
+    ED.setText(model.getValueAt(selectedRow, 2).toString());
+    D.setText(model.getValueAt(selectedRow, 3).toString());
+    details.setText(model.getValueAt(selectedRow, 4).toString());
    
 
     }
@@ -140,13 +139,11 @@ public class ViewTask extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        UN = new javax.swing.JLabel();
         TL = new javax.swing.JLabel();
         SD = new javax.swing.JLabel();
         ED = new javax.swing.JLabel();
@@ -193,9 +190,6 @@ public class ViewTask extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jLabel2.setText("Assigned By     :");
-
         jLabel3.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jLabel3.setText("Department     :");
 
@@ -210,9 +204,6 @@ public class ViewTask extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jLabel10.setText("End Date          :");
-
-        UN.setFont(new java.awt.Font("Sitka Text", 0, 14)); // NOI18N
-        UN.setText("...");
 
         TL.setFont(new java.awt.Font("Sitka Text", 0, 14)); // NOI18N
         TL.setText("...");
@@ -252,15 +243,10 @@ public class ViewTask extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(UN, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
-                            .addComponent(TL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(TL, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -294,11 +280,7 @@ public class ViewTask extends javax.swing.JFrame {
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(UN))
-                .addGap(18, 18, 18)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(TL))
@@ -325,7 +307,7 @@ public class ViewTask extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        UN.setText("...");
+     
         TL.setText("...");
         SD.setText("...");
         ED.setText("...");
@@ -390,13 +372,11 @@ public class ViewTask extends javax.swing.JFrame {
     private javax.swing.JLabel ED;
     private javax.swing.JLabel SD;
     private javax.swing.JLabel TL;
-    private javax.swing.JLabel UN;
     private javax.swing.JTextArea details;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
