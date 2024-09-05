@@ -141,37 +141,4 @@ public class AttCalculation {
         }
         return totalDays;
     }
-
-    public double calculatePartTimeSalary(String lEmpID, String monthYear) throws IOException {
-        int totalMinutes = 0;  
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            reader.readLine();
-            while ((line = reader.readLine()) != null) {
-                String[] entry = line.split(",");
-                if (entry.length < 8) continue; 
-
-                String currentUserId = entry[1].trim();  
-                String dateStr = entry[7].trim();       
-                String hoursStr = entry[4].trim();  
-System.out.println("Processing entry: UserID = " + currentUserId + ", HoursStr = " + hoursStr + ", Date = " + dateStr);
-                if (currentUserId.equals(lEmpID)) {  
-                    LocalDate date = LocalDate.parse(dateStr, DATE_FORMAT);  
-                    String monthYearStr = date.getYear() + "-" + String.format("%02d", date.getMonthValue());
-
-                    if (monthYearStr.equals(monthYear)) { 
-                        String[] timeParts = hoursStr.split(":");
-                        int hours = Integer.parseInt(timeParts[0]); 
-                        int minutes = Integer.parseInt(timeParts[1]);  
-
-                        totalMinutes += (hours * 60) + minutes;
-                    }
-                }
-            }
-        }
-
-        double totalHours = totalMinutes / 60.0;
-        return totalHours;  
-    }
 }

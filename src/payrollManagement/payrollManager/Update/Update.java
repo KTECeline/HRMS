@@ -167,8 +167,6 @@ public class Update extends javax.swing.JFrame {
         btnBankName = new javax.swing.JTextField();
         btnEmpName = new javax.swing.JTextField();
         btnYear = new javax.swing.JTextField();
-        UnpaidLeave = new javax.swing.JLabel();
-        btnUnpaidLeave = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -646,17 +644,6 @@ public class Update extends javax.swing.JFrame {
         });
         mainPanel.add(btnYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 142, -1));
 
-        UnpaidLeave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        UnpaidLeave.setText("Total unpaid leave      :");
-        mainPanel.add(UnpaidLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, -1, -1));
-
-        btnUnpaidLeave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUnpaidLeaveActionPerformed(evt);
-            }
-        });
-        mainPanel.add(btnUnpaidLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 220, 170, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -753,93 +740,91 @@ public class Update extends javax.swing.JFrame {
 
         if (recordUpdated) {
             if (!previousYear.equals(year) || !previousMonth.equals(month) || !previousBasicSalary.equals(basicSalary)) {
-            String[] reasons = {"ANNUAL LEAVE OVER 12 TIMES", "MEDICAL LEAVE OVER 2 TIMES", "EMERGENCY LEAVE OVER 2 TIMES"};
+            String[] reasons = {"ANNUAL LEAVE OVER 12 DAYS", "MEDICAL LEAVE OVER 2 DAYS", "MATERNITY LEAVE OVER 98 DAYS", "CHANGE POSITION"};
 
-                  String reason = (String) JOptionPane.showInputDialog(
-                          null,
-                          "Please select a reason for updating the year/month/basic salary:",
-                          "Update Reason",
-                          JOptionPane.QUESTION_MESSAGE,
-                          null,
-                          reasons,
-                          reasons[0]); 
+            String reason = (String) JOptionPane.showInputDialog(
+                    null,
+                    "Please select a reason for updating the year/month/basic salary:",
+                    "Update Reason",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    reasons,
+                    reasons[0]); 
 
-                  if (reason != null && !reason.trim().isEmpty()) {
-                   File historyFile = new File("history.txt");
-                   String historyId = "P001"; 
+            if (reason != null && !reason.trim().isEmpty()) {
+                File historyFile = new File("history.txt");
+                String historyId = "P001"; 
 
-                   if (historyFile.exists() && historyFile.length() > 0) {
-                       try (BufferedReader br = new BufferedReader(new FileReader(historyFile))) {
-                           String lastLine = null;
-                           String line;
+            if (historyFile.exists() && historyFile.length() > 0) {
+                try (BufferedReader br = new BufferedReader(new FileReader(historyFile))) {
+                     String lastLine = null;
+                     String line;
 
-                           while ((line = br.readLine()) != null) {
-                               lastLine = line;
-                           }
+                    while ((line = br.readLine()) != null) {
+                         lastLine = line;
+                    }
 
-                           if (lastLine != null) {
-                               String[] data = lastLine.split(",");
-                               if (data.length > 0) {
-                                   try {
+                    if (lastLine != null) {
+                        String[] data = lastLine.split(",");
+                        if (data.length > 0) {
+                            try {
 
-                                       String lastHistoryId = data[0]; 
-                                       String numericPart = lastHistoryId.substring(1);  
-                                       int nextId = Integer.parseInt(numericPart) + 1; 
+                                String lastHistoryId = data[0]; 
+                                String numericPart = lastHistoryId.substring(1);  
+                                int nextId = Integer.parseInt(numericPart) + 1; 
 
-                                       historyId = String.format("P%03d", nextId);
-                                   } catch (NumberFormatException e) {
-                                       JOptionPane.showMessageDialog(null, "Error parsing history ID, starting from 1.");
-                                       historyId = "P001"; 
-                                   }
-                               }
-                           }
-                           
-                       } catch (IOException e) {
-                           JOptionPane.showMessageDialog(null, "Error reading history file: " + e.getMessage());
-                       }
-                       
-                   } else {
-                       historyId = "P001";
-                   }
+                                historyId = String.format("P%03d", nextId);
+                            } catch (NumberFormatException e) {
+                                JOptionPane.showMessageDialog(null, "Error parsing history ID, starting from 1.");
+                                historyId = "P001"; 
+                            }
+                        }
+                    }
 
-                   String basicsalary = "" + month + " " + year + " : " + basicSalary ;
+                } catch (IOException e) {
+                     JOptionPane.showMessageDialog(null, "Error reading history file: " + e.getMessage());
+                }
 
-                   String timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
+            } else {
+                historyId = "P001";
+            }
 
-                   String historyRecord = historyId + "," + updatedBy + "," + empID + 
-                           "," + previousMonth + " " + previousYear + " : " + previousBasicSalary + "," +
-                           basicsalary + "," + reason + "," + timeStamp;
+            String basicsalary = "" + month + " " + year + " : " + basicSalary ;
 
-                   try (FileWriter historyWriter = new FileWriter(historyFile, true)) {
-                       historyWriter.append(historyRecord).append(System.getProperty("line.separator"));
-                       
-                   } catch (IOException e) {
-                       JOptionPane.showMessageDialog(null, "Error saving history: " + e.getMessage());
-                   }
+            String timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
 
-                   // Write the updated content back to the file
-                   try (FileWriter writer = new FileWriter(file, false)) {
-                       writer.write(fileContent.toString());
-                       JOptionPane.showMessageDialog(null, "Update successful!");
+            String historyRecord = historyId + "," + updatedBy + "," + empID + 
+                    "," + previousMonth + " " + previousYear + " : " + previousBasicSalary + "," +
+                    basicsalary + "," + reason + "," + timeStamp;
 
-                   } catch (IOException e) {
-                       JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
-                   }
-                   
-               } else {
-                   JOptionPane.showMessageDialog(null, "Update canceled. Reason is required for updating the Role/Position/Department.");
-               }
-                  
-           } else {
-               try (FileWriter writer = new FileWriter(file, false)) {
-                   writer.write(fileContent.toString());
-                   JOptionPane.showMessageDialog(null, "Update successful!");
-               } catch (IOException e) {
-                   JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
-               }
-           }
-       }
+            try (FileWriter historyWriter = new FileWriter(historyFile, true)) {
+                historyWriter.append(historyRecord).append(System.getProperty("line.separator"));
 
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error saving history: " + e.getMessage());
+            }
+
+             // Write the updated content back to the file
+            try (FileWriter writer = new FileWriter(file, false)) {
+                writer.write(fileContent.toString());
+                JOptionPane.showMessageDialog(null, "Update successful!");
+
+            } catch (IOException e) {
+                 JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
+            }
+
+        } else {
+             JOptionPane.showMessageDialog(null, "Update canceled. Reason is required for updating the Role/Position/Department.");
+        }
+
+    } else {
+        try (FileWriter writer = new FileWriter(file, false)) {
+            writer.write(fileContent.toString());
+            JOptionPane.showMessageDialog(null, "Update successful!");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
+        }}
+    }
         loadTableData();
     }//GEN-LAST:event_btnUpEmpActionPerformed
 
@@ -961,7 +946,7 @@ public class Update extends javax.swing.JFrame {
                     String yerCon = dataRow[19];
                     String BankName = dataRow[20];
                     String BankAccount = dataRow[21];
-
+                    
                     Update updateForm = new Update();
                     updateForm.setButtonValues(payrollID, empID, empName, Year, Month, bSalary, allowance, ot, latePen, gSalary, yeeEPF, yeeSosco, yeeEIS, yeePCB, yeeTDeduction, yeeNetSalary, yerEPF, yerSosco, yerEIS, yerCon, BankName, BankAccount);
                     updateForm.setVisible(true);
@@ -1113,10 +1098,6 @@ public class Update extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnYearActionPerformed
 
-    private void btnUnpaidLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnpaidLeaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUnpaidLeaveActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -1150,6 +1131,14 @@ public class Update extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1164,7 +1153,6 @@ public class Update extends javax.swing.JFrame {
     private javax.swing.JTabbedPane EmpTab;
     private javax.swing.JLabel GSalary;
     private javax.swing.JLabel OT;
-    private javax.swing.JLabel UnpaidLeave;
     private javax.swing.JLabel YeeAmount;
     private javax.swing.JLabel YeeAmount1;
     private javax.swing.JLabel YerAmount;
@@ -1184,7 +1172,6 @@ public class Update extends javax.swing.JFrame {
     private javax.swing.JTextField btnOT;
     private javax.swing.JTextField btnPayrollID;
     private javax.swing.JTextField btnSearch;
-    private javax.swing.JTextField btnUnpaidLeave;
     private javax.swing.JButton btnUpEmp;
     private javax.swing.JTextField btnYear;
     private javax.swing.JTextField btnYeeEIS;
