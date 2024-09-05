@@ -37,7 +37,7 @@ public class Attendance extends javax.swing.JFrame {
         String username = Session.getUsername();
         String role = Session.getRole();
         
-        empName.setText(username);
+        empName6.setText(username);
         roleLabel.setText(role);
         
         customInitComponents(); // Custom method to initialize additional components
@@ -299,7 +299,6 @@ public class Attendance extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnProfile = new javax.swing.JButton();
-        empName = new javax.swing.JLabel();
         roleLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -503,10 +502,6 @@ public class Attendance extends javax.swing.JFrame {
         });
         sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
 
-        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName.setToolTipText("");
-        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
         roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         roleLabel.setForeground(new java.awt.Color(255, 255, 255));
         roleLabel.setText("Admin");
@@ -673,7 +668,6 @@ this.dispose();
     private javax.swing.JButton Monthly;
     private javax.swing.JLabel TimeIn;
     private javax.swing.JButton btnProfile;
-    private javax.swing.JLabel empName;
     private javax.swing.JLabel empName6;
     private javax.swing.JLabel header;
     private javax.swing.JButton jButton1;
