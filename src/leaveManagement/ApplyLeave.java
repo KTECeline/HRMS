@@ -272,17 +272,17 @@ public class ApplyLeave extends javax.swing.JFrame {
     }//GEN-LAST:event_submitActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ui.dashboard.ManagerDashboard().setVisible(true);
-            }
-        });    // TODO add your handling code here:
+    ui.dashboard.BackButton backButton = new ui.dashboard.BackButton();
+        backButton.navigateBasedOnRole();
+        this.dispose();   // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    ui.dashboard.BackButton backButton = new ui.dashboard.BackButton();
-        backButton.navigateBasedOnRole();
-        this.dispose();// TODO add your handling code here:
+    java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new leaveManagement.LeaveHistory().setVisible(true);
+            }
+        });  this.dispose(); // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -290,7 +290,7 @@ public class ApplyLeave extends javax.swing.JFrame {
             public void run() {
                 new leaveManagement.LeaveStatus().setVisible(true);
             }
-        });         // TODO add your handling code here:
+        });  this.dispose();       // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
         
     
