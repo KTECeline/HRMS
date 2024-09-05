@@ -31,7 +31,7 @@ public class Record extends javax.swing.JFrame {
     }
     
     private void loadTableData(javax.swing.JTable table, boolean isEmployer) {
-        String filePath = "../HRMS_2/Src/payrollManagement/payroll.txt";
+        String filePath = "payroll.txt";
         if (isEmployer) {
             loadEmployeeData(filePath, table);
         } else {
@@ -298,7 +298,7 @@ public class Record extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         String searchText = btnSearch.getText().trim().toLowerCase();
-        String filePath = "../HRMS_2/Src/payrollManagement/payroll.txt";
+        String filePath = "payroll.txt";
         File file = new File(filePath);
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
