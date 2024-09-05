@@ -89,14 +89,15 @@ public class HRDashboard extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btn1 = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btn2 = new javax.swing.JButton();
-        btn3 = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         TotalEmployee = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -211,13 +212,13 @@ public class HRDashboard extends javax.swing.JFrame {
         jLabel4.setText("Create Account");
         mainPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, 180, -1));
 
-        btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Create.png"))); // NOI18N
-        btn1.addActionListener(new java.awt.event.ActionListener() {
+        btnCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Create.png"))); // NOI18N
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn1ActionPerformed(evt);
+                btnCreateActionPerformed(evt);
             }
         });
-        mainPanel.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 200, 200));
+        mainPanel.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 200, 200));
 
         jLabel7.setFont(new java.awt.Font("Sitka Text", 3, 24)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -228,20 +229,20 @@ public class HRDashboard extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Update.png"))); // NOI18N
         mainPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, 150, 160));
 
-        btn2.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn2ActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
-        mainPanel.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 210, 200));
+        mainPanel.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 210, 200));
 
-        btn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Record.png"))); // NOI18N
-        btn3.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/Record.png"))); // NOI18N
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn3ActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
-        mainPanel.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 200, 200));
+        mainPanel.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 200, 200));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(153, 153, 153)));
@@ -278,6 +279,11 @@ public class HRDashboard extends javax.swing.JFrame {
 
         mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 110, 80));
 
+        jLabel10.setFont(new java.awt.Font("Sitka Text", 3, 12)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Total Employee");
+        mainPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 100, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -294,8 +300,8 @@ public class HRDashboard extends javax.swing.JFrame {
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         profile.ProfileButton profileLoader = new profile.ProfileButton();
-    profile.ViewProfile viewprofile = new profile.ViewProfile();
-    profileLoader.onViewProfileButtonClick(viewprofile); 
+        profile.ViewProfile viewprofile = new profile.ViewProfile();
+        profileLoader.onViewProfileButtonClick(viewprofile); 
         dispose();
     }//GEN-LAST:event_btnProfileActionPerformed
 
@@ -316,23 +322,23 @@ public class HRDashboard extends javax.swing.JFrame {
     System.exit(0);
     }//GEN-LAST:event_btnlogoutActionPerformed
 
-    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         this.dispose();
         employeeManagement.CreateEmployee createEmployee = new employeeManagement.CreateEmployee();
         createEmployee.setVisible(true);
-    }//GEN-LAST:event_btn1ActionPerformed
+    }//GEN-LAST:event_btnCreateActionPerformed
 
-    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         this.dispose();
         UpdateEmployee updateEmployee = new UpdateEmployee();
         updateEmployee.setVisible(true);
-    }//GEN-LAST:event_btn2ActionPerformed
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         this.dispose();
         SearchEmployee searchEmployee = new SearchEmployee();
         searchEmployee.setVisible(true);
-    }//GEN-LAST:event_btn3ActionPerformed
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttendanceActionPerformed
         attendanceManagement.Attendance attendance = new attendanceManagement.Attendance();
@@ -390,18 +396,19 @@ public class HRDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TotalEmployee;
-    private javax.swing.JButton btn1;
-    private javax.swing.JButton btn2;
-    private javax.swing.JButton btn3;
     private javax.swing.JButton btnAnnoucement;
     private javax.swing.JButton btnAttendance;
+    private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnProfile;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnlogout;
     private javax.swing.JLabel empName;
     private javax.swing.JLabel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
