@@ -61,7 +61,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         empName2 = new javax.swing.JLabel();
-        SQBTN = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -164,14 +163,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         empName2.setToolTipText("");
         sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
-        SQBTN.setText("SQ q");
-        SQBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SQBTNActionPerformed(evt);
-            }
-        });
-        sidePanel.add(SQBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
 
         jButton4.setText("Announcements");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -415,14 +406,6 @@ AnnoucementData.setVisible(true);
 this.dispose();
     }//GEN-LAST:event_btn3ActionPerformed
 
-    private void SQBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SQBTNActionPerformed
-        // TODO add your handling code here:
-     
-        auth.Create CreateSecurityQ = new auth.Create();
-CreateSecurityQ.setVisible(true);
-
-    }//GEN-LAST:event_SQBTNActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
 adminManagement.DisplayA.DisplayAnnoucement diplayAnnoucement = new adminManagement.DisplayA.DisplayAnnoucement();
@@ -491,7 +474,6 @@ this.dispose();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel OnLeave;
-    private javax.swing.JButton SQBTN;
     private javax.swing.JLabel TotalEmployee;
     private javax.swing.JLabel UNLOCKA;
     private javax.swing.JLabel UnlockAcc;
