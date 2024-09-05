@@ -95,7 +95,6 @@ for (Announcement announcement : filteredAnnouncements) {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         empName2 = new javax.swing.JLabel();
-        SQBTN = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -160,14 +159,6 @@ for (Announcement announcement : filteredAnnouncements) {
         empName2.setText("EmpName");
         empName2.setToolTipText("");
         sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
-        SQBTN.setText("jButton4");
-        SQBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SQBTNActionPerformed(evt);
-            }
-        });
-        sidePanel.add(SQBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
 
         jButton4.setText("Announcements");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -267,15 +258,6 @@ for (Announcement announcement : filteredAnnouncements) {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void SQBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SQBTNActionPerformed
-        // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new auth.Create().setVisible(true);
-            }
-        });
-    }//GEN-LAST:event_SQBTNActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         adminManagement.DisplayA.DisplayAnnoucement diplayAnnoucement = new adminManagement.DisplayA.DisplayAnnoucement();
@@ -357,7 +339,6 @@ this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton SQBTN;
     private javax.swing.JButton btnProfile;
     private javax.swing.JLabel empName;
     private javax.swing.JLabel empName2;
