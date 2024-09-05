@@ -1,6 +1,6 @@
 Id,Username,Password,Full Name,Gender,Date of Birth,Phone Number, Marital Status,Nationality,Email Address,Home Address,Role,Position,Department,Date of Joining,Employment Type,WK EXP Job Title,WK EXP Responsibilities,EM Contact Number,EM Phone Number,Bank Name,Account Number
-1,un,pw,fn,Male,06-08-1998,0123456789,Married,MALAYSIAN,un@mail.com,Jalan ABC Puchong,Admin,NONE,None,23-06-2010,Full time,User Management,Manange User,Celine,0123456789,HONG LEONG BANK,0123456789
-2,hr,123,Yeong Huey Yee,Female,16-06-2000,0123456789,Single,MALAYSIAN,@mail.com,Klang Selangor,HR Officer,NONE,None,08-06-2013,Full time,Officer,Manage Report,Suzan,0123456789,HONG LEONG BANK,0123456789
+1,un,pw,fn,Male,06-08-1998,0123456789,Married,MALAYSIAN,un@mail.com,Jalan ABC Puchong,Admin,NONE,None,23-06-2010,Part time,User Management,Manange User,Celine,0123456789,HONG LEONG BANK,0123456789
+2,hr,123,Yeong Huey Yee,Female,16-06-2000,0123456789,Single,MALAYSIAN,@mail.com,Klang Selangor,HR Officer,NONE,None,08-06-2013,Intern,Officer,Manage Report,Suzan,0123456789,HONG LEONG BANK,0123456789
 3,pr,123,Thong Hui Nan,Female,12-04-1995,0112018615,Single,MALAYSIAN,huianan@mail.com,Vista Koma Bukit Jalil,Payroll Officer,NONE,None,09-09-2012,Full time,Accountant,Accounting,Nan Gua,01234566789,CIMB BANK,0123456789
 4,dm,123,Wong Jin Yi,Female,08-02-1985,0123456789,Married,MALAYSIAN,jinyi@mail.com,Jalan Putih Puchong,Department Manager,NONE,None,14-09-2018,Full time,Customer Servicer,Texting to customer,Eric,0123456789,MAYBANK,0123456789
 5,em,123,Jack Tan,Male,16-09-1999,0123456789,Married,MALAYSIAN,jack@mail.com,Bukit Jalil KL,Employee,IT NETWORK GROUP,IT,20-09-2014,Full time,IT Support,Maintain Computer Devices,John,0123456789,PUBLIC BANK,0123456789
