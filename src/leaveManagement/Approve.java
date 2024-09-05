@@ -509,7 +509,12 @@ public class Approve extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+     java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ui.dashboard.ManagerDashboard().setVisible(true);
+            }
+        });
+        this.dispose();    // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
