@@ -31,7 +31,7 @@ public class DisplayAnnoucement extends javax.swing.JFrame {
         String username = Session.getUsername();
         String role = Session.getRole();
         
-        empName1.setText(username);
+        empName4.setText(username);
         roleLabel.setText(role);
         
         
