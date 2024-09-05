@@ -187,7 +187,9 @@ public class Reset extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
-        
+ auth.LoginForm Login= new  auth.LoginForm();
+        Login.setVisible(true);
+        this.dispose();        
     }//GEN-LAST:event_btnLogin1ActionPerformed
 
     private void btnLogin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin2ActionPerformed

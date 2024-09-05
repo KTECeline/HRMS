@@ -156,7 +156,9 @@ private static final int MAX_ATTEMPTS = 3;
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+auth.Reset reset= new  auth.Reset();
+        reset.setVisible(true);
+        this.dispose();          
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
