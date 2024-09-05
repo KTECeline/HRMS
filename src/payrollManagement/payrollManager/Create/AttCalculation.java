@@ -26,13 +26,6 @@ public class AttCalculation {
         return overtimeTime.format(TIME_FORMAT);
     }
 
-    public String calculateMonthlyUndertime(String lEmpID) throws IOException {
-        String monthYear = readMonthYearFromFile(filePath);
-        double totalUndertime = calculateMonthlyUndertime(filePath, monthYear, lEmpID); 
-        LocalTime undertimeTime = LocalTime.of((int) totalUndertime, (int) ((totalUndertime % 1) * 60));
-        return undertimeTime.format(TIME_FORMAT);
-    }
-
     private double calculateMonthlyOvertime(String filePath, String monthYear, String selectedEmpID) throws IOException {
         double totalOvertime = 0.0;
 
@@ -65,38 +58,40 @@ public class AttCalculation {
         return totalOvertime;
     }
 
-    private double calculateMonthlyUndertime(String filePath, String monthYear, String selectedEmpID) throws IOException {
-        double totalUndertime = 0.0;
+    public int calculateMonthlyUndertime(String filePath, String monthYear, String selectedEmpID) throws IOException {
+       int totalLateDays = 0;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] entry = line.split(",");
-                if (entry.length < 8) continue;
+       try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+           String line;
+           reader.readLine(); // Skip header line if necessary
+           while ((line = reader.readLine()) != null) {
+               String[] entry = line.split(",");
+               if (entry.length < 8) continue;
 
-                String currentUserId = entry[1].trim();
-                String dateStr = entry[7].trim();
-                String undertimeStr = entry[6].trim();
+               String currentUserId = entry[1].trim();
+               String dateStr = entry[7].trim();
+               String undertimeStr = entry[6].trim();
 
-                if (currentUserId.equals(selectedEmpID)) {
-                    try {
-                        LocalDate date = LocalDate.parse(dateStr, DATE_FORMAT);
-                        String monthYearStr = date.getYear() + "-" + String.format("%02d", date.getMonthValue());
+               if (currentUserId.equals(selectedEmpID)) {
+                   try {
+                       LocalDate date = LocalDate.parse(dateStr, DATE_FORMAT);
+                       String monthYearStr = date.getYear() + "-" + String.format("%02d", date.getMonthValue());
 
-                        if (monthYearStr.equals(monthYear)) {
-                            LocalTime undertime = LocalTime.parse(undertimeStr, TIME_FORMAT);
-                            double undertimeHours = undertime.getHour() + undertime.getMinute() / 60.0;
-                            totalUndertime += undertimeHours;
-                        }
-                    } catch (DateTimeParseException e) {
-                        System.err.println("Date or time format error in line: " + line + " - " + e.getMessage());
-                    }
-                }
-            }
-        }
-        return totalUndertime;
+                       if (monthYearStr.equals(monthYear)) {
+                           LocalTime undertime = LocalTime.parse(undertimeStr, TIME_FORMAT);
+                           if (!undertime.equals(LocalTime.MIDNIGHT)) {
+                               totalLateDays++;
+                           }
+                       }
+                   } catch (DateTimeParseException e) {
+                       System.err.println("Date or time format error in line: " + line + " - " + e.getMessage());
+                   }
+               }
+           }
+       }
+       return totalLateDays;
     }
-
+    
     private String readMonthYearFromFile(String filePath) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             reader.readLine();

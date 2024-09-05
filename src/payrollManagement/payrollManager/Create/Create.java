@@ -831,27 +831,26 @@ public class Create extends javax.swing.JFrame {
             btnAllowance.setText(String.format("%.2f", allowance));
 
             String overtimeStr = calculation.calculateMonthlyOvertime(selectedUserId);
-            String undertimeStr = calculation.calculateMonthlyUndertime(selectedUserId);
-
-            if (overtimeStr == null) {
+            if (overtimeStr == null || overtimeStr.isEmpty()) {
                 overtimeStr = "00:00";  
-            }
-            if (undertimeStr == null) {
-                undertimeStr = "00:00";  
             }
 
             LocalTime totalOvertime = LocalTime.parse(overtimeStr);
-            LocalTime totalUndertime = LocalTime.parse(undertimeStr);
-
             double tOvertime = totalOvertime.getHour() + totalOvertime.getMinute() / 60.0;
-            double tUndertime = totalUndertime.getHour() + totalUndertime.getMinute() / 60.0;
             double overtimeAmount = tOvertime * 100;
-            double undertimeAmount = tUndertime * 0.10;
-
             btnOT.setText(String.format("%.2f", overtimeAmount));
-            btnLatePen.setText(String.format("%.2f", undertimeAmount));
 
-            double grossSalary = basicSalary + allowance + overtimeAmount - undertimeAmount;
+            String monthYear = month + "-" + year;
+            int totalLateDays = calculation.calculateMonthlyUndertime(filePath, monthYear, selectedUserId);
+            double deduction = 0.00;
+
+            if (totalLateDays >= 3) {
+                deduction = 100.0;
+            }
+
+            btnLatePen.setText(String.format("%.2f", deduction));
+
+            double grossSalary = basicSalary + allowance + overtimeAmount - deduction;
             btnGSalary.setText(String.format("%.2f", grossSalary));
 
             double yeeEPF = grossSalary * 0.11;
@@ -881,7 +880,7 @@ public class Create extends javax.swing.JFrame {
             double yerCon = yerEPF + yerSOCSO + yerEIS;
             btnYerCon.setText(String.format("%.2f", yerCon));
 
-            generateSummary(selectedUserId); 
+            generateSummary(selectedUserId, totalLateDays);  
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error in number formatting. Please check your inputs.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -893,6 +892,52 @@ public class Create extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "An unexpected error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnCalActionPerformed
+    
+    private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm");
+    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    String filePath = "attendance.txt";
+ 
+    public int calculateMonthlyUndertime(String filePath, String monthYear, String selectedEmpID) throws IOException {
+        int totalLateDays = 0;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            reader.readLine();
+            while ((line = reader.readLine()) != null) {
+                String[] entry = line.split(",");
+                if (entry.length < 8) {
+                    System.err.println("Invalid line format: " + line);
+                    continue;
+                }
+
+                String currentUserId = entry[1].trim();
+                String dateStr = entry[7].trim();
+                String undertimeStr = entry[6].trim();
+
+                System.out.println("Processing: UserID=" + currentUserId + ", Date=" + dateStr + ", Undertime=" + undertimeStr);
+
+                if (currentUserId.equals(selectedEmpID)) {
+                    try {
+                        LocalDate date = LocalDate.parse(dateStr, DATE_FORMAT);
+                        String monthYearStr = date.getYear() + "-" + String.format("%02d", date.getMonthValue());
+
+                        System.out.println("MonthYearStr=" + monthYearStr + ", ExpectedMonthYear=" + monthYear);
+
+                        if (monthYearStr.equals(monthYear)) {
+                            if (!"00:00".equals(undertimeStr)) { 
+                                totalLateDays++;
+                                System.out.println("Late day found: " + dateStr + " with undertime " + undertimeStr);
+                            }
+                        }
+                    } catch (DateTimeParseException e) {
+                        System.err.println("Date or time format error in line: " + line + " - " + e.getMessage());
+                    }
+                }
+            }
+        }
+        System.out.println("Total late days: " + totalLateDays);
+        return totalLateDays;
+    }
     
     private boolean recordExistsForMonthAndYear(String month, String year, String lEmpID) throws IOException {
         Set<String> existingRecords = new HashSet<>();
@@ -964,16 +1009,34 @@ public class Create extends javax.swing.JFrame {
         }
         return false; 
     }
-
-    public void generateSummary(String lEmpID) throws IOException {
+    
+    private double convertToDecimalHours(String overtimeStr) {
+        if (overtimeStr == null || overtimeStr.isEmpty()) {
+            return 0.0;
+        }
+        try {
+            LocalTime totalOvertime = LocalTime.parse(overtimeStr, TIME_FORMAT);
+            return totalOvertime.getHour() + totalOvertime.getMinute() / 60.0;
+        } catch (DateTimeParseException e) {
+            System.err.println("Error parsing overtime time data: " + e.getMessage());
+            return 0.0;
+        }
+    }
+    
+    public void generateSummary(String lEmpID, int totalLateDays) throws IOException {
         AttCalculation calculation = new AttCalculation();
 
         String overtimeStr = calculation.calculateMonthlyOvertime(lEmpID);
-        String undertimeStr = calculation.calculateMonthlyUndertime(lEmpID);
+        double totalOvertimeHours = convertToDecimalHours(overtimeStr);
+
+        double totalWorkingDays = calculation.calculateInternSalary(lEmpID);
+        int hours = (int) totalOvertimeHours;
+        int minutes = (int) ((totalOvertimeHours - hours) * 60);
 
         System.out.println("\n----- Summary for User: " + lEmpID + " -----");
-        System.out.println("Total Overtime: " + overtimeStr);
-        System.out.println("Total Undertime: " + undertimeStr);
+        System.out.println("Total Overtime: " + hours + " hours " + minutes + " minutes");
+        System.out.println("Total Working Days: " + (int)totalWorkingDays);
+        System.out.println("Total Late Days: " + totalLateDays);
         System.out.println("--------------------------------\n");
     }
     
@@ -1064,6 +1127,10 @@ public class Create extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnYearActionPerformed
 
+    private String String(double totalOvertimeHours) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     class DataRowCounter {
         public static int countEmployees(String filePath) {
             int totalRows = 0;
@@ -1106,6 +1173,9 @@ public class Create extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Create.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
