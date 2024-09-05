@@ -10,3 +10,5 @@ User Id , Username , Department , Type , Start Date , End Date , Days , Reason ,
 7,dm,Employee,Maternity Leave,2024-09-10,2024-09-29,20, ,Pending,12,Thu Sep 06 22:45:36 MYT 2024,none
 5,em,Employee,Maternity Leave,2024-09-14,2024-09-21,8,t,Pending,12,Fri Sep 06 01:59:09 MYT 2024,none
 1,un,Admin,Annual Leave,2024-09-20,2024-09-21,2, ,Pending,10,Fri Sep 06 02:29:50 MYT 2024,none
+2,hr,HR Officer,Medical Leave,2024-09-07,2024-09-09,3, ,Pending,12,Fri Sep 06 02:37:00 MYT 2024,none
+2,hr,HR Officer,Annual Leave,2024-09-24,2024-09-26,3,Going to Bali!!,Pending,12,Fri Sep 06 02:37:31 MYT 2024,none
