@@ -31,7 +31,7 @@ public class DisplayAnnoucement extends javax.swing.JFrame {
         String username = Session.getUsername();
         String role = Session.getRole();
         
-        empName.setText(username);
+        empName1.setText(username);
         roleLabel.setText(role);
         
         
@@ -86,104 +86,44 @@ for (Announcement announcement : filteredAnnouncements) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        empName1 = new javax.swing.JLabel();
+        empName3 = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
-        sidePanel = new javax.swing.JPanel();
-        btnProfile = new javax.swing.JButton();
-        empName = new javax.swing.JLabel();
-        roleLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        empName2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
+        sidePanel = new javax.swing.JPanel();
+        btnProfile = new javax.swing.JButton();
+        roleLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        empName4 = new javax.swing.JLabel();
+
+        empName1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        empName1.setText("EmpName");
+        empName1.setToolTipText("");
+
+        empName3.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        empName3.setText("EmpName");
+        empName3.setToolTipText("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        sidePanel.setBackground(new java.awt.Color(0, 0, 0));
-        sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnProfile.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        btnProfile.setText("View Profile");
-        btnProfile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProfileActionPerformed(evt);
-            }
-        });
-        sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
-
-        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName.setForeground(new java.awt.Color(242, 242, 242));
-        empName.setText("EmpName");
-        empName.setToolTipText("");
-        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
-        roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        roleLabel.setForeground(new java.awt.Color(242, 242, 242));
-        roleLabel.setText("Admin");
-        sidePanel.add(roleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
-
-        jButton1.setText("Leave");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 130, 50));
-
-        jButton2.setText("Attendance");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 130, 50));
-
-        jButton3.setText("Log Out");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 130, 50));
-
-        empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName2.setText("EmpName");
-        empName2.setToolTipText("");
-        sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
-        jButton4.setText("Announcements");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        sidePanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 130, 50));
-
-        jButton5.setText("Dashboard");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        sidePanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, 50));
-
-        mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
-
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(128, 128, 128));
 
         header.setBackground(new java.awt.Color(255, 242, 242));
         header.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
         header.setForeground(new java.awt.Color(255, 255, 255));
-        header.setText("Admin Panel");
+        header.setText("Annoucement Panel");
         header.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -191,9 +131,9 @@ for (Announcement announcement : filteredAnnouncements) {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(348, 348, 348)
-                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(356, Short.MAX_VALUE))
+                .addGap(304, 304, 304)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(308, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,6 +160,72 @@ for (Announcement announcement : filteredAnnouncements) {
         jLabel1.setText("Announcements");
         mainPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, -1, -1));
 
+        sidePanel.setBackground(new java.awt.Color(128, 128, 128));
+        sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnProfile.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        btnProfile.setText("View Profile");
+        btnProfile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProfileActionPerformed(evt);
+            }
+        });
+        sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
+
+        roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        roleLabel.setForeground(new java.awt.Color(242, 242, 242));
+        sidePanel.add(roleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+
+        jButton1.setText("Leave");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 130, 50));
+
+        jButton2.setText("Attendance");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 130, 50));
+
+        jButton3.setText("Log Out");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 130, 50));
+
+        jButton4.setText("Announcements");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 130, 50));
+
+        jButton5.setText("Dashboard");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, 50));
+
+        empName4.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName4.setForeground(new java.awt.Color(255, 255, 255));
+        empName4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        empName4.setText("EmpName");
+        empName4.setToolTipText("");
+        sidePanel.add(empName4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+
+        mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -242,6 +248,11 @@ for (Announcement announcement : filteredAnnouncements) {
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
+        profile.ProfileButton profileLoader = new profile.ProfileButton();
+       profile.ViewProfile viewprofile = new profile.ViewProfile();
+         
+        profileLoader.onViewProfileButtonClick(viewprofile); 
+        this.dispose();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -340,8 +351,9 @@ this.dispose();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProfile;
-    private javax.swing.JLabel empName;
-    private javax.swing.JLabel empName2;
+    private javax.swing.JLabel empName1;
+    private javax.swing.JLabel empName3;
+    private javax.swing.JLabel empName4;
     private javax.swing.JLabel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

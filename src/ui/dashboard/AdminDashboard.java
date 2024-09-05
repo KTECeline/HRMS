@@ -2,6 +2,7 @@ package ui.dashboard;
 import auth.Session;
 import javax.swing.JOptionPane;
 import adminManagement.GetPanel.DataRowCounter;
+import profile.ProfileButton;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -60,7 +61,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         empName2 = new javax.swing.JLabel();
-        SQBTN = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -113,7 +113,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         mainPanel.add(OnLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 130, 90));
 
-        sidePanel.setBackground(new java.awt.Color(0, 0, 0));
+        sidePanel.setBackground(new java.awt.Color(128, 128, 128));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnProfile.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
@@ -161,17 +161,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 130, 50));
 
         empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName2.setText("EmpName");
         empName2.setToolTipText("");
         sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
-        SQBTN.setText("SQ q");
-        SQBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SQBTNActionPerformed(evt);
-            }
-        });
-        sidePanel.add(SQBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
 
         jButton4.setText("Announcements");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +182,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(128, 128, 128));
 
         header.setBackground(new java.awt.Color(255, 242, 242));
         header.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
@@ -354,6 +345,11 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
+       profile.ProfileButton profileLoader = new profile.ProfileButton();
+       profile.ViewProfile viewprofile = new profile.ViewProfile();
+         
+        profileLoader.onViewProfileButtonClick(viewprofile); 
+        this.dispose();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -409,14 +405,6 @@ this.dispose();
 AnnoucementData.setVisible(true);
 this.dispose();
     }//GEN-LAST:event_btn3ActionPerformed
-
-    private void SQBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SQBTNActionPerformed
-        // TODO add your handling code here:
-     
-        auth.Create CreateSecurityQ = new auth.Create();
-CreateSecurityQ.setVisible(true);
-
-    }//GEN-LAST:event_SQBTNActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
@@ -486,7 +474,6 @@ this.dispose();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel OnLeave;
-    private javax.swing.JButton SQBTN;
     private javax.swing.JLabel TotalEmployee;
     private javax.swing.JLabel UNLOCKA;
     private javax.swing.JLabel UnlockAcc;

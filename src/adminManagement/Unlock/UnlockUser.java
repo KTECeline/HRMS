@@ -136,14 +136,13 @@ private void loadLockedAccounts() {
         header = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         btnProfile = new javax.swing.JButton();
-        empName = new javax.swing.JLabel();
         roleLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        empName2 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        empName = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         header1 = new javax.swing.JLabel();
         unlockButton = new javax.swing.JButton();
@@ -234,7 +233,7 @@ private void loadLockedAccounts() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sidePanel.setBackground(new java.awt.Color(0, 0, 0));
+        sidePanel.setBackground(new java.awt.Color(128, 128, 128));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnProfile.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
@@ -246,11 +245,6 @@ private void loadLockedAccounts() {
             }
         });
         sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
-
-        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName.setForeground(new java.awt.Color(242, 242, 242));
-        empName.setToolTipText("");
-        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 90, 30));
 
         roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         roleLabel.setForeground(new java.awt.Color(242, 242, 242));
@@ -281,11 +275,6 @@ private void loadLockedAccounts() {
         });
         sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 130, 50));
 
-        empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName2.setText("EmpName");
-        empName2.setToolTipText("");
-        sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
         jButton7.setText("Annoucement");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,7 +291,14 @@ private void loadLockedAccounts() {
         });
         sidePanel.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 130, 50));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName.setForeground(new java.awt.Color(255, 255, 255));
+        empName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        empName.setText("EmpName");
+        empName.setToolTipText("");
+        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+
+        jPanel2.setBackground(new java.awt.Color(128, 128, 128));
 
         header1.setBackground(new java.awt.Color(255, 242, 242));
         header1.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
@@ -353,6 +349,7 @@ private void loadLockedAccounts() {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Please select the row you intend to unlock");
 
+        EditSQBTN.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         EditSQBTN.setText("Edit Security Question");
         EditSQBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -374,10 +371,11 @@ private void loadLockedAccounts() {
                         .addComponent(unlockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(343, 343, 343))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(EditSQBTN)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(67, 67, 67))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(EditSQBTN)
+                        .addGap(57, 57, 57))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -389,15 +387,15 @@ private void loadLockedAccounts() {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(EditSQBTN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(unlockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114))
+                .addGap(81, 81, 81))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -433,6 +431,11 @@ private void loadLockedAccounts() {
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
+        profile.ProfileButton profileLoader = new profile.ProfileButton();
+       profile.ViewProfile viewprofile = new profile.ViewProfile();
+         
+        profileLoader.onViewProfileButtonClick(viewprofile); 
+        this.dispose();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -497,7 +500,6 @@ this.dispose();
     private javax.swing.JButton btnProfile1;
     private javax.swing.JLabel empName;
     private javax.swing.JLabel empName1;
-    private javax.swing.JLabel empName2;
     private javax.swing.JLabel empName3;
     private javax.swing.JLabel header;
     private javax.swing.JLabel header1;
