@@ -989,7 +989,62 @@ public class ViewProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
-        
+        String filePath = "../HRMS_2/Src/payrollManagement/payroll.txt";
+        File file = new File(filePath);
+
+        String selectedMonth = (String) btnMonth.getSelectedItem();
+        String userId = auth.Session.getUserId(); 
+        boolean recordFound = false;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] dataRow = line.split(",");
+
+                if (dataRow[1].equals(userId) && dataRow[4].equals(selectedMonth)) {
+                    recordFound = true;
+
+                    String empID = dataRow[1]; 
+                    String empName = dataRow[2]; 
+                    String bankName = dataRow[19]; 
+                    String bankAccount = dataRow[20];  
+                    String year = dataRow[3]; 
+                    String month = dataRow[4]; 
+                    String bSalary = dataRow[4]; 
+                    String allowance = dataRow[5];
+                    String ot = dataRow[6]; 
+                    String latePen = dataRow[7];
+                    String gSalary = dataRow[8]; 
+                    String yeeEPF = dataRow[9]; 
+                    String yeeSosco = dataRow[10]; 
+                    String yeeEIS = dataRow[11]; 
+                    String yeePCB = dataRow[12];
+                    String yeeTDeductions = dataRow[13];
+                    String yeeNSalary = dataRow[14];
+                    String yerEPF = dataRow[15];
+                    String yerSosco = dataRow[16];
+                    String yerEIS = dataRow[17];
+                    String yerCon = dataRow[18];
+
+                    payrollManagement.payrollEmployee.Payslip payslip = new payrollManagement.payrollEmployee.Payslip();              
+                    payslip.setLabelValues(empID, empName, bankName, bankAccount, year, month, bSalary, allowance, ot, latePen, gSalary, 
+                                           yeeEPF, yeeSosco, yeeEIS, yeePCB, yeeTDeductions, yeeNSalary, yerEPF, yerSosco, yerEIS, yerCon);
+                    payslip.setVisible(true);
+                    this.dispose();
+                    break;
+                }
+            }
+
+            // If no record was found, display a message
+            if (!recordFound) {
+                javax.swing.JOptionPane.showMessageDialog(this, "No record found for the month: " + selectedMonth);
+            }
+
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(Payslip.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_btnGenerateActionPerformed
 
     /**

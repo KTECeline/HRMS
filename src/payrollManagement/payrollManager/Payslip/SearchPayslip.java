@@ -35,7 +35,7 @@ public class SearchPayslip extends javax.swing.JFrame {
     }
     
     private void loadTableData() {
-        String filePath = "../Java Programming/Src/payrollManagement/payroll.txt";
+        String filePath = "payroll.txt";
         File file = new File(filePath);
 
         try {
@@ -209,7 +209,7 @@ public class SearchPayslip extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
        String searchText = btnSearch.getText().trim().toLowerCase(); 
-        String filePath = "../Java Programming/Src/payrollManagement/payroll.txt";
+        String filePath = "payroll.txt";
         File file = new File(filePath);
 
         try {
@@ -247,7 +247,7 @@ public class SearchPayslip extends javax.swing.JFrame {
     
         String payrollID = table.getValueAt(selectedRow, 0).toString(); 
 
-        String filePath = "../Java Programming/Src/payrollManagement/payroll.txt";
+        String filePath = "payroll.txt";
         File file = new File(filePath);
 
         try {
@@ -296,7 +296,7 @@ public class SearchPayslip extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         String searchText = btnSearch.getText().trim().toLowerCase();
         String searchCriteria = (String) jComboBox1.getSelectedItem(); 
-        String filePath = "../Java Programming/Src/payrollManagement/payroll.txt";
+        String filePath = "payroll.txt";
         File file = new File(filePath);
 
         try {
