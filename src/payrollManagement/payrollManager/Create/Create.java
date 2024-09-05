@@ -205,7 +205,7 @@ public class Create extends javax.swing.JFrame {
             }
         });
 
-        btnMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "09", "October", "November", "December" }));
+        btnMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
         btnMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMonthActionPerformed(evt);
@@ -790,45 +790,39 @@ public class Create extends javax.swing.JFrame {
 
     private void btnCalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalActionPerformed
         try {
-            String month = (String) btnMonth.getSelectedItem(); 
+            String month = (String) btnMonth.getSelectedItem();
+            String year = btnYear.getText();
+
             if (month == null || month.isEmpty()) {
                 throw new IllegalArgumentException("Please select a valid month.");
             }
-
-            String year = (String) btnYear.getText();
             if (year == null || year.isEmpty()) {
                 throw new IllegalArgumentException("Please select a valid year.");
             }
 
-           if (!attendanceExistsForMonthAndYear(month, year)) {
+            if (!attendanceExistsForMonthAndYear(month, year)) {
                 throw new IllegalArgumentException("No attendance records found for " + month + " " + year + ".");
             }
 
-            if (recordExistsForMonthAndYear(month, year)) {
-                JOptionPane.showMessageDialog(this, "A record for " + month + " " + year + " already exists. Cannot add a new record.", "Error", JOptionPane.ERROR_MESSAGE);
-                return; 
-            }
-
-            String empType = lEmpType.getText(); 
+            String empType = lEmpType.getText();
             AttCalculation calculation = new AttCalculation();
-
             double basicSalary;
-            double allowance = 100; 
+            double allowance = 100;
 
             switch (empType.toLowerCase()) {
-            case "intern":
-                double totalDays = calculation.calculateInternSalary();
-                basicSalary = (1000 / 30) * totalDays;
-                break;
-            case "full time":
-                basicSalary = 5000;
-                break;
-            case "part time":
-                double totalHours = calculation.calculatePartTimeSalary();
-                basicSalary = totalHours * 10;
-                break;
-            default:
-                throw new IllegalArgumentException("Please choose a valid employee type.");
+                case "intern":
+                    double totalDays = calculation.calculateInternSalary();
+                    basicSalary = (1000 / 30) * totalDays;
+                    break;
+                case "full time":
+                    basicSalary = 5000;
+                    break;
+                case "part time":
+                    double totalHours = calculation.calculatePartTimeSalary();
+                    basicSalary = totalHours * 10;
+                    break;
+                default:
+                    throw new IllegalArgumentException("Please choose a valid employee type.");
             }
 
             btnBasicSalary.setText(String.format("%.2f", basicSalary));
@@ -844,10 +838,11 @@ public class Create extends javax.swing.JFrame {
             LocalTime totalOvertime = LocalTime.parse(overtimeStr);
             LocalTime totalUndertime = LocalTime.parse(undertimeStr);
 
-            double tOvertime = totalOvertime.getHour() + totalOvertime.getMinute();
-            double tUndertime = totalUndertime.getHour() + totalUndertime.getMinute();
-            double overtimeAmount = tOvertime * 100; 
-            double undertimeAmount = tUndertime * 0.10; 
+            double tOvertime = totalOvertime.getHour() + totalOvertime.getMinute() / 60.0;
+            double tUndertime = totalUndertime.getHour() + totalUndertime.getMinute() / 60.0;
+            double overtimeAmount = tOvertime * 100;
+            double undertimeAmount = tUndertime * 0.10;
+
             btnOT.setText(String.format("%.2f", overtimeAmount));
             btnLatePen.setText(String.format("%.2f", undertimeAmount));
 
@@ -857,7 +852,8 @@ public class Create extends javax.swing.JFrame {
             double yeeEPF = grossSalary * 0.11;
             double yeeSOCSO = grossSalary * 0.005;
             double yeeEIS = grossSalary * 0.002;
-            double yeePCB = (grossSalary * 12) * 0.05 / 12; 
+            double yeePCB = (grossSalary * 12) * 0.05 / 12;
+
             btnYeeEPF.setText(String.format("%.2f", yeeEPF));
             btnYeeSosco.setText(String.format("%.2f", yeeSOCSO));
             btnYeeEIS.setText(String.format("%.2f", yeeEIS));
@@ -872,6 +868,7 @@ public class Create extends javax.swing.JFrame {
             double yerEPF = grossSalary * 0.13;
             double yerSOCSO = grossSalary * 0.018;
             double yerEIS = grossSalary * 0.002;
+
             btnYerEPF.setText(String.format("%.2f", yerEPF));
             btnYerSosco.setText(String.format("%.2f", yerSOCSO));
             btnYerEIS.setText(String.format("%.2f", yerEIS));
@@ -888,6 +885,7 @@ public class Create extends javax.swing.JFrame {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "An unexpected error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    
     }//GEN-LAST:event_btnCalActionPerformed
     
     private boolean recordExistsForMonthAndYear(String month, String year) throws IOException {
@@ -931,42 +929,26 @@ public class Create extends javax.swing.JFrame {
         monthNameToNumber.put("December", "12");
     }
 
-    public boolean attendanceExistsForMonthAndYear(String monthName, String year, String empID) throws IOException {
-        return attendanceExistsForMonthAndYear(monthName, year);
-    }
-
-   public boolean attendanceExistsForMonthAndYear(String monthName, String year) throws IOException {
-        String month = monthNameToNumber.get(monthName); // Convert month name to number
-        DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Correctly initialized date format
-        String lEmpID = null; // Initialize to hold the employee ID from the first row
+// Check if attendance exists for a given month and year
+    public boolean attendanceExistsForMonthAndYear(String monthName, String year) throws IOException {
+        String month = monthNameToNumber.get(monthName);
+        DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         try (BufferedReader br = new BufferedReader(new FileReader("attendance.txt"))) {
             String line;
-            boolean isFirstRow = true; // Flag to check if it's the first row
 
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length >= 8) {
-                    if (isFirstRow) {
-                        lEmpID = parts[1].trim(); // Set lEmpID from the first row
-                        System.out.println("Set lEmpID from first row: " + lEmpID); // Debug statement
-                        isFirstRow = false; // After setting, update the flag
-                        continue; // Skip processing for the first row
-                    }
-
-                    String userId = parts[1].trim(); 
+                    String userId = parts[1].trim();
                     String dateStr = parts[7].trim(); // Assuming date is at index 7
-                    System.out.println("Read user ID from file: " + userId); // Debug statement
-                    System.out.println("Comparing with lEmpID: " + lEmpID); // Debug statement
 
                     try {
-                        LocalDate date = LocalDate.parse(dateStr, DATE_FORMAT); // Parse the date string
+                        LocalDate date = LocalDate.parse(dateStr, DATE_FORMAT);
                         String recordYear = String.valueOf(date.getYear());
                         String recordMonth = String.format("%02d", date.getMonthValue());
-                        System.out.println("Read attendance month: " + recordMonth + ", year: " + recordYear); // Debug statement
 
-                        if (userId.equals(lEmpID) &&
-                                recordMonth.equals(month) && recordYear.equals(year)) {
+                        if (recordMonth.equals(month) && recordYear.equals(year)) {
                             return true;
                         }
                     } catch (DateTimeParseException e) {
@@ -977,6 +959,8 @@ public class Create extends javax.swing.JFrame {
         }
         return false;
     }
+
+
 
     private void btnYerConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYerConActionPerformed
         // TODO add your handling code here:
@@ -1065,6 +1049,22 @@ public class Create extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnYearActionPerformed
 
+    class DataRowCounter {
+    public static int countEmployees(String filePath) {
+        int totalRows = 0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            while (br.readLine() != null) {
+                totalRows++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return totalRows;
+    }
+}
+    
     /**
      * @param args the command line arguments
      */
@@ -1091,6 +1091,8 @@ public class Create extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Create.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
