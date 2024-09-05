@@ -1,0 +1,2 @@
+payrollID,EmpID,EmpName,Year,Month,BSalary,Allowance,OT,LatePen,GSalary,YeeEPS,YeeSosco,YeeEIS,YeePCB,YeeTDeduction,YeeNSalary,YerEPF,YerSosco,YerEIS,YerCon,BankName,BankAccount
+P1,3,un,2024,January,5000.00,100.00,100.00,1.70,5198.30,571.81,25.99,10.40,259.92,868.12,4330.18,675.78,93.57,10.40,779.75,HONG LEONG BANK,0123456789,
