@@ -155,7 +155,7 @@ public class AttCalculation {
                 String currentUserId = entry[1].trim();  
                 String dateStr = entry[7].trim();       
                 String hoursStr = entry[4].trim();  
-
+System.out.println("Processing entry: UserID = " + currentUserId + ", HoursStr = " + hoursStr + ", Date = " + dateStr);
                 if (currentUserId.equals(lEmpID)) {  
                     LocalDate date = LocalDate.parse(dateStr, DATE_FORMAT);  
                     String monthYearStr = date.getYear() + "-" + String.format("%02d", date.getMonthValue());

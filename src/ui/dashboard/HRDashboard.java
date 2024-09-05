@@ -33,7 +33,7 @@ public class HRDashboard extends javax.swing.JFrame {
         roleLabel.setText(role);
         
         empName.setText(username);
-        int totalEmployee=DataRowCounter.countEmployees("usertxt.txt");
+        int totalEmployee=adminManagement.GetPanel.DataRowCounter.countEmployees("usertxt.txt");
         TotalEmployee.setText(String.valueOf(totalEmployee));
         
         
