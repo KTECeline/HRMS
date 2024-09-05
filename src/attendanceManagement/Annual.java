@@ -20,12 +20,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author leopa
  */
-public class Monthly extends javax.swing.JFrame {
+public class Annual extends javax.swing.JFrame {
 
     /**
      * Creates new form Monthly
      */
-    public Monthly() {
+    public Annual() {
         initComponents();
         String username = Session.getUsername();
         String userId = Session.getUserId();
@@ -33,23 +33,20 @@ public class Monthly extends javax.swing.JFrame {
         LabelUsername.setText(username);
         LabelUserID.setText(userId);
         
-        LabelMonth.setText(getCurrentMonth());
+        
         LabelYear.setText(getCurrentYear());
         
         calculateMetrics();
         
         loadAttendanceData(userId);
     }
-private String getCurrentMonth() {
-    Calendar calendar = Calendar.getInstance();
-    int month = calendar.get(Calendar.MONTH) + 1; // Months are 0-based
-    return String.format("%02d", month); // Format month to two digits
-}
+
 
 private String getCurrentYear() {
     Calendar calendar = Calendar.getInstance();
     return String.valueOf(calendar.get(Calendar.YEAR));
 }
+
 private void loadAttendanceData(String userId) {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     model.setRowCount(0);
@@ -57,37 +54,26 @@ private void loadAttendanceData(String userId) {
     // Define the late time threshold
     LocalTime lateThreshold = LocalTime.of(9, 30);
 
-    // Get the current month
-    String currentMonth = getCurrentMonth();
-
     try (BufferedReader br = new BufferedReader(new FileReader("attendance.txt"))) {
         String line;
         while ((line = br.readLine()) != null) {
             String[] data = line.split(",");
             if (data[1].equals(userId)) {
-                // Extract the month from the date
-                String date = data[7];
-                String[] dateParts = date.split("-");
-                String month = dateParts[1];
+                // Parse the clock-in time
+                LocalTime clockInTime = LocalTime.parse(data[2]);
 
-                // Filter data to show only the current month
-                if (month.equals(currentMonth)) {
-                    // Parse the clock-in time
-                    LocalTime clockInTime = LocalTime.parse(data[2]);
+                // Determine the status based on clock-in time
+                String status = clockInTime.isAfter(lateThreshold) ? "LATE" : "ON TIME";
 
-                    // Determine the status based on clock-in time
-                    String status = clockInTime.isAfter(lateThreshold) ? "LATE" : "ON TIME";
-
-                    // Add row to the table
-                    model.addRow(new Object[] {
-                        data[0],          // Record ID
-                        data[2],          // ClockIn
-                        status,           // Status
-                        data[3],          // ClockOut
-                        data[4],          // TotalTime
-                        data[7]           // Date
-                    });
-                }
+                // Add row to the table
+                model.addRow(new Object[] {
+                    data[0],          // Record ID
+                    data[2],          // ClockIn
+                    status,           // Status
+                    data[3],          // ClockOut
+                    data[4],          // TotalTime
+                    data[7]           // Date
+                });
             }
         }
     } catch (IOException e) {
@@ -95,26 +81,36 @@ private void loadAttendanceData(String userId) {
     }
 }
 
+private void calculateMetrics() {
+    String userID = Session.getUserId();
+    Calculation calculator = new Calculation(userID);
 
-    private void calculateMetrics() {
-        
-        String userID= Session.getUserId();
-        Calculation calculator = new Calculation(userID);
-        
-         int daysWorked = calculator.calculateDaysWorked(true);
-        int daysLate = calculator.calculateDaysLate(true);
-        int daysOnTime = calculator.calculateDaysOnTime(true);
-        String totalOvertime = calculator.calculateTotalOvertime(true);
-        String totalUndertime = calculator.calculateTotalUndertime(true);
-        String averageClockIn = calculator.calculateAverageClockIn(true);
+    int daysWorked = calculator.calculateDaysWorked(false);
+    int daysLate = calculator.calculateDaysLate(false);
+    int daysOnTime = calculator.calculateDaysOnTime(false);
+    String totalOvertime = calculator.calculateTotalOvertime(false);
+    double latePercentage = calculator.calculateLatePercentageforYear();
+    String averageClockIn = calculator.calculateAverageClockIn(false);
 
-        DaysWorked.setText(String.valueOf(daysWorked));
-        DaysLate.setText(String.valueOf(daysLate));
-        DaysOnTime.setText(String.valueOf(daysOnTime));
-        TotalOvertime.setText(String.valueOf(totalOvertime));
-        TotalUndertime.setText(String.valueOf(totalUndertime));
-        AverageClockIn.setText(averageClockIn);
+    DaysWorked.setText(String.valueOf(daysWorked));
+    DaysLate.setText(String.valueOf(daysLate));
+    DaysOnTime.setText(String.valueOf(daysOnTime));
+    TotalOvertime.setText(String.valueOf(totalOvertime));
+    AverageClockIn.setText(averageClockIn);
+
+    LatePercentage.setText(String.format("%2f%%", latePercentage));
+    Map <Integer,Double>latePercentagePerYear=new HashMap<>();
+    int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    double currentYearLatePercentage = calculator.calculateLatePercentageforYear();
+    latePercentagePerYear.put(currentYear,currentYearLatePercentage);
+    
+    // Display late percentage per year
+    StringBuilder latePercentageText = new StringBuilder();
+    for (int year : latePercentagePerYear.keySet()) {
+        latePercentageText.append("Year: ").append(year).append(", Late Percentage: ").append(latePercentagePerYear.get(year)).append("%\n");
     }
+    LatePercentage.setText(latePercentageText.toString());
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -129,14 +125,9 @@ private void loadAttendanceData(String userId) {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         LabelUserID = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         LabelYear = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         LabelUsername = new javax.swing.JLabel();
-        LabelMonth = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -149,10 +140,12 @@ private void loadAttendanceData(String userId) {
         DaysLate = new javax.swing.JLabel();
         DaysOnTime = new javax.swing.JLabel();
         TotalOvertime = new javax.swing.JLabel();
-        TotalUndertime = new javax.swing.JLabel();
+        LatePercentage = new javax.swing.JLabel();
         AverageClockIn = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jMenu1.setText("jMenu1");
 
@@ -163,7 +156,7 @@ private void loadAttendanceData(String userId) {
         setForeground(java.awt.Color.white);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        jLabel1.setText("MONTHLY REPORT");
+        jLabel1.setText("ANNUAL REPORT");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("    User ID:");
@@ -171,23 +164,154 @@ private void loadAttendanceData(String userId) {
         LabelUserID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         LabelUserID.setText("LabelUserID");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Year:");
-
-        LabelYear.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LabelYear.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         LabelYear.setText("LabelYear");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Username:");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("Month:");
-
         LabelUsername.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         LabelUsername.setText("LabelUsername");
 
-        LabelMonth.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        LabelMonth.setText("LabelMonth");
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setText("Total Days Worked:");
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setText("Days late:");
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setText("Days on Time:");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setText("Average Clock-in Time:");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setText("Total Overtime:");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setText("Late percentage:");
+
+        DaysWorked.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DaysWorked.setText("DaysWorked");
+
+        DaysLate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DaysLate.setText("DaysLate");
+
+        DaysOnTime.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DaysOnTime.setText("DaysOnTime");
+
+        TotalOvertime.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TotalOvertime.setText("TotalOvertime");
+
+        LatePercentage.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LatePercentage.setText("LatePercentage");
+
+        AverageClockIn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        AverageClockIn.setText("AverageClockIn");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DaysLate)
+                            .addComponent(jLabel7)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(DaysWorked))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel6)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel8)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(98, 98, 98)
+                                .addComponent(DaysOnTime)))
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TotalOvertime)
+                        .addGap(59, 59, 59)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(42, 42, 42))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(AverageClockIn)
+                                .addGap(110, 110, 110))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(LatePercentage)))
+                        .addContainerGap())))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DaysWorked)
+                    .addComponent(DaysOnTime)
+                    .addComponent(AverageClockIn))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DaysLate)
+                    .addComponent(TotalOvertime)
+                    .addComponent(LatePercentage))
+                .addContainerGap(64, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(257, 257, 257))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+        );
+
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -202,169 +326,39 @@ private void loadAttendanceData(String userId) {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel6.setText("Total Days Worked:");
-
-        jLabel7.setText("Days late:");
-
-        jLabel8.setText("Days on Time:");
-
-        jLabel9.setText("Average Clock-in Time:");
-
-        jLabel10.setText("Total Overtime:");
-
-        jLabel11.setText("Total Undertime:");
-
-        DaysWorked.setText("DaysWorked");
-
-        DaysLate.setText("DaysLate");
-
-        DaysOnTime.setText("DaysOnTime");
-
-        TotalOvertime.setText("TotalOvertime");
-
-        TotalUndertime.setText("TotalUndertime");
-
-        AverageClockIn.setText("AverageClockIn");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel6))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(DaysWorked, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(DaysLate))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(DaysOnTime, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(41, 41, 41)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(TotalOvertime))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(TotalUndertime))
-                .addGap(51, 51, 51)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(AverageClockIn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DaysWorked)
-                    .addComponent(DaysLate)
-                    .addComponent(DaysOnTime)
-                    .addComponent(TotalOvertime)
-                    .addComponent(TotalUndertime)
-                    .addComponent(AverageClockIn))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Download");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jScrollPane2.setViewportView(jScrollPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelUserID))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelUsername)))
+                .addGap(314, 314, 314))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jButton1)
-                                .addGap(107, 107, 107)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(LabelUserID)
-                                        .addGap(169, 169, 169)
-                                        .addComponent(jLabel3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(LabelYear))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(LabelUsername))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(66, 66, 66)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel5)
-                                                    .addComponent(jLabel1))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(LabelMonth))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 29, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton1)
+                        .addGap(81, 81, 81)
+                        .addComponent(LabelYear)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(339, 339, 339)
-                .addComponent(jButton2)
+                        .addGap(39, 39, 39)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -372,27 +366,23 @@ private void loadAttendanceData(String userId) {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(LabelYear))
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(LabelUsername)
-                    .addComponent(LabelMonth)
-                    .addComponent(jLabel5))
+                    .addComponent(LabelUsername))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(LabelUserID)
-                    .addComponent(jLabel3)
-                    .addComponent(LabelYear))
-                .addGap(34, 34, 34)
+                    .addComponent(LabelUserID))
+                .addGap(36, 36, 36)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(37, 37, 37))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -400,20 +390,10 @@ private void loadAttendanceData(String userId) {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-      attendanceManagement.Attendance attendance = new attendanceManagement.Attendance();
+     attendanceManagement.Attendance attendance = new attendanceManagement.Attendance();
 attendance.setVisible(true);
 this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        // Correct instantiation with a String argument
-AttendanceReport report = new AttendanceReport("Monthly Attendance");
-
-// Call the method to get the monthly report
-report.getMonthlyReport();
-
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -432,20 +412,21 @@ report.getMonthlyReport();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Monthly.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Annual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Monthly.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Annual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Monthly.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Annual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Monthly.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Annual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Monthly().setVisible(true);
+                new Annual().setVisible(true);
             }
         });
     }
@@ -455,21 +436,17 @@ report.getMonthlyReport();
     private javax.swing.JLabel DaysLate;
     private javax.swing.JLabel DaysOnTime;
     private javax.swing.JLabel DaysWorked;
-    private javax.swing.JLabel LabelMonth;
     private javax.swing.JLabel LabelUserID;
     private javax.swing.JLabel LabelUsername;
     private javax.swing.JLabel LabelYear;
+    private javax.swing.JLabel LatePercentage;
     private javax.swing.JLabel TotalOvertime;
-    private javax.swing.JLabel TotalUndertime;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -479,6 +456,7 @@ report.getMonthlyReport();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -22,13 +22,13 @@ public class Calculation {
         this.userID = userID;
     }
 
-    public int calculateDaysWorked() {
-        return filterAttendanceData().size();
+    public int calculateDaysWorked(boolean isMonthly) {
+        return filterAttendanceData(isMonthly).size();
     }
 
-    public int calculateDaysLate() {
+    public int calculateDaysLate(boolean isMonthly) {
         int lateCount = 0;
-        Map<String, String[]> data = filterAttendanceData();
+        Map<String, String[]> data = filterAttendanceData(isMonthly);
         for (String[] entry : data.values()) {
             String clockInTime = entry[2];
             if (clockInTime != null && !clockInTime.isEmpty()) {
@@ -46,9 +46,25 @@ public class Calculation {
         return lateCount;
     }
 
-    public int calculateDaysOnTime() {
-        return calculateDaysWorked() - calculateDaysLate();
+    public int calculateDaysOnTime(boolean isMonthly) {
+    Map<String, String[]> data = filterAttendanceData(isMonthly);
+    int lateCount = 0;
+    for (String[] entry : data.values()) {
+        String clockInTime = entry[2];
+        if (clockInTime != null && !clockInTime.isEmpty()) {
+            try {
+                LocalTime clockIn = LocalTime.parse(clockInTime, TIME_FORMAT);
+                if (clockIn.isAfter(LATE_THRESHOLD)) {
+                    lateCount++;
+                }
+            } catch (DateTimeParseException e) {
+                // Handle invalid time format
+                System.err.println("Invalid time format: " + clockInTime);
+            }
+        }
     }
+    return data.size() - lateCount;
+}
 
     private LocalTime parseTime(String time) {
         if (time != null && !time.isEmpty()) {
@@ -66,9 +82,9 @@ public class Calculation {
         return LocalTime.of(totalMinutes / 60, totalMinutes % 60);
     }
 
-    public String calculateTotalOvertime() {
+    public String calculateTotalOvertime(boolean isMonthly) {
         LocalTime totalOvertime = LocalTime.of(0, 0);
-        Map<String, String[]> data = filterAttendanceData();
+        Map<String, String[]> data = filterAttendanceData(isMonthly);
         for (String[] entry : data.values()) {
             String overtime = entry[5]; // Assume overtime is stored as HH:mm
             totalOvertime = addTimes(totalOvertime, parseTime(overtime));
@@ -76,9 +92,9 @@ public class Calculation {
         return totalOvertime.format(TIME_FORMAT);
     }
 
-    public String calculateTotalUndertime() {
+    public String calculateTotalUndertime(boolean isMonthly) {
         LocalTime totalUndertime = LocalTime.of(0, 0);
-        Map<String, String[]> data = filterAttendanceData();
+        Map<String, String[]> data = filterAttendanceData(isMonthly);
         for (String[] entry : data.values()) {
             String undertime = entry[6]; // Assume undertime is stored as HH:mm
             totalUndertime = addTimes(totalUndertime, parseTime(undertime));
@@ -86,8 +102,8 @@ public class Calculation {
         return totalUndertime.format(TIME_FORMAT);
     }
 
-    public String calculateAverageClockIn() {
-        Map<String, String[]> data = filterAttendanceData();
+    public String calculateAverageClockIn(boolean isMonthly) {
+        Map<String, String[]> data = filterAttendanceData(isMonthly);
         int count = 0;
         LocalTime sum = LocalTime.of(0, 0);
 
@@ -112,10 +128,9 @@ public class Calculation {
         return averageTime.format(TIME_FORMAT);
     }
 
-    private Map<String, String[]> filterAttendanceData() {
+    private Map<String, String[]> filterAttendanceData(boolean isMonthly) {
     Map<String, String[]> data = new HashMap<>();
     LocalDate today = LocalDate.now();
-    int currentMonth = today.getMonthValue();
     int currentYear = today.getYear();
 
     try (BufferedReader br = new BufferedReader(new FileReader("attendance.txt"))) {
@@ -126,9 +141,19 @@ public class Calculation {
                 String entryUserID = parts[1];
                 LocalDate entryDate = LocalDate.parse(parts[7]);
 
-                // Check if the entry belongs to the specified user and is from the current month
-                if (userID.equals(entryUserID) && entryDate.getMonthValue() == currentMonth && entryDate.getYear() == currentYear) {
-                    data.put(parts[0], parts); // Use AttendanceId as the key for unique entries
+                // Check if the entry belongs to the specified user
+                if (userID.equals(entryUserID)) {
+                    if (isMonthly) {
+                        // Filter by current month and year
+                        if (entryDate.getMonthValue() == today.getMonthValue() && entryDate.getYear() == currentYear) {
+                            data.put(parts[0], parts); // Use AttendanceId as the key for unique entries
+                        }
+                    } else {
+                        // Filter by current year (for annual)
+                        if (entryDate.getYear() == currentYear) {
+                            data.put(parts[0], parts); // Use AttendanceId as the key for unique entries
+                        }
+                    }
                 }
             }
         }
@@ -137,7 +162,30 @@ public class Calculation {
     }
     return data;
 }
-
+     public double calculateLatePercentageforYear() {
+    Map<String, String[]> data = filterAttendanceData(false);
+    int lateCount =0;// false for annual
+    for (String[] entry : data.values()) {
+       
+        String clockInTime = entry[2];
+        if (clockInTime != null && !clockInTime.isEmpty()) {
+            try {
+                LocalTime clockIn = LocalTime.parse(clockInTime,TIME_FORMAT);
+                if (clockIn.isAfter(LATE_THRESHOLD) || clockIn.equals(LATE_THRESHOLD)){
+                    lateCount++;                }
+            } catch (DateTimeParseException e) {
+                // Handle invalid time format
+                System.err.println("Invalid time format: " + clockInTime);
+            }
+        }
+    }
+    int totalDays = data.size();
+    if (totalDays ==0){
+        return 0.0;
+    }
+    double latePercentage =(double)lateCount/totalDays *100;
+    return latePercentage;
+}
 }
 
 

@@ -34,6 +34,12 @@ public class Attendance extends javax.swing.JFrame {
      */
     public Attendance() {
         initComponents();
+        String username = Session.getUsername();
+        String role = Session.getRole();
+        
+        empName.setText(username);
+        roleLabel.setText(role);
+        
         customInitComponents(); // Custom method to initialize additional components
         this.setVisible(true);
         this.pack();
@@ -279,13 +285,13 @@ public class Attendance extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnProfile = new javax.swing.JButton();
-        empName1 = new javax.swing.JLabel();
+        empName = new javax.swing.JLabel();
         roleLabel = new javax.swing.JLabel();
-        BackButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        empName = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -296,6 +302,7 @@ public class Attendance extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         Monthly = new javax.swing.JButton();
         Annual = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         TimeIn = new javax.swing.JLabel();
 
@@ -319,20 +326,21 @@ public class Attendance extends javax.swing.JFrame {
         });
         sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
 
-        empName1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName1.setToolTipText("");
-        sidePanel.add(empName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName.setToolTipText("");
+        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        sidePanel.add(roleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 80, -1));
+        roleLabel.setText("Admin");
+        sidePanel.add(roleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
-        BackButton.setText("Dashboard");
-        BackButton.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Dashboard");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackButtonActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        sidePanel.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
+        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
 
         jButton2.setText("Attendance");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -348,11 +356,7 @@ public class Attendance extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 130, 50));
-
-        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName.setToolTipText("");
-        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 130, 50));
 
         jButton4.setText("Leave");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -361,6 +365,14 @@ public class Attendance extends javax.swing.JFrame {
             }
         });
         sidePanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
+
+        jButton5.setText("Annoucement");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 130, 50));
 
         getContentPane().add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 
@@ -453,6 +465,14 @@ public class Attendance extends javax.swing.JFrame {
         });
 
         Annual.setText("Annual Report");
+        Annual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnnualActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel2.setText("Today's Attendance Information");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -463,20 +483,24 @@ public class Attendance extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(ClockIn, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ClockOut, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1)))
+                                .addComponent(ClockOut, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(157, 157, 157)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(223, 223, 223)
+                        .addGap(229, 229, 229)
                         .addComponent(Monthly)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Annual)))
                 .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(191, 191, 191))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -488,15 +512,17 @@ public class Attendance extends javax.swing.JFrame {
                     .addComponent(ClockIn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ClockOut, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Annual, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Monthly, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(Monthly, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Annual, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 690, 440));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 690, 460));
 
         TimeIn.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
 
@@ -526,18 +552,30 @@ public class Attendance extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnProfileActionPerformed
 
-    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         ui.dashboard.BackButton backbutton= new ui.dashboard.BackButton();
         backbutton.navigateBasedOnRole();
-    }//GEN-LAST:event_BackButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+ attendanceManagement.Attendance attendance = new attendanceManagement.Attendance();
+attendance.setVisible(true);
+this.dispose();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        auth.Session.logout();
+        JOptionPane.showMessageDialog(this, "You have been logged out.");
+
+    // Close the current frame and exit application
+    this.dispose();
+    System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -558,13 +596,26 @@ public class Attendance extends javax.swing.JFrame {
 
     private void MonthlyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthlyActionPerformed
         
-    java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new attendanceManagement.Monthly().setVisible(true);
-                
-            }
-        }); 
+   
+    attendanceManagement.Monthly monthly = new attendanceManagement.Monthly();
+monthly.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_MonthlyActionPerformed
+
+    private void AnnualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnnualActionPerformed
+        // TODO add your handling code here:
+
+        attendanceManagement.Annual frame = new attendanceManagement.Annual();
+frame.setVisible(true);
+this.dispose();
+    }//GEN-LAST:event_AnnualActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        adminManagement.DisplayA.DisplayAnnoucement diplayAnnoucement = new adminManagement.DisplayA.DisplayAnnoucement();
+diplayAnnoucement.setVisible(true);
+this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -603,19 +654,20 @@ public class Attendance extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Annual;
-    private javax.swing.JButton BackButton;
     private javax.swing.JButton ClockIn;
     private javax.swing.JButton ClockOut;
     private javax.swing.JButton Monthly;
     private javax.swing.JLabel TimeIn;
     private javax.swing.JButton btnProfile;
     private javax.swing.JLabel empName;
-    private javax.swing.JLabel empName1;
     private javax.swing.JLabel header;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
