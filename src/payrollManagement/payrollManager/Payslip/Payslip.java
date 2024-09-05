@@ -674,11 +674,11 @@ public class Payslip extends javax.swing.JFrame {
             g2d.dispose();
 
             String timestamp = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss").format(new Date());
-            String imagePath = "C:\\Users\\Yeong Huey Yee\\OneDrive\\Documents\\NetBeansProjects\\assignment\\src\\payrollManagement\\payrollManager\\PayslipFiles\\png\\2024\\payslip_" + timestamp + ".png";
+            String imagePath = "C:\\Users\\End User\\Documents\\NetBeansProjects\\HRMS_2\\src\\payrollManagement\\payrollEmployee\\PayslipFiles\\png\\2024\\payslip_" + timestamp + ".png";
             ImageIO.write(bi, "png", new File(imagePath));
 
             Document document = new Document(PageSize.A4.rotate());
-            String pdfPath = "C:\\Users\\Yeong Huey Yee\\OneDrive\\Documents\\NetBeansProjects\\assignment\\src\\payrollManagement\\payrollManager\\PayslipFiles\\pdf\\2024\\payslip_" + timestamp + ".pdf";
+            String pdfPath = "C:\\Users\\End User\\Documents\\NetBeansProjects\\HRMS_2\\src\\payrollManagement\\payrollEmployee\\PayslipFiles\\pdf\\2024\\payslip_" + timestamp + ".pdf";
             PdfWriter.getInstance(document, new FileOutputStream(pdfPath));
             document.open();
 
