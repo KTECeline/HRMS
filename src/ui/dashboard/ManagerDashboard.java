@@ -1,5 +1,7 @@
 package ui.dashboard;
 
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -33,10 +35,11 @@ public class ManagerDashboard extends javax.swing.JFrame {
         btnProfile = new javax.swing.JButton();
         empName1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        empName2 = new javax.swing.JLabel();
+        btnLeave = new javax.swing.JButton();
+        btnAttendance = new javax.swing.JButton();
+        btnTask = new javax.swing.JButton();
+        btnLogOut = new javax.swing.JButton();
+        btnAnnouncements1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -64,67 +67,80 @@ public class ManagerDashboard extends javax.swing.JFrame {
                 btnProfileActionPerformed(evt);
             }
         });
-        sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
+        sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 30));
 
         empName1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         empName1.setText("EmpName");
         empName1.setToolTipText("");
-        sidePanel.add(empName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+        sidePanel.add(empName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 100, -1));
 
         jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jLabel2.setText("Manager");
-        sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 70, -1));
 
-        jButton1.setText("Leave");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLeave.setText("Leave");
+        btnLeave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLeaveActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 130, 50));
+        sidePanel.add(btnLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
 
-        jButton2.setText("Attendance");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAttendance.setText("Attendance");
+        btnAttendance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAttendanceActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
+        sidePanel.add(btnAttendance, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 130, 50));
 
-        jButton3.setText("Log Out");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnTask.setText("Task");
+        btnTask.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnTaskActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 130, 50));
+        sidePanel.add(btnTask, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 130, 50));
 
-        empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName2.setText("EmpName");
-        empName2.setToolTipText("");
-        sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+        btnLogOut.setText("Log Out");
+        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogOutActionPerformed(evt);
+            }
+        });
+        sidePanel.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 130, 50));
+
+        btnAnnouncements1.setText("Announcements");
+        btnAnnouncements1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnnouncements1ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(btnAnnouncements1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 130, 50));
 
         mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 
         jPanel1.setBackground(new java.awt.Color(128, 128, 128));
 
         header.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
-        header.setText("HUMAN RESOURCE MANAGEMENT SYSTEM");
+        header.setText("MANAGER MANAGEMENT SYSTEM");
         header.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(173, Short.MAX_VALUE)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(header))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(header)
+                .addContainerGap())
         );
 
         mainPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 810, 50));
@@ -133,6 +149,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         jLabel3.setText("Welcome !");
         mainPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 190, 50));
 
+        btn4.setText("Leave History");
         btn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn4ActionPerformed(evt);
@@ -140,6 +157,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         });
         mainPanel.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 240, 210));
 
+        btn1.setText("Assign Task");
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn1ActionPerformed(evt);
@@ -147,6 +165,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         });
         mainPanel.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 240, 210));
 
+        btn2.setText("Leave Report");
         btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn2ActionPerformed(evt);
@@ -154,6 +173,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         });
         mainPanel.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 240, 210));
 
+        btn3.setText("Leave Applications");
         btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn3ActionPerformed(evt);
@@ -181,39 +201,84 @@ public class ManagerDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnProfileActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(new Runnable() {
+    private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
+    java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new attendanceManagement.Attendance().setVisible(true);
-                
+                new leaveManagement.LeaveHistoryAll().setVisible(true);
             }
         });  
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
-        // TODO add your handling code here:
+    this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-        // TODO add your handling code here:
+    java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TaskManagement.AssignTask().setVisible(true);
+            }
+        });  
+    this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
-        // TODO add your handling code here:
+    java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new leaveManagement.Report().setVisible(true);
+            }
+        });  
+    this.dispose();    // TODO add your handling code here:
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
-        // TODO add your handling code here:
+    java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new leaveManagement.Approve().setVisible(true);
+            }
+        });  
+    this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_btn3ActionPerformed
+
+    private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
+    java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new leaveManagement.ApplyLeave().setVisible(true);
+            }
+        });  
+    this.dispose();    // TODO add your handling code here:
+    }//GEN-LAST:event_btnLeaveActionPerformed
+
+    private void btnAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttendanceActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new attendanceManagement.Attendance().setVisible(true);
+                dispose();
+            }
+        });
+    }//GEN-LAST:event_btnAttendanceActionPerformed
+
+    private void btnTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaskActionPerformed
+     java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TaskManagement.AssignTask().setVisible(true);
+            }
+        });  
+    this.dispose();  
+    }//GEN-LAST:event_btnTaskActionPerformed
+
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
+        auth.Session.logout();
+        JOptionPane.showMessageDialog(this, "You have been logged out.");
+        this.dispose();
+        System.exit(0);
+    }//GEN-LAST:event_btnLogOutActionPerformed
+
+    private void btnAnnouncements1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnouncements1ActionPerformed
+      java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new adminManagement.DisplayA.DisplayAnnoucement().setVisible(true);
+                dispose();
+            }
+        });   // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnnouncements1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,13 +335,14 @@ public class ManagerDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btn2;
     private javax.swing.JButton btn3;
     private javax.swing.JButton btn4;
+    private javax.swing.JButton btnAnnouncements1;
+    private javax.swing.JButton btnAttendance;
+    private javax.swing.JButton btnLeave;
+    private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnProfile;
+    private javax.swing.JButton btnTask;
     private javax.swing.JLabel empName1;
-    private javax.swing.JLabel empName2;
     private javax.swing.JLabel header;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
