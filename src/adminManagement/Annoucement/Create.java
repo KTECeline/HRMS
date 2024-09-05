@@ -61,7 +61,6 @@ public class Create extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         empName2 = new javax.swing.JLabel();
-        SQBTN = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -134,14 +133,6 @@ public class Create extends javax.swing.JFrame {
         empName2.setText("EmpName");
         empName2.setToolTipText("");
         sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
-        SQBTN.setText("jButton4");
-        SQBTN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SQBTNActionPerformed(evt);
-            }
-        });
-        sidePanel.add(SQBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, -1, -1));
 
         jButton5.setText("Annoucement");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -337,15 +328,6 @@ this.dispose();
     System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void SQBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SQBTNActionPerformed
-        // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new auth.Create().setVisible(true);
-            }
-        });
-    }//GEN-LAST:event_SQBTNActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         String title = txtTitle.getText().trim();
@@ -464,7 +446,6 @@ this.dispose();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> AudienceBox;
     private javax.swing.JButton BackBTN;
-    private javax.swing.JButton SQBTN;
     private javax.swing.JButton btnProfile;
     private javax.swing.JLabel empName;
     private javax.swing.JLabel empName2;
