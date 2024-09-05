@@ -280,11 +280,11 @@ public class Attendance extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnProfile = new javax.swing.JButton();
         empName1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        roleLabel = new javax.swing.JLabel();
+        BackButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        empName2 = new javax.swing.JLabel();
+        empName = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
@@ -320,21 +320,19 @@ public class Attendance extends javax.swing.JFrame {
         sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
 
         empName1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName1.setText("EmpName");
         empName1.setToolTipText("");
         sidePanel.add(empName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
-        jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jLabel2.setText("HR Officer");
-        sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        sidePanel.add(roleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 80, -1));
 
-        jButton1.setText("Dashboard");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackButton.setText("Dashboard");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackButtonActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
+        sidePanel.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
 
         jButton2.setText("Attendance");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -352,10 +350,9 @@ public class Attendance extends javax.swing.JFrame {
         });
         sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 130, 50));
 
-        empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName2.setText("EmpName");
-        empName2.setToolTipText("");
-        sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName.setToolTipText("");
+        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         jButton4.setText("Leave");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -529,9 +526,9 @@ public class Attendance extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnProfileActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -604,26 +601,26 @@ public class Attendance extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Annual;
+    private javax.swing.JButton BackButton;
     private javax.swing.JButton ClockIn;
     private javax.swing.JButton ClockOut;
     private javax.swing.JButton Monthly;
     private javax.swing.JLabel TimeIn;
     private javax.swing.JButton btnProfile;
+    private javax.swing.JLabel empName;
     private javax.swing.JLabel empName1;
-    private javax.swing.JLabel empName2;
     private javax.swing.JLabel header;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel roleLabel;
     private javax.swing.JPanel sidePanel;
     // End of variables declaration//GEN-END:variables
 }
