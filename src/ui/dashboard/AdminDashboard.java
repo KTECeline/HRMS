@@ -1,15 +1,8 @@
 package ui.dashboard;
-import adminManagement.Annoucement.Announcement;
-import attendanceManagement.Attendance;
-import adminManagement.DisplayA.Edit;
 import auth.Session;
-import java.io.IOException;
-import java.util.List;
-import adminManagement.DisplayA.Annoucement;
-import adminManagement.GetPanel.DataRowCounter;
-import java.awt.Color;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
+import adminManagement.GetPanel.DataRowCounter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -20,16 +13,14 @@ import javax.swing.SwingConstants;
  * @author Yeong Huey Yee
  */
 public class AdminDashboard extends javax.swing.JFrame {
-
-    /**
-     * Creates new form maindash
-     */
+   
+    
     public AdminDashboard() {
         initComponents();
         String username = Session.getUsername();
-        String role = Session.getRole();
-        
         empName.setText(username);
+        
+        
         int totalEmployee=DataRowCounter.countEmployees("usertxt.txt");
         TotalEmployee.setText(String.valueOf(totalEmployee));
         
@@ -40,6 +31,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         txtLeave.setText(String.valueOf(totalLeave));
         
        
+        
         if (Session.isLoggedIn()) {
             String userId = Session.getUserId();
             System.out.println("User ID from Session: " + userId);
@@ -58,7 +50,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        OnLeave = new javax.swing.JPanel();
         txtLeave = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         btnProfile = new javax.swing.JButton();
@@ -70,6 +62,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         empName2 = new javax.swing.JLabel();
         SQBTN = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -88,35 +81,37 @@ public class AdminDashboard extends javax.swing.JFrame {
         TotalEmployee = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        UNLOCKA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(255, 204, 204)));
+        OnLeave.setBackground(new java.awt.Color(255, 255, 255));
+        OnLeave.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(255, 204, 204)));
 
         txtLeave.setBackground(new java.awt.Color(102, 102, 102));
         txtLeave.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         txtLeave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utils/media/1.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+        javax.swing.GroupLayout OnLeaveLayout = new javax.swing.GroupLayout(OnLeave);
+        OnLeave.setLayout(OnLeaveLayout);
+        OnLeaveLayout.setHorizontalGroup(
+            OnLeaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(OnLeaveLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(txtLeave)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 23, Short.MAX_VALUE)
-                .addComponent(txtLeave))
+        OnLeaveLayout.setVerticalGroup(
+            OnLeaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(OnLeaveLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtLeave)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 130, 90));
+        mainPanel.add(OnLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 130, 90));
 
         sidePanel.setBackground(new java.awt.Color(0, 0, 0));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -147,7 +142,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 50));
+        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 130, 50));
 
         jButton2.setText("Attendance");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +150,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
+        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 50));
 
         jButton3.setText("Log Out");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +158,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 130, 50));
+        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 130, 50));
 
         empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         empName2.setText("EmpName");
@@ -184,7 +179,15 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        sidePanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 130, 50));
+        sidePanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 130, 50));
+
+        jButton5.setText("Dashboard");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 50));
 
         mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 
@@ -279,21 +282,22 @@ public class AdminDashboard extends javax.swing.JFrame {
         UnlockAcc.setBackground(new java.awt.Color(102, 102, 102));
         UnlockAcc.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         UnlockAcc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/utils/media/3.png"))); // NOI18N
+        UnlockAcc.setToolTipText("");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(UnlockAcc)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addComponent(UnlockAcc, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(UnlockAcc)
+                .addContainerGap()
+                .addComponent(UnlockAcc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -311,18 +315,19 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addComponent(TotalEmployee)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 9, Short.MAX_VALUE)
-                .addComponent(TotalEmployee))
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(TotalEmployee)
+                .addContainerGap())
         );
 
-        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 130, -1));
+        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 130, 90));
 
         jLabel10.setBackground(new java.awt.Color(102, 102, 102));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -331,6 +336,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jLabel1.setText("jLabel1");
         mainPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, -1, -1));
+        mainPanel.add(UNLOCKA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 60, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -355,12 +361,11 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new attendanceManagement.Attendance().setVisible(true);
-                
-            }
-        });        // TODO add your handling code here:
+                 
+        attendanceManagement.Attendance attendance = new attendanceManagement.Attendance();
+attendance.setVisible(true);
+this.dispose();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -375,59 +380,59 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new adminManagement.Logs.LogList().setVisible(true);
-                
-            }
-        });
+      
+         adminManagement.Logs.Logs log= new adminManagement.Logs.Logs();
+log.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new adminManagement.List.List().setVisible(true);  
-            }
-        }); 
+        
+        adminManagement.List.List list = new adminManagement.List.List();
+list.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new adminManagement.Unlock.UnlockUser().setVisible(true);  
-            }
-        });
+        
+         adminManagement.Unlock.UnlockUser unlockuser = new adminManagement.Unlock.UnlockUser();
+unlockuser.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new adminManagement.Annoucement.AnnoucementDada().setVisible(true);
-                
-            }
-        });  
+  
+        adminManagement.Annoucement.AnnoucementDada AnnoucementData = new adminManagement.Annoucement.AnnoucementDada();
+AnnoucementData.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void SQBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SQBTNActionPerformed
         // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new auth.Create().setVisible(true);
-            }
-        });
+     
+        auth.Create CreateSecurityQ = new auth.Create();
+CreateSecurityQ.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_SQBTNActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new adminManagement.DisplayA.DisplayAnnoucement().setVisible(true);
-            }
-        });
+adminManagement.DisplayA.DisplayAnnoucement diplayAnnoucement = new adminManagement.DisplayA.DisplayAnnoucement();
+diplayAnnoucement.setVisible(true);
+this.dispose();
+
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+        ui.dashboard.BackButton backbutton= new ui.dashboard.BackButton();
+        backbutton.navigateBasedOnRole();
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -480,8 +485,10 @@ java.awt.EventQueue.invokeLater(new Runnable() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel OnLeave;
     private javax.swing.JButton SQBTN;
     private javax.swing.JLabel TotalEmployee;
+    private javax.swing.JLabel UNLOCKA;
     private javax.swing.JLabel UnlockAcc;
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
@@ -495,6 +502,7 @@ java.awt.EventQueue.invokeLater(new Runnable() {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -504,7 +512,6 @@ java.awt.EventQueue.invokeLater(new Runnable() {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel mainPanel;
