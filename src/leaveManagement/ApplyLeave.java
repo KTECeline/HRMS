@@ -17,6 +17,7 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
+
 /**
  *
  * @author jinyi
@@ -198,7 +199,7 @@ public class ApplyLeave extends javax.swing.JFrame {
      Date apply = new Date();
      int days = 0 ;
      String comment = "none";
-     
+    
     if (gender.equalsIgnoreCase("Male") && typeL.equalsIgnoreCase(" Maternity Leave") ){
              JOptionPane.showMessageDialog(this, "Only female workers could apply for Maternity Leave.");
              return;
