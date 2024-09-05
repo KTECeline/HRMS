@@ -58,6 +58,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         sidePanel.setBackground(new java.awt.Color(128, 128, 128));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(128, 128, 128));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         sidePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 100));
@@ -81,6 +82,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         jLabel2.setText("Manager");
         sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 70, -1));
 
+        btnLeave.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnLeave.setText("Leave");
         btnLeave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +91,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         });
         sidePanel.add(btnLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
 
+        btnAttendance.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnAttendance.setText("Attendance");
         btnAttendance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +100,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         });
         sidePanel.add(btnAttendance, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 130, 50));
 
+        btnTask.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnTask.setText("Task");
         btnTask.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +109,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         });
         sidePanel.add(btnTask, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 130, 50));
 
+        btnLogOut.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnLogOut.setText("Log Out");
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +118,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
         });
         sidePanel.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 130, 50));
 
+        btnAnnouncements1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btnAnnouncements1.setText("Announcements");
         btnAnnouncements1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,6 +158,8 @@ public class ManagerDashboard extends javax.swing.JFrame {
         jLabel3.setText("Welcome !");
         mainPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 190, 50));
 
+        btn4.setBackground(new java.awt.Color(255, 204, 204));
+        btn4.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         btn4.setText("Leave History");
         btn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +168,8 @@ public class ManagerDashboard extends javax.swing.JFrame {
         });
         mainPanel.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 240, 210));
 
+        btn1.setBackground(new java.awt.Color(255, 204, 204));
+        btn1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         btn1.setText("Assign Task");
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +178,8 @@ public class ManagerDashboard extends javax.swing.JFrame {
         });
         mainPanel.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 240, 210));
 
+        btn2.setBackground(new java.awt.Color(255, 204, 204));
+        btn2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         btn2.setText("Leave Report");
         btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,6 +188,8 @@ public class ManagerDashboard extends javax.swing.JFrame {
         });
         mainPanel.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 240, 210));
 
+        btn3.setBackground(new java.awt.Color(255, 204, 204));
+        btn3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btn3.setText("Leave Applications");
         btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
