@@ -823,10 +823,6 @@ public class Create extends javax.swing.JFrame {
                 case "full time":
                     basicSalary = 5000;
                     break;
-                case "part time":
-                    double totalHours = calculation.calculatePartTimeSalary(selectedUserId, year + "-" + month); 
-                    basicSalary = totalHours * 10; 
-                break;
                 default:
                     throw new IllegalArgumentException("Please choose a valid employee type.");
             }
@@ -974,12 +970,10 @@ public class Create extends javax.swing.JFrame {
 
         String overtimeStr = calculation.calculateMonthlyOvertime(lEmpID);
         String undertimeStr = calculation.calculateMonthlyUndertime(lEmpID);
-        double totalHours = calculation.calculatePartTimeSalary(lEmpID, btnYear.getText() + "-" + (String) btnMonth.getSelectedItem());
 
         System.out.println("\n----- Summary for User: " + lEmpID + " -----");
         System.out.println("Total Overtime: " + overtimeStr);
         System.out.println("Total Undertime: " + undertimeStr);
-        System.out.println("Total Hours Worked: " + totalHours + " hours");
         System.out.println("--------------------------------\n");
     }
     
