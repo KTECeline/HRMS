@@ -151,6 +151,7 @@ private void loadUserData() {
         sidePanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
 
         empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName.setForeground(new java.awt.Color(255, 255, 255));
         empName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         empName.setText("EmpName");
         empName.setToolTipText("");

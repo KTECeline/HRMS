@@ -1,0 +1,13 @@
+=====================================
+       Monthly Attendance Report      
+=====================================
+User ID: 1
+
+Total Days Worked: 1
+Days Late: 1
+Days On-Time: 0
+
+--- Detailed Records for the Month ---
+Date: 2024-09-05, Clock-In: 17:44, Total Time: 19:04, Overtime: 01:20, Undertime: 00:00
+=====================================
+End of Report
