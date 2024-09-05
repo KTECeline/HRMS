@@ -150,7 +150,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Sitka Text" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="HUMAN RESOURCE MANAGEMENT SYSTEM"/>
+                <Property name="text" type="java.lang.String" value="EMPLOYEE MANAGEMENT SYSTEM"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>

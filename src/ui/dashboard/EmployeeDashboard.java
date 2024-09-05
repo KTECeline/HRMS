@@ -79,7 +79,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(128, 128, 128));
 
         header.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
-        header.setText("HUMAN RESOURCE MANAGEMENT SYSTEM");
+        header.setText("EMPLOYEE MANAGEMENT SYSTEM");
         header.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -194,7 +194,12 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnnoucementActionPerformed
 
     private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
-        // TODO add your handling code here:
+    java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new leaveManagement.ApplyLeave().setVisible(true);
+            }
+        });  
+    this.dispose();     // TODO add your handling code here:
     }//GEN-LAST:event_btnLeaveActionPerformed
 
     /**
