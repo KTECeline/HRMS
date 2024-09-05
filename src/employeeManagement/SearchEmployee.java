@@ -5,6 +5,7 @@
 package employeeManagement;
 
 
+import auth.Session;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
@@ -30,6 +31,7 @@ public class SearchEmployee extends javax.swing.JFrame {
     public SearchEmployee() {
         initComponents();
         loadTableData();
+       
         
     jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
     @Override
