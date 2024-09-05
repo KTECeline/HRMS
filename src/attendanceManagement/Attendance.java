@@ -589,6 +589,9 @@ this.dispose();
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        leaveManagement.ApplyLeave leave = new leaveManagement.ApplyLeave();
+leave.setVisible(true);
+this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void ClockInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClockInActionPerformed
