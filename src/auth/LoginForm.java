@@ -80,7 +80,7 @@ private static final int MAX_ATTEMPTS = 3;
         txtUsername = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnLogin1 = new javax.swing.JButton();
-        txtPassword = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -335,7 +335,7 @@ public boolean isAccountLocked(String username) {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
