@@ -18,4 +18,5 @@ id,Department,Task,Start,End,Details,Assign Date
 17,Sales ,Sales Forecasting,2024-09-24,2024-09-24,Forecast next quarter sales,Fri Sep 17 10:30:00 MYT 2024
 18,Marketing ,Creative Design,2024-09-25,2024-09-25,Design ad creatives,Mon Sep 18 11:45:00 MYT 2024
 19,IT ,Data Migration,2024-09-26,2024-09-26,Migrate data to cloud,Thu Sep 19 14:15:00 MYT 2024
-20,Sales ,Client Review,2024-09-27,2024-09-27,Review client contracts,Fri Sep 20 09:30:00 MYT 2024
+20,Sales ,Client Review,2024-09-27,2024-09-27,Review client contracts,Fri Sep 20 09:30:00 MYT 20244
+null,Sales,Meeting,2024-09-07,2024-09-14, ,Fri Sep 06 12:05:58 MYT 2024

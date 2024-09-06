@@ -281,7 +281,7 @@ public class ManagerDashboard extends javax.swing.JFrame {
     private void btnTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaskActionPerformed
      java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TaskManagement.AssignTask().setVisible(true);
+                new TaskManagement.CancelTask().setVisible(true);
             }
         });  
     this.dispose();  

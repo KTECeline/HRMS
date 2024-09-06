@@ -353,20 +353,20 @@ public class CancelTask extends javax.swing.JFrame {
     int selectedRowIndex = jTable1.getSelectedRow();
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     if (selectedRowIndex != -1) {
-        String filePath = "C:\\Users\\jinyi\\Documents\\NetBeansProjects\\java_grp20\\try\\task.txt";
+        String filePath = "task.txt";
         
         try {
             // Read all lines from the file
             java.util.List<String> lines = Files.readAllLines(Paths.get(filePath));
 
             // Get the selected row's content
-            String selectedUsername = (String) jTable1.getValueAt(selectedRowIndex, 0);
-            String selectedDepartment = (String) jTable1.getValueAt(selectedRowIndex, 1);
-            String selectedTask = (String) jTable1.getValueAt(selectedRowIndex, 2);
-            String selectedStartDate = (String) jTable1.getValueAt(selectedRowIndex, 3);
-            String selectedEndDate = (String) jTable1.getValueAt(selectedRowIndex, 4);
-            String selectedDetails = (String) jTable1.getValueAt(selectedRowIndex, 5);
-            String selectedAssign = (String) jTable1.getValueAt(selectedRowIndex, 6);
+            
+            String selectedDepartment = (String) jTable1.getValueAt(selectedRowIndex, 0);
+            String selectedTask = (String) jTable1.getValueAt(selectedRowIndex, 1);
+            String selectedStartDate = (String) jTable1.getValueAt(selectedRowIndex, 2);
+            String selectedEndDate = (String) jTable1.getValueAt(selectedRowIndex, 3);
+            String selectedDetails = (String) jTable1.getValueAt(selectedRowIndex, 4);
+            String selectedAssign = (String) jTable1.getValueAt(selectedRowIndex, 5);
 
             StringBuilder newContent = new StringBuilder();
             boolean found = false;
@@ -374,14 +374,13 @@ public class CancelTask extends javax.swing.JFrame {
             for (String line : lines) {
                 String[] parts = line.split(",");
                 // Assuming the file format has enough columns for comparison
-                if (parts.length > 6 
-                && parts[1].trim().equalsIgnoreCase(selectedUsername.trim())
-                && parts[2].trim().equalsIgnoreCase(selectedDepartment.trim())
-                && parts[3].trim().equalsIgnoreCase(selectedTask.trim())
-                && parts[4].trim().equalsIgnoreCase(selectedStartDate.trim())
-                && parts[5].trim().equalsIgnoreCase(selectedEndDate.trim())
-                && parts[6].trim().equalsIgnoreCase(selectedDetails.trim())
-                && parts[7].trim().equalsIgnoreCase(selectedAssign.trim())) {
+                if (parts.length > 3 
+                && parts[1].trim().equalsIgnoreCase(selectedDepartment.trim())
+                && parts[2].trim().equalsIgnoreCase(selectedTask.trim())
+                && parts[3].trim().equalsIgnoreCase(selectedStartDate.trim())
+                && parts[4].trim().equalsIgnoreCase(selectedEndDate.trim())
+                && parts[5].trim().equalsIgnoreCase(selectedDetails.trim())
+                && parts[6].trim().equalsIgnoreCase(selectedAssign.trim())) {
                 found = true;
                 continue; // Skip this line to "remove" it
             }

@@ -5,31 +5,30 @@ User Id , Username , Department , Type , Start Date , End Date , Days , Reason ,
 1,un,Department Manager,Annual Leave,2024-09-07,2024-09-15,9, ,Rejected,1,Tue Sep 03 16:13:17 MYT 2024,no
 2,hr,Employee,Medical Leave,2024-09-06,2024-09-08,3,1,Approved,12,Thu Sep 05 02:01:12 MYT 2024,none
 2,hr,Employee,Annual Leave,2024-09-22,2024-09-22,1, ,Approved,11,Thu Sep 05 02:01:20 MYT 2024,none
-2,hr,Employee,Emergency Leave,2024-09-21,2024-09-22,2, ,Approved,12,Thu Sep 05 02:01:27 MYT 2024,none
-2,hr,Employee,Emergency Leave,2024-09-21,2024-09-22,2, ,Approved,12,Thu Sep 05 02:01:27 MYT 2024,none
-3,pr,Employee,Maternity Leave,2024-09-10,2024-09-29,20, ,Pending,12,Thu Sep 06 22:45:36 MYT 2024,none
+2,hr,Employee,Unpaid Leave,2024-09-21,2024-09-22,2, ,Approved,12,Thu Sep 05 02:01:27 MYT 2024,none
+2,hr,Employee,Unpaid Leave,2024-09-21,2024-09-22,2, ,Approved,12,Thu Sep 05 02:01:27 MYT 2024,none
+3,pr,Employee,Maternity Leave,2024-09-10,2024-09-29,20, ,Approved,12,Thu Sep 06 22:45:36 MYT 2024,none
 3,pr,Employee,Maternity Leave,2024-09-14,2024-09-21,8,t,Pending,12,Fri Sep 06 01:59:09 MYT 2024,none
 3,pr,Employee,Sick Leave,2024-09-10,2024-09-10,1,Flu,Approved,8,Thu Sep 04 10:22:43 MYT 2024,None
 4,dm,Department Manager,Annual Leave,2024-09-20,2024-09-23,4,Vacation,Pending,14,Thu Sep 05 08:30:12 MYT 2024,None
-4,dm,Department Manager,Emergency Leave,2024-09-11,2024-09-12,2,Family Matter,Approved,11,Thu Sep 06 02:10:01 MYT 2024,None
+4,dm,Department Manager,Unpaid Leave,2024-09-11,2024-09-12,2,Family Matter,Approved,11,Thu Sep 06 02:10:01 MYT 2024,None
 4,dm,Department Manager,Medical Leave,2024-09-13,2024-09-15,3,Injury,Approved,10,Thu Sep 05 04:33:02 MYT 2024,None
 4,dm,Department Manager,Annual Leave,2024-09-21,2024-09-25,5,Vacation,Approved,9,Thu Sep 04 06:22:18 MYT 2024,None
-5,em,Employee,Maternity Leave,2024-09-17,2024-09-30,14, ,Pending,12,Fri Sep 05 10:15:09 MYT 2024,None
-5,em,Employee,Emergency Leave,2024-09-25,2024-09-26,2, ,Approved,10,Fri Sep 06 05:22:31 MYT 2024,None
-5,em,Employee,Sick Leave,2024-09-19,2024-09-20,2,Flu,Approved,8,Thu Sep 07 11:20:32 MYT 2024,None
+5,em,Employee,Unpaid Leave,2024-09-25,2024-09-26,2, ,Approved,10,Fri Sep 06 05:22:31 MYT 2024,None
 5,em,Employee,Annual Leave,2024-09-16,2024-09-19,4,Vacation,Approved,12,Fri Sep 08 12:10:33 MYT 2024,None
-1,un,Department Manager,Medical Leave,2024-09-15,2024-09-16,2, ,Pending,13,Fri Sep 06 09:12:12 MYT 2024,None
+1,un,Department Manager,Medical Leave,2024-09-15,2024-09-16,2, ,Rejected,13,Fri Sep 06 09:12:12 MYT 2024,none
 2,hr,Employee,Annual Leave,2024-09-14,2024-09-18,5,Vacation,Approved,9,Sat Sep 07 01:30:22 MYT 2024,None
-3,pr,Employee,Emergency Leave,2024-09-23,2024-09-24,2,Family Matter,Approved,10,Sat Sep 06 06:14:53 MYT 2024,None
+3,pr,Employee,Unpaid Leave,2024-09-23,2024-09-24,2,Family Matter,Approved,10,Sat Sep 06 06:14:53 MYT 2024,None
 4,dm,Department Manager,Maternity Leave,2024-09-12,2024-09-20,9, ,Pending,11,Fri Sep 08 04:21:19 MYT 2024,None
 5,em,Employee,Medical Leave,2024-09-16,2024-09-16,1, ,Approved,12,Fri Sep 07 09:31:22 MYT 2024,None
 1,un,Department Manager,Annual Leave,2024-09-20,2024-09-24,5,Vacation,Pending,8,Fri Sep 08 08:55:02 MYT 2024,None
-2,hr,Employee,Emergency Leave,2024-09-14,2024-09-15,2,Family Matter,Approved,11,Fri Sep 06 03:22:44 MYT 2024,None
+2,hr,Employee,Unpaid Leave,2024-09-14,2024-09-15,2,Family Matter,Approved,11,Fri Sep 06 03:22:44 MYT 2024,None
 3,pr,Employee,Annual Leave,2024-09-21,2024-09-22,2,Vacation,Approved,12,Sat Sep 08 11:11:32 MYT 2024,None
 4,dm,Department Manager,Sick Leave,2024-09-11,2024-09-12,2,Flu,Approved,8,Thu Sep 07 12:40:10 MYT 2024,None
 5,em,Employee,Medical Leave,2024-09-10,2024-09-11,2, ,Approved,9,Thu Sep 05 09:23:21 MYT 2024,None
 1,un,Department Manager,Maternity Leave,2024-09-18,2024-09-29,12, ,Pending,10,Fri Sep 06 10:12:55 MYT 2024,None
-2,hr,Employee,Emergency Leave,2024-09-13,2024-09-14,2, ,Approved,11,Fri Sep 05 07:33:12 MYT 2024,None
+2,hr,Employee,Unpaid Leave,2024-09-13,2024-09-14,2, ,Approved,11,Fri Sep 05 07:33:12 MYT 2024,None
 3,pr,Employee,Sick Leave,2024-09-15,2024-09-15,1, ,Approved,10,Fri Sep 06 06:15:10 MYT 2024,None
 4,dm,Department Manager,Annual Leave,2024-09-19,2024-09-21,3,Vacation,Approved,8,Thu Sep 07 05:22:44 MYT 2024,None
-5,em,Employee,Emergency Leave,2024-09-17,2024-09-18,2,Family Matter,Approved,9,Thu Sep 08 10:30:11 MYT 2024,None
+5,em,Employee,Unpaid Leave,2024-09-17,2024-09-18,2,Family Matter,Approved,9,Thu Sep 08 10:30:11 MYT 2024,None
+5,em,Employee,Unpaid Leave,2024-09-07,2024-09-08,2, ,Pending,12,Fri Sep 06 11:33:20 MYT 2024,none
