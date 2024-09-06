@@ -1325,54 +1325,11 @@ public class ViewProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGenerateActionPerformed
 
     private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
-        String filePath = "usertxt.txt";
-        File file = new File(filePath);
-
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            String userId = auth.Session.getUserId(); 
-
-            while ((line = br.readLine()) != null) {
-                String[] dataRow = line.split(",");
-
-                if (dataRow[0].equals(userId)) {
-                    String userID = dataRow[0];
-                    String username = dataRow[1];
-                    String password = dataRow[2];
-                    String fullName = dataRow[3];
-                    String gender = dataRow[4];
-                    String dateOfBirth = dataRow[5];
-                    String phoneNumber = dataRow[6];
-                    String maritalStatus = dataRow[7];
-                    String nationality = dataRow[8];
-                    String email = dataRow[9];
-                    String address = dataRow[10];
-                    String role = dataRow[11];
-                    String position = dataRow[12];
-                    String department = dataRow[13];
-                    String datejoined = dataRow[14];
-                    String employmentType = dataRow[15];
-                    String workTitle = dataRow[16];
-                    String workResponsibilities = dataRow[17];
-                    String emergencyName = dataRow[18];
-                    String emergencyPhoneNo = dataRow[19];
-                    String bankName = dataRow[20];
-                    String accountNumber = dataRow[21];
-                    
-                    
-                    profile.ViewProfile viewprofile = new profile.ViewProfile();              
-                    viewprofile.setLabelValues(userID, username, password,fullName, gender, dateOfBirth,
-                           phoneNumber, maritalStatus, nationality, email, address,
-                           role, position, department, datejoined, employmentType,
-                           workTitle, workResponsibilities, emergencyName, emergencyPhoneNo,
-                           bankName, accountNumber);
-                    viewprofile.setVisible(true);
-                    this.dispose();
-                }
+    java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new leaveManagement.LeaveHistory().setVisible(true);
             }
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(profile.ViewProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        });  this.dispose(); // TODO add your handling code here:
     }//GEN-LAST:event_btnLeaveActionPerformed
 
     private void btnSecurityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSecurityActionPerformed
@@ -1383,6 +1340,12 @@ public class ViewProfile extends javax.swing.JFrame {
 
     private void btnTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaskActionPerformed
         // TODO add your handling code here:
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TaskManagement.ViewTask().setVisible(true);
+            }
+        });  
+    this.dispose();  
     }//GEN-LAST:event_btnTaskActionPerformed
 
     /**
