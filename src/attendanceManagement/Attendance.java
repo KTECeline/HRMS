@@ -37,7 +37,7 @@ public class Attendance extends javax.swing.JFrame {
         String username = Session.getUsername();
         String role = Session.getRole();
         
-        empName6.setText(username);
+        empName.setText(username);
         roleLabel.setText(role);
         
         customInitComponents(); // Custom method to initialize additional components
@@ -54,22 +54,23 @@ public class Attendance extends javax.swing.JFrame {
         } else {
             System.out.println("User is not logged in.");
         }
-        
+
         // Initialize attendance data map
         attendanceData = new HashMap<>();
         loadAttendanceData();
-        
+
         // Setup table model
         String[] columnNames = {"AttendanceId", "UserId", "ClockIn", "ClockOut", "TotalTime", "Overtime", "Undertime", "Date"};
         tableModel = new DefaultTableModel(columnNames, 0);
         jTable1.setModel(tableModel);
+
         runningClockLabel = new javax.swing.JLabel();
         runningClockLabel.setFont(new Font("Arial", Font.BOLD, 35));
         runningClockLabel.setForeground(new Color(255, 192, 203)); 
         runningClockLabel.setText("00:00:00"); // Set initial text to a default value
         jPanel3.add(runningClockLabel); // Add runningClockLabel to jPanel4
         jPanel3.setLayout(new FlowLayout()); // Set the layout of jPanel4 to FlowLayout
-        
+
         // Add action listeners for buttons
         ClockIn.addActionListener(new ActionListener() {
             @Override
@@ -77,12 +78,14 @@ public class Attendance extends javax.swing.JFrame {
                 handleClockIn();
             }
         });
+
         ClockOut.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 handleClockOut();
             }
         });
+
         // Show initial data
         displayUserAttendance();
 
@@ -172,7 +175,7 @@ public class Attendance extends javax.swing.JFrame {
         if (clockIn.isEmpty() || clockOut.isEmpty()) {
             return "00:00";
         }
-        
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime clockInTime = LocalTime.parse(clockIn, formatter);
         LocalTime clockOutTime = LocalTime.parse(clockOut, formatter);
@@ -279,6 +282,16 @@ public class Attendance extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        sidePanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnProfile = new javax.swing.JButton();
+        empName = new javax.swing.JLabel();
+        roleLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -292,19 +305,76 @@ public class Attendance extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         TimeIn = new javax.swing.JLabel();
-        empName6 = new javax.swing.JLabel();
-        sidePanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        btnProfile = new javax.swing.JButton();
-        roleLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        sidePanel.setBackground(new java.awt.Color(128, 128, 128));
+        sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        sidePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 100));
+
+        btnProfile.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        btnProfile.setText("View Profile");
+        btnProfile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProfileActionPerformed(evt);
+            }
+        });
+        sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
+
+        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName.setToolTipText("");
+        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+
+        roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        roleLabel.setText("Admin");
+        sidePanel.add(roleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+
+        jButton1.setText("Dashboard");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
+
+        jButton2.setText("Attendance");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
+
+        jButton3.setText("Log Out");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 130, 50));
+
+        jButton4.setText("Leave");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
+
+        jButton5.setText("Annoucement");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 130, 50));
+
+        getContentPane().add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 
         jPanel1.setBackground(new java.awt.Color(128, 128, 128));
 
@@ -475,87 +545,11 @@ public class Attendance extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 450, -1));
 
-        empName6.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName6.setForeground(new java.awt.Color(255, 255, 255));
-        empName6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        empName6.setText("EmpName");
-        empName6.setToolTipText("");
-        getContentPane().add(empName6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
-        sidePanel.setBackground(new java.awt.Color(128, 128, 128));
-        sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        sidePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 100));
-
-        btnProfile.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        btnProfile.setText("View Profile");
-        btnProfile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProfileActionPerformed(evt);
-            }
-        });
-        sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
-
-        roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        roleLabel.setForeground(new java.awt.Color(255, 255, 255));
-        roleLabel.setText("Admin");
-        sidePanel.add(roleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
-
-        jButton1.setText("Dashboard");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        sidePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
-
-        jButton2.setText("Attendance");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        sidePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
-
-        jButton3.setText("Log Out");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 130, 50));
-
-        jButton4.setText("Leave");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        sidePanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
-
-        jButton5.setText("Annoucement");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        sidePanel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 130, 50));
-
-        getContentPane().add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
-        profile.ProfileButton profileLoader = new profile.ProfileButton();
-       profile.ViewProfile viewprofile = new profile.ViewProfile();
-         
-        profileLoader.onViewProfileButtonClick(viewprofile); 
-        this.dispose();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -586,9 +580,6 @@ this.dispose();
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        leaveManagement.ApplyLeave leave = new leaveManagement.ApplyLeave();
-leave.setVisible(true);
-this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void ClockInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClockInActionPerformed
@@ -668,7 +659,7 @@ this.dispose();
     private javax.swing.JButton Monthly;
     private javax.swing.JLabel TimeIn;
     private javax.swing.JButton btnProfile;
-    private javax.swing.JLabel empName6;
+    private javax.swing.JLabel empName;
     private javax.swing.JLabel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
