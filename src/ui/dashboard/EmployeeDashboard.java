@@ -39,14 +39,14 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnViewProfile = new javax.swing.JLabel();
-        btnAttendance = new javax.swing.JButton();
-        btnViewProfile2 = new javax.swing.JLabel();
-        btnViewProfile3 = new javax.swing.JLabel();
         btnViewProfile1 = new javax.swing.JLabel();
         btnProfile = new javax.swing.JButton();
-        btnAnnoucement = new javax.swing.JButton();
+        btnViewProfile3 = new javax.swing.JLabel();
         btnLeave = new javax.swing.JButton();
+        btnViewProfile2 = new javax.swing.JLabel();
+        btnAnnoucement = new javax.swing.JButton();
+        btnViewProfile = new javax.swing.JLabel();
+        btnAttendance = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,29 +115,9 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel3.setText("Welcome !");
         mainPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 190, 50));
 
-        btnViewProfile.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
-        btnViewProfile.setText("Attendence");
-        mainPanel.add(btnViewProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 550, -1, -1));
-
-        btnAttendance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/4.png"))); // NOI18N
-        btnAttendance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAttendanceActionPerformed(evt);
-            }
-        });
-        mainPanel.add(btnAttendance, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 240, 230));
-
-        btnViewProfile2.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
-        btnViewProfile2.setText("Accouncement");
-        mainPanel.add(btnViewProfile2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, -1, -1));
-
-        btnViewProfile3.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
-        btnViewProfile3.setText("Leave");
-        mainPanel.add(btnViewProfile3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 550, -1, -1));
-
         btnViewProfile1.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
         btnViewProfile1.setText("Profile");
-        mainPanel.add(btnViewProfile1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, -1, -1));
+        mainPanel.add(btnViewProfile1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, -1));
 
         btnProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/1.png"))); // NOI18N
         btnProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -145,15 +125,11 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 btnProfileActionPerformed(evt);
             }
         });
-        mainPanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 240, 230));
+        mainPanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 240, 180));
 
-        btnAnnoucement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/2.png"))); // NOI18N
-        btnAnnoucement.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnnoucementActionPerformed(evt);
-            }
-        });
-        mainPanel.add(btnAnnoucement, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 240, 230));
+        btnViewProfile3.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
+        btnViewProfile3.setText("Leave");
+        mainPanel.add(btnViewProfile3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, -1, -1));
 
         btnLeave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/3.png"))); // NOI18N
         btnLeave.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +137,31 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                 btnLeaveActionPerformed(evt);
             }
         });
-        mainPanel.add(btnLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 240, 230));
+        mainPanel.add(btnLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 240, 190));
+
+        btnViewProfile2.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
+        btnViewProfile2.setText("Accouncement");
+        mainPanel.add(btnViewProfile2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, -1, -1));
+
+        btnAnnoucement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/2.png"))); // NOI18N
+        btnAnnoucement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnnoucementActionPerformed(evt);
+            }
+        });
+        mainPanel.add(btnAnnoucement, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 240, 180));
+
+        btnViewProfile.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
+        btnViewProfile.setText("Attendence");
+        mainPanel.add(btnViewProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, -1, -1));
+
+        btnAttendance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/4.png"))); // NOI18N
+        btnAttendance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAttendanceActionPerformed(evt);
+            }
+        });
+        mainPanel.add(btnAttendance, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 240, 190));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,34 +186,6 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     System.exit(0);
     }//GEN-LAST:event_btnLogOutActionPerformed
 
-    private void btnAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttendanceActionPerformed
-        attendanceManagement.Attendance attendance = new attendanceManagement.Attendance();
-        attendance.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnAttendanceActionPerformed
-
-    private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
-        profile.ProfileButton profileLoader = new profile.ProfileButton();
-        profile.ViewProfile viewprofile = new profile.ViewProfile();
-        profileLoader.onViewProfileButtonClick(viewprofile); 
-        dispose();
-    }//GEN-LAST:event_btnProfileActionPerformed
-
-    private void btnAnnoucementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnoucementActionPerformed
-        adminManagement.DisplayA.DisplayAnnoucement diplayAnnoucement = new adminManagement.DisplayA.DisplayAnnoucement();
-        diplayAnnoucement.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnAnnoucementActionPerformed
-
-    private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
-    java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new leaveManagement.ApplyLeave().setVisible(true);
-            }
-        });  
-    this.dispose();     // TODO add your handling code here:
-    }//GEN-LAST:event_btnLeaveActionPerformed
-
     private void btnLogOut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOut1ActionPerformed
      java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -222,6 +194,34 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         });  
     this.dispose();    // TODO add your handling code here:
     }//GEN-LAST:event_btnLogOut1ActionPerformed
+
+    private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
+        profile.ProfileButton profileLoader = new profile.ProfileButton();
+        profile.ViewProfile viewprofile = new profile.ViewProfile();
+        profileLoader.onViewProfileButtonClick(viewprofile);
+        dispose();
+    }//GEN-LAST:event_btnProfileActionPerformed
+
+    private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new leaveManagement.ApplyLeave().setVisible(true);
+            }
+        });
+        this.dispose();     // TODO add your handling code here:
+    }//GEN-LAST:event_btnLeaveActionPerformed
+
+    private void btnAnnoucementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnoucementActionPerformed
+        adminManagement.DisplayA.DisplayAnnoucement diplayAnnoucement = new adminManagement.DisplayA.DisplayAnnoucement();
+        diplayAnnoucement.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAnnoucementActionPerformed
+
+    private void btnAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttendanceActionPerformed
+        attendanceManagement.Attendance attendance = new attendanceManagement.Attendance();
+        attendance.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAttendanceActionPerformed
 
     /**
      * @param args the command line arguments

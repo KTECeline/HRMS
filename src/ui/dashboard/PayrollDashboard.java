@@ -47,7 +47,6 @@ public class PayrollDashboard extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
-        createPicture1 = new javax.swing.JLabel();
         recordPicture = new javax.swing.JLabel();
         createPicture2 = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
@@ -86,9 +85,6 @@ public class PayrollDashboard extends javax.swing.JFrame {
         headerPanel.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 535, -1));
 
         mainPanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 810, 50));
-
-        createPicture1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/payrollManagement/Images/Create.png"))); // NOI18N
-        mainPanel.add(createPicture1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 230, 190));
 
         recordPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/payrollManagement/Images/Record.png"))); // NOI18N
         mainPanel.add(recordPicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 240, 170));
@@ -358,7 +354,6 @@ public class PayrollDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton create;
-    private javax.swing.JLabel createPicture1;
     private javax.swing.JLabel createPicture2;
     private javax.swing.JLabel createText;
     private javax.swing.JLabel empName;
