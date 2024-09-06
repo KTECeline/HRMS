@@ -16,7 +16,6 @@ import java.io.FileReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-import java.awt.Color;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -25,7 +24,6 @@ import java.text.ParseException;
 import java.util.Date;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.TableModel;
 
 
 
@@ -34,25 +32,20 @@ import javax.swing.table.TableModel;
 
 public class UpdateEmployee1 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ManageEmployee
-     */
     public UpdateEmployee1() {
     initComponents();
-    loadTableData(); // Load data when the form initializes
+    loadTableData(); 
 
 }
     
 public void setEmployeeDetails(String userID, String username, String password, String fullName, String gender, String birthDate, String phoneNumber, String maritalStatus, String nationality, String email, String address, String role, String position, String department, String dateOfJoining, String employmentType, String jobTitle, String responsibilities, String emergencyName, String emergencyPhoneNo, String bankName, String accountNumber) {
 
-        // Set the received data into the corresponding fields
     txtUserId.setText(userID);
     txtUsername.setText(username);
     txtPassword.setText(password);
     txtFullName.setText(fullName);
     txtGender.setSelectedItem(gender);
 
-    // Handle Date of Birth and Date of Joining
     try {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yy");
         java.util.Date parsedBirthDate = format.parse(birthDate);
@@ -61,7 +54,6 @@ public void setEmployeeDetails(String userID, String username, String password, 
         java.util.Date parsedJoinDate = format.parse(dateOfJoining);
         txtDateJoined.setDate(parsedJoinDate);
     } catch (ParseException e) {
-        // Handle parsing exceptions
     }
 
     txtPhone.setText(phoneNumber);
@@ -81,10 +73,7 @@ public void setEmployeeDetails(String userID, String username, String password, 
     txtBankNo.setText(accountNumber);
     }
     
-   
 
-
-    
 private void setColumnWidths() {
    jTable1.getColumnModel().getColumn(0).setPreferredWidth(30);   // ID column
     jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);  // Username column
@@ -109,10 +98,9 @@ private void setColumnWidths() {
     jTable1.getColumnModel().getColumn(20).setPreferredWidth(130);   // Bank Name column
     jTable1.getColumnModel().getColumn(21).setPreferredWidth(100);  // Account Number column
 
-    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  // Disable auto-resize
+    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-// Set horizontal scroll policy for jScrollPane2
-jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 }
 
 
@@ -129,14 +117,13 @@ private void loadTableData() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setColumnIdentifiers(columnsName);
         
-        // Clear existing rows
         model.setRowCount(0);
         
         String line;
         while ((line = br.readLine()) != null) {
-            line = line.trim();  // Remove leading and trailing whitespace
+            line = line.trim(); 
             if (line.isEmpty()) {
-                continue;  // Skip empty lines
+                continue;  
             }
             String[] dataRow = line.split(",");
             model.addRow(dataRow);
@@ -146,7 +133,7 @@ private void loadTableData() {
         
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         
-    } catch (Exception ex) {
+    } catch (IOException ex) {
         Logger.getLogger(CreateEmployee.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
@@ -786,7 +773,6 @@ private void loadTableData() {
     }//GEN-LAST:event_txtAddressActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
         SearchEmployee createEmployee = new SearchEmployee();
         createEmployee.setVisible(true);
         this.dispose();
@@ -979,15 +965,12 @@ private void loadTableData() {
             return;
         }
 
-        // Confirm deletion with the user
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the record for " + fullName + "?",
             "Confirm Deletion", JOptionPane.YES_NO_OPTION);
         if (response != JOptionPane.YES_OPTION) {
-            // User chose not to delete
             return;
         }
 
-        // Read existing data and check for the record to delete
         File file = new File("usertxt.txt");
         StringBuilder fileContent = new StringBuilder();
         boolean recordDeleted = false;
@@ -998,9 +981,8 @@ private void loadTableData() {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data.length > 1 && data[0].equals(userID)) {
-                    // Skip appending the line to delete it
                     recordDeleted = true;
-                    continue; // Skip to the next line
+                    continue;
                 }
                 fileContent.append(line).append(System.getProperty("line.separator"));
             }
@@ -1010,7 +992,6 @@ private void loadTableData() {
             return;
         }
 
-        // If a record was deleted, write the updated content back to the file
         if (recordDeleted) {
             try (FileWriter writer = new FileWriter(file, false)) {
                 writer.write(fileContent.toString());

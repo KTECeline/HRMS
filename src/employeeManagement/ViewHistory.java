@@ -28,17 +28,6 @@ public class ViewHistory extends javax.swing.JFrame {
         loadTableData();
     }
     
-    private void setColumnWidths() {
-
-    jTable1.getColumnModel().getColumn(2).setPreferredWidth(40);  // Updated User ID column
-    jTable1.getColumnModel().getColumn(3).setPreferredWidth(160);  // Previous Data column
-    jTable1.getColumnModel().getColumn(4).setPreferredWidth(160);   // Updated Data column
-    jTable1.getColumnModel().getColumn(5).setPreferredWidth(150);   // Reason for updating column
-    jTable1.getColumnModel().getColumn(6).setPreferredWidth(100);  // Time column
-
-    jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
-    }
     
 private void loadTableData() {
     String userID = Session.getUserId();

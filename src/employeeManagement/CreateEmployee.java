@@ -15,9 +15,6 @@ import java.io.FileReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-import java.awt.Color;
-
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -93,14 +90,13 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setColumnIdentifiers(columnsName);
         
-        // Clear existing rows
         model.setRowCount(0);
         
         String line;
         while ((line = br.readLine()) != null) {
-            line = line.trim();  // Remove leading and trailing whitespace
+            line = line.trim(); 
             if (line.isEmpty()) {
-                continue;  // Skip empty lines
+                continue;  
             }
             String[] dataRow = line.split(",");
             model.addRow(dataRow);
@@ -108,7 +104,7 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         
         setColumnWidths();
 
-    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  // Disable auto-resize
+    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); 
 
 
     } catch (IOException ex) {
@@ -120,18 +116,17 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
     private void initializeUserId() {
     String filePath = "usertxt.txt";
     File file = new File(filePath);
-    int latestUserId = 0; // Default value
+    int latestUserId = 0; 
 
     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
         String line;
 
-        // Skip the first line (header)
         br.readLine();
 
     while ((line = br.readLine()) != null) {
-    line = line.trim();  // Remove leading and trailing whitespace
+    line = line.trim(); 
     if (line.isEmpty()) {
-        continue;  // Skip empty lines
+        continue;  
     }
 
     String[] dataRow = line.split(",");
@@ -142,7 +137,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
                 latestUserId = currentId;
             }
         } catch (NumberFormatException e) {
-            // Handle invalid User ID (not a number)
             System.err.println("Invalid User ID found: " + dataRow[0].trim());
         }
     }
@@ -152,21 +146,15 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         Logger.getLogger(CreateEmployee.class.getName()).log(Level.SEVERE, null, ex);
     }
 
-    // If no User IDs were found, start with 1
     if (latestUserId == 0) {
         latestUserId = 1;
     } else {
-        // Increment the latest user ID by one
         latestUserId += 1;
     }
 
-    // Display the new User ID in txtUserID JLabel
-    txtUserId.setText(String.valueOf(latestUserId)); // Set the text to the new user ID
+    txtUserId.setText(String.valueOf(latestUserId)); 
 }
 
-
-
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -786,7 +774,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
     }//GEN-LAST:event_txtAddressActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-   // Retrieve the input data
     String userID = txtUserId.getText().trim();
     String username = txtUsername.getText().trim();
     String password = txtPassword.getText().trim();
@@ -808,7 +795,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
     String bankName = txtBankNM.getSelectedItem() != null ? txtBankNM.getSelectedItem().toString().trim() : "";
     String accountNumber = txtBankNo.getText().trim();
     
-    // Handle date conversion
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     String birthDateString = "";
     String dateString = "";
@@ -819,7 +805,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         dateString = dateFormat.format(txtDateJoined.getDate());
     }
 
-    // Validation: Check if any required field is empty
     if (userID.isEmpty() || username.isEmpty() || password.isEmpty() || fullName.isEmpty() || gender.isEmpty() || 
         phoneNumber.isEmpty() || maritalStatus.isEmpty() || nationality.isEmpty() || email.isEmpty() || 
         address.isEmpty() || role.isEmpty() || position.isEmpty() || department.isEmpty() || 
@@ -831,7 +816,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         return; // Stop execution if any field is empty
     }
 
-    // Check for duplicate userID, username, or fullName only if the file is not empty
     File file = new File("usertxt.txt");
     if (file.length() > 0) {
         boolean duplicateFound = false;
@@ -848,14 +832,12 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
             JOptionPane.showMessageDialog(null, "Error reading data: " + e.getMessage());
         }
 
-        // If a duplicate is found, show a message and stop processing
         if (duplicateFound) {
             JOptionPane.showMessageDialog(null, "Error: The User ID, Username, or Full Name already exists. Please use a different value.");
             return;
         }
     }
     
-    // Try block to write data into the file if no duplicates are found
     try {
         FileWriter writer = new FileWriter("usertxt.txt", true);
         writer.write(userID + "," + username + "," + password + "," + fullName + "," + gender + "," +
@@ -866,10 +848,8 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         writer.write(System.getProperty("line.separator"));
         writer.close();
         
-        // Show success message
         JOptionPane.showMessageDialog(null, "Data saved successfully!");
 
-        // Increment the User ID after saving data
     int newUserID = Integer.parseInt(txtUserId.getText().trim()) + 1;
     txtUserId.setText(String.valueOf(newUserID));
         
@@ -877,7 +857,7 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
     }
 
-    loadTableData(); // Refresh the table to show the new data
+    loadTableData();
 
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -886,7 +866,6 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        // Clear text fields
     txtUsername.setText("");
     txtPassword.setText("");
     txtFullName.setText("");
@@ -898,19 +877,17 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
     txtResponsibilities.setText("");
     txtEname.setText("");
     txtContact.setText("");
-    txtBankNo.setText("");  // Clear account number
-    txtBankNM.setSelectedIndex(-1);  // Reset bank name combo box
+    txtBankNo.setText("");  
+    txtBankNM.setSelectedIndex(-1);  
 
-    // Reset combo boxes to their default (first) option or unselected state
-    txtGender.setSelectedIndex(-1);  // Unselects the combo box
+    txtGender.setSelectedIndex(-1);  
     txtMS.setSelectedIndex(-1);
     txtNation.setSelectedIndex(-1);
     txtRole.setSelectedIndex(-1);
     txtDepartment.setSelectedIndex(-1);
     txtEmployement.setSelectedIndex(-1);
 
-    // Clear date pickers
-    txtBOD.setDate(null);  // Sets the date picker to no date
+    txtBOD.setDate(null);  
     txtDateJoined.setDate(null);
     }//GEN-LAST:event_btnClearActionPerformed
 
