@@ -15,7 +15,10 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        auth.LoginForm Login = new auth.LoginForm();
+       Login.setVisible(true);
+         
+       
     }
     
 }
