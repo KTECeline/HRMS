@@ -368,7 +368,7 @@ this.dispose();
         String uniqueId = (String) AnnoucementTable.getValueAt(selectedRow, 0);
         String announcementToDelete = null;
         for (String announcement : announcements) {
-            String[] parts = announcement.split(",");
+            String[] parts = announcement.split("\\|");
             if (parts[0].equals(uniqueId)) {
                 announcementToDelete = announcement;
                 break;
