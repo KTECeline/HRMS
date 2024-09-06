@@ -127,8 +127,7 @@ public class Calculation {
         LocalTime averageTime = LocalTime.of((int) (averageMinutes / 60), (int) (averageMinutes % 60));
         return averageTime.format(TIME_FORMAT);
     }
-
-    private Map<String, String[]> filterAttendanceData(boolean isMonthly) {
+private Map<String, String[]> filterAttendanceData(boolean isMonthly) {
     Map<String, String[]> data = new HashMap<>();
     LocalDate today = LocalDate.now();
     int currentYear = today.getYear();
@@ -139,21 +138,26 @@ public class Calculation {
             String[] parts = line.split(",");
             if (parts.length == 8) {
                 String entryUserID = parts[1];
-                LocalDate entryDate = LocalDate.parse(parts[7]);
+                try {
+                    LocalDate entryDate = LocalDate.parse(parts[7]);
+                    
 
-                // Check if the entry belongs to the specified user
-                if (userID.equals(entryUserID)) {
-                    if (isMonthly) {
-                        // Filter by current month and year
-                        if (entryDate.getMonthValue() == today.getMonthValue() && entryDate.getYear() == currentYear) {
-                            data.put(parts[0], parts); // Use AttendanceId as the key for unique entries
-                        }
-                    } else {
-                        // Filter by current year (for annual)
-                        if (entryDate.getYear() == currentYear) {
-                            data.put(parts[0], parts); // Use AttendanceId as the key for unique entries
+                    // Check if the entry belongs to the specified user
+                    if (userID.equals(entryUserID)) {
+                        if (isMonthly) {
+                            // Filter by current month and year
+                            if (entryDate.getMonthValue() == today.getMonthValue() && entryDate.getYear() == currentYear) {
+                                data.put(parts[0], parts); // Use AttendanceId as the key for unique entries
+                            }
+                        } else {
+                            // Filter by current year (for annual)
+                            if (entryDate.getYear() == currentYear) {
+                                data.put(parts[0], parts); // Use AttendanceId as the key for unique entries
+                            }
                         }
                     }
+                } catch (DateTimeParseException e) {
+                    System.out.println("Date parsing error: " + parts[7]);
                 }
             }
         }
