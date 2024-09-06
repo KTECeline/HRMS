@@ -1,10 +1,6 @@
 package ui.dashboard;
 
 import auth.Session;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /*
@@ -51,18 +47,19 @@ public class PayrollDashboard extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
+        createPicture1 = new javax.swing.JLabel();
+        recordPicture = new javax.swing.JLabel();
+        createPicture2 = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         updateText = new javax.swing.JLabel();
         updatePicture = new javax.swing.JLabel();
-        update = new javax.swing.JButton();
         recordText = new javax.swing.JLabel();
-        recordPicture = new javax.swing.JLabel();
         search = new javax.swing.JButton();
         payslipText = new javax.swing.JLabel();
         payslipPicture = new javax.swing.JLabel();
         Payslip = new javax.swing.JButton();
+        update = new javax.swing.JButton();
         createText = new javax.swing.JLabel();
-        createPicture = new javax.swing.JLabel();
         create = new javax.swing.JButton();
         sidePanel = new javax.swing.JPanel();
         empRole = new javax.swing.JLabel();
@@ -71,12 +68,9 @@ public class PayrollDashboard extends javax.swing.JFrame {
         btnLogOut = new javax.swing.JButton();
         empName = new javax.swing.JLabel();
         Profile = new javax.swing.JLabel();
-        btnProfile = new javax.swing.JButton();
         btnHistory = new javax.swing.JButton();
         btnAnnouncements = new javax.swing.JButton();
-        createPicture1 = new javax.swing.JLabel();
-        createPicture2 = new javax.swing.JLabel();
-        btnProfile2 = new javax.swing.JButton();
+        btnProfile = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +87,15 @@ public class PayrollDashboard extends javax.swing.JFrame {
 
         mainPanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 810, 50));
 
+        createPicture1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/payrollManagement/Images/Create.png"))); // NOI18N
+        mainPanel.add(createPicture1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 230, 190));
+
+        recordPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/payrollManagement/Images/Record.png"))); // NOI18N
+        mainPanel.add(recordPicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 240, 170));
+
+        createPicture2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/payrollManagement/Images/Create.png"))); // NOI18N
+        mainPanel.add(createPicture2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 230, 190));
+
         title.setFont(new java.awt.Font("Sitka Text", 2, 36)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Payroll Management");
@@ -105,22 +108,12 @@ public class PayrollDashboard extends javax.swing.JFrame {
         updatePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/payrollManagement/Images/Update.png"))); // NOI18N
         mainPanel.add(updatePicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 240, 170));
 
-        update.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateActionPerformed(evt);
-            }
-        });
-        mainPanel.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 240, 210));
-
         recordText.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         recordText.setText("Record");
         mainPanel.add(recordText, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, -1, 20));
 
-        recordPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/payrollManagement/Images/Record.png"))); // NOI18N
-        mainPanel.add(recordPicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 240, 170));
-
         search.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        search.setText("Record");
         search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchActionPerformed(evt);
@@ -136,6 +129,7 @@ public class PayrollDashboard extends javax.swing.JFrame {
         mainPanel.add(payslipPicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 240, 170));
 
         Payslip.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Payslip.setText("Payslip");
         Payslip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PayslipActionPerformed(evt);
@@ -143,14 +137,21 @@ public class PayrollDashboard extends javax.swing.JFrame {
         });
         mainPanel.add(Payslip, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 240, 210));
 
+        update.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        update.setText("Update");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
+        mainPanel.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 240, 210));
+
         createText.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         createText.setText("Create");
         mainPanel.add(createText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
 
-        createPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/payrollManagement/Images/Create.png"))); // NOI18N
-        mainPanel.add(createPicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 230, 190));
-
         create.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        create.setText("Create");
         create.setToolTipText("");
         create.setAutoscrolls(true);
         create.addActionListener(new java.awt.event.ActionListener() {
@@ -201,16 +202,6 @@ public class PayrollDashboard extends javax.swing.JFrame {
         Profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/payrollManagement/Images/PayrollProfile.png"))); // NOI18N
         sidePanel.add(Profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 0, 160, 200));
 
-        btnProfile.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        btnProfile.setText("View Profile");
-        btnProfile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProfileActionPerformed(evt);
-            }
-        });
-        sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 30));
-
         btnHistory.setText("History");
         btnHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,23 +218,17 @@ public class PayrollDashboard extends javax.swing.JFrame {
         });
         sidePanel.add(btnAnnouncements, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 130, 50));
 
-        mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
-
-        createPicture1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/payrollManagement/Images/Create.png"))); // NOI18N
-        mainPanel.add(createPicture1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 230, 190));
-
-        createPicture2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/payrollManagement/Images/Create.png"))); // NOI18N
-        mainPanel.add(createPicture2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 230, 190));
-
-        btnProfile2.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        btnProfile2.setText("View Profile");
-        btnProfile2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnProfile2.addActionListener(new java.awt.event.ActionListener() {
+        btnProfile.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
+        btnProfile.setText("View Profile");
+        btnProfile.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProfile2ActionPerformed(evt);
+                btnProfileActionPerformed(evt);
             }
         });
-        mainPanel.add(btnProfile2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 30));
+        sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 30));
+
+        mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -281,11 +266,11 @@ public class PayrollDashboard extends javax.swing.JFrame {
 
     private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    new leaveManagement.ApplyLeave().setVisible(true);
-                }
-            });  
-        this.dispose();  
+            public void run() {
+                new leaveManagement.ApplyLeave().setVisible(true);
+            }
+        });  
+        this.dispose();     
     }//GEN-LAST:event_btnLeaveActionPerformed
 
     private void btnAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttendanceActionPerformed
@@ -301,66 +286,12 @@ public class PayrollDashboard extends javax.swing.JFrame {
         System.exit(0);        
     }//GEN-LAST:event_btnLogOutActionPerformed
 
-    private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
-        payrollManagement.payrollManager.Create.Create create = new payrollManagement.payrollManager.Create.Create();
-        create.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_createActionPerformed
-
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
-        String filePath = "usertxt.txt";
-        File file = new File(filePath);
-
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            String userId = auth.Session.getUserId(); 
-
-            while ((line = br.readLine()) != null) {
-                String[] dataRow = line.split(",");
-
-                if (dataRow[0].equals(userId)) {
-                    String userID = dataRow[0];
-                    String username = dataRow[1];
-                    String password = dataRow[2];
-                    String fullName = dataRow[3];
-                    String gender = dataRow[4];
-                    String dateOfBirth = dataRow[5];
-                    String phoneNumber = dataRow[6];
-                    String maritalStatus = dataRow[7];
-                    String nationality = dataRow[8];
-                    String email = dataRow[9];
-                    String address = dataRow[10];
-                    String role = dataRow[11];
-                    String position = dataRow[12];
-                    String department = dataRow[13];
-                    String datejoined = dataRow[14];
-                    String employmentType = dataRow[15];
-                    String workTitle = dataRow[16];
-                    String workResponsibilities = dataRow[17];
-                    String emergencyName = dataRow[18];
-                    String emergencyPhoneNo = dataRow[19];
-                    String bankName = dataRow[20];
-                    String accountNumber = dataRow[21];
-                    
-                    
-                    profile.ViewProfile viewprofile = new profile.ViewProfile();              
-                    viewprofile.setLabelValues(userID, username, password,fullName, gender, dateOfBirth,
-                           phoneNumber, maritalStatus, nationality, email, address,
-                           role, position, department, datejoined, employmentType,
-                           workTitle, workResponsibilities, emergencyName, emergencyPhoneNo,
-                           bankName, accountNumber);
-                    viewprofile.setVisible(true);
-                    this.dispose();
-                }
-            }
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(profile.ViewProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        profile.ProfileButton profileLoader = new profile.ProfileButton();
+        profile.ViewProfile viewprofile = new profile.ViewProfile();
+        profileLoader.onViewProfileButtonClick(viewprofile); 
+        this.dispose();
     }//GEN-LAST:event_btnProfileActionPerformed
-
-    private void btnProfile2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfile2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnProfile2ActionPerformed
 
     private void btnAnnouncementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnouncementsActionPerformed
         adminManagement.DisplayA.DisplayAnnoucement diplayAnnoucement = new adminManagement.DisplayA.DisplayAnnoucement();
@@ -373,6 +304,12 @@ public class PayrollDashboard extends javax.swing.JFrame {
         history.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHistoryActionPerformed
+
+    private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
+        payrollManagement.payrollManager.Create.Create create = new payrollManagement.payrollManager.Create.Create();
+        create.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_createActionPerformed
 
     /**
      * @param args the command line arguments
@@ -404,18 +341,6 @@ public class PayrollDashboard extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
@@ -432,9 +357,7 @@ public class PayrollDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnLeave;
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnProfile;
-    private javax.swing.JButton btnProfile2;
     private javax.swing.JButton create;
-    private javax.swing.JLabel createPicture;
     private javax.swing.JLabel createPicture1;
     private javax.swing.JLabel createPicture2;
     private javax.swing.JLabel createText;
