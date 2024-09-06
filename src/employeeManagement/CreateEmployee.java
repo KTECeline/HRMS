@@ -72,10 +72,9 @@ private void setColumnWidths() {
     jTable1.getColumnModel().getColumn(20).setPreferredWidth(130);   // Bank Name column
     jTable1.getColumnModel().getColumn(21).setPreferredWidth(100);  // Account Number column
 
-    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  // Disable auto-resize
+    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-// Set horizontal scroll policy for jScrollPane2
-jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 }
 
 
