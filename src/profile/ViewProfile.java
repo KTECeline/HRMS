@@ -1283,25 +1283,25 @@ public class ViewProfile extends javax.swing.JFrame {
                 // Your original index mappings
                 String empID = dataRow[1]; 
                 String empName = dataRow[2]; 
-                String bankName = dataRow[19]; 
-                String bankAccount = dataRow[20];  
-                String year = dataRow[3]; 
-                String month = dataRow[4]; 
-                String bSalary = dataRow[4]; 
-                String allowance = dataRow[5];
-                String ot = dataRow[6]; 
-                String latePen = dataRow[7];
-                String gSalary = dataRow[8]; 
-                String yeeEPF = dataRow[9]; 
-                String yeeSosco = dataRow[10]; 
-                String yeeEIS = dataRow[11]; 
-                String yeePCB = dataRow[12];
-                String yeeTDeductions = dataRow[13];
-                String yeeNSalary = dataRow[14];
-                String yerEPF = dataRow[15];
-                String yerSosco = dataRow[16];
-                String yerEIS = dataRow[17];
-                String yerCon = dataRow[18];
+                String bankName = dataRow[20];
+                String bankAccount = dataRow[21];
+                String year = dataRow[3];
+                String month = dataRow[4];
+                String bSalary = dataRow[5];
+                String allowance = dataRow[6];
+                String ot = dataRow[7];
+                String latePen = dataRow[8];
+                String gSalary = dataRow[9];
+                String yeeEPF = dataRow[10];
+                String yeeSosco = dataRow[11];
+                String yeeEIS = dataRow[12];
+                String yeePCB = dataRow[13];
+                String yeeTDeductions = dataRow[14];
+                String yeeNSalary = dataRow[15];
+                String yerEPF = dataRow[16];
+                String yerSosco = dataRow[17];
+                String yerEIS = dataRow[18];
+                String yerCon = dataRow[19];
 
                 // Display the payslip
                 payrollManagement.payrollEmployee.Payslip payslip = new payrollManagement.payrollEmployee.Payslip();              
