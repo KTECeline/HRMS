@@ -300,7 +300,6 @@ this.dispose();
 DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
 jTable1.setRowSorter(sorter);
-
 if (searchText.trim().length() == 0) {
     sorter.setRowFilter(null);
     // Reset the renderer to default colors
@@ -321,7 +320,6 @@ if (searchText.trim().length() == 0) {
         }
     };
     sorter.setRowFilter(filter);
-
     // Create a custom TableCellRenderer to highlight the found data
     TableCellRenderer renderer = new DefaultTableCellRenderer() {
         @Override

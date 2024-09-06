@@ -64,14 +64,11 @@ public class AttendanceLog extends javax.swing.JFrame {
         DefaultTableModel atTableModel = (DefaultTableModel) AttendanceTable.getModel();
         atTableModel.setRowCount(0);
         HashMap<String,String> userRoles = new HashMap<>();
-        
-        
         try(BufferedReader br = new BufferedReader( new FileReader("usertxt.txt") )){
             String line;
             br.readLine();
             while ((line =br.readLine()) !=null){
                 String[]userParts=line.split(",");
-                
                 if (userParts.length >=12){
                     String userID = userParts[0];
                     String userRole = userParts[11];
@@ -84,12 +81,10 @@ public class AttendanceLog extends javax.swing.JFrame {
                 System.err.println("Error reading usertxt.txt:" + e.getMessage());
                 return;
             }
-           
             try(BufferedReader br = new BufferedReader( new FileReader("attendance.txt") )){
             String line;
             while ((line =br.readLine()) !=null){
                 String[] atParts=line.split(",");
-                
                 if (atParts.length <2){
                     continue;
                 }
