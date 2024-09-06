@@ -3,6 +3,7 @@ package adminManagement.Annoucement;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import auth.Session;
+import java.time.format.DateTimeFormatter;
 
 public class Announcement {
     private String id=Session.getUserId();
@@ -85,20 +86,21 @@ public class Announcement {
         }
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s|%s|%s|%s|%s|%s",
-                id, title, content, audience, createdBy, createdAt);
-    }
-
     public static Announcement fromString(String line) {
-        String[] parts = line.split("\\|");
-        if (parts.length != 6) {
-            throw new IllegalArgumentException("Invalid announcement string format");
-        }
-        Announcement announcement = new Announcement(parts[1], parts[2], parts[3], parts[4]);
-        announcement.id = parts[0];
-        announcement.createdAt = LocalDateTime.parse(parts[5]);
-        return announcement;
+    String[] parts = line.split("\\|");
+    System.out.println("Parts length: " + parts.length);
+    for (int i = 0; i < parts.length; i++) {
+        System.out.println("Part " + i + ": " + parts[i]);
     }
+    if (parts.length != 6) {
+        throw new IllegalArgumentException("Invalid announcement string format");
+    }
+    Announcement announcement = new Announcement(parts[1], parts[2], parts[3], parts[4]);
+    announcement.id = parts[0];
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    announcement.createdAt = LocalDateTime.parse(parts[5], formatter);
+    return announcement;
+}
+
+
 }

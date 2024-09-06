@@ -42,21 +42,32 @@ public class AnnoucementDada extends javax.swing.JFrame {
             System.out.println("User is not logged in.");
         } loadUserData();
     }
-
 private void loadUserData() {
-        String filePath = "announcement.txt";
-        DefaultTableModel model = (DefaultTableModel) AnnoucementTable.getModel();
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                // Assuming the file is comma-separated
-                String[] rowData = line.split(",");
-                model.addRow(rowData);
+    DefaultTableModel model = (DefaultTableModel) AnnoucementTable.getModel();
+    try (BufferedReader br = new BufferedReader(new FileReader("announcement.txt"))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            try {
+                Announcement announcement = Announcement.fromString(line);
+                model.addRow(new Object[]{
+                    announcement.getId(),
+                    announcement.getTitle(),
+                    announcement.getContent(),
+                    announcement.getAudience(),
+                    announcement.getCreatedBy(),
+                    announcement.getCreatedAt()
+                });
+            } catch (IllegalArgumentException e) {
+                System.err.println("Skipping line due to error: " + e.getMessage());
+                System.err.println("Line content: " + line);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -342,10 +353,8 @@ this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void DeleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBTNActionPerformed
-        // TODO add your handling code here:
-      
+   
  try {
-    // Read the contents of the announcement file
     List<String> announcements = new ArrayList<>();
     try (BufferedReader br = new BufferedReader(new FileReader("announcement.txt"))) {
         String line;
@@ -353,11 +362,10 @@ this.dispose();
             announcements.add(line);
         }
     }
-
-    // Find the announcement to delete
+    // Find announcement to delete
     int selectedRow = AnnoucementTable.getSelectedRow();
     if (selectedRow >= 0) {
-        String uniqueId = (String) AnnoucementTable.getValueAt(selectedRow, 0); // Assuming the ID is in the first column
+        String uniqueId = (String) AnnoucementTable.getValueAt(selectedRow, 0);
         String announcementToDelete = null;
         for (String announcement : announcements) {
             String[] parts = announcement.split(",");

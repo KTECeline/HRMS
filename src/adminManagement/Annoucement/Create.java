@@ -348,7 +348,7 @@ this.dispose();
         
         try (PrintWriter out = new PrintWriter(new FileWriter("announcement.txt", true))) {
     
-    out.println(String.format("%s,%s,%s,%s,%s,%s", uniqueId, title, content, audience, createdBy, date));
+    out.println(String.format("%s|%s|%s|%s|%s|%s", uniqueId, title, content, audience, createdBy, date));
     out.flush();
     JOptionPane.showMessageDialog(this, "Announcement saved successfully!");
 } catch (IOException e) {
