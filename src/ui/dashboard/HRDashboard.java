@@ -11,7 +11,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
-
+import adminManagement.GetPanel.DataRowCounter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 /**
  *
  * @author Yeong Huey Yee
@@ -30,8 +33,9 @@ public class HRDashboard extends javax.swing.JFrame {
         empName.setText(username);
         roleLabel.setText(role);
         
-        empName.setText(username);
-        int totalEmployee=adminManagement.GetPanel.DataRowCounter.countEmployees("usertxt.txt");
+        
+        
+        int totalEmployee= adminManagement.GetPanel.DataRowCounter.countEmployees("usertxt.txt");
         TotalEmployee.setText(String.valueOf(totalEmployee));
         
         
@@ -44,21 +48,6 @@ public class HRDashboard extends javax.swing.JFrame {
 
 
         
-    }
-    
-    public class DataRowCounter {
-        public static int countEmployees(String filePath) {
-            int totalRows = 0;
-
-            try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-                while (br.readLine() != null) {
-                    totalRows++;
-                }
-            } catch (IOException e) {
-            }
-
-            return totalRows;
-        }
     }
 
 
@@ -250,7 +239,6 @@ public class HRDashboard extends javax.swing.JFrame {
         TotalEmployee.setBackground(new java.awt.Color(102, 102, 102));
         TotalEmployee.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         TotalEmployee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TotalEmployee.setText("9");
         TotalEmployee.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -261,21 +249,21 @@ public class HRDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TotalEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TotalEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TotalEmployee, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(TotalEmployee)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 110, 80));
+        mainPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 150, 80));
 
         jLabel10.setFont(new java.awt.Font("Sitka Text", 3, 12)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -107,7 +107,7 @@ private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-M
     }
     
     public static void main(String[] args) {
-        int count = countLeaveonDay ();
-        System.out.println("Number of people on leave today: " + count);
+        int count = countEmployees ("usertxt.txt");
+        System.out.println("Total Employee: " + count);
     }
 }
