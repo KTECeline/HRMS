@@ -1,7 +1,7 @@
 20,ip,0123456789,yang@mail.com,What city were you born in?,Kuala Lumpur
 18,bb,0123456789,brown@mail.com,What is the name of your first pet?,Heji
-2,hr,0123456789,@mail.com,What city were you born in?,Johor
+2,hr,0123456789,@mail.com,Where is your hometown?,kl
 4,dm,0123456789,jinyi@mail.com,What is your favorite hobby,Dancing
 3,pr,0112018615,huianan@mail.com,What is your mother's name?,Mom
-1,Celine,0123456789,celine@mail.com,What is your mother's name?,Mother
+1,Celine,0123456789,celine@mail.com,What city were you born in?,Kuala lumpur
 5,em,0123456789,jack@mail.com,What city were you born in?,Johor

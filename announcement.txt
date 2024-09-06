@@ -5,6 +5,7 @@
 1725560776713|This is an announcement to Employees|Good job keep up the good work. When we hit target, we go makan.|Employee|un|2024-09-06 02:26:16
 1725560804322|This is an announcement to Payroll Officers|Can cut down any costs?|Payroll Officer|un|2024-09-06 02:26:44
 1725560823585|This is an announcement to Admin|Please check who is coming late|Admin|un|2024-09-06 02:27:03
-1725560878308|This is an announcement to All|At 9-9-2024, we shall all eat at Pavillion Bukit Jalil Nandos as a celebration in hitting last months KPI!! Hui Nan belanja.|All|un|2024-09-06 02:27:58
 1725560900736|This is an announcement to All!|Remeber to clock in and out upon entry and leaving the company.|All|un|2024-09-06 02:28:20
 1725627956245|hi|how are u|All|Celine|2024-09-06 21:05:56
+1725633826713|Department manager|Recruit more interns|HR Officer|Celine|2024-09-06 22:43:46
+1725634530164|Adminnnn|this is Ceilne|Admin|Celine|2024-09-06 22:55:30
