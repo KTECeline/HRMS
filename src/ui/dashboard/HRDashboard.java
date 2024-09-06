@@ -4,12 +4,10 @@
  */
 package ui.dashboard;
 
-import employeeManagement.CreateEmployee;
 import employeeManagement.SearchEmployee;
 import employeeManagement.UpdateEmployee;
 import auth.Session;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
@@ -306,12 +304,12 @@ public class HRDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new leaveManagement.ApplyLeave().setVisible(true);
-            }
-        });  
-    this.dispose();     // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new leaveManagement.ApplyLeave().setVisible(true);
+                }
+            });  
+        this.dispose();  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnAnnoucementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnoucementActionPerformed
@@ -321,10 +319,10 @@ public class HRDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnnoucementActionPerformed
 
     private void btnlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogoutActionPerformed
-    auth.Session.logout();
-    JOptionPane.showMessageDialog(this, "You have been logged out.");
-    this.dispose();
-    System.exit(0);
+        auth.Session.logout();
+        JOptionPane.showMessageDialog(this, "You have been logged out.");
+        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_btnlogoutActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -353,10 +351,10 @@ public class HRDashboard extends javax.swing.JFrame {
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
 
-    employeeManagement.ViewHistory viewHistoryWindow = new employeeManagement.ViewHistory();
-    viewHistoryWindow.setVisible(true);
-    this.dispose();
-       
+        employeeManagement.ViewHistory viewHistoryWindow = new employeeManagement.ViewHistory();
+        viewHistoryWindow.setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_btnHistoryActionPerformed
 
     /**
