@@ -13,6 +13,8 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
+import adminManagement.List.UpdateEmployee;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -59,6 +61,8 @@ private void loadUserData() {
                 String[] rowData = line.split(",");
                 model.addRow(rowData);
             }
+            adminManagement.List.UpdateEmployee updateEmployee = new adminManagement.List.UpdateEmployee(); // Or get the instance in some way
+            updateEmployee.setColumnWidths(); 
         } catch (IOException e) {
             e.printStackTrace();
         }

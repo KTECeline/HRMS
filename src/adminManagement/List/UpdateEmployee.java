@@ -41,6 +41,7 @@ public class UpdateEmployee extends javax.swing.JFrame {
     public UpdateEmployee() {
     initComponents();
     loadTableData(); // Load data when the form initializes
+    
 int selectedRow = jTable1.getSelectedRow();
 }
     
@@ -86,7 +87,7 @@ public void setEmployeeDetails(String userID, String username, String password, 
 
 
     
-private void setColumnWidths() {
+public void setColumnWidths() {
    jTable1.getColumnModel().getColumn(0).setPreferredWidth(30);   // ID column
     jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);  // Username column
     jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);  // Password column
@@ -512,9 +513,9 @@ private void loadTableData() {
         jLabel18.setFont(new java.awt.Font("Segoe UI", 3, 15)); // NOI18N
         jLabel18.setText("Professional & Company Information");
 
-        txtEmployement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full time", "Part time", "Internship" }));
+        txtEmployement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full time", "Intern" }));
 
-        txtRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Hr Officer", "Department Manager", "Employee", "Payroll Officer" }));
+        txtRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "HR Officer", "Department Manager", "Employee", "Payroll Officer" }));
         txtRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRoleActionPerformed(evt);

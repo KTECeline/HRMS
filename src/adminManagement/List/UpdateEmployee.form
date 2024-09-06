@@ -564,10 +564,9 @@
             <Component class="javax.swing.JComboBox" name="txtEmployement">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
+                  <StringArray count="2">
                     <StringItem index="0" value="Full time"/>
-                    <StringItem index="1" value="Part time"/>
-                    <StringItem index="2" value="Internship"/>
+                    <StringItem index="1" value="Intern"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -580,7 +579,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="5">
                     <StringItem index="0" value="Admin"/>
-                    <StringItem index="1" value="Hr Officer"/>
+                    <StringItem index="1" value="HR Officer"/>
                     <StringItem index="2" value="Department Manager"/>
                     <StringItem index="3" value="Employee"/>
                     <StringItem index="4" value="Payroll Officer"/>
