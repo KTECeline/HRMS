@@ -115,7 +115,7 @@ private static final int MAX_ATTEMPTS = 3;
         jButton1.setBackground(new java.awt.Color(242, 242, 242));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 153, 204));
-        jButton1.setText("Forgot Username/Password ?");
+        jButton1.setText("Forgot Password ?");
         jButton1.setActionCommand("Forgot Username/Password?");
         jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +123,7 @@ private static final int MAX_ATTEMPTS = 3;
                 jButton1ActionPerformed(evt);
             }
         });
-        mainPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, 20));
+        mainPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, 20));
 
         btnLogin1.setBackground(new java.awt.Color(119, 136, 154));
         btnLogin1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
