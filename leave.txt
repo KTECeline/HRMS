@@ -4,7 +4,6 @@ User Id , Username , Department , Type , Start Date , End Date , Days , Reason ,
 1,un,Department Manager,Medical Leave,2024-09-07,2024-09-08,2, ,Approved,10,Tue Sep 03 12:15:23 MYT 2024,no
 1,un,Department Manager,Annual Leave,2024-09-07,2024-09-15,9, ,Rejected,1,Tue Sep 03 16:13:17 MYT 2024,no
 2,hr,Employee,Medical Leave,2024-09-06,2024-09-08,3,1,Approved,12,Thu Sep 05 02:01:12 MYT 2024,none
-2,hr,Employee,Annual Leave,2024-09-22,2024-09-22,1, ,Approved,11,Thu Sep 05 02:01:20 MYT 2024,none
 2,hr,Employee,Unpaid Leave,2024-09-21,2024-09-22,2, ,Approved,12,Thu Sep 05 02:01:27 MYT 2024,none
 2,hr,Employee,Unpaid Leave,2024-09-21,2024-09-22,2, ,Approved,12,Thu Sep 05 02:01:27 MYT 2024,none
 3,pr,Employee,Maternity Leave,2024-09-10,2024-09-29,20, ,Approved,12,Thu Sep 06 22:45:36 MYT 2024,none
@@ -32,3 +31,5 @@ User Id , Username , Department , Type , Start Date , End Date , Days , Reason ,
 4,dm,Department Manager,Annual Leave,2024-09-19,2024-09-21,3,Vacation,Approved,8,Thu Sep 07 05:22:44 MYT 2024,None
 5,em,Employee,Unpaid Leave,2024-09-17,2024-09-18,2,Family Matter,Approved,9,Thu Sep 08 10:30:11 MYT 2024,None
 5,em,Employee,Unpaid Leave,2024-09-07,2024-09-08,2, ,Pending,12,Fri Sep 06 11:33:20 MYT 2024,none
+1,Celine,Admin,Annual Leave,2024-09-13,2024-09-17,5,i hungry,Pending,12,Fri Sep 06 21:06:23 MYT 2024,none
+2,hr,HR Officer,Medical Leave,2024-09-20,2024-09-26,7,hungryyyy,Pending,12,Fri Sep 06 21:08:43 MYT 2024,none

@@ -54,23 +54,22 @@ public class Attendance extends javax.swing.JFrame {
         } else {
             System.out.println("User is not logged in.");
         }
-
+        
         // Initialize attendance data map
         attendanceData = new HashMap<>();
         loadAttendanceData();
-
+        
         // Setup table model
         String[] columnNames = {"AttendanceId", "UserId", "ClockIn", "ClockOut", "TotalTime", "Overtime", "Undertime", "Date"};
         tableModel = new DefaultTableModel(columnNames, 0);
         jTable1.setModel(tableModel);
-
         runningClockLabel = new javax.swing.JLabel();
         runningClockLabel.setFont(new Font("Arial", Font.BOLD, 35));
         runningClockLabel.setForeground(new Color(255, 192, 203)); 
         runningClockLabel.setText("00:00:00"); // Set initial text to a default value
         jPanel3.add(runningClockLabel); // Add runningClockLabel to jPanel4
         jPanel3.setLayout(new FlowLayout()); // Set the layout of jPanel4 to FlowLayout
-
+        
         // Add action listeners for buttons
         ClockIn.addActionListener(new ActionListener() {
             @Override
@@ -78,14 +77,12 @@ public class Attendance extends javax.swing.JFrame {
                 handleClockIn();
             }
         });
-
         ClockOut.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 handleClockOut();
             }
         });
-
         // Show initial data
         displayUserAttendance();
 
@@ -175,7 +172,7 @@ public class Attendance extends javax.swing.JFrame {
         if (clockIn.isEmpty() || clockOut.isEmpty()) {
             return "00:00";
         }
-
+        
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime clockInTime = LocalTime.parse(clockIn, formatter);
         LocalTime clockOutTime = LocalTime.parse(clockOut, formatter);
