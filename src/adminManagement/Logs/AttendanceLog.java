@@ -28,7 +28,7 @@ public class AttendanceLog extends javax.swing.JFrame {
         String username = Session.getUsername();
         String role = Session.getRole();
         
-        empName.setText(username);
+        empName2.setText(username);
         roleLabel.setText(role);
         LoadData();
     }
@@ -141,14 +141,13 @@ public class AttendanceLog extends javax.swing.JFrame {
         header = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         btnProfile = new javax.swing.JButton();
-        empName = new javax.swing.JLabel();
         roleLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        empName2 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        empName2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         header1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -239,7 +238,7 @@ public class AttendanceLog extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sidePanel.setBackground(new java.awt.Color(0, 0, 0));
+        sidePanel.setBackground(new java.awt.Color(128, 128, 128));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnProfile.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
@@ -251,11 +250,6 @@ public class AttendanceLog extends javax.swing.JFrame {
             }
         });
         sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 30));
-
-        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName.setForeground(new java.awt.Color(242, 242, 242));
-        empName.setToolTipText("");
-        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         roleLabel.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         roleLabel.setForeground(new java.awt.Color(242, 242, 242));
@@ -286,11 +280,6 @@ public class AttendanceLog extends javax.swing.JFrame {
         });
         sidePanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 130, 50));
 
-        empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName2.setText("EmpName");
-        empName2.setToolTipText("");
-        sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
-
         jButton7.setText("Annoucement");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,7 +296,14 @@ public class AttendanceLog extends javax.swing.JFrame {
         });
         sidePanel.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, 50));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        empName2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName2.setForeground(new java.awt.Color(255, 255, 255));
+        empName2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        empName2.setText("EmpName");
+        empName2.setToolTipText("");
+        sidePanel.add(empName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
+
+        jPanel2.setBackground(new java.awt.Color(128, 128, 128));
 
         header1.setBackground(new java.awt.Color(255, 242, 242));
         header1.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
@@ -553,7 +549,6 @@ this.dispose();
     private javax.swing.JComboBox<String> FilterBox;
     private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnProfile1;
-    private javax.swing.JLabel empName;
     private javax.swing.JLabel empName1;
     private javax.swing.JLabel empName2;
     private javax.swing.JLabel empName3;
