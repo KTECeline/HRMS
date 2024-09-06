@@ -22,14 +22,12 @@ public class AttendanceReport {
     // Method to generate a monthly report for a specific user and write to a file
     public void generateMonthlyReport(String filePath, int month, int year, String sessionUserId, String outputFileName) {
         List<String> allRecords = new ArrayList<>(); // List to hold all records for the month
-
         // Initialize attendance calculations for the user
         calculation = new Calculation(sessionUserId);
         int daysWorked = calculation.calculateDaysWorked(true);
         int daysLate = calculation.calculateDaysLate(true);
         int daysOnTime = calculation.calculateDaysOnTime(true);
         // You can add other calculations if they exist in the Calculation class
-
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -41,12 +39,10 @@ public class AttendanceReport {
                     String totalTime = fields[4]; // Total time worked is in the fourth column
                     String overtime = fields[5]; // Overtime is in the fifth column
                     String undertime = fields[6]; // Undertime is in the sixth column
-
                     // Only process data for the specific user ID
                     if (!userId.equals(sessionUserId)) {
                         continue;
                     }
-
                     // Check if the date is within the specified month and year
                     if (isInMonth(date, month, year)) {
                         // Track the record for the month
@@ -79,7 +75,8 @@ public class AttendanceReport {
     }
 
     // Write the report to a text file
-    private void writeReportToFile(String sessionUserId, int daysWorked, int daysLate, int daysOnTime, List<String> allRecords, String outputFileName) {
+    private void writeReportToFile(String sessionUserId, int daysWorked, int daysLate, int daysOnTime, List<String> allRecords,
+            String outputFileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
             writer.write("=====================================\n");
             writer.write("       Monthly Attendance Report      \n");
