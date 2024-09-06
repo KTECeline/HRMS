@@ -62,15 +62,11 @@ private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-M
     
     public static int countLeaveonDay (){     
      int rowCount = 0;
-        
         String today = DATE_FORMAT.format(new Date());
-        
         try (BufferedReader reader = new BufferedReader(new FileReader("leave.txt"))) {
             String line;
             boolean isFirstLine = true;
             while ((line = reader.readLine()) != null) {
-                
-
                 if (isFirstLine) {
                     isFirstLine = false; // Skip the first line if it is a header
                     continue;
@@ -91,7 +87,6 @@ private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-M
         } catch (IOException e) {
             e.printStackTrace(); // Handle file reading errors
         }
-        
         return rowCount;
     }
     private static boolean isDateInRange(String date, String startDate, String endDate) {
