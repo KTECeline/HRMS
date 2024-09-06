@@ -1130,7 +1130,6 @@ String userID = txtUserId.getText().trim();
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
                                   
-                                         
         String userID = txtUserId.getText().trim();
         String fullName = txtFullName.getText().trim();
 
