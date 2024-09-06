@@ -216,6 +216,11 @@ public class ManagerDashboard extends javax.swing.JFrame {
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
+         profile.ProfileButton profileLoader = new profile.ProfileButton();
+       profile.ViewProfile viewprofile = new profile.ViewProfile();
+         
+        profileLoader.onViewProfileButtonClick(viewprofile); 
+        this.dispose();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
