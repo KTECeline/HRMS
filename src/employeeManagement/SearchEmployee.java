@@ -36,7 +36,7 @@ public class SearchEmployee extends javax.swing.JFrame {
     public void mouseClicked(java.awt.event.MouseEvent evt) {
         jTable2MouseClicked(evt);
     }
-});
+    });
 
 
 
@@ -67,10 +67,9 @@ private void setColumnWidths() {
     jTable2.getColumnModel().getColumn(20).setPreferredWidth(130);   // Bank Name column
     jTable2.getColumnModel().getColumn(21).setPreferredWidth(100);  // Account Number column
 
-    jTable2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  // Disable auto-resize
-
-// Set horizontal scroll policy for jScrollPane2
-jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    jTable2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  
+    
+    jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 }
     
     private void loadTableData() {
@@ -84,14 +83,13 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setColumnIdentifiers(columnsName);
         
-        // Clear existing rows
         model.setRowCount(0);
         
         String line;
         while ((line = br.readLine()) != null) {
-            line = line.trim();  // Remove leading and trailing whitespace
+            line = line.trim(); 
             if (line.isEmpty()) {
-                continue;  // Skip empty lines
+                continue;  
             }
             String[] dataRow = line.split(",");
             model.addRow(dataRow);
@@ -280,20 +278,20 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
     private void searchbarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchbarFocusGained
         if (searchbar.getText().equals("Search Account")) {
             searchbar.setText("");
-            searchbar.setForeground(Color.BLACK); // Set the text color back to black
+            searchbar.setForeground(Color.BLACK); 
         }
     }//GEN-LAST:event_searchbarFocusGained
 
     private void searchbarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchbarFocusLost
         if (searchbar.getText().isEmpty()) {
-            searchbar.setForeground(Color.GRAY); // Set text color to gray
+            searchbar.setForeground(Color.GRAY); 
             searchbar.setText("Search Account");
         }
     }//GEN-LAST:event_searchbarFocusLost
 
     private void searchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbarActionPerformed
 
-        String searchText = searchbar.getText().trim().toLowerCase(); // Get the text entered in the search field and convert to lowercase for case-insensitive search
+        String searchText = searchbar.getText().trim().toLowerCase(); 
     String filePath = "usertxt.txt";
     File file = new File(filePath);
 
@@ -304,10 +302,8 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setColumnIdentifiers(columnsName);
 
-        // Clear existing rows
         model.setRowCount(0);
 
-        // Search for matching ID, Username, Full Name, Role, or Employment Type
         String line;
         while ((line = br.readLine()) != null) {
             String[] dataRow = line.split(",");
@@ -315,17 +311,15 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
                 String id = dataRow[0].toLowerCase();
                 String username = dataRow[1].toLowerCase();
                 String fullName = dataRow[3].toLowerCase();
-                String role = dataRow[11].toLowerCase(); // Assuming the 'Role' column is at index 11
-                String employmentType = dataRow[15].toLowerCase(); // Assuming the 'Employment Type' column is at index 15
+                String role = dataRow[11].toLowerCase(); 
+                String employmentType = dataRow[15].toLowerCase(); 
 
-                // Check if the search text matches the ID, Username, Full Name, Role, or Employment Type
                 if (id.contains(searchText) || username.contains(searchText) || fullName.contains(searchText) || role.contains(searchText) || employmentType.contains(searchText)) {
-                    model.addRow(dataRow); // Add the matching row to the table
+                    model.addRow(dataRow);
                 }
             }
         }
 
-        // Set column widths after populating the table
         setColumnWidths();
 
     } catch (IOException ex) {
@@ -350,8 +344,8 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
 
     private void jTable2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MousePressed
         if (evt.getClickCount() == 1) {
-        int selectedRow = jTable2.getSelectedRow();  // Get the selected row index
-        TableModel model = jTable2.getModel();  // Get the table model
+        int selectedRow = jTable2.getSelectedRow(); 
+        TableModel model = jTable2.getModel(); 
 
         // Get the values from the selected row
         String userID = model.getValueAt(selectedRow, 0).toString();
@@ -377,10 +371,8 @@ jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NE
         String bankName = model.getValueAt(selectedRow, 20).toString();
         String accountNumber = model.getValueAt(selectedRow, 21).toString();
         
-        // Dispose of the current frame before opening the new one
-        this.setVisible(false);  // Use setVisible(false) instead of dispose()
+        this.setVisible(false); 
         
-        // Create an instance of UpdateEmployee and pass the data
         UpdateEmployee1 updateForm = new UpdateEmployee1();
         updateForm.setEmployeeDetails(userID, username, password, fullName, gender, birthDate, phoneNumber, maritalStatus, nationality, email, address, role, position, department, dateOfJoining, employmentType, jobTitle, responsibilities, emergencyName, emergencyPhoneNo, bankName, accountNumber);
         updateForm.setVisible(true);
