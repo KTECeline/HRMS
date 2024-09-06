@@ -232,7 +232,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         mainPanel.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 240, 120));
 
         btn3.setBackground(new java.awt.Color(255, 204, 204));
-        btn3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btn3.setText("Create Announcement");
         btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
