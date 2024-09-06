@@ -38,9 +38,9 @@ public class AttendanceReport {
                     String userId = fields[1];
                     String date = fields[7]; // Date is in the last column
                     String clockInTime = fields[2]; // Clock-in time is in the third column
-                    String totalTime = fields[3]; // Total time worked is in the fourth column
-                    String overtime = fields[4]; // Overtime is in the fifth column
-                    String undertime = fields[5]; // Undertime is in the sixth column
+                    String totalTime = fields[4]; // Total time worked is in the fourth column
+                    String overtime = fields[5]; // Overtime is in the fifth column
+                    String undertime = fields[6]; // Undertime is in the sixth column
 
                     // Only process data for the specific user ID
                     if (!userId.equals(sessionUserId)) {

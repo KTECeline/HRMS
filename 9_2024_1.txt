@@ -3,11 +3,13 @@
 =====================================
 User ID: 1
 
-Total Days Worked: 1
+Total Days Worked: 3
 Days Late: 1
-Days On-Time: 0
+Days On-Time: 2
 
 --- Detailed Records for the Month ---
-Date: 2024-09-05, Clock-In: 17:44, Total Time: 19:04, Overtime: 01:20, Undertime: 00:00
+Date: 2024-09-06, Clock-In: 16:20, Total Time: 00:03, Overtime: 00:00, Undertime: 07:57
+Date: 2024-09-05, Clock-In: 09:20, Total Time: 07:03, Overtime: 00:00, Undertime: 01:00
+Date: 2024-09-03, Clock-In: 09:20, Total Time: 07:03, Overtime: 00:00, Undertime: 01:00
 =====================================
 End of Report
