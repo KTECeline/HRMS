@@ -64,12 +64,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         empName1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         btn4 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         btn1 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
         btn2 = new javax.swing.JButton();
         btn3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -205,53 +201,45 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         mainPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 860, 50));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel6.setText("History Changes");
-        mainPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 160, 40));
-
         btn4.setBackground(new java.awt.Color(255, 204, 204));
+        btn4.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn4.setText("History Changes");
         btn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn4ActionPerformed(evt);
             }
         });
-        mainPanel.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 240, 110));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel2.setText("Create Annoucement");
-        mainPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel5.setText("Lists");
-        mainPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
+        mainPanel.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, 240, 140));
 
         btn1.setBackground(new java.awt.Color(255, 204, 204));
+        btn1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn1.setText("Lists");
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn1ActionPerformed(evt);
             }
         });
-        mainPanel.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 240, 80));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel12.setText("Unlock Accounts");
-        mainPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, -1, -1));
+        mainPanel.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 240, 120));
 
         btn2.setBackground(new java.awt.Color(255, 204, 204));
+        btn2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn2.setText("Unlock Accounts");
         btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn2ActionPerformed(evt);
             }
         });
-        mainPanel.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 240, 80));
+        mainPanel.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 240, 120));
 
         btn3.setBackground(new java.awt.Color(255, 204, 204));
+        btn3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btn3.setText("Create Announcement");
         btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn3ActionPerformed(evt);
             }
         });
-        mainPanel.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 240, 110));
+        mainPanel.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 240, 140));
 
         jLabel4.setBackground(new java.awt.Color(102, 102, 102));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -490,11 +478,7 @@ this.dispose();
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
