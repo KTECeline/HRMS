@@ -51,12 +51,10 @@ public class EditSecurity extends javax.swing.JFrame {
     String userId = UserId.getText();
     String securityQuestion = (String) SQBox.getSelectedItem();
     String answer = Answer.getText();
-
     try (BufferedReader br = new BufferedReader(new FileReader("security.txt"))) {
         String line;
         StringBuilder updatedContent = new StringBuilder();
         boolean found = false;
-
         while ((line = br.readLine()) != null) {
             String[] parts = line.split(",");
             if (parts[0].equals(userId)) {
@@ -66,16 +64,13 @@ public class EditSecurity extends javax.swing.JFrame {
             }
             updatedContent.append(String.join(",", parts)).append("\n");
         }
-
         if (!found) {
             JOptionPane.showMessageDialog(this, "User ID not found.");
             return;
         }
-
         FileWriter fw = new FileWriter("security.txt");
         fw.write(updatedContent.toString());
         fw.close();
-
         JOptionPane.showMessageDialog(this, "Security question and answer updated successfully.");
         LoadData();
     } catch (IOException e) {
