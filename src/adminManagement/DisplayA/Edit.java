@@ -43,7 +43,7 @@ public void displayAnnouncements(List<Announcement> announcements) {
         try (BufferedReader in = new BufferedReader(new FileReader("announcement.txt"))) {
             String line;
             while ((line = in.readLine()) != null) {
-                String[] parts = line.split(",");
+                String[] parts = line.split("\\|");
                 Announcement announcement = new Announcement(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
                 announcements.add(announcement);
             }

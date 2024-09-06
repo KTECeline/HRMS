@@ -1,4 +1,4 @@
-1725529327989|Good News,Everyone is a worker in our company!!|All|un|2024-09-05 17:42:07
+1725529327989|Good News|Everyone is a worker in our company!!|All|un|2024-09-05 17:42:07
 1725560700382|This is an announcement to all users|Please create security question upon entry.|All|un|2024-09-06 02:25:00
 1725560726196|This is an announcement to HR Officers|Please recruit more interns, we need the labour.|HR Officer|un|2024-09-06 02:25:26
 1725560749667|This is an announcement to Department Managers|Please give them more work. increase the productivity.|Department Manager|un|2024-09-06 02:25:49
