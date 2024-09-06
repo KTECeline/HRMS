@@ -3,6 +3,8 @@ package payrollManagement.payrollManager.Create;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,13 +18,17 @@ import java.io.IOException;
 
 public class PayrollId {
     public static String nextUserId = "P1";
-    public static final String USER_FILE = "../HRMS_2/Src/payrollManagement/payroll.txt";
-
+    public static final String USER_FILE = "payroll.txt";
+private static boolean isLoaded = false;
+private static Set<String> payrollIds = new HashSet<>();
     static {
         loadPayrollId();
     }
 
     private static void loadPayrollId() {
+         if (isLoaded) {
+            return;  // Prevent re-loading the file unnecessarily
+        }
         try (BufferedReader reader = new BufferedReader(new FileReader(USER_FILE))) {
             String line;
             int highestId = 0;
@@ -35,6 +41,10 @@ public class PayrollId {
                     String[] userData = line.split(",");
                     if (userData.length > 0) {
                         String idStr = userData[0].trim();
+                        if (payrollIds.contains(idStr)) {
+                            System.out.printf("Duplicate ID found at line %d: %s%n", lineNumber, idStr);
+                            continue; // Skip duplicate entries
+                        }
                         try {
                             if (idStr.startsWith("P")) {
                                 int userId = Integer.parseInt(idStr.substring(1));
@@ -59,8 +69,9 @@ public class PayrollId {
 
             // Set the next user ID
             nextUserId = "P" + (highestId + 1);
-            String message = String.format("Next payroll ID is: %s", nextUserId);
-            System.out.println(message);
+           
+             System.out.printf("Next payroll ID is: %s%n", nextUserId);
+            isLoaded=true;
         } catch (IOException e) {
             String message = "Error reading user file";
             System.out.println(message);
@@ -70,9 +81,11 @@ public class PayrollId {
     }
 
     public static String getNextPayrollId() {
+        
         String currentId = nextUserId;
         int currentNumericPart = Integer.parseInt(currentId.substring(1));
         nextUserId = "P" + (currentNumericPart + 1);
         return currentId;
     }
+    
 }
