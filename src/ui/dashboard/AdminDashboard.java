@@ -79,7 +79,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         TotalEmployee = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         UNLOCKA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -208,7 +207,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel6.setText("History Changes");
-        mainPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 160, 40));
+        mainPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 160, 40));
 
         btn4.setBackground(new java.awt.Color(255, 204, 204));
         btn4.addActionListener(new java.awt.event.ActionListener() {
@@ -216,15 +215,15 @@ public class AdminDashboard extends javax.swing.JFrame {
                 btn4ActionPerformed(evt);
             }
         });
-        mainPanel.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 240, 210));
+        mainPanel.add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 240, 110));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel2.setText("Create Annoucement");
-        mainPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, -1, -1));
+        mainPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel5.setText("Lists");
-        mainPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, -1, -1));
+        mainPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
 
         btn1.setBackground(new java.awt.Color(255, 204, 204));
         btn1.addActionListener(new java.awt.event.ActionListener() {
@@ -232,11 +231,11 @@ public class AdminDashboard extends javax.swing.JFrame {
                 btn1ActionPerformed(evt);
             }
         });
-        mainPanel.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 240, 130));
+        mainPanel.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 240, 80));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel12.setText("Unlock Accounts");
-        mainPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 270, -1, -1));
+        mainPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, -1, -1));
 
         btn2.setBackground(new java.awt.Color(255, 204, 204));
         btn2.addActionListener(new java.awt.event.ActionListener() {
@@ -244,7 +243,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 btn2ActionPerformed(evt);
             }
         });
-        mainPanel.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 240, 130));
+        mainPanel.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 240, 80));
 
         btn3.setBackground(new java.awt.Color(255, 204, 204));
         btn3.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +251,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 btn3ActionPerformed(evt);
             }
         });
-        mainPanel.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 240, 210));
+        mainPanel.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 240, 110));
 
         jLabel4.setBackground(new java.awt.Color(102, 102, 102));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -321,9 +320,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Employees");
         mainPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 180, -1));
-
-        jLabel1.setText("jLabel1");
-        mainPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, -1, -1));
         mainPanel.add(UNLOCKA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 60, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -493,7 +489,6 @@ this.dispose();
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
