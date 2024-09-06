@@ -49,7 +49,6 @@ public class DisplayAnnoucement extends javax.swing.JFrame {
     Edit edit = new Edit(role, true); // Initialize Edit with role
     try {
         List<Announcement> announcements = edit.readAnnouncementsFromFile();
-        
         // Filter announcements based on the user's role
         List<Announcement> filteredAnnouncements = new ArrayList<>();
         for (Announcement announcement : announcements) {
@@ -57,7 +56,6 @@ public class DisplayAnnoucement extends javax.swing.JFrame {
                 filteredAnnouncements.add(announcement);
             }
         }
-        
         // Convert filtered announcements to a ListModel
         DefaultListModel<String> listModel = new DefaultListModel<>();
 for (Announcement announcement : filteredAnnouncements) {
@@ -68,8 +66,6 @@ for (Announcement announcement : filteredAnnouncements) {
     sb.append("|  Date: ").append(announcement.getDate()).append("  | \n\n");
     listModel.addElement(sb.toString());
 }
-
-
         // Set the model to jList1
         jList1.setModel(listModel);
     } catch (IOException e) {
