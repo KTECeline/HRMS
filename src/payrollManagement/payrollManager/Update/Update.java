@@ -740,7 +740,7 @@ public class Update extends javax.swing.JFrame {
 
         if (recordUpdated) {
             if (!previousYear.equals(year) || !previousMonth.equals(month) || !previousBasicSalary.equals(basicSalary)) {
-            String[] reasons = {"ANNUAL LEAVE OVER 12 DAYS", "MEDICAL LEAVE OVER 2 DAYS", "MATERNITY LEAVE OVER 98 DAYS", "CHANGE POSITION"};
+            String[] reasons = {"UNPAID LEAVE", "ANNUAL LEAVE OVER 12 DAYS", "MEDICAL LEAVE OVER 2 DAYS", "MATERNITY LEAVE OVER 98 DAYS", "CHANGE POSITION"};
 
             String reason = (String) JOptionPane.showInputDialog(
                     null,
@@ -882,7 +882,7 @@ public class Update extends javax.swing.JFrame {
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             br.readLine();
-            String[] columnsName = {"Payroll ID", "Employee ID", "Employee Name", "Month"};
+            String[] columnsName = {"Payroll ID", "Employee ID", "Employee Name", "Year", "Month"};
             DefaultTableModel model = (DefaultTableModel) table.getModel();
             model.setColumnIdentifiers(columnsName);
 
@@ -1123,18 +1123,6 @@ public class Update extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Update.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

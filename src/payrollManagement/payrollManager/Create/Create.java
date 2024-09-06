@@ -40,7 +40,8 @@ public class Create extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void setButtonValues(String empID, String empName, String department, String employmenttype, String dateOfJoined, String bankname, String bankaccount) {
+    public void setButtonValues(String empID, String empName, String department, String employmenttype, String dateOfJoined, String bankname, 
+                                String bankaccount) {
         lEmpID.setText(empID);
         lEmpName.setText(empName);
         lDep.setText(department);
@@ -802,12 +803,14 @@ public class Create extends javax.swing.JFrame {
             }
 
             if (recordExistsForMonthAndYear(month, year, selectedUserId)) {
-                JOptionPane.showMessageDialog(this, "A record for " + month + " " + year + " already exists for User ID " + selectedUserId + ".", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "A record for " + month + " " + year + " already exists for User ID " + 
+                selectedUserId + ".", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
             if (!attendanceExistsForMonthAndYear(month, year, selectedUserId)) {
-                throw new IllegalArgumentException("No attendance records found for User ID " + selectedUserId + " in " + month + " " + year + ".");
+                throw new IllegalArgumentException("No attendance records found for User ID " + selectedUserId + " in " + 
+                month + " " + year + ".");
             }
 
             String empType = lEmpType.getText();
@@ -996,7 +999,7 @@ public class Create extends javax.swing.JFrame {
                         String recordMonth = String.format("%02d", date.getMonthValue());
 
                         if (userId.equals(selectedUserId) && recordMonth.equals(month) && recordYear.equals(year)) {
-                            System.out.println("Record found: User " + userId + " for " + recordMonth + "/" + recordYear);  // Debugging
+                            System.out.println("Record found: User " + userId + " for " + recordMonth + "/" + recordYear); 
                             return true;
                         }
                     } catch (DateTimeParseException e) {

@@ -215,7 +215,7 @@ public class SearchPayslip extends javax.swing.JFrame {
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             br.readLine();
-            String[] columnsName = {"Payroll ID", "Employee ID", "Employee Name", "Month"};
+            String[] columnsName = {"Payroll ID", "Employee ID", "Employee Name", "Year", "Month"};
             DefaultTableModel model = (DefaultTableModel) table.getModel();
             model.setColumnIdentifiers(columnsName);
 
@@ -375,6 +375,8 @@ public class SearchPayslip extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SearchPayslip.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
       

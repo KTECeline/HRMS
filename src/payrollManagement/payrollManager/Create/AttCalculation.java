@@ -63,7 +63,7 @@ public class AttCalculation {
 
        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
            String line;
-           reader.readLine(); // Skip header line if necessary
+           reader.readLine(); 
            while ((line = reader.readLine()) != null) {
                String[] entry = line.split(",");
                if (entry.length < 8) continue;
