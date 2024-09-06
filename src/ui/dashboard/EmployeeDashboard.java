@@ -32,10 +32,10 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         sidePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        empName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnLogOut = new javax.swing.JButton();
         btnLogOut1 = new javax.swing.JButton();
+        empName = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -58,12 +58,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employeeManagement/image/emp (250 x 250 px).png"))); // NOI18N
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        sidePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 130, 100));
-
-        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName.setText("EmpName");
-        empName.setToolTipText("");
-        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 100, -1));
+        sidePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 100));
 
         jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jLabel2.setText("Employee");
@@ -84,6 +79,12 @@ public class EmployeeDashboard extends javax.swing.JFrame {
             }
         });
         sidePanel.add(btnLogOut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 130, 50));
+
+        empName.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        empName.setText("EmpName");
+        empName.setToolTipText("");
+        sidePanel.add(empName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 100, -1));
 
         mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 

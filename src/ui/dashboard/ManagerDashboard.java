@@ -36,13 +36,13 @@ public class ManagerDashboard extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnProfile = new javax.swing.JButton();
-        empName1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnLeave = new javax.swing.JButton();
         btnAttendance = new javax.swing.JButton();
         btnTask = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
         btnAnnouncements1 = new javax.swing.JButton();
+        empName1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -72,11 +72,6 @@ public class ManagerDashboard extends javax.swing.JFrame {
             }
         });
         sidePanel.add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 30));
-
-        empName1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        empName1.setText("EmpName");
-        empName1.setToolTipText("");
-        sidePanel.add(empName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 100, -1));
 
         jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jLabel2.setText("Manager");
@@ -126,6 +121,12 @@ public class ManagerDashboard extends javax.swing.JFrame {
             }
         });
         sidePanel.add(btnAnnouncements1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 130, 50));
+
+        empName1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        empName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        empName1.setText("EmpName");
+        empName1.setToolTipText("");
+        sidePanel.add(empName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 100, -1));
 
         mainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 600));
 
@@ -216,6 +217,11 @@ public class ManagerDashboard extends javax.swing.JFrame {
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
+         profile.ProfileButton profileLoader = new profile.ProfileButton();
+       profile.ViewProfile viewprofile = new profile.ViewProfile();
+         
+        profileLoader.onViewProfileButtonClick(viewprofile); 
+        this.dispose();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed

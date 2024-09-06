@@ -23,7 +23,6 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.text.ParseException;
 import java.util.Date;
-import java.util.UUID;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
@@ -39,7 +38,7 @@ public class UpdateEmployee extends javax.swing.JFrame {
      */
     public UpdateEmployee() {
     initComponents();
-    loadTableData(); // Load data when the form initializes
+    loadTableData(); 
 
     
    jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -48,8 +47,6 @@ public class UpdateEmployee extends javax.swing.JFrame {
         jTable1MouseClicked(evt);
     }
 
-    
-
 });
    
 
@@ -57,14 +54,12 @@ public class UpdateEmployee extends javax.swing.JFrame {
     
 public void setEmployeeDetails(String userID, String username, String password, String fullName, String gender, String birthDate, String phoneNumber, String maritalStatus, String nationality, String email, String address, String role, String position, String department, String dateOfJoining, String employmentType, String jobTitle, String responsibilities, String emergencyName, String emergencyPhoneNo, String bankName, String accountNumber) {
 
-        // Set the received data into the corresponding fields
     txtUserId.setText(userID);
     txtUsername.setText(username);
     txtPassword.setText(password);
     txtFullName.setText(fullName);
     txtGender.setSelectedItem(gender);
 
-    // Handle Date of Birth and Date of Joining
     try {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yy");
         java.util.Date parsedBirthDate = format.parse(birthDate);
@@ -73,7 +68,6 @@ public void setEmployeeDetails(String userID, String username, String password, 
         java.util.Date parsedJoinDate = format.parse(dateOfJoining);
         txtDateJoined.setDate(parsedJoinDate);
     } catch (ParseException e) {
-        // Handle parsing exceptions
     }
 
     txtPhone.setText(phoneNumber);
@@ -121,10 +115,9 @@ private void setColumnWidths() {
     jTable1.getColumnModel().getColumn(20).setPreferredWidth(130);   // Bank Name column
     jTable1.getColumnModel().getColumn(21).setPreferredWidth(100);  // Account Number column
 
-    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  // Disable auto-resize
+    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);  
 
-// Set horizontal scroll policy for jScrollPane2
-jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    jScrollPane2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 }
 
 
@@ -141,14 +134,13 @@ private void loadTableData() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setColumnIdentifiers(columnsName);
         
-        // Clear existing rows
         model.setRowCount(0);
         
         String line;
         while ((line = br.readLine()) != null) {
-            line = line.trim();  // Remove leading and trailing whitespace
+            line = line.trim();  
             if (line.isEmpty()) {
-                continue;  // Skip empty lines
+                continue;  
             }
             String[] dataRow = line.split(",");
             model.addRow(dataRow);
@@ -158,7 +150,7 @@ private void loadTableData() {
         
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         
-    } catch (Exception ex) {
+    } catch (IOException ex) {
         Logger.getLogger(CreateEmployee.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
@@ -825,7 +817,7 @@ private void loadTableData() {
 
     private void searchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbarActionPerformed
                 
-    String searchText = searchbar.getText().trim().toLowerCase(); // Get the text entered in the search field and convert to lowercase for case-insensitive search
+    String searchText = searchbar.getText().trim().toLowerCase(); 
     String filePath = "usertxt.txt";
     File file = new File(filePath);
 
@@ -836,10 +828,8 @@ private void loadTableData() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setColumnIdentifiers(columnsName);
 
-        // Clear existing rows
         model.setRowCount(0);
 
-        // Search for matching ID, Username, Full Name, Role, or Employment Type
         String line;
         while ((line = br.readLine()) != null) {
             String[] dataRow = line.split(",");
@@ -847,17 +837,15 @@ private void loadTableData() {
                 String id = dataRow[0].toLowerCase();
                 String username = dataRow[1].toLowerCase();
                 String fullName = dataRow[3].toLowerCase();
-                String role = dataRow[11].toLowerCase(); // Assuming the 'Role' column is at index 11
-                String employmentType = dataRow[15].toLowerCase(); // Assuming the 'Employment Type' column is at index 15
+                String role = dataRow[11].toLowerCase(); 
+                String employmentType = dataRow[15].toLowerCase(); 
 
-                // Check if the search text matches the ID, Username, Full Name, Role, or Employment Type
                 if (id.contains(searchText) || username.contains(searchText) || fullName.contains(searchText) || role.contains(searchText) || employmentType.contains(searchText)) {
-                    model.addRow(dataRow); // Add the matching row to the table
+                    model.addRow(dataRow); 
                 }
             }
         }
 
-        // Set column widths after populating the table
         setColumnWidths();
 
     } catch (IOException ex) {
@@ -870,7 +858,7 @@ private void loadTableData() {
 
     private void searchbarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchbarFocusLost
         if (searchbar.getText().isEmpty()) {
-            searchbar.setForeground(Color.GRAY); // Set text color to gray
+            searchbar.setForeground(Color.GRAY);
             searchbar.setText("Search Account");
         }
     }//GEN-LAST:event_searchbarFocusLost
@@ -878,7 +866,7 @@ private void loadTableData() {
     private void searchbarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchbarFocusGained
         if (searchbar.getText().equals("Search Account")) {
             searchbar.setText("");
-            searchbar.setForeground(Color.BLACK); // Set the text color back to black
+            searchbar.setForeground(Color.BLACK); 
         }
     }//GEN-LAST:event_searchbarFocusGained
 
@@ -1064,69 +1052,48 @@ String userID = txtUserId.getText().trim();
     
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
                           
-    int selectedRow = jTable1.getSelectedRow();  // Get the selected row index
-    TableModel model = jTable1.getModel();  // Get the table model
-
-    // Set text fields and other components with the values from the selected row
+    int selectedRow = jTable1.getSelectedRow(); 
+    TableModel model = jTable1.getModel();
+    
     txtUserId.setText(model.getValueAt(selectedRow, 0).toString());
     txtUsername.setText(model.getValueAt(selectedRow, 1).toString());
     txtPassword.setText(model.getValueAt(selectedRow, 2).toString());
     txtFullName.setText(model.getValueAt(selectedRow, 3).toString());
 
-    // Handle Gender
     txtGender.setSelectedItem(model.getValueAt(selectedRow, 4).toString());
 
-    // Handle Date of Birth using JDateChooser
     String birthDateString = model.getValueAt(selectedRow, 5).toString();
     try {
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");  // Adjust the format to match your table
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         java.util.Date parsedDate = format.parse(birthDateString);
         txtBOD.setDate(parsedDate);
     } catch (java.text.ParseException e) {
-        // Handle the exception or show an error message
+
     }
 
     txtPhone.setText(model.getValueAt(selectedRow, 6).toString());
-
-    // Handle Marital Status
     txtMS.setSelectedItem(model.getValueAt(selectedRow, 7).toString());
-
-    // Handle Nationality
     txtNationality.setSelectedItem(model.getValueAt(selectedRow, 8).toString());
-
     txtEmail.setText(model.getValueAt(selectedRow, 9).toString());
     txtAddress.setText(model.getValueAt(selectedRow, 10).toString());
-
-    // Handle Role
     txtRole.setSelectedItem(model.getValueAt(selectedRow, 11).toString());
-
-    // Handle Position
     txtPosition.setSelectedItem(model.getValueAt(selectedRow, 12).toString());
-
-    // Handle Department
     txtDepartment.setSelectedItem(model.getValueAt(selectedRow, 13).toString());
 
-    // Handle Date of Joining using JDateChooser
     String joinDateString = model.getValueAt(selectedRow, 14).toString();
     try {
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");  // Define the format based on your date pattern
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         java.util.Date parsedJoinDate = format.parse(joinDateString);
-        txtDateJoined.setDate(parsedJoinDate);  // Set the parsed date to the txtDate field
+        txtDateJoined.setDate(parsedJoinDate);  
     } catch (ParseException e) {
-        // Handle the exception if the date parsing fails
     }
 
-    // Handle Employment Type
     txtEmployement.setSelectedItem(model.getValueAt(selectedRow, 15).toString());
-
     txtWkTitle.setText(model.getValueAt(selectedRow, 16).toString());
     txtResponsibilities.setText(model.getValueAt(selectedRow, 17).toString());
     txtEname.setText(model.getValueAt(selectedRow, 18).toString());
     txtContact.setText(model.getValueAt(selectedRow, 19).toString());
-
-    // Handle Bank Name
     txtBankNM.setSelectedItem(model.getValueAt(selectedRow, 20).toString());
-
     txtBankNo.setText(model.getValueAt(selectedRow, 21).toString());
 
 
@@ -1147,19 +1114,17 @@ String userID = txtUserId.getText().trim();
     txtResponsibilities.setText("");
     txtEname.setText("");
     txtContact.setText("");
-    txtBankNo.setText("");  // Clear account number
-    txtBankNM.setSelectedIndex(-1);  // Reset bank name combo box
+    txtBankNo.setText(""); 
+    txtBankNM.setSelectedIndex(-1); 
 
-    // Reset combo boxes to their default (first) option or unselected state
-    txtGender.setSelectedIndex(-1);  // Unselects the combo box
+    txtGender.setSelectedIndex(-1); 
     txtMS.setSelectedIndex(-1);
     txtNationality.setSelectedIndex(-1);
     txtRole.setSelectedIndex(-1);
     txtDepartment.setSelectedIndex(-1);
     txtEmployement.setSelectedIndex(-1);
 
-    // Clear date pickers
-    txtBOD.setDate(null);  // Sets the date picker to no date
+    txtBOD.setDate(null);  
     txtDateJoined.setDate(null);
     }//GEN-LAST:event_btnClearActionPerformed
 
@@ -1174,15 +1139,12 @@ String userID = txtUserId.getText().trim();
             return;
         }
 
-        // Confirm deletion with the user
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the record for " + fullName + "?", 
                                                      "Confirm Deletion", JOptionPane.YES_NO_OPTION);
         if (response != JOptionPane.YES_OPTION) {
-            // User chose not to delete
             return;
         }
 
-        // Read existing data and check for the record to delete
         File file = new File("usertxt.txt");
         StringBuilder fileContent = new StringBuilder();
         boolean recordDeleted = false;
@@ -1193,9 +1155,8 @@ String userID = txtUserId.getText().trim();
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data.length > 1 && data[0].equals(userID)) {
-                    // Skip appending the line to delete it
                     recordDeleted = true;
-                    continue; // Skip to the next line
+                    continue; 
                 }
                 fileContent.append(line).append(System.getProperty("line.separator"));
             }
@@ -1205,7 +1166,6 @@ String userID = txtUserId.getText().trim();
             return;
         }
 
-        // If a record was deleted, write the updated content back to the file
         if (recordDeleted) {
             try (FileWriter writer = new FileWriter(file, false)) {
                 writer.write(fileContent.toString());

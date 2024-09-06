@@ -146,7 +146,7 @@ if (userIdExists) {
 
             if (parts.length >= 15 && parts[0].trim().equals(userId)) {
                 phone = parts[6].trim();
-                email = parts[10].trim();
+                email = parts[9].trim();
                 break;
                 // Log information for debugging
             }
