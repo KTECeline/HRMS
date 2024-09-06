@@ -41,17 +41,14 @@ public class ViewProfile extends javax.swing.JFrame {
     File file = new File(filePath);
 
     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-        br.readLine(); // Skip the header line if the file has a header
+        br.readLine(); 
 
-        // Define the column headers for jTable1 and jTable2
         String[] columnsNameTable1 = {"History ID", "Previous Position", "Updated Position", "Reason", "Time"};
         String[] columnsNameTable2 = {"History ID", "Previous Salary", "Updated Salary", "Reason", "Time"};
         
-        // Set column headers for jTable1
         DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
         model1.setColumnIdentifiers(columnsNameTable1);
 
-        // Set column headers for jTable2
         DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
         model2.setColumnIdentifiers(columnsNameTable2);
 
@@ -59,17 +56,14 @@ public class ViewProfile extends javax.swing.JFrame {
         while ((line = br.readLine()) != null) {
             String[] dataRow = line.split(",");
 
-            // Check if dataRow has the expected number of columns before processing
             if (dataRow.length >= 7 && dataRow[2].equals(userID)) {
                 String historyID = dataRow[0];
 
-                // If history ID starts with 'H', add data to jTable1
                 if (historyID.startsWith("H")) {
                     String[] selectedDataTable1 = {dataRow[0], dataRow[3], dataRow[4], dataRow[5], dataRow[6]};
                     model1.addRow(selectedDataTable1);
                 }
 
-                // If history ID starts with 'P', add data to jTable2
                 else if (historyID.startsWith("P")) {
                     String[] selectedDataTable2 = {dataRow[0], dataRow[3], dataRow[4], dataRow[5], dataRow[6]};
                     model2.addRow(selectedDataTable2);
@@ -1280,7 +1274,6 @@ public class ViewProfile extends javax.swing.JFrame {
             if (dataRow[1].equals(userId) && dataRow[4].equals(selectedMonth)) {
                 recordFound = true;
 
-                // Your original index mappings
                 String empID = dataRow[1]; 
                 String empName = dataRow[2]; 
                 String bankName = dataRow[20];
@@ -1303,12 +1296,11 @@ public class ViewProfile extends javax.swing.JFrame {
                 String yerEIS = dataRow[18];
                 String yerCon = dataRow[19];
 
-                // Display the payslip
                 payrollManagement.payrollEmployee.Payslip payslip = new payrollManagement.payrollEmployee.Payslip();              
                 payslip.setLabelValues(empID, empName, bankName, bankAccount, year, month, bSalary, allowance, ot, latePen, gSalary, 
                                        yeeEPF, yeeSosco, yeeEIS, yeePCB, yeeTDeductions, yeeNSalary, yerEPF, yerSosco, yerEIS, yerCon);
                 payslip.setVisible(true);
-                this.dispose();  // Close the current window
+                this.dispose(); 
                 break;
             }
         }
@@ -1329,7 +1321,7 @@ public class ViewProfile extends javax.swing.JFrame {
             public void run() {
                 new leaveManagement.LeaveHistory().setVisible(true);
             }
-        });  this.dispose(); // TODO add your handling code here:
+        });  this.dispose(); 
     }//GEN-LAST:event_btnLeaveActionPerformed
 
     private void btnSecurityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSecurityActionPerformed
@@ -1339,7 +1331,6 @@ public class ViewProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSecurityActionPerformed
 
     private void btnTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaskActionPerformed
-        // TODO add your handling code here:
          java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TaskManagement.ViewTask().setVisible(true);
