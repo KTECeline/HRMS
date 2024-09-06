@@ -207,7 +207,6 @@ public class ViewProfile extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnLeave = new javax.swing.JButton();
         btnSecurity = new javax.swing.JButton();
-        btnTask = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1183,15 +1182,6 @@ public class ViewProfile extends javax.swing.JFrame {
             }
         });
 
-        btnTask.setBackground(new java.awt.Color(153, 204, 255));
-        btnTask.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        btnTask.setText("Task");
-        btnTask.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTaskActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1205,11 +1195,7 @@ public class ViewProfile extends javax.swing.JFrame {
                 .addGap(162, 162, 162)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLeave)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnTask)
-                        .addGap(43, 43, 43)))
+                .addComponent(btnLeave)
                 .addGap(55, 55, 55))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1229,9 +1215,7 @@ public class ViewProfile extends javax.swing.JFrame {
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(btnTask)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnSecurity)
@@ -1330,15 +1314,6 @@ public class ViewProfile extends javax.swing.JFrame {
         create.setVisible(true);
     }//GEN-LAST:event_btnSecurityActionPerformed
 
-    private void btnTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaskActionPerformed
-         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TaskManagement.ViewTask().setVisible(true);
-            }
-        });  
-    this.dispose();  
-    }//GEN-LAST:event_btnTaskActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -1379,7 +1354,6 @@ public class ViewProfile extends javax.swing.JFrame {
     private javax.swing.JButton btnLeave;
     private javax.swing.JComboBox<String> btnMonth;
     private javax.swing.JButton btnSecurity;
-    private javax.swing.JButton btnTask;
     private javax.swing.JLabel header;
     private javax.swing.JLabel header1;
     private javax.swing.JButton jButton1;

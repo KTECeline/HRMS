@@ -560,6 +560,11 @@ public class Attendance extends javax.swing.JFrame {
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
+        profile.ProfileButton profileLoader = new profile.ProfileButton();
+       profile.ViewProfile viewprofile = new profile.ViewProfile();
+         
+        profileLoader.onViewProfileButtonClick(viewprofile); 
+        this.dispose();
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -590,6 +595,13 @@ this.dispose();
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new leaveManagement.ApplyLeave().setVisible(true);
+            }
+        });  
+    this.dispose();     // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void ClockInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClockInActionPerformed
